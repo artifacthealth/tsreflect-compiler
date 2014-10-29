@@ -5989,7 +5989,17 @@ var ts;
 
         function getSourceFile(filename) {
             filename = host.getCanonicalFileName(filename);
-            return ts.hasProperty(filesByName, filename) ? filesByName[filename] : undefined;
+
+            if (!ts.hasProperty(filesByName, filename)) {
+                var tsFile = filename + ".ts";
+                if (ts.hasProperty(filesByName, tsFile)) {
+                    filename = tsFile;
+                } else {
+                    filename + ".d.ts";
+                }
+            }
+
+            return filesByName[filename];
         }
 
         function getDiagnostics(sourceFile) {

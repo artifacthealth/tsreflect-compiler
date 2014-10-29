@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
     // Project configuration.
     grunt.initConfig({
-        pkg: grunt.file.read("COPYRIGHT.txt"),
+        pkg: grunt.file.readJSON("package.json"),
 
         clean: {
             build: {
@@ -123,7 +123,7 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask("default", [ "build", "bin", "test" ]);
+    grunt.registerTask("default", [ "build", "bin", "tests" ]);
     grunt.registerTask("build", [ "clean:build", "typescript:build", "copy:build" ]);
     grunt.registerTask("bin", [ "clean:bin", "concat:bin", "copy:bin", "shell:bin" ]);
     grunt.registerTask("tests", [ "typescript:tests", "mochaTest:tests" ]);

@@ -3698,7 +3698,19 @@ module ts {
 
         function getSourceFile(filename: string) {
             filename = host.getCanonicalFileName(filename);
-            return hasProperty(filesByName, filename) ? filesByName[filename] : undefined;
+
+            if(!hasProperty(filesByName, filename)) {
+
+                var tsFile = filename + ".ts";
+                if(hasProperty(filesByName, tsFile)) {
+                    filename = tsFile;
+                }
+                else {
+                    filename + ".d.ts";
+                }
+            }
+
+            return filesByName[filename];
         }
 
         function getDiagnostics(sourceFile?: SourceFile): Diagnostic[] {

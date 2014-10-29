@@ -5,7 +5,6 @@
 
 import fs = require("fs");
 import path = require("path");
-import assert = require("assert");
 import chai = require("chai");
 
 import expect = chai.expect;
