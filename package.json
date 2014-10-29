@@ -1,6 +1,16 @@
 {
-  "name": "tsreflect",
+  "name": "tsreflect-compiler",
+  "description": "Generate TypeScript JSON declaration files for runtime type information.",
   "version": "0.1.0",
+  "author": {
+    "name": "Artifact Health, LLC",
+    "url": "http://www.artifacthealth.com"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@bitbucket.org/mgottlieb/tsreflect-compiler.git"
+  },
   "licenses": [
     {
       "type": "Apache-2.0",
@@ -27,6 +37,5 @@
     "grunt-shell": "^1.0.1",
     "mocha": "^2.0.1",
     "typescript": "1.0.1"
-  },
-  "author": "Artifact Health, LLC"
+  }
 }
