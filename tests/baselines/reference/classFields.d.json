@@ -1,0 +1,35 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string"
+				},
+				{
+					"kind": "field",
+					"name": "b",
+					"type": "number"
+				},
+				{
+					"kind": "field",
+					"name": "c",
+					"type": "boolean"
+				},
+				{
+					"kind": "field",
+					"name": "d",
+					"type": "any"
+				},
+				{
+					"kind": "field",
+					"name": "e",
+					"type": "Date"
+				}
+			]
+		}
+	]
+}

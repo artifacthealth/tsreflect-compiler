@@ -1,0 +1,20 @@
+{
+	"declares": [
+		{
+			"kind": "function",
+			"name": "A",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			],
+			"parameters": [
+				{
+					"name": "a",
+					"type": "T"
+				}
+			],
+			"returns": "T"
+		}
+	]
+}

@@ -1,0 +1,13 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A"
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"extends": "A"
+		}
+	]
+}

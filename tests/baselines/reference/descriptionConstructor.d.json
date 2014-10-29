@@ -1,0 +1,14 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "constructor",
+					"description": "Constructor description"
+				}
+			]
+		}
+	]
+}

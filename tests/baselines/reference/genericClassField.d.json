@@ -1,0 +1,30 @@
+{
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "A",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"members": [
+				{
+					"kind": "field",
+					"name": "b",
+					"type": {
+						"kind": "generic",
+						"target": "A",
+						"arguments": [
+							"string"
+						]
+					}
+				}
+			]
+		}
+	]
+}

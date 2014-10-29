@@ -1,0 +1,3 @@
+#!/usr/bin/env node
+require('./tsreflect-compiler.js').executeCommandLine(process.argv.slice(2));
+

@@ -1,0 +1,24 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"extends": {
+                "kind": "generic",
+                "target": "A",
+                "arguments": [
+                    "string"
+                ]
+		    }
+		}
+	]
+}

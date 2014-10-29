@@ -1,0 +1,26 @@
+{
+	"declares": [
+		{
+			"kind": "enum",
+			"name": "BasicEnum",
+			"members": [
+				{
+					"name": "A",
+					"value": "0"
+				},
+				{
+					"name": "B",
+					"value": "1"
+				},
+				{
+					"name": "C",
+					"value": "2"
+				},
+				{
+					"name": "D",
+					"value": "3"
+				}
+			]
+		}
+	]
+}

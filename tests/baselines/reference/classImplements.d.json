@@ -1,0 +1,15 @@
+{
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "ITest"
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"implements": [
+				"ITest"
+			]
+		}
+	]
+}

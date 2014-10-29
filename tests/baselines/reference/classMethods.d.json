@@ -1,0 +1,26 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "method",
+					"name": "a",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "b",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "string"
+						}
+					],
+					"returns": "number"
+				}
+			]
+		}
+	]
+}

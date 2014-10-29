@@ -1,0 +1,32 @@
+{
+  "name": "tsreflect",
+  "version": "0.1.0",
+  "licenses": [
+    {
+      "type": "Apache-2.0",
+      "url": "https://github.com/palantir/grunt-tslint/blob/master/LICENSE.txt"
+    }
+  ],
+  "main": "bin/tsreflect-compiler.js",
+  "scripts": {
+    "test": "grunt"
+  },
+  "description": "",
+  "dependencies": {
+    "doctrine": "^0.5.2"
+  },
+  "devDependencies": {
+    "chai": "^1.9.2",
+    "grunt": "^0.4.5",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-concat": "^0.5.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-watch": "^0.6.1",
+    "grunt-mocha-test": "^0.12.2",
+    "grunt-typescript": "^0.3.8",
+    "grunt-shell": "^1.0.1",
+    "mocha": "^2.0.1",
+    "typescript": "1.0.1"
+  },
+  "author": "Artifact Health, LLC"
+}

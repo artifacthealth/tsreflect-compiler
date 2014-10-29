@@ -1,0 +1,20 @@
+{
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "A"
+		},
+		{
+			"kind": "interface",
+			"name": "B"
+		},
+		{
+			"kind": "interface",
+			"name": "C",
+			"extends": [
+				"A",
+				"B"
+			]
+		}
+	]
+}

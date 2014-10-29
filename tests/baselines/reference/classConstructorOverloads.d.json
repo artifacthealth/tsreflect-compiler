@@ -1,0 +1,31 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "constructor"
+				},
+				{
+					"kind": "constructor",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "string"
+						}
+					]
+				},
+				{
+					"kind": "constructor",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "number"
+						}
+					]
+				}
+			]
+		}
+	]
+}

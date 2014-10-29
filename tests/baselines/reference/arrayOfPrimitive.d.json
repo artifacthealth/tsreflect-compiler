@@ -1,0 +1,12 @@
+{
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "a",
+			"type": {
+				"kind": "array",
+				"target": "boolean"
+			}
+		}
+	]
+}

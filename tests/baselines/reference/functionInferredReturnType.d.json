@@ -1,0 +1,9 @@
+{
+	"declares": [
+		{
+			"kind": "function",
+			"name": "a",
+			"returns": "number"
+		}
+	]
+}

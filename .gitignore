@@ -1,0 +1,6 @@
+.idea
+tests/baselines/local
+tsreflect-compiler.iml
+build
+node_modules
+

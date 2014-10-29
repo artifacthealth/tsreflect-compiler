@@ -1,0 +1,9 @@
+{
+	"declares": [
+		{
+			"kind": "module",
+			"name": "test",
+			"external": true
+		}
+	]
+}

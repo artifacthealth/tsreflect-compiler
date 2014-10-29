@@ -1,0 +1,43 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string",
+					"description": "Param 'a'"
+				},
+				{
+					"kind": "field",
+					"name": "b",
+					"private": true,
+					"description": "Param 'b'"
+				},
+				{
+					"kind": "constructor",
+					"description": "The constructor",
+					"parameters": [
+						{
+							"name": "a",
+							"description": "Param 'a'",
+							"type": "string"
+						},
+						{
+							"name": "b",
+							"description": "Param 'b'",
+							"type": "number"
+						},
+						{
+							"name": "c",
+							"description": "Param 'c'",
+							"type": "boolean"
+						}
+					]
+				}
+			]
+		}
+	]
+}

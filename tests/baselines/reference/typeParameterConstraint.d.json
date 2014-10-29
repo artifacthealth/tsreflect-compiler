@@ -1,0 +1,107 @@
+{
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "ITest"
+		},
+		{
+			"kind": "function",
+			"name": "a",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": "string"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "b",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": "ITest"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "c",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": {
+						"kind": "object"
+					}
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "d",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": "any"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "e",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": {
+						"kind": "object",
+						"signatures": [
+							{
+								"kind": "property",
+								"name": "a",
+								"type": "string"
+							},
+							{
+								"kind": "method",
+								"name": "b",
+								"returns": "void"
+							}
+						]
+					}
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "f",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": {
+						"kind": "array",
+						"target": "string"
+					}
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "g",
+			"typeParameters": [
+				{
+					"name": "T",
+					"constraint": {
+						"kind": "function",
+						"returns": "boolean"
+					}
+				}
+			],
+			"returns": "void"
+		}
+	]
+}

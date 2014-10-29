@@ -1,0 +1,37 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string"
+				},
+				{
+					"kind": "field",
+					"name": "b",
+					"private": true
+				},
+				{
+					"kind": "constructor",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "string"
+						},
+						{
+							"name": "b",
+							"type": "number"
+						},
+						{
+							"name": "c",
+							"type": "boolean"
+						}
+					]
+				}
+			]
+		}
+	]
+}

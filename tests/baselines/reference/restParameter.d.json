@@ -1,0 +1,24 @@
+{
+	"declares": [
+		{
+			"kind": "function",
+			"name": "a",
+			"parameters": [
+				{
+					"name": "a",
+					"optional": true,
+					"type": "string"
+				},
+				{
+					"name": "b",
+					"rest": true,
+					"type": {
+						"kind": "array",
+						"target": "number"
+					}
+				}
+			],
+			"returns": "void"
+		}
+	]
+}
