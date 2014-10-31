@@ -78,7 +78,6 @@ module ts {
         Class,
         Enum,
         Module,
-        Container,
         Function,
         Variable,
         Import,
@@ -374,10 +373,6 @@ module ts {
                         this._setProperty("extends", type);
                     }
                     break;
-                case DeclarationKind.GenericType:
-                case DeclarationKind.ArrayType:
-                    this._setProperty("target", type);
-                    break;
                 default:
                     if(this._isReturnType()) {
                         this._setProperty("returns", type);
@@ -392,6 +387,7 @@ module ts {
 
         private _isReturnType(): boolean {
 
+            // TODO: Add index and index signature?
             switch(this._currentState.kind) {
                 case DeclarationKind.Method:
                 case DeclarationKind.MethodSignature:
@@ -457,7 +453,7 @@ module ts {
 
     function kindToString(kind: DeclarationKind): string {
 
-        var ret = kindToStringMap[kind];
+        var ret = kindMap[kind];
         if(ret) {
             return ret;
         }
@@ -469,31 +465,29 @@ module ts {
         throw new Error("Unknown kind '" + kind + "'");
     }
 
-    var kindToStringMap: ts.Map<string> = {};
+    var kindMap: ts.Map<string> = {};
 
-    kindToStringMap[DeclarationKind.Interface] = "interface";
-    kindToStringMap[DeclarationKind.Class] = "class";
-    kindToStringMap[DeclarationKind.Enum] = "enum";
-    kindToStringMap[DeclarationKind.Module] = "module";
-    kindToStringMap[DeclarationKind.Container] = "container";
-    kindToStringMap[DeclarationKind.Function] = "function";
-    kindToStringMap[DeclarationKind.Variable] = "variable";
-    kindToStringMap[DeclarationKind.Import] = "import";
-    kindToStringMap[DeclarationKind.Index] = "index";
-    kindToStringMap[DeclarationKind.Field] = "field";
-    kindToStringMap[DeclarationKind.Method] = "method";
-    kindToStringMap[DeclarationKind.Constructor] = "constructor";
-    kindToStringMap[DeclarationKind.GetAccessor] = "accessor";
-    kindToStringMap[DeclarationKind.SetAccessor] = "accessor";
-    kindToStringMap[DeclarationKind.PropertySignature] = "property";
-    kindToStringMap[DeclarationKind.ConstructSignature] = "constructor";
-    kindToStringMap[DeclarationKind.MethodSignature] = "method";
-    kindToStringMap[DeclarationKind.IndexSignature] = "index";
-    kindToStringMap[DeclarationKind.CallSignature] = "call";
-    kindToStringMap[DeclarationKind.FunctionType] = "function";
-    kindToStringMap[DeclarationKind.ArrayType] = "array";
-    kindToStringMap[DeclarationKind.ConstructorType] = "constructor";
-    kindToStringMap[DeclarationKind.GenericType] = "generic";
-    kindToStringMap[DeclarationKind.ObjectType] = "object";
-
+    kindMap[DeclarationKind.Interface] = "interface";
+    kindMap[DeclarationKind.Class] = "class";
+    kindMap[DeclarationKind.Enum] = "enum";
+    kindMap[DeclarationKind.Module] = "module";
+    kindMap[DeclarationKind.Function] = "function";
+    kindMap[DeclarationKind.Variable] = "variable";
+    kindMap[DeclarationKind.Import] = "import";
+    kindMap[DeclarationKind.Index] = "index";
+    kindMap[DeclarationKind.Field] = "field";
+    kindMap[DeclarationKind.Method] = "method";
+    kindMap[DeclarationKind.Constructor] = "constructor";
+    kindMap[DeclarationKind.GetAccessor] = "accessor";
+    kindMap[DeclarationKind.SetAccessor] = "accessor";
+    kindMap[DeclarationKind.PropertySignature] = "property";
+    kindMap[DeclarationKind.ConstructSignature] = "constructor";
+    kindMap[DeclarationKind.MethodSignature] = "method";
+    kindMap[DeclarationKind.IndexSignature] = "index";
+    kindMap[DeclarationKind.CallSignature] = "call";
+    kindMap[DeclarationKind.FunctionType] = "function";
+    kindMap[DeclarationKind.ArrayType] = "array";
+    kindMap[DeclarationKind.ConstructorType] = "constructor";
+    kindMap[DeclarationKind.GenericType] = "generic";
+    kindMap[DeclarationKind.ObjectType] = "object";
 }

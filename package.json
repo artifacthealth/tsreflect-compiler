@@ -1,6 +1,6 @@
 {
   "name": "tsreflect-compiler",
-  "description": "Generate TypeScript JSON declaration files for runtime type information.",
+  "description": "Generate TypeScript declaration files in JSON format for runtime type information.",
   "version": "0.1.0",
   "author": {
     "name": "Artifact Health, LLC",
@@ -21,7 +21,6 @@
   "scripts": {
     "test": "grunt"
   },
-  "description": "",
   "dependencies": {
     "doctrine": "^0.5.2"
   },

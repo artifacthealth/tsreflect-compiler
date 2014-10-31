@@ -83,7 +83,7 @@
 					"name": "T",
 					"constraint": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			],

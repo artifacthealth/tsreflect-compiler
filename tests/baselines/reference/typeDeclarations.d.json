@@ -1,0 +1,106 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			],
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "T"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "Function type",
+			"name": "b",
+			"type": {
+				"kind": "function",
+				"parameters": [
+					{
+						"name": "a",
+						"type": "string"
+					},
+					{
+						"name": "b",
+						"type": "number"
+					}
+				],
+				"returns": "void"
+			}
+		},
+		{
+			"kind": "variable",
+			"description": "Array type",
+			"name": "c",
+			"type": {
+				"kind": "array",
+				"type": "string"
+			}
+		},
+		{
+			"kind": "variable",
+			"description": "Constructor type",
+			"name": "d",
+			"type": {
+				"kind": "constructor",
+				"parameters": [
+					{
+						"name": "a",
+						"type": "string"
+					},
+					{
+						"name": "b",
+						"optional": true,
+						"type": "any"
+					}
+				],
+				"returns": {
+					"kind": "generic",
+					"type": "A",
+					"arguments": [
+						"string"
+					]
+				}
+			}
+		},
+		{
+			"kind": "variable",
+			"description": "Generic type",
+			"name": "e",
+			"type": {
+				"kind": "generic",
+				"type": "A",
+				"arguments": [
+					"string"
+				]
+			}
+		},
+		{
+			"kind": "variable",
+			"description": "Object type",
+			"name": "f",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "property",
+						"name": "a",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "b",
+						"type": "string"
+					}
+				]
+			}
+		}
+	]
+}

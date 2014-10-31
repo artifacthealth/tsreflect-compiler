@@ -338,7 +338,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "string"
+							"type": "string"
 						}
 					},
 					{
@@ -468,7 +468,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "string"
+							"type": "string"
 						}
 					}
 				]
@@ -514,7 +514,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -536,7 +536,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -578,7 +578,7 @@
 								"rest": true,
 								"type": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						],
@@ -594,7 +594,7 @@
 								"rest": true,
 								"type": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						],
@@ -679,7 +679,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -749,7 +749,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -765,7 +765,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -811,7 +811,7 @@
 										"rest": true,
 										"type": {
 											"kind": "array",
-											"target": "any"
+											"type": "any"
 										}
 									}
 								],
@@ -864,7 +864,7 @@
 										"rest": true,
 										"type": {
 											"kind": "array",
-											"target": "any"
+											"type": "any"
 										}
 									}
 								],
@@ -939,7 +939,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -961,7 +961,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -1091,7 +1091,7 @@
 								"rest": true,
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -1462,7 +1462,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -1479,7 +1479,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -2237,16 +2237,16 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": {
+								"type": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						}
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2275,7 +2275,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -2286,7 +2286,7 @@
 					"name": "reverse",
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2311,7 +2311,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2339,7 +2339,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2353,7 +2353,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2373,13 +2373,13 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2391,7 +2391,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -2450,7 +2450,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2486,7 +2486,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2522,7 +2522,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2558,7 +2558,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2573,7 +2573,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "any"
+						"type": "any"
 					}
 				},
 				{
@@ -2597,7 +2597,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2612,7 +2612,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -2640,7 +2640,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -2680,7 +2680,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									}
 								],
@@ -3257,7 +3257,7 @@
 							"description": "Array that transforms the results.",
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -3313,7 +3313,7 @@
 							"description": "Array that transforms the results.",
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						},
 						{
@@ -3361,7 +3361,7 @@
 							"name": "U",
 							"constraint": {
 								"kind": "array",
-								"target": "T"
+								"type": "T"
 							}
 						}
 					],
@@ -3371,13 +3371,13 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "U"
+								"type": "U"
 							}
 						}
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3391,13 +3391,13 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "T"
+								"type": "T"
 							}
 						}
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3431,7 +3431,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "T"
+								"type": "T"
 							}
 						}
 					],
@@ -3443,7 +3443,7 @@
 					"description": "Reverses the elements in an Array.",
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3472,7 +3472,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3502,7 +3502,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3518,7 +3518,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3542,13 +3542,13 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "T"
+								"type": "T"
 							}
 						}
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3562,7 +3562,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "T"
+								"type": "T"
 							}
 						}
 					],
@@ -3629,7 +3629,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3667,7 +3667,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3705,7 +3705,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3747,7 +3747,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3762,7 +3762,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "U"
+						"type": "U"
 					}
 				},
 				{
@@ -3788,7 +3788,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3803,7 +3803,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "T"
+						"type": "T"
 					}
 				},
 				{
@@ -3833,7 +3833,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3879,7 +3879,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3920,7 +3920,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -3966,7 +3966,7 @@
 										"name": "array",
 										"type": {
 											"kind": "array",
-											"target": "T"
+											"type": "T"
 										}
 									}
 								],
@@ -4013,7 +4013,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "any"
+							"type": "any"
 						}
 					},
 					{
@@ -4031,7 +4031,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "T"
+							"type": "T"
 						}
 					},
 					{
@@ -4047,13 +4047,13 @@
 								"rest": true,
 								"type": {
 									"kind": "array",
-									"target": "T"
+									"type": "T"
 								}
 							}
 						],
 						"returns": {
 							"kind": "array",
-							"target": "T"
+							"type": "T"
 						}
 					},
 					{
@@ -4067,7 +4067,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "any"
+							"type": "any"
 						}
 					},
 					{
@@ -4085,7 +4085,7 @@
 						],
 						"returns": {
 							"kind": "array",
-							"target": "T"
+							"type": "T"
 						}
 					},
 					{
@@ -4101,13 +4101,13 @@
 								"rest": true,
 								"type": {
 									"kind": "array",
-									"target": "T"
+									"type": "T"
 								}
 							}
 						],
 						"returns": {
 							"kind": "array",
-							"target": "T"
+							"type": "T"
 						}
 					},
 					{
@@ -4126,7 +4126,7 @@
 						"name": "prototype",
 						"type": {
 							"kind": "array",
-							"target": "any"
+							"type": "any"
 						}
 					}
 				]
@@ -4275,7 +4275,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -4340,7 +4340,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -4464,7 +4464,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -4529,7 +4529,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -4653,7 +4653,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -4718,7 +4718,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -4842,7 +4842,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -4907,7 +4907,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -5031,7 +5031,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -5096,7 +5096,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -5220,7 +5220,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -5285,7 +5285,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -5409,7 +5409,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -5474,7 +5474,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -5598,7 +5598,7 @@
 							"name": "array",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						},
 						{
@@ -5663,7 +5663,7 @@
 								"name": "array",
 								"type": {
 									"kind": "array",
-									"target": "number"
+									"type": "number"
 								}
 							}
 						],
@@ -6109,7 +6109,7 @@
 										"name": "map",
 										"type": {
 											"kind": "generic",
-											"target": "Map",
+											"type": "Map",
 											"arguments": [
 												"K",
 												"V"
@@ -6165,7 +6165,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "Map",
+						"type": "Map",
 						"arguments": [
 							"K",
 							"V"
@@ -6194,7 +6194,7 @@
 				],
 				"returns": {
 					"kind": "generic",
-					"target": "Map",
+					"type": "Map",
 					"arguments": [
 						"K",
 						"V"
@@ -6267,7 +6267,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "WeakMap",
+						"type": "WeakMap",
 						"arguments": [
 							"K",
 							"V"
@@ -6291,7 +6291,7 @@
 				],
 				"returns": {
 					"kind": "generic",
-					"target": "WeakMap",
+					"type": "WeakMap",
 					"arguments": [
 						"K",
 						"V"
@@ -6319,7 +6319,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "Set",
+						"type": "Set",
 						"arguments": [
 							"T"
 						]
@@ -6362,7 +6362,7 @@
 										"name": "set",
 										"type": {
 											"kind": "generic",
-											"target": "Set",
+											"type": "Set",
 											"arguments": [
 												"T"
 											]
@@ -6410,7 +6410,7 @@
 				],
 				"returns": {
 					"kind": "generic",
-					"target": "Set",
+					"type": "Set",
 					"arguments": [
 						"T"
 					]
@@ -6544,7 +6544,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6579,7 +6579,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6614,7 +6614,7 @@
 										"name": "locales",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6625,7 +6625,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							},
 							{
@@ -6644,7 +6644,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						]
@@ -6787,7 +6787,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6822,7 +6822,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6857,7 +6857,7 @@
 										"name": "locales",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -6868,7 +6868,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							},
 							{
@@ -6887,7 +6887,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						]
@@ -7092,7 +7092,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -7127,7 +7127,7 @@
 										"optional": true,
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -7162,7 +7162,7 @@
 										"name": "locales",
 										"type": {
 											"kind": "array",
-											"target": "string"
+											"type": "string"
 										}
 									},
 									{
@@ -7173,7 +7173,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							},
 							{
@@ -7192,7 +7192,7 @@
 								],
 								"returns": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						]
@@ -7216,7 +7216,7 @@
 							"name": "locales",
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						},
 						{
@@ -7262,7 +7262,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						},
 						{
@@ -7305,7 +7305,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						},
 						{
@@ -8066,7 +8066,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -8101,7 +8101,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -9917,7 +9917,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAnchorElement"
 						]
@@ -9934,7 +9934,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -9951,7 +9951,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -9968,7 +9968,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAreaElement"
 						]
@@ -9985,7 +9985,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10002,7 +10002,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10019,7 +10019,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAudioElement"
 						]
@@ -10036,7 +10036,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10053,7 +10053,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBaseElement"
 						]
@@ -10070,7 +10070,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10087,7 +10087,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10104,7 +10104,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLQuoteElement"
 						]
@@ -10121,7 +10121,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBodyElement"
 						]
@@ -10138,7 +10138,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBRElement"
 						]
@@ -10155,7 +10155,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLButtonElement"
 						]
@@ -10172,7 +10172,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLCanvasElement"
 						]
@@ -10189,7 +10189,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableCaptionElement"
 						]
@@ -10206,7 +10206,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10223,7 +10223,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10240,7 +10240,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableColElement"
 						]
@@ -10257,7 +10257,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableColElement"
 						]
@@ -10274,7 +10274,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDataListElement"
 						]
@@ -10291,7 +10291,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10308,7 +10308,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLModElement"
 						]
@@ -10325,7 +10325,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10342,7 +10342,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDivElement"
 						]
@@ -10359,7 +10359,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDListElement"
 						]
@@ -10376,7 +10376,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10393,7 +10393,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10410,7 +10410,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLEmbedElement"
 						]
@@ -10427,7 +10427,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLFieldSetElement"
 						]
@@ -10444,7 +10444,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10461,7 +10461,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10478,7 +10478,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10495,7 +10495,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLFormElement"
 						]
@@ -10512,7 +10512,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10529,7 +10529,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10546,7 +10546,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10563,7 +10563,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10580,7 +10580,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10597,7 +10597,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -10614,7 +10614,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadElement"
 						]
@@ -10631,7 +10631,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10648,7 +10648,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10665,7 +10665,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHRElement"
 						]
@@ -10682,7 +10682,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHtmlElement"
 						]
@@ -10699,7 +10699,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10716,7 +10716,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLIFrameElement"
 						]
@@ -10733,7 +10733,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLImageElement"
 						]
@@ -10750,7 +10750,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLInputElement"
 						]
@@ -10767,7 +10767,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLModElement"
 						]
@@ -10784,7 +10784,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10801,7 +10801,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLabelElement"
 						]
@@ -10818,7 +10818,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLegendElement"
 						]
@@ -10835,7 +10835,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLIElement"
 						]
@@ -10852,7 +10852,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLinkElement"
 						]
@@ -10869,7 +10869,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10886,7 +10886,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMapElement"
 						]
@@ -10903,7 +10903,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10920,7 +10920,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMenuElement"
 						]
@@ -10937,7 +10937,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMetaElement"
 						]
@@ -10954,7 +10954,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10971,7 +10971,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -10988,7 +10988,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLObjectElement"
 						]
@@ -11005,7 +11005,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOListElement"
 						]
@@ -11022,7 +11022,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOptGroupElement"
 						]
@@ -11039,7 +11039,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOptionElement"
 						]
@@ -11056,7 +11056,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLParagraphElement"
 						]
@@ -11073,7 +11073,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLParamElement"
 						]
@@ -11090,7 +11090,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLPreElement"
 						]
@@ -11107,7 +11107,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLProgressElement"
 						]
@@ -11124,7 +11124,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLQuoteElement"
 						]
@@ -11141,7 +11141,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11158,7 +11158,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11175,7 +11175,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11192,7 +11192,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11209,7 +11209,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11226,7 +11226,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLScriptElement"
 						]
@@ -11243,7 +11243,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11260,7 +11260,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSelectElement"
 						]
@@ -11277,7 +11277,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11294,7 +11294,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSourceElement"
 						]
@@ -11311,7 +11311,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSpanElement"
 						]
@@ -11328,7 +11328,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11345,7 +11345,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLStyleElement"
 						]
@@ -11362,7 +11362,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11379,7 +11379,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11396,7 +11396,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11413,7 +11413,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableElement"
 						]
@@ -11430,7 +11430,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -11447,7 +11447,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableDataCellElement"
 						]
@@ -11464,7 +11464,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTextAreaElement"
 						]
@@ -11481,7 +11481,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -11498,7 +11498,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableHeaderCellElement"
 						]
@@ -11515,7 +11515,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -11532,7 +11532,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTitleElement"
 						]
@@ -11549,7 +11549,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableRowElement"
 						]
@@ -11566,7 +11566,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTrackElement"
 						]
@@ -11583,7 +11583,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11600,7 +11600,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLUListElement"
 						]
@@ -11617,7 +11617,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -11634,7 +11634,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLVideoElement"
 						]
@@ -11651,7 +11651,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -19618,7 +19618,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -20999,7 +20999,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -21210,7 +21210,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAnchorElement"
 						]
@@ -21229,7 +21229,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21248,7 +21248,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21267,7 +21267,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAreaElement"
 						]
@@ -21286,7 +21286,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21305,7 +21305,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21324,7 +21324,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLAudioElement"
 						]
@@ -21343,7 +21343,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21362,7 +21362,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBaseElement"
 						]
@@ -21381,7 +21381,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21400,7 +21400,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21419,7 +21419,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLQuoteElement"
 						]
@@ -21438,7 +21438,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBodyElement"
 						]
@@ -21457,7 +21457,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLBRElement"
 						]
@@ -21476,7 +21476,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLButtonElement"
 						]
@@ -21495,7 +21495,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLCanvasElement"
 						]
@@ -21514,7 +21514,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableCaptionElement"
 						]
@@ -21533,7 +21533,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21552,7 +21552,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21571,7 +21571,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableColElement"
 						]
@@ -21590,7 +21590,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableColElement"
 						]
@@ -21609,7 +21609,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDataListElement"
 						]
@@ -21628,7 +21628,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21647,7 +21647,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLModElement"
 						]
@@ -21666,7 +21666,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21685,7 +21685,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDivElement"
 						]
@@ -21704,7 +21704,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLDListElement"
 						]
@@ -21723,7 +21723,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21742,7 +21742,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21761,7 +21761,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLEmbedElement"
 						]
@@ -21780,7 +21780,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLFieldSetElement"
 						]
@@ -21799,7 +21799,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21818,7 +21818,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21837,7 +21837,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -21856,7 +21856,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLFormElement"
 						]
@@ -21875,7 +21875,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21894,7 +21894,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21913,7 +21913,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21932,7 +21932,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21951,7 +21951,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21970,7 +21970,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadingElement"
 						]
@@ -21989,7 +21989,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHeadElement"
 						]
@@ -22008,7 +22008,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22027,7 +22027,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22046,7 +22046,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHRElement"
 						]
@@ -22065,7 +22065,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLHtmlElement"
 						]
@@ -22084,7 +22084,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22103,7 +22103,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLIFrameElement"
 						]
@@ -22122,7 +22122,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLImageElement"
 						]
@@ -22141,7 +22141,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLInputElement"
 						]
@@ -22160,7 +22160,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLModElement"
 						]
@@ -22179,7 +22179,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22198,7 +22198,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLabelElement"
 						]
@@ -22217,7 +22217,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLegendElement"
 						]
@@ -22236,7 +22236,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLIElement"
 						]
@@ -22255,7 +22255,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLLinkElement"
 						]
@@ -22274,7 +22274,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22293,7 +22293,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMapElement"
 						]
@@ -22312,7 +22312,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22331,7 +22331,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMenuElement"
 						]
@@ -22350,7 +22350,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLMetaElement"
 						]
@@ -22369,7 +22369,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22388,7 +22388,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22407,7 +22407,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLObjectElement"
 						]
@@ -22426,7 +22426,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOListElement"
 						]
@@ -22445,7 +22445,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOptGroupElement"
 						]
@@ -22464,7 +22464,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLOptionElement"
 						]
@@ -22483,7 +22483,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLParagraphElement"
 						]
@@ -22502,7 +22502,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLParamElement"
 						]
@@ -22521,7 +22521,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLPreElement"
 						]
@@ -22540,7 +22540,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLProgressElement"
 						]
@@ -22559,7 +22559,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLQuoteElement"
 						]
@@ -22578,7 +22578,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22597,7 +22597,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22616,7 +22616,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22635,7 +22635,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22654,7 +22654,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22673,7 +22673,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLScriptElement"
 						]
@@ -22692,7 +22692,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22711,7 +22711,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSelectElement"
 						]
@@ -22730,7 +22730,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22749,7 +22749,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSourceElement"
 						]
@@ -22768,7 +22768,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLSpanElement"
 						]
@@ -22787,7 +22787,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22806,7 +22806,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLStyleElement"
 						]
@@ -22825,7 +22825,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22844,7 +22844,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22863,7 +22863,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -22882,7 +22882,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableElement"
 						]
@@ -22901,7 +22901,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -22920,7 +22920,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableDataCellElement"
 						]
@@ -22939,7 +22939,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTextAreaElement"
 						]
@@ -22958,7 +22958,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -22977,7 +22977,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableHeaderCellElement"
 						]
@@ -22996,7 +22996,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableSectionElement"
 						]
@@ -23015,7 +23015,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTitleElement"
 						]
@@ -23034,7 +23034,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTableRowElement"
 						]
@@ -23053,7 +23053,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLTrackElement"
 						]
@@ -23072,7 +23072,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -23091,7 +23091,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLUListElement"
 						]
@@ -23110,7 +23110,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -23129,7 +23129,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLVideoElement"
 						]
@@ -23148,7 +23148,7 @@
 					],
 					"returns": {
 						"kind": "generic",
-						"target": "NodeListOf",
+						"type": "NodeListOf",
 						"arguments": [
 							"HTMLElement"
 						]
@@ -24164,7 +24164,7 @@
 					"name": "getLineDash",
 					"returns": {
 						"kind": "array",
-						"target": "number"
+						"type": "number"
 					}
 				},
 				{
@@ -24481,7 +24481,7 @@
 							"name": "segments",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -30588,7 +30588,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -30631,7 +30631,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -42866,7 +42866,7 @@
 					"rest": true,
 					"type": {
 						"kind": "array",
-						"target": "any"
+						"type": "any"
 					}
 				}
 			],
@@ -42901,7 +42901,7 @@
 					"rest": true,
 					"type": {
 						"kind": "array",
-						"target": "any"
+						"type": "any"
 					}
 				}
 			],
@@ -45005,7 +45005,7 @@
 								"name": "prototcol",
 								"type": {
 									"kind": "array",
-									"target": "string"
+									"type": "string"
 								}
 							}
 						],
@@ -46579,7 +46579,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -46620,7 +46620,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -47939,7 +47939,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -47976,7 +47976,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -48012,7 +48012,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -48032,7 +48032,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -48052,7 +48052,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -48072,7 +48072,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -49404,7 +49404,7 @@
 								"optional": true,
 								"type": {
 									"kind": "array",
-									"target": "any"
+									"type": "any"
 								}
 							},
 							{
@@ -51883,7 +51883,7 @@
 					"optional": true,
 					"type": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			]
@@ -51901,7 +51901,7 @@
 					"optional": true,
 					"type": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			]
@@ -51956,7 +51956,7 @@
 					"optional": true,
 					"type": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			]
@@ -52143,7 +52143,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -52250,7 +52250,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -52302,7 +52302,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -52377,7 +52377,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -52432,7 +52432,7 @@
 							"optional": true,
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -52770,7 +52770,7 @@
 					"name": "keyUsage",
 					"type": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			]
@@ -52906,7 +52906,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -53821,7 +53821,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -54165,7 +54165,7 @@
 					"name": "getCompositionAlternatives",
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -54484,7 +54484,7 @@
 							"name": "orientations",
 							"type": {
 								"kind": "array",
-								"target": "string"
+								"type": "string"
 							}
 						}
 					],
@@ -54997,7 +54997,7 @@
 					"name": "takeRecords",
 					"returns": {
 						"kind": "array",
-						"target": "MutationRecord"
+						"type": "MutationRecord"
 					}
 				},
 				{
@@ -55025,7 +55025,7 @@
 											"name": "arr",
 											"type": {
 												"kind": "array",
-												"target": "MutationRecord"
+												"type": "MutationRecord"
 											}
 										},
 										{
@@ -55749,7 +55749,7 @@
 							"name": "mutations",
 							"type": {
 								"kind": "array",
-								"target": "MutationRecord"
+								"type": "MutationRecord"
 							}
 						},
 						{
@@ -55821,7 +55821,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -55855,7 +55855,7 @@
 							"rest": true,
 							"type": {
 								"kind": "array",
-								"target": "any"
+								"type": "any"
 							}
 						}
 					],
@@ -56617,7 +56617,7 @@
 							"name": "values",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -56654,7 +56654,7 @@
 					"name": "getSupportedExtensions",
 					"returns": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				},
 				{
@@ -56857,7 +56857,7 @@
 							"name": "value",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -56994,7 +56994,7 @@
 							"name": "value",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -57057,7 +57057,7 @@
 					],
 					"returns": {
 						"kind": "array",
-						"target": "WebGLShader"
+						"type": "WebGLShader"
 					}
 				},
 				{
@@ -57288,7 +57288,7 @@
 							"name": "values",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -57655,7 +57655,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -57830,7 +57830,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -57878,7 +57878,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58222,7 +58222,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58255,7 +58255,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58307,7 +58307,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58340,7 +58340,7 @@
 							"name": "values",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58517,7 +58517,7 @@
 							"name": "values",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58862,7 +58862,7 @@
 							"name": "value",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -58949,7 +58949,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -59250,7 +59250,7 @@
 							"name": "v",
 							"type": {
 								"kind": "array",
-								"target": "number"
+								"type": "number"
 							}
 						}
 					],
@@ -106576,7 +106576,7 @@
 					"rest": true,
 					"type": {
 						"kind": "array",
-						"target": "string"
+						"type": "string"
 					}
 				}
 			],

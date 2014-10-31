@@ -2,16 +2,11 @@
 	"declares": [
 		{
 			"kind": "function",
-			"name": "A",
+			"name": "test",
 			"typeParameters": [
 				{
-					"name": "T"
-				}
-			],
-			"parameters": [
-				{
-					"name": "a",
-					"type": "T"
+					"name": "T",
+					"description": "Type param description"
 				}
 			],
 			"returns": "T"

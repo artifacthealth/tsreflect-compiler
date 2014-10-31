@@ -1,0 +1,47 @@
+{
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "Test",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "a",
+					"type": "string",
+					"description": "Property signature"
+				},
+				{
+					"kind": "method",
+					"name": "b",
+					"description": "Method signature",
+					"returns": "void"
+				},
+				{
+					"kind": "constructor",
+					"description": "Construct signature",
+					"returns": "string"
+				},
+				{
+					"kind": "index",
+					"description": "Index signature",
+					"parameter": {
+						"name": "key",
+						"type": "number"
+					},
+					"type": "string"
+				},
+				{
+					"kind": "call",
+					"description": "Call signature",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		}
+	]
+}

@@ -6550,45 +6550,44 @@ var ts;
         DeclarationKind[DeclarationKind["Class"] = 3] = "Class";
         DeclarationKind[DeclarationKind["Enum"] = 4] = "Enum";
         DeclarationKind[DeclarationKind["Module"] = 5] = "Module";
-        DeclarationKind[DeclarationKind["Container"] = 6] = "Container";
-        DeclarationKind[DeclarationKind["Function"] = 7] = "Function";
-        DeclarationKind[DeclarationKind["Variable"] = 8] = "Variable";
-        DeclarationKind[DeclarationKind["Import"] = 9] = "Import";
+        DeclarationKind[DeclarationKind["Function"] = 6] = "Function";
+        DeclarationKind[DeclarationKind["Variable"] = 7] = "Variable";
+        DeclarationKind[DeclarationKind["Import"] = 8] = "Import";
 
-        DeclarationKind[DeclarationKind["EnumMember"] = 10] = "EnumMember";
+        DeclarationKind[DeclarationKind["EnumMember"] = 9] = "EnumMember";
 
-        DeclarationKind[DeclarationKind["Index"] = 11] = "Index";
-        DeclarationKind[DeclarationKind["Field"] = 12] = "Field";
-        DeclarationKind[DeclarationKind["Method"] = 13] = "Method";
-        DeclarationKind[DeclarationKind["Constructor"] = 14] = "Constructor";
-        DeclarationKind[DeclarationKind["Accessor"] = 15] = "Accessor";
-        DeclarationKind[DeclarationKind["GetAccessor"] = 16] = "GetAccessor";
-        DeclarationKind[DeclarationKind["SetAccessor"] = 17] = "SetAccessor";
+        DeclarationKind[DeclarationKind["Index"] = 10] = "Index";
+        DeclarationKind[DeclarationKind["Field"] = 11] = "Field";
+        DeclarationKind[DeclarationKind["Method"] = 12] = "Method";
+        DeclarationKind[DeclarationKind["Constructor"] = 13] = "Constructor";
+        DeclarationKind[DeclarationKind["Accessor"] = 14] = "Accessor";
+        DeclarationKind[DeclarationKind["GetAccessor"] = 15] = "GetAccessor";
+        DeclarationKind[DeclarationKind["SetAccessor"] = 16] = "SetAccessor";
 
-        DeclarationKind[DeclarationKind["PropertySignature"] = 18] = "PropertySignature";
-        DeclarationKind[DeclarationKind["ConstructSignature"] = 19] = "ConstructSignature";
-        DeclarationKind[DeclarationKind["MethodSignature"] = 20] = "MethodSignature";
-        DeclarationKind[DeclarationKind["IndexSignature"] = 21] = "IndexSignature";
-        DeclarationKind[DeclarationKind["CallSignature"] = 22] = "CallSignature";
+        DeclarationKind[DeclarationKind["PropertySignature"] = 17] = "PropertySignature";
+        DeclarationKind[DeclarationKind["ConstructSignature"] = 18] = "ConstructSignature";
+        DeclarationKind[DeclarationKind["MethodSignature"] = 19] = "MethodSignature";
+        DeclarationKind[DeclarationKind["IndexSignature"] = 20] = "IndexSignature";
+        DeclarationKind[DeclarationKind["CallSignature"] = 21] = "CallSignature";
 
-        DeclarationKind[DeclarationKind["FunctionType"] = 23] = "FunctionType";
-        DeclarationKind[DeclarationKind["ArrayType"] = 24] = "ArrayType";
-        DeclarationKind[DeclarationKind["ConstructorType"] = 25] = "ConstructorType";
-        DeclarationKind[DeclarationKind["GenericType"] = 26] = "GenericType";
-        DeclarationKind[DeclarationKind["ObjectType"] = 27] = "ObjectType";
+        DeclarationKind[DeclarationKind["FunctionType"] = 22] = "FunctionType";
+        DeclarationKind[DeclarationKind["ArrayType"] = 23] = "ArrayType";
+        DeclarationKind[DeclarationKind["ConstructorType"] = 24] = "ConstructorType";
+        DeclarationKind[DeclarationKind["GenericType"] = 25] = "GenericType";
+        DeclarationKind[DeclarationKind["ObjectType"] = 26] = "ObjectType";
 
-        DeclarationKind[DeclarationKind["Extends"] = 28] = "Extends";
-        DeclarationKind[DeclarationKind["Implements"] = 29] = "Implements";
-        DeclarationKind[DeclarationKind["Constraint"] = 30] = "Constraint";
+        DeclarationKind[DeclarationKind["Extends"] = 27] = "Extends";
+        DeclarationKind[DeclarationKind["Implements"] = 28] = "Implements";
+        DeclarationKind[DeclarationKind["Constraint"] = 29] = "Constraint";
 
-        DeclarationKind[DeclarationKind["ParameterList"] = 31] = "ParameterList";
-        DeclarationKind[DeclarationKind["Parameter"] = 32] = "Parameter";
+        DeclarationKind[DeclarationKind["ParameterList"] = 30] = "ParameterList";
+        DeclarationKind[DeclarationKind["Parameter"] = 31] = "Parameter";
 
-        DeclarationKind[DeclarationKind["TypeParameterList"] = 33] = "TypeParameterList";
-        DeclarationKind[DeclarationKind["TypeParameter"] = 34] = "TypeParameter";
+        DeclarationKind[DeclarationKind["TypeParameterList"] = 32] = "TypeParameterList";
+        DeclarationKind[DeclarationKind["TypeParameter"] = 33] = "TypeParameter";
 
-        DeclarationKind[DeclarationKind["TypeAnnotation"] = 35] = "TypeAnnotation";
-        DeclarationKind[DeclarationKind["TypeArgumentList"] = 36] = "TypeArgumentList";
+        DeclarationKind[DeclarationKind["TypeAnnotation"] = 34] = "TypeAnnotation";
+        DeclarationKind[DeclarationKind["TypeArgumentList"] = 35] = "TypeArgumentList";
     })(ts.DeclarationKind || (ts.DeclarationKind = {}));
     var DeclarationKind = ts.DeclarationKind;
 
@@ -6659,55 +6658,55 @@ var ts;
             var node = {};
 
             this._addToArray("members", node);
-            this._pushState(10 /* EnumMember */, node);
+            this._pushState(9 /* EnumMember */, node);
         };
 
         DeclarationWriter.prototype.writeBeginParameterList = function () {
-            this._pushArray(31 /* ParameterList */, "parameters");
+            this._pushArray(30 /* ParameterList */, "parameters");
         };
 
         DeclarationWriter.prototype.writeBeginTypeParameterList = function () {
-            this._pushArray(33 /* TypeParameterList */, "typeParameters");
+            this._pushArray(32 /* TypeParameterList */, "typeParameters");
         };
 
         DeclarationWriter.prototype.writeBeginTypeArgumentList = function () {
-            this._pushArray(36 /* TypeArgumentList */, "arguments");
+            this._pushArray(35 /* TypeArgumentList */, "arguments");
         };
 
         DeclarationWriter.prototype.writeBeginTypeParameter = function () {
             var node = {};
             this._currentState.node.push(node);
-            this._pushState(34 /* TypeParameter */, node);
+            this._pushState(33 /* TypeParameter */, node);
         };
 
         DeclarationWriter.prototype.writeBeginConstraint = function () {
-            this._pushState(30 /* Constraint */);
+            this._pushState(29 /* Constraint */);
         };
 
         DeclarationWriter.prototype.writeBeginParameter = function () {
             var node = {};
 
             switch (this._currentState.kind) {
-                case 31 /* ParameterList */:
+                case 30 /* ParameterList */:
                     this._currentState.node.push(node);
                     break;
-                case 21 /* IndexSignature */:
+                case 20 /* IndexSignature */:
                     this._setProperty("parameter", node);
                     break;
                 default:
                     throw new Error("Expected ParameterList or IndexSignature");
             }
 
-            this._pushState(32 /* Parameter */, node);
+            this._pushState(31 /* Parameter */, node);
         };
 
         DeclarationWriter.prototype.writeBeginExtends = function () {
             switch (this._currentState.kind) {
                 case 3 /* Class */:
-                    this._pushState(28 /* Extends */);
+                    this._pushState(27 /* Extends */);
                     break;
                 case 2 /* Interface */:
-                    this._pushArray(28 /* Extends */, "extends");
+                    this._pushArray(27 /* Extends */, "extends");
                     break;
                 default:
                     throw new Error("Expected Class or Interface");
@@ -6715,7 +6714,7 @@ var ts;
         };
 
         DeclarationWriter.prototype.writeBeginImplements = function () {
-            this._pushArray(28 /* Extends */, "implements");
+            this._pushArray(27 /* Extends */, "implements");
         };
 
         DeclarationWriter.prototype.writeBeginReference = function (path) {
@@ -6741,7 +6740,7 @@ var ts;
         };
 
         DeclarationWriter.prototype.writeFlags = function (flags) {
-            if (this._currentState.kind == 9 /* Import */ && (flags & 1 /* Exported */) !== 0) {
+            if (this._currentState.kind == 8 /* Import */ && (flags & 1 /* Exported */) !== 0) {
                 this._setProperty("export", true);
             }
             if ((flags & DeclarationFlag.Private) !== 0) {
@@ -6791,24 +6790,20 @@ var ts;
 
         DeclarationWriter.prototype._setTypeOnCurrentNode = function (type) {
             switch (this._currentState.kind) {
-                case 30 /* Constraint */:
+                case 29 /* Constraint */:
                     this._setProperty("constraint", type);
                     break;
-                case 36 /* TypeArgumentList */:
-                case 33 /* TypeParameterList */:
-                case 29 /* Implements */:
+                case 35 /* TypeArgumentList */:
+                case 32 /* TypeParameterList */:
+                case 28 /* Implements */:
                     this._currentState.node.push(type);
                     break;
-                case 28 /* Extends */:
+                case 27 /* Extends */:
                     if (Array.isArray(this._currentState.node)) {
                         this._currentState.node.push(type);
                     } else {
                         this._setProperty("extends", type);
                     }
-                    break;
-                case 26 /* GenericType */:
-                case 24 /* ArrayType */:
-                    this._setProperty("target", type);
                     break;
                 default:
                     if (this._isReturnType()) {
@@ -6824,15 +6819,15 @@ var ts;
 
         DeclarationWriter.prototype._isReturnType = function () {
             switch (this._currentState.kind) {
-                case 13 /* Method */:
-                case 20 /* MethodSignature */:
-                case 14 /* Constructor */:
-                case 19 /* ConstructSignature */:
-                case 25 /* ConstructorType */:
-                case 16 /* GetAccessor */:
-                case 7 /* Function */:
-                case 23 /* FunctionType */:
-                case 22 /* CallSignature */:
+                case 12 /* Method */:
+                case 19 /* MethodSignature */:
+                case 13 /* Constructor */:
+                case 18 /* ConstructSignature */:
+                case 24 /* ConstructorType */:
+                case 15 /* GetAccessor */:
+                case 6 /* Function */:
+                case 22 /* FunctionType */:
+                case 21 /* CallSignature */:
                     return true;
             }
 
@@ -6875,7 +6870,7 @@ var ts;
     ts.DeclarationWriter = DeclarationWriter;
 
     function kindToString(kind) {
-        var ret = kindToStringMap[kind];
+        var ret = kindMap[kind];
         if (ret) {
             return ret;
         }
@@ -6887,32 +6882,31 @@ var ts;
         throw new Error("Unknown kind '" + kind + "'");
     }
 
-    var kindToStringMap = {};
+    var kindMap = {};
 
-    kindToStringMap[2 /* Interface */] = "interface";
-    kindToStringMap[3 /* Class */] = "class";
-    kindToStringMap[4 /* Enum */] = "enum";
-    kindToStringMap[5 /* Module */] = "module";
-    kindToStringMap[6 /* Container */] = "container";
-    kindToStringMap[7 /* Function */] = "function";
-    kindToStringMap[8 /* Variable */] = "variable";
-    kindToStringMap[9 /* Import */] = "import";
-    kindToStringMap[11 /* Index */] = "index";
-    kindToStringMap[12 /* Field */] = "field";
-    kindToStringMap[13 /* Method */] = "method";
-    kindToStringMap[14 /* Constructor */] = "constructor";
-    kindToStringMap[16 /* GetAccessor */] = "accessor";
-    kindToStringMap[17 /* SetAccessor */] = "accessor";
-    kindToStringMap[18 /* PropertySignature */] = "property";
-    kindToStringMap[19 /* ConstructSignature */] = "constructor";
-    kindToStringMap[20 /* MethodSignature */] = "method";
-    kindToStringMap[21 /* IndexSignature */] = "index";
-    kindToStringMap[22 /* CallSignature */] = "call";
-    kindToStringMap[23 /* FunctionType */] = "function";
-    kindToStringMap[24 /* ArrayType */] = "array";
-    kindToStringMap[25 /* ConstructorType */] = "constructor";
-    kindToStringMap[26 /* GenericType */] = "generic";
-    kindToStringMap[27 /* ObjectType */] = "object";
+    kindMap[2 /* Interface */] = "interface";
+    kindMap[3 /* Class */] = "class";
+    kindMap[4 /* Enum */] = "enum";
+    kindMap[5 /* Module */] = "module";
+    kindMap[6 /* Function */] = "function";
+    kindMap[7 /* Variable */] = "variable";
+    kindMap[8 /* Import */] = "import";
+    kindMap[10 /* Index */] = "index";
+    kindMap[11 /* Field */] = "field";
+    kindMap[12 /* Method */] = "method";
+    kindMap[13 /* Constructor */] = "constructor";
+    kindMap[15 /* GetAccessor */] = "accessor";
+    kindMap[16 /* SetAccessor */] = "accessor";
+    kindMap[17 /* PropertySignature */] = "property";
+    kindMap[18 /* ConstructSignature */] = "constructor";
+    kindMap[19 /* MethodSignature */] = "method";
+    kindMap[20 /* IndexSignature */] = "index";
+    kindMap[21 /* CallSignature */] = "call";
+    kindMap[22 /* FunctionType */] = "function";
+    kindMap[23 /* ArrayType */] = "array";
+    kindMap[24 /* ConstructorType */] = "constructor";
+    kindMap[25 /* GenericType */] = "generic";
+    kindMap[26 /* ObjectType */] = "object";
 })(ts || (ts = {}));
 var doctrine = require("doctrine");
 
@@ -7166,7 +7160,7 @@ var ts;
             }
 
             function writeImportDeclaration(node) {
-                var handle = writer.writeBeginRemovableModuleElement(9 /* Import */);
+                var handle = writer.writeBeginRemovableModuleElement(8 /* Import */);
 
                 emitName(node);
                 emitJsDocComments(node);
@@ -7451,9 +7445,9 @@ var ts;
 
             function emitPropertyDeclaration(node, description) {
                 if (node.parent.kind == 169 /* ClassDeclaration */ || node.parent.kind == 117 /* Constructor */) {
-                    writer.writeBeginClassMember(12 /* Field */);
+                    writer.writeBeginClassMember(11 /* Field */);
                 } else {
-                    writer.writeBeginSignature(18 /* PropertySignature */);
+                    writer.writeBeginSignature(17 /* PropertySignature */);
                 }
 
                 emitVariableDeclaration(node);
@@ -7512,7 +7506,7 @@ var ts;
                     for (var i = 0, n = declarations.length; i < n; i++) {
                         var declaration = declarations[i];
 
-                        writer.writeBeginModuleElement(8 /* Variable */);
+                        writer.writeBeginModuleElement(7 /* Variable */);
 
                         emitJsDocComments(i == 0 && !hasJsDocComment(declaration) ? node : declaration);
                         emitDeclarationFlags(node);
@@ -7527,7 +7521,7 @@ var ts;
             function emitAccessorDeclaration(node) {
                 var accessors = getAllAccessorDeclarations(node.parent, node);
                 if (node === accessors.firstAccessor) {
-                    writer.writeBeginClassMember(12 /* Field */);
+                    writer.writeBeginClassMember(11 /* Field */);
                     emitName(node);
                     emitDeclarationFlags(node);
                     emitJsDocComments(accessors.getAccessor);
@@ -7570,15 +7564,15 @@ var ts;
             function emitFunctionDeclaration(node) {
                 if ((node.kind !== 167 /* FunctionDeclaration */ || resolver.isDeclarationVisible(node)) && !resolver.isImplementationOfOverload(node)) {
                     if (node.kind === 167 /* FunctionDeclaration */) {
-                        writer.writeBeginModuleElement(7 /* Function */);
+                        writer.writeBeginModuleElement(6 /* Function */);
                         emitName(node);
                     } else if (node.kind === 117 /* Constructor */) {
-                        writer.writeBeginClassMember(14 /* Constructor */);
+                        writer.writeBeginClassMember(13 /* Constructor */);
                     } else {
                         if (node.parent.kind == 169 /* ClassDeclaration */) {
-                            writer.writeBeginClassMember(13 /* Method */);
+                            writer.writeBeginClassMember(12 /* Method */);
                         } else {
-                            writer.writeBeginSignature(20 /* MethodSignature */);
+                            writer.writeBeginSignature(19 /* MethodSignature */);
                         }
 
                         emitName(node);
@@ -7595,21 +7589,21 @@ var ts;
             }
 
             function emitConstructSignatureDeclaration(node) {
-                writer.writeBeginSignature(19 /* ConstructSignature */);
+                writer.writeBeginSignature(18 /* ConstructSignature */);
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
             }
 
             function emitCallSignatureDeclaration(node) {
-                writer.writeBeginSignature(22 /* CallSignature */);
+                writer.writeBeginSignature(21 /* CallSignature */);
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
             }
 
             function emitIndexSignatureDeclaration(node) {
-                writer.writeBeginSignature(21 /* IndexSignature */);
+                writer.writeBeginSignature(20 /* IndexSignature */);
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
@@ -7777,10 +7771,10 @@ var ts;
 
                 function writeTypeReference(type) {
                     if (resolver.isArrayType(type) && !(flags & 1 /* WriteArrayAsGenericType */)) {
-                        writer.writeBeginType(24 /* ArrayType */);
+                        writer.writeBeginType(23 /* ArrayType */);
                         writeType(type.typeArguments[0], false);
                     } else {
-                        writer.writeBeginType(26 /* GenericType */);
+                        writer.writeBeginType(25 /* GenericType */);
                         writeSymbol(type.target.symbol, enclosingDeclaration, ts.SymbolFlags.Type);
                         writer.writeBeginTypeArgumentList();
                         for (var i = 0; i < type.typeArguments.length; i++) {
@@ -7831,20 +7825,20 @@ var ts;
                     var resolved = resolver.resolveObjectTypeMembers(type);
                     if (!resolved.properties.length && !resolved.stringIndexType && !resolved.numberIndexType) {
                         if (!resolved.callSignatures.length && !resolved.constructSignatures.length) {
-                            writer.writeBeginType(27 /* ObjectType */);
+                            writer.writeBeginType(26 /* ObjectType */);
                             writer.writeEnd();
                             return;
                         }
 
                         if (allowFunctionOrConstructorTypeLiteral) {
                             if (resolved.callSignatures.length === 1 && !resolved.constructSignatures.length) {
-                                writer.writeBeginType(23 /* FunctionType */);
+                                writer.writeBeginType(22 /* FunctionType */);
                                 emitSignatureDeclaration(resolved.callSignatures[0].declaration);
                                 writer.writeEnd();
                                 return;
                             }
                             if (resolved.constructSignatures.length === 1 && !resolved.callSignatures.length) {
-                                writer.writeBeginType(25 /* ConstructorType */);
+                                writer.writeBeginType(24 /* ConstructorType */);
                                 emitSignatureDeclaration(resolved.constructSignatures[0].declaration);
                                 writer.writeEnd();
                                 return;
@@ -7852,7 +7846,7 @@ var ts;
                         }
                     }
 
-                    writer.writeBeginType(27 /* ObjectType */);
+                    writer.writeBeginType(26 /* ObjectType */);
 
                     for (var i = 0; i < resolved.callSignatures.length; i++) {
                         emitCallSignatureDeclaration(resolved.callSignatures[i].declaration);
@@ -7861,7 +7855,7 @@ var ts;
                         emitConstructSignatureDeclaration(resolved.constructSignatures[i].declaration);
                     }
                     if (resolved.stringIndexType) {
-                        writer.writeBeginSignature(21 /* IndexSignature */);
+                        writer.writeBeginSignature(20 /* IndexSignature */);
                         writer.writeBeginParameter();
                         writer.writeName("x");
                         writer.writeTypeReference("string");
@@ -7872,7 +7866,7 @@ var ts;
                         writer.writeEnd();
                     }
                     if (resolved.numberIndexType) {
-                        writer.writeBeginSignature(21 /* IndexSignature */);
+                        writer.writeBeginSignature(20 /* IndexSignature */);
                         writer.writeBeginParameter();
                         writer.writeName("x");
                         writer.writeTypeReference("number");
@@ -7888,7 +7882,7 @@ var ts;
                         if (p.flags & (8 /* Function */ | 2048 /* Method */) && !resolver.getPropertiesOfType(t).length) {
                             var signatures = resolver.getSignaturesOfType(t, 0 /* Call */);
                             for (var j = 0; j < signatures.length; j++) {
-                                writer.writeBeginSignature(20 /* MethodSignature */);
+                                writer.writeBeginSignature(19 /* MethodSignature */);
                                 writer.writeName(p.name);
                                 if (isOptionalProperty(p)) {
                                     writer.writeFlags(ts.DeclarationFlag.Optional);
@@ -7897,7 +7891,7 @@ var ts;
                                 writer.writeEnd();
                             }
                         } else {
-                            writer.writeBeginSignature(18 /* PropertySignature */);
+                            writer.writeBeginSignature(17 /* PropertySignature */);
                             writer.writeName(p.name);
                             if (isOptionalProperty(p)) {
                                 writer.writeFlags(ts.DeclarationFlag.Optional);
@@ -14708,12 +14702,6 @@ var ts;
             name: "removeComments",
             type: "boolean",
             description: ts.Diagnostics.Do_not_emit_comments_to_output
-        },
-        {
-            name: "sourceRoot",
-            type: "string",
-            description: ts.Diagnostics.Specifies_the_location_where_debugger_should_locate_TypeScript_files_instead_of_source_locations,
-            paramType: ts.Diagnostics.LOCATION
         },
         {
             name: "version",

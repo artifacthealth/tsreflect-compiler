@@ -9,7 +9,7 @@
 			"name": "a",
 			"type": {
 				"kind": "array",
-				"target": "A"
+				"type": "A"
 			}
 		}
 	]

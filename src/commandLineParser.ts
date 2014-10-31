@@ -78,12 +78,6 @@ module ts {
             description: Diagnostics.Do_not_emit_comments_to_output
         },
         {
-            name: "sourceRoot",
-            type: "string",
-            description: Diagnostics.Specifies_the_location_where_debugger_should_locate_TypeScript_files_instead_of_source_locations,
-            paramType: Diagnostics.LOCATION
-        },
-        {
             name: "version",
             shortName: "v",
             type: "boolean",

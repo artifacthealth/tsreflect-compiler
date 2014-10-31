@@ -13,12 +13,12 @@
 			"kind": "class",
 			"name": "B",
 			"extends": {
-                "kind": "generic",
-                "target": "A",
-                "arguments": [
-                    "string"
-                ]
-		    }
+				"kind": "generic",
+				"type": "A",
+				"arguments": [
+					"string"
+				]
+			}
 		}
 	]
 }

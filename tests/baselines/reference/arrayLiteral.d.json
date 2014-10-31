@@ -5,7 +5,7 @@
 			"name": "a",
 			"type": {
 				"kind": "array",
-				"target": "number"
+				"type": "number"
 			}
 		}
 	]
