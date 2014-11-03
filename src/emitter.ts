@@ -38,13 +38,11 @@
 /// <reference path="scanner.ts"/>
 /// <reference path="parser.ts"/>
 /// <reference path="declarationWriter.ts"/>
-/// <reference path="../lib/doctrine.d.ts" />
+/// <reference path="../typings/doctrine.d.ts" />
 
 var doctrine = require("doctrine");
 
 module ts {
-
-
 
     export function emitFiles(resolver: EmitResolver): EmitResult {
 

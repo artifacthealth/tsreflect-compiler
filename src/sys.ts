@@ -33,7 +33,7 @@
  and limitations under the License.
  ***************************************************************************** */
 
-/// <reference path="../lib/node.d.ts"/>
+/// <reference path="../typings/node.d.ts"/>
 /// <reference path="diagnosticInformationMap.generated.ts"/>
 
 interface System {

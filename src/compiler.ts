@@ -33,7 +33,7 @@
  and limitations under the License.
  ***************************************************************************** */
 
-/// <reference path="../lib/node.d.ts"/>
+/// <reference path="../typings/node.d.ts"/>
 
 /// <reference path="sys.ts" />
 /// <reference path="parser.ts" />

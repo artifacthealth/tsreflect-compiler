@@ -17,7 +17,7 @@
       "url": "https://github.com/palantir/grunt-tslint/blob/master/LICENSE.txt"
     }
   ],
-  "main": "bin/tsreflect-compiler.js",
+  "main": "lib/tsreflect-compiler.js",
   "scripts": {
     "test": "grunt"
   },

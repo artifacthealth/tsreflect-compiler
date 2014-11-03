@@ -18,12 +18,9 @@ module.exports = function(grunt) {
                     "build/"
                 ]
             },
-            bin: {
+            lib: {
                 src: [
-                    "bin/lib.d.ts",
-                    "bin/lib.d.json",
-                    "bin/tsreflect-compiler.d.ts",
-                    "bin/tsreflect-compiler.js"
+                    "lib/tsreflect-compiler.js"
                 ]
             }
         },
@@ -53,12 +50,12 @@ module.exports = function(grunt) {
         },
 
         concat: {
-            bin: {
+            lib: {
                 options: {
                     banner: grunt.file.read("COPYRIGHT.txt")
                 },
                 src: ['build/tsreflect-compiler.js'],
-                dest: 'bin/tsreflect-compiler.js'
+                dest: 'lib/tsreflect-compiler.js'
             }
         },
 
@@ -75,29 +72,15 @@ module.exports = function(grunt) {
                         dest: 'build/'
                     }
                 ]
-            },
-            bin: {
-                files: [
-                    {
-                        expand: true,
-                        cwd: 'lib/',
-                        src: [
-                            'tsreflect-compiler.d.ts',
-                            'lib.d.ts',
-                            'lib.core.d.ts'
-                        ],
-                        dest: 'bin/'
-                    }
-                ]
             }
         },
 
         // Use built compiler to generated .d.json for lib.d.ts
         shell: {
-            bin: {
+            lib: {
                 options: {
                     execOptions: {
-                        cwd: 'bin/'
+                        cwd: 'lib/'
                     }
                 },
                 command: 'node tsreflect-compiler.js lib.d.ts'
@@ -125,8 +108,8 @@ module.exports = function(grunt) {
     });
 
     // Default task(s).
-    grunt.registerTask("default", [ "build", "bin", "tests" ]);
+    grunt.registerTask("default", [ "build", "lib", "tests" ]);
     grunt.registerTask("build", [ "clean:build", "typescript:build", "copy:build" ]);
-    grunt.registerTask("bin", [ "clean:bin", "concat:bin", "copy:bin", "shell:bin" ]);
+    grunt.registerTask("lib", [ "clean:lib", "concat:lib", "shell:lib" ]);
     grunt.registerTask("tests", [ "typescript:tests", "mochaTest:tests" ]);
 };
