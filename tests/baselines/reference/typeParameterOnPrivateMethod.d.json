@@ -1,0 +1,25 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "method",
+					"name": "a",
+					"private": true,
+					"typeParameters": [
+						{
+							"name": "T"
+						}
+					],
+					"parameters": [
+						{
+							"name": "b"
+						}
+					]
+				}
+			]
+		}
+	]
+}

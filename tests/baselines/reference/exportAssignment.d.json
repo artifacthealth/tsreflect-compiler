@@ -1,0 +1,17 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "module",
+			"name": "A",
+			"declares": [
+				{
+					"kind": "variable",
+					"name": "a",
+					"type": "string"
+				}
+			]
+		}
+	],
+	"export": "A"
+}

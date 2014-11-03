@@ -69,7 +69,8 @@ module.exports = function(grunt) {
                         expand: true,
                         cwd: 'lib/',
                         src: [
-                            'lib.d.ts'
+                            'lib.d.ts',
+                            'lib.core.d.ts'
                         ],
                         dest: 'build/'
                     }
@@ -82,7 +83,8 @@ module.exports = function(grunt) {
                         cwd: 'lib/',
                         src: [
                             'tsreflect-compiler.d.ts',
-                            'lib.d.ts'
+                            'lib.d.ts',
+                            'lib.core.d.ts'
                         ],
                         dest: 'bin/'
                     }

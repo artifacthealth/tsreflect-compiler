@@ -13,7 +13,7 @@
 			"kind": "class",
 			"name": "B",
 			"extends": {
-				"kind": "generic",
+				"kind": "reference",
 				"type": "A",
 				"arguments": [
 					"string"

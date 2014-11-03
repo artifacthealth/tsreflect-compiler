@@ -56,6 +56,7 @@ module ts {
     export function executeCommandLine(args:string[]):void {
 
         var commandLine = ts.parseCommandLine(args);
+
         if (commandLine.errors.length > 0) {
             reportDiagnostics(commandLine.errors);
             sys.exit(1);
@@ -219,7 +220,7 @@ module ts {
 
         return {
             getSourceFile: getSourceFile,
-            getDefaultLibFilename: () => ts.combinePaths(ts.normalizePath(__dirname), "lib.d.ts"),
+            getDefaultLibFilename: () => ts.combinePaths(ts.normalizePath(__dirname), options.libPath || "lib.d.ts"),
             writeFile: writeFile,
             getCurrentDirectory: () => currentDirectory || (currentDirectory = sys.getCurrentDirectory()),
             useCaseSensitiveFileNames: () => sys.useCaseSensitiveFileNames,

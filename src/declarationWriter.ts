@@ -31,7 +31,6 @@ module ts {
         writeBeginTypeParameterList(): void;
         writeBeginTypeArgumentList(): void;
         writeBeginTypeParameter(): void;
-        writeBeginConstraint(): void;
         writeBeginParameter(): void;
         writeBeginExtends(): void;
         writeBeginImplements(): void;
@@ -41,6 +40,7 @@ module ts {
         writeReference(path: string): void;
         writeName(name: string): void;
         writeDescription(description: string): void;
+        writeAnnotation(name: string, value: any): void;
         writeFlags(flags: DeclarationFlag): void;
         writeRequire(path: string): void;
         writeValue(identifier: string): void;
@@ -88,7 +88,6 @@ module ts {
         Field,
         Method,
         Constructor,
-        Accessor,
         GetAccessor,
         SetAccessor,
 
@@ -101,8 +100,8 @@ module ts {
         FunctionType,
         ArrayType,
         ConstructorType,
-        GenericType,
         ObjectType,
+        TypeReference,
 
         Extends,
         Implements,
@@ -225,11 +224,6 @@ module ts {
             this._pushState(DeclarationKind.TypeParameter, node);
         }
 
-        writeBeginConstraint(): void {
-
-            this._pushState(DeclarationKind.Constraint);
-        }
-
         writeBeginParameter(): void {
 
             var node: any = {}
@@ -238,11 +232,13 @@ module ts {
                 case DeclarationKind.ParameterList:
                     this._currentState.node.push(node);
                     break;
+                case DeclarationKind.SetAccessor:
+                case DeclarationKind.Index:
                 case DeclarationKind.IndexSignature:
                     this._setProperty("parameter", node);
                     break;
                 default:
-                    throw new Error("Expected ParameterList or IndexSignature");
+                    throw new Error("Expected ParameterList,  Index, IndexSignature, or SetAccessor");
             }
 
             this._pushState(DeclarationKind.Parameter, node);
@@ -292,6 +288,16 @@ module ts {
         writeDescription(description: string): void {
 
             this._setProperty("description", description);
+        }
+
+        writeAnnotation(name: string, value: any): void {
+
+            //this._ensureProperty("annotations", {})[name] = value;
+
+            this._addToArray("annotations", {
+                name: name,
+                value: value
+            });
         }
 
         writeFlags(flags: DeclarationFlag): void {
@@ -355,7 +361,7 @@ module ts {
 
             switch(this._currentState.kind) {
 
-                case DeclarationKind.Constraint:
+                case DeclarationKind.TypeParameter:
                     this._setProperty("constraint", type);
                     break;
                 case DeclarationKind.TypeArgumentList:
@@ -387,7 +393,6 @@ module ts {
 
         private _isReturnType(): boolean {
 
-            // TODO: Add index and index signature?
             switch(this._currentState.kind) {
                 case DeclarationKind.Method:
                 case DeclarationKind.MethodSignature:
@@ -398,6 +403,8 @@ module ts {
                 case DeclarationKind.Function:
                 case DeclarationKind.FunctionType:
                 case DeclarationKind.CallSignature:
+                case DeclarationKind.Index:
+                case DeclarationKind.IndexSignature:
                     return true;
             }
 
@@ -478,8 +485,8 @@ module ts {
     kindMap[DeclarationKind.Field] = "field";
     kindMap[DeclarationKind.Method] = "method";
     kindMap[DeclarationKind.Constructor] = "constructor";
-    kindMap[DeclarationKind.GetAccessor] = "accessor";
-    kindMap[DeclarationKind.SetAccessor] = "accessor";
+    kindMap[DeclarationKind.GetAccessor] = "get";
+    kindMap[DeclarationKind.SetAccessor] = "set";
     kindMap[DeclarationKind.PropertySignature] = "property";
     kindMap[DeclarationKind.ConstructSignature] = "constructor";
     kindMap[DeclarationKind.MethodSignature] = "method";
@@ -488,6 +495,6 @@ module ts {
     kindMap[DeclarationKind.FunctionType] = "function";
     kindMap[DeclarationKind.ArrayType] = "array";
     kindMap[DeclarationKind.ConstructorType] = "constructor";
-    kindMap[DeclarationKind.GenericType] = "generic";
+    kindMap[DeclarationKind.TypeReference] = "reference";
     kindMap[DeclarationKind.ObjectType] = "object";
 }

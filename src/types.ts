@@ -717,6 +717,7 @@ module ts {
         getReturnTypeOfSignature(signature: Signature): Type;
         getPropertiesOfType(type: Type): Symbol[];
         getSignaturesOfType(type: Type, kind: SignatureKind): Signature[];
+        getSignaturesOfSymbol(symbol: Symbol): Signature[];
         createDeclarationWriter(outputFilePath: string): IDeclarationWriter;
     }
 
@@ -1020,6 +1021,13 @@ module ts {
         version?: boolean;
         watch?: boolean;
         [option: string]: any;
+
+        // Added options
+        libPath?: string;
+        accessors?: boolean;
+        annotations?: boolean;
+        removePrivates?: boolean;
+        typePrivates?: boolean;
     }
 
     export enum ModuleKind {

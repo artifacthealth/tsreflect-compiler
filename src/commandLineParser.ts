@@ -37,12 +37,9 @@
 /// <reference path="types.ts"/>
 /// <reference path="core.ts"/>
 /// <reference path="scanner.ts"/>
+/// <reference path="customDiagnostics.ts"/>
 
 module ts {
-
-    var messages = {
-        Disable_type_checks: { code: 10000, category: DiagnosticCategory.Message, key: "Disable type checks." }
-    }
 
     export var optionDeclarations: CommandLineOption[] = [
         {
@@ -58,7 +55,27 @@ module ts {
         {
             name: "noCheck",
             type: "boolean",
-            description: messages.Disable_type_checks
+            description: CustomDiagnostics.Disable_type_checks
+        },
+        {
+            name: "accessors",
+            type: "boolean",
+            description: CustomDiagnostics.Emit_accessors
+        },
+        {
+            name: "removePrivates",
+            type: "boolean",
+            description: CustomDiagnostics.Do_not_emit_private_class_member_declaration
+        },
+        {
+            name: "typePrivates",
+            type: "boolean",
+            description: CustomDiagnostics.Emit_type_information_for_private_class_members
+        },
+        {
+            name: "annotations",
+            type: "boolean",
+            description: CustomDiagnostics.Emit_custom_annotations
         },
         {
             name: "out",
@@ -73,9 +90,14 @@ module ts {
             paramType: Diagnostics.DIRECTORY
         },
         {
-            name: "removeComments",
+            name: "removeComment",
             type: "boolean",
-            description: Diagnostics.Do_not_emit_comments_to_output
+            description: CustomDiagnostics.Do_not_emit_JsDoc_descriptions_in_output
+        },
+        {
+            name: "noImplicitAny",
+            type: "boolean",
+            description: Diagnostics.Warn_on_expressions_and_declarations_with_an_implied_any_type,
         },
         {
             name: "version",

@@ -1,0 +1,58 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "get",
+					"name": "a",
+					"returns": "string"
+				},
+				{
+					"kind": "get",
+					"name": "b",
+                    "description": "Gets b value",
+					"returns": "string"
+				},
+				{
+					"kind": "set",
+					"name": "b",
+                    "description": "Sets b value",
+					"parameter": {
+						"name": "value",
+						"type": "string"
+					}
+				},
+				{
+					"kind": "get",
+					"name": "c",
+					"private": true
+				},
+				{
+					"kind": "set",
+					"name": "c",
+					"private": true,
+					"parameter": {
+						"name": "value"
+					}
+				},
+				{
+					"kind": "get",
+					"name": "d",
+					"static": true,
+					"returns": "number"
+				},
+				{
+					"kind": "set",
+					"name": "d",
+					"static": true,
+					"parameter": {
+						"name": "value",
+						"type": "number"
+					}
+				}
+			]
+		}
+	]
+}

@@ -6560,34 +6560,33 @@ var ts;
         DeclarationKind[DeclarationKind["Field"] = 11] = "Field";
         DeclarationKind[DeclarationKind["Method"] = 12] = "Method";
         DeclarationKind[DeclarationKind["Constructor"] = 13] = "Constructor";
-        DeclarationKind[DeclarationKind["Accessor"] = 14] = "Accessor";
-        DeclarationKind[DeclarationKind["GetAccessor"] = 15] = "GetAccessor";
-        DeclarationKind[DeclarationKind["SetAccessor"] = 16] = "SetAccessor";
+        DeclarationKind[DeclarationKind["GetAccessor"] = 14] = "GetAccessor";
+        DeclarationKind[DeclarationKind["SetAccessor"] = 15] = "SetAccessor";
 
-        DeclarationKind[DeclarationKind["PropertySignature"] = 17] = "PropertySignature";
-        DeclarationKind[DeclarationKind["ConstructSignature"] = 18] = "ConstructSignature";
-        DeclarationKind[DeclarationKind["MethodSignature"] = 19] = "MethodSignature";
-        DeclarationKind[DeclarationKind["IndexSignature"] = 20] = "IndexSignature";
-        DeclarationKind[DeclarationKind["CallSignature"] = 21] = "CallSignature";
+        DeclarationKind[DeclarationKind["PropertySignature"] = 16] = "PropertySignature";
+        DeclarationKind[DeclarationKind["ConstructSignature"] = 17] = "ConstructSignature";
+        DeclarationKind[DeclarationKind["MethodSignature"] = 18] = "MethodSignature";
+        DeclarationKind[DeclarationKind["IndexSignature"] = 19] = "IndexSignature";
+        DeclarationKind[DeclarationKind["CallSignature"] = 20] = "CallSignature";
 
-        DeclarationKind[DeclarationKind["FunctionType"] = 22] = "FunctionType";
-        DeclarationKind[DeclarationKind["ArrayType"] = 23] = "ArrayType";
-        DeclarationKind[DeclarationKind["ConstructorType"] = 24] = "ConstructorType";
-        DeclarationKind[DeclarationKind["GenericType"] = 25] = "GenericType";
-        DeclarationKind[DeclarationKind["ObjectType"] = 26] = "ObjectType";
+        DeclarationKind[DeclarationKind["FunctionType"] = 21] = "FunctionType";
+        DeclarationKind[DeclarationKind["ArrayType"] = 22] = "ArrayType";
+        DeclarationKind[DeclarationKind["ConstructorType"] = 23] = "ConstructorType";
+        DeclarationKind[DeclarationKind["ObjectType"] = 24] = "ObjectType";
+        DeclarationKind[DeclarationKind["TypeReference"] = 25] = "TypeReference";
 
-        DeclarationKind[DeclarationKind["Extends"] = 27] = "Extends";
-        DeclarationKind[DeclarationKind["Implements"] = 28] = "Implements";
-        DeclarationKind[DeclarationKind["Constraint"] = 29] = "Constraint";
+        DeclarationKind[DeclarationKind["Extends"] = 26] = "Extends";
+        DeclarationKind[DeclarationKind["Implements"] = 27] = "Implements";
+        DeclarationKind[DeclarationKind["Constraint"] = 28] = "Constraint";
 
-        DeclarationKind[DeclarationKind["ParameterList"] = 30] = "ParameterList";
-        DeclarationKind[DeclarationKind["Parameter"] = 31] = "Parameter";
+        DeclarationKind[DeclarationKind["ParameterList"] = 29] = "ParameterList";
+        DeclarationKind[DeclarationKind["Parameter"] = 30] = "Parameter";
 
-        DeclarationKind[DeclarationKind["TypeParameterList"] = 32] = "TypeParameterList";
-        DeclarationKind[DeclarationKind["TypeParameter"] = 33] = "TypeParameter";
+        DeclarationKind[DeclarationKind["TypeParameterList"] = 31] = "TypeParameterList";
+        DeclarationKind[DeclarationKind["TypeParameter"] = 32] = "TypeParameter";
 
-        DeclarationKind[DeclarationKind["TypeAnnotation"] = 34] = "TypeAnnotation";
-        DeclarationKind[DeclarationKind["TypeArgumentList"] = 35] = "TypeArgumentList";
+        DeclarationKind[DeclarationKind["TypeAnnotation"] = 33] = "TypeAnnotation";
+        DeclarationKind[DeclarationKind["TypeArgumentList"] = 34] = "TypeArgumentList";
     })(ts.DeclarationKind || (ts.DeclarationKind = {}));
     var DeclarationKind = ts.DeclarationKind;
 
@@ -6662,51 +6661,49 @@ var ts;
         };
 
         DeclarationWriter.prototype.writeBeginParameterList = function () {
-            this._pushArray(30 /* ParameterList */, "parameters");
+            this._pushArray(29 /* ParameterList */, "parameters");
         };
 
         DeclarationWriter.prototype.writeBeginTypeParameterList = function () {
-            this._pushArray(32 /* TypeParameterList */, "typeParameters");
+            this._pushArray(31 /* TypeParameterList */, "typeParameters");
         };
 
         DeclarationWriter.prototype.writeBeginTypeArgumentList = function () {
-            this._pushArray(35 /* TypeArgumentList */, "arguments");
+            this._pushArray(34 /* TypeArgumentList */, "arguments");
         };
 
         DeclarationWriter.prototype.writeBeginTypeParameter = function () {
             var node = {};
             this._currentState.node.push(node);
-            this._pushState(33 /* TypeParameter */, node);
-        };
-
-        DeclarationWriter.prototype.writeBeginConstraint = function () {
-            this._pushState(29 /* Constraint */);
+            this._pushState(32 /* TypeParameter */, node);
         };
 
         DeclarationWriter.prototype.writeBeginParameter = function () {
             var node = {};
 
             switch (this._currentState.kind) {
-                case 30 /* ParameterList */:
+                case 29 /* ParameterList */:
                     this._currentState.node.push(node);
                     break;
-                case 20 /* IndexSignature */:
+                case 15 /* SetAccessor */:
+                case 10 /* Index */:
+                case 19 /* IndexSignature */:
                     this._setProperty("parameter", node);
                     break;
                 default:
-                    throw new Error("Expected ParameterList or IndexSignature");
+                    throw new Error("Expected ParameterList,  Index, IndexSignature, or SetAccessor");
             }
 
-            this._pushState(31 /* Parameter */, node);
+            this._pushState(30 /* Parameter */, node);
         };
 
         DeclarationWriter.prototype.writeBeginExtends = function () {
             switch (this._currentState.kind) {
                 case 3 /* Class */:
-                    this._pushState(27 /* Extends */);
+                    this._pushState(26 /* Extends */);
                     break;
                 case 2 /* Interface */:
-                    this._pushArray(27 /* Extends */, "extends");
+                    this._pushArray(26 /* Extends */, "extends");
                     break;
                 default:
                     throw new Error("Expected Class or Interface");
@@ -6714,7 +6711,7 @@ var ts;
         };
 
         DeclarationWriter.prototype.writeBeginImplements = function () {
-            this._pushArray(27 /* Extends */, "implements");
+            this._pushArray(26 /* Extends */, "implements");
         };
 
         DeclarationWriter.prototype.writeBeginReference = function (path) {
@@ -6737,6 +6734,13 @@ var ts;
 
         DeclarationWriter.prototype.writeDescription = function (description) {
             this._setProperty("description", description);
+        };
+
+        DeclarationWriter.prototype.writeAnnotation = function (name, value) {
+            this._addToArray("annotations", {
+                name: name,
+                value: value
+            });
         };
 
         DeclarationWriter.prototype.writeFlags = function (flags) {
@@ -6790,15 +6794,15 @@ var ts;
 
         DeclarationWriter.prototype._setTypeOnCurrentNode = function (type) {
             switch (this._currentState.kind) {
-                case 29 /* Constraint */:
+                case 32 /* TypeParameter */:
                     this._setProperty("constraint", type);
                     break;
-                case 35 /* TypeArgumentList */:
-                case 32 /* TypeParameterList */:
-                case 28 /* Implements */:
+                case 34 /* TypeArgumentList */:
+                case 31 /* TypeParameterList */:
+                case 27 /* Implements */:
                     this._currentState.node.push(type);
                     break;
-                case 27 /* Extends */:
+                case 26 /* Extends */:
                     if (Array.isArray(this._currentState.node)) {
                         this._currentState.node.push(type);
                     } else {
@@ -6820,14 +6824,16 @@ var ts;
         DeclarationWriter.prototype._isReturnType = function () {
             switch (this._currentState.kind) {
                 case 12 /* Method */:
-                case 19 /* MethodSignature */:
+                case 18 /* MethodSignature */:
                 case 13 /* Constructor */:
-                case 18 /* ConstructSignature */:
-                case 24 /* ConstructorType */:
-                case 15 /* GetAccessor */:
+                case 17 /* ConstructSignature */:
+                case 23 /* ConstructorType */:
+                case 14 /* GetAccessor */:
                 case 6 /* Function */:
-                case 22 /* FunctionType */:
-                case 21 /* CallSignature */:
+                case 21 /* FunctionType */:
+                case 20 /* CallSignature */:
+                case 10 /* Index */:
+                case 19 /* IndexSignature */:
                     return true;
             }
 
@@ -6895,18 +6901,18 @@ var ts;
     kindMap[11 /* Field */] = "field";
     kindMap[12 /* Method */] = "method";
     kindMap[13 /* Constructor */] = "constructor";
-    kindMap[15 /* GetAccessor */] = "accessor";
-    kindMap[16 /* SetAccessor */] = "accessor";
-    kindMap[17 /* PropertySignature */] = "property";
-    kindMap[18 /* ConstructSignature */] = "constructor";
-    kindMap[19 /* MethodSignature */] = "method";
-    kindMap[20 /* IndexSignature */] = "index";
-    kindMap[21 /* CallSignature */] = "call";
-    kindMap[22 /* FunctionType */] = "function";
-    kindMap[23 /* ArrayType */] = "array";
-    kindMap[24 /* ConstructorType */] = "constructor";
-    kindMap[25 /* GenericType */] = "generic";
-    kindMap[26 /* ObjectType */] = "object";
+    kindMap[14 /* GetAccessor */] = "get";
+    kindMap[15 /* SetAccessor */] = "set";
+    kindMap[16 /* PropertySignature */] = "property";
+    kindMap[17 /* ConstructSignature */] = "constructor";
+    kindMap[18 /* MethodSignature */] = "method";
+    kindMap[19 /* IndexSignature */] = "index";
+    kindMap[20 /* CallSignature */] = "call";
+    kindMap[21 /* FunctionType */] = "function";
+    kindMap[22 /* ArrayType */] = "array";
+    kindMap[23 /* ConstructorType */] = "constructor";
+    kindMap[25 /* TypeReference */] = "reference";
+    kindMap[24 /* ObjectType */] = "object";
 })(ts || (ts = {}));
 var doctrine = require("doctrine");
 
@@ -6994,7 +7000,7 @@ var ts;
             var enclosingDeclaration;
             var reportedDeclarationError = false;
 
-            var emitJsDocComments = compilerOptions.removeComments ? function (declaration) {
+            var emitJsDocComments = compilerOptions.removeComments && !compilerOptions.annotations ? function (declaration) {
             } : writeJsDocComments;
 
             var aliasDeclarationsToRemove = [];
@@ -7050,12 +7056,24 @@ var ts;
             function writeJsDocComments(declaration) {
                 var comment = getJsDocComment(declaration);
                 if (comment) {
-                    var description = getJsDocDescription(comment);
-                    if (description) {
-                        writer.writeDescription(description);
+                    if (!compilerOptions.removeComments) {
+                        var description = getJsDocDescription(comment);
+                        if (description) {
+                            writer.writeDescription(description);
+                        }
+
+                        paramDescriptions = getJsDocParamDescriptions(comment);
                     }
 
-                    paramDescriptions = getJsDocParamDescriptions(comment);
+                    if (compilerOptions.annotations) {
+                        var annotations = getJsDocAnnotations(comment);
+                        if (annotations) {
+                            for (var i = 0, l = annotations.length; i < l; i++) {
+                                var annotation = annotations[i];
+                                writer.writeAnnotation(annotation.name, annotation.value);
+                            }
+                        }
+                    }
                 } else {
                     paramDescriptions = {};
                 }
@@ -7078,7 +7096,10 @@ var ts;
                     if (jsDocComments && jsDocComments.length > 0) {
                         var commentText = getCommentText(jsDocComments[jsDocComments.length - 1]);
 
-                        return doctrine.parse(commentText, { unwrap: true });
+                        return {
+                            node: declaration,
+                            parseResults: doctrine.parse(commentText, { unwrap: true })
+                        };
                     }
                 }
 
@@ -7086,26 +7107,64 @@ var ts;
             }
 
             function getJsDocDescription(jsDocComment) {
-                for (var i = 0, l = jsDocComment.tags.length; i < l; i++) {
-                    var tag = jsDocComment.tags[i];
+                for (var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
+                    var tag = jsDocComment.parseResults.tags[i];
 
                     if (tag.title == "description") {
                         return tag.description;
                     }
                 }
 
-                if (jsDocComment.description) {
-                    return jsDocComment.description;
+                if (jsDocComment.parseResults.description) {
+                    return jsDocComment.parseResults.description;
                 }
 
                 return null;
             }
 
+            var annotationExp = /^([$A-Z_][0-9A-Z_$]*)( (.*))?$/i;
+
+            function getJsDocAnnotations(jsDocComment) {
+                var ret = [];
+
+                for (var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
+                    var tag = jsDocComment.parseResults.tags[i];
+
+                    if (tag.title == "annotation") {
+                        if (!tag.description) {
+                            diagnostics.push(ts.createDiagnosticForNode(jsDocComment.node, ts.CustomDiagnostics.Missing_annotation_name));
+                        } else {
+                            var matches = annotationExp.exec(tag.description);
+
+                            var name = matches && matches[1];
+                            if (!name) {
+                                diagnostics.push(ts.createDiagnosticForNode(jsDocComment.node, ts.CustomDiagnostics.Invalid_annotation_name));
+                            } else {
+                                var value = matches[3];
+                                if (value === undefined) {
+                                    value = true;
+                                } else {
+                                    try  {
+                                        value = JSON.parse(value);
+                                    } catch (e) {
+                                        diagnostics.push(ts.createDiagnosticForNode(jsDocComment.node, ts.CustomDiagnostics.Annotation_value_must_be_valid_JSON));
+                                    }
+                                }
+
+                                ret.push({ name: name, value: value });
+                            }
+                        }
+                    }
+                }
+
+                return ret;
+            }
+
             function getJsDocParamDescriptions(jsDocComment) {
                 var map = {};
 
-                for (var i = 0, l = jsDocComment.tags.length; i < l; i++) {
-                    var tag = jsDocComment.tags[i];
+                for (var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
+                    var tag = jsDocComment.parseResults.tags[i];
                     if (tag.title == "param") {
                         map[tag.name] = tag.description;
                     }
@@ -7320,13 +7379,15 @@ var ts;
                     emitName(node);
                     emitJsDocComments(node);
 
-                    if (node.constraint && (node.parent.kind !== 116 /* Method */ || !(node.parent.flags & 32 /* Private */))) {
-                        writer.writeBeginConstraint();
-
-                        getSymbolVisibilityDiagnosticMessage = getTypeParameterConstraintVisibilityError;
-                        writeTypeAtLocation(node.constraint, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
-
-                        writer.writeEnd();
+                    if (node.constraint) {
+                        if (node.parent.kind !== 116 /* Method */ || !(node.parent.flags & 32 /* Private */)) {
+                            getSymbolVisibilityDiagnosticMessage = getTypeParameterConstraintVisibilityError;
+                            writeTypeAtLocation(node.constraint, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                        } else {
+                            if (compilerOptions.typePrivates) {
+                                writeTypeAtLocationIfAccessible(node.constraint, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                            }
+                        }
                     }
 
                     writer.writeEnd();
@@ -7445,9 +7506,13 @@ var ts;
 
             function emitPropertyDeclaration(node, description) {
                 if (node.parent.kind == 169 /* ClassDeclaration */ || node.parent.kind == 117 /* Constructor */) {
+                    if ((node.flags & 32 /* Private */) && compilerOptions.removePrivates) {
+                        return;
+                    }
+
                     writer.writeBeginClassMember(11 /* Field */);
                 } else {
-                    writer.writeBeginSignature(17 /* PropertySignature */);
+                    writer.writeBeginSignature(16 /* PropertySignature */);
                 }
 
                 emitVariableDeclaration(node);
@@ -7472,6 +7537,10 @@ var ts;
                     if (!(node.flags & 32 /* Private */)) {
                         getSymbolVisibilityDiagnosticMessage = getVariableDeclarationTypeVisibilityError;
                         writeTypeAtLocation(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                    } else {
+                        if (compilerOptions.typePrivates) {
+                            writeTypeAtLocationIfAccessible(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                        }
                     }
                 }
 
@@ -7519,18 +7588,34 @@ var ts;
             }
 
             function emitAccessorDeclaration(node) {
-                var accessors = getAllAccessorDeclarations(node.parent, node);
-                if (node === accessors.firstAccessor) {
-                    writer.writeBeginClassMember(11 /* Field */);
+                if ((node.flags & 32 /* Private */) && compilerOptions.removePrivates) {
+                    return;
+                }
+
+                if (compilerOptions.accessors) {
+                    writer.writeBeginClassMember(node.kind === 118 /* GetAccessor */ ? 14 /* GetAccessor */ : 15 /* SetAccessor */);
                     emitName(node);
                     emitDeclarationFlags(node);
-                    emitJsDocComments(accessors.getAccessor);
-                    emitJsDocComments(accessors.setAccessor);
-                    if (!(node.flags & 32 /* Private */)) {
-                        getSymbolVisibilityDiagnosticMessage = getAccessorDeclarationTypeVisibilityError;
-                        writeTypeAtLocation(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
-                    }
+                    emitJsDocComments(node);
+                    emitSignatureDeclaration(node);
                     writer.writeEnd();
+                } else {
+                    var accessors = getAllAccessorDeclarations(node.parent, node);
+                    if (node === accessors.firstAccessor) {
+                        writer.writeBeginClassMember(11 /* Field */);
+                        emitName(node);
+                        emitDeclarationFlags(node);
+                        emitJsDocComments(accessors.firstAccessor);
+                        if (!(node.flags & 32 /* Private */)) {
+                            getSymbolVisibilityDiagnosticMessage = getAccessorDeclarationTypeVisibilityError;
+                            writeTypeAtLocation(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                        } else {
+                            if (compilerOptions.typePrivates) {
+                                writeTypeAtLocationIfAccessible(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                            }
+                        }
+                        writer.writeEnd();
+                    }
                 }
 
                 function getAccessorDeclarationTypeVisibilityError(symbolAccesibilityResult) {
@@ -7563,6 +7648,19 @@ var ts;
 
             function emitFunctionDeclaration(node) {
                 if ((node.kind !== 167 /* FunctionDeclaration */ || resolver.isDeclarationVisible(node)) && !resolver.isImplementationOfOverload(node)) {
+                    if (node.flags & 32 /* Private */) {
+                        if (compilerOptions.removePrivates) {
+                            return;
+                        }
+
+                        if (!compilerOptions.typePrivates) {
+                            var signatures = resolver.getSignaturesOfSymbol(resolver.getSymbolOfNode(node));
+                            if (signatures[0].declaration !== node) {
+                                return;
+                            }
+                        }
+                    }
+
                     if (node.kind === 167 /* FunctionDeclaration */) {
                         writer.writeBeginModuleElement(6 /* Function */);
                         emitName(node);
@@ -7572,7 +7670,7 @@ var ts;
                         if (node.parent.kind == 169 /* ClassDeclaration */) {
                             writer.writeBeginClassMember(12 /* Method */);
                         } else {
-                            writer.writeBeginSignature(19 /* MethodSignature */);
+                            writer.writeBeginSignature(18 /* MethodSignature */);
                         }
 
                         emitName(node);
@@ -7589,21 +7687,26 @@ var ts;
             }
 
             function emitConstructSignatureDeclaration(node) {
-                writer.writeBeginSignature(18 /* ConstructSignature */);
+                writer.writeBeginSignature(17 /* ConstructSignature */);
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
             }
 
             function emitCallSignatureDeclaration(node) {
-                writer.writeBeginSignature(21 /* CallSignature */);
+                writer.writeBeginSignature(20 /* CallSignature */);
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
             }
 
             function emitIndexSignatureDeclaration(node) {
-                writer.writeBeginSignature(20 /* IndexSignature */);
+                if (node.parent.kind == 169 /* ClassDeclaration */) {
+                    writer.writeBeginClassMember(10 /* Index */);
+                } else {
+                    writer.writeBeginSignature(19 /* IndexSignature */);
+                }
+
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
@@ -7613,7 +7716,7 @@ var ts;
                 emitTypeParameters(node.typeParameters);
 
                 var hasParamList = false;
-                if (node.kind != 122 /* IndexSignature */ && node.parameters.length > 0) {
+                if (node.kind != 122 /* IndexSignature */ && node.kind != 119 /* SetAccessor */ && node.parameters.length > 0) {
                     writer.writeBeginParameterList();
                     hasParamList = true;
                 }
@@ -7624,9 +7727,15 @@ var ts;
                     writer.writeEnd();
                 }
 
-                if (node.kind !== 117 /* Constructor */ && !(node.flags & 32 /* Private */)) {
-                    getSymbolVisibilityDiagnosticMessage = getReturnTypeVisibilityError;
-                    writeReturnTypeOfSignatureDeclaration(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                if (node.kind !== 117 /* Constructor */ && node.kind !== 119 /* SetAccessor */) {
+                    if (!(node.flags & 32 /* Private */)) {
+                        getSymbolVisibilityDiagnosticMessage = getReturnTypeVisibilityError;
+                        writeReturnTypeOfSignatureDeclaration(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                    } else {
+                        if (compilerOptions.typePrivates) {
+                            writeReturnTypeOfSignatureDeclarationIfAccessible(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                        }
+                    }
                 }
 
                 function getReturnTypeVisibilityError(symbolAccesibilityResult) {
@@ -7692,6 +7801,10 @@ var ts;
                 if (!(node.parent.flags & 32 /* Private */)) {
                     getSymbolVisibilityDiagnosticMessage = getParameterDeclarationTypeVisibilityError;
                     writeTypeAtLocation(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                } else {
+                    if (compilerOptions.typePrivates) {
+                        writeTypeAtLocationIfAccessible(node, enclosingDeclaration, 2 /* UseTypeOfFunction */, writer);
+                    }
                 }
 
                 writer.writeEnd();
@@ -7737,11 +7850,47 @@ var ts;
                 }
             }
 
+            function writeTypeAtLocationIfAccessible(location, enclosingDeclaration, flags, writer) {
+                var type = getTypeAtLocation(location);
+                if (!isTypeAccessible(type, enclosingDeclaration)) {
+                    return;
+                }
+
+                writeTypeToTextWriter(type, enclosingDeclaration, flags, writer);
+            }
+
+            function getTypeAtLocation(location) {
+                var symbol = resolver.getSymbolOfNode(location);
+                return symbol && !(symbol.flags & 512 /* TypeLiteral */) ? resolver.getTypeOfSymbol(symbol) : resolver.getTypeFromTypeNode(location);
+            }
+
+            function isTypeAccessible(type, enclosingDeclaration) {
+                if (type && !(type.flags & 8192 /* Anonymous */)) {
+                    var symbolAccesibilityResult = resolver.isSymbolAccessible(type.symbol, enclosingDeclaration, ts.SymbolFlags.Type);
+                    if (symbolAccesibilityResult.accessibility !== 0 /* Accessible */) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
             function writeTypeAtLocation(location, enclosingDeclaration, flags, writer) {
                 var symbol = resolver.getSymbolOfNode(location);
                 var type = symbol && !(symbol.flags & 512 /* TypeLiteral */) ? resolver.getTypeOfSymbol(symbol) : resolver.getTypeFromTypeNode(location);
 
                 writeTypeToTextWriter(type, enclosingDeclaration, flags, writer);
+            }
+
+            function writeReturnTypeOfSignatureDeclarationIfAccessible(signatureDeclaration, enclosingDeclaration, flags, writer) {
+                var signature = resolver.getSignatureFromDeclaration(signatureDeclaration);
+                var returnType = resolver.getReturnTypeOfSignature(signature);
+
+                if (!isTypeAccessible(returnType, enclosingDeclaration)) {
+                    return;
+                }
+
+                writeTypeToTextWriter(returnType, enclosingDeclaration, flags, writer);
             }
 
             function writeReturnTypeOfSignatureDeclaration(signatureDeclaration, enclosingDeclaration, flags, writer) {
@@ -7771,10 +7920,10 @@ var ts;
 
                 function writeTypeReference(type) {
                     if (resolver.isArrayType(type) && !(flags & 1 /* WriteArrayAsGenericType */)) {
-                        writer.writeBeginType(23 /* ArrayType */);
+                        writer.writeBeginType(22 /* ArrayType */);
                         writeType(type.typeArguments[0], false);
                     } else {
-                        writer.writeBeginType(25 /* GenericType */);
+                        writer.writeBeginType(25 /* TypeReference */);
                         writeSymbol(type.target.symbol, enclosingDeclaration, ts.SymbolFlags.Type);
                         writer.writeBeginTypeArgumentList();
                         for (var i = 0; i < type.typeArguments.length; i++) {
@@ -7825,20 +7974,20 @@ var ts;
                     var resolved = resolver.resolveObjectTypeMembers(type);
                     if (!resolved.properties.length && !resolved.stringIndexType && !resolved.numberIndexType) {
                         if (!resolved.callSignatures.length && !resolved.constructSignatures.length) {
-                            writer.writeBeginType(26 /* ObjectType */);
+                            writer.writeBeginType(24 /* ObjectType */);
                             writer.writeEnd();
                             return;
                         }
 
                         if (allowFunctionOrConstructorTypeLiteral) {
                             if (resolved.callSignatures.length === 1 && !resolved.constructSignatures.length) {
-                                writer.writeBeginType(22 /* FunctionType */);
+                                writer.writeBeginType(21 /* FunctionType */);
                                 emitSignatureDeclaration(resolved.callSignatures[0].declaration);
                                 writer.writeEnd();
                                 return;
                             }
                             if (resolved.constructSignatures.length === 1 && !resolved.callSignatures.length) {
-                                writer.writeBeginType(24 /* ConstructorType */);
+                                writer.writeBeginType(23 /* ConstructorType */);
                                 emitSignatureDeclaration(resolved.constructSignatures[0].declaration);
                                 writer.writeEnd();
                                 return;
@@ -7846,7 +7995,7 @@ var ts;
                         }
                     }
 
-                    writer.writeBeginType(26 /* ObjectType */);
+                    writer.writeBeginType(24 /* ObjectType */);
 
                     for (var i = 0; i < resolved.callSignatures.length; i++) {
                         emitCallSignatureDeclaration(resolved.callSignatures[i].declaration);
@@ -7855,7 +8004,7 @@ var ts;
                         emitConstructSignatureDeclaration(resolved.constructSignatures[i].declaration);
                     }
                     if (resolved.stringIndexType) {
-                        writer.writeBeginSignature(20 /* IndexSignature */);
+                        writer.writeBeginSignature(19 /* IndexSignature */);
                         writer.writeBeginParameter();
                         writer.writeName("x");
                         writer.writeTypeReference("string");
@@ -7866,7 +8015,7 @@ var ts;
                         writer.writeEnd();
                     }
                     if (resolved.numberIndexType) {
-                        writer.writeBeginSignature(20 /* IndexSignature */);
+                        writer.writeBeginSignature(19 /* IndexSignature */);
                         writer.writeBeginParameter();
                         writer.writeName("x");
                         writer.writeTypeReference("number");
@@ -7882,7 +8031,7 @@ var ts;
                         if (p.flags & (8 /* Function */ | 2048 /* Method */) && !resolver.getPropertiesOfType(t).length) {
                             var signatures = resolver.getSignaturesOfType(t, 0 /* Call */);
                             for (var j = 0; j < signatures.length; j++) {
-                                writer.writeBeginSignature(19 /* MethodSignature */);
+                                writer.writeBeginSignature(18 /* MethodSignature */);
                                 writer.writeName(p.name);
                                 if (isOptionalProperty(p)) {
                                     writer.writeFlags(ts.DeclarationFlag.Optional);
@@ -7891,7 +8040,7 @@ var ts;
                                 writer.writeEnd();
                             }
                         } else {
-                            writer.writeBeginSignature(17 /* PropertySignature */);
+                            writer.writeBeginSignature(16 /* PropertySignature */);
                             writer.writeName(p.name);
                             if (isOptionalProperty(p)) {
                                 writer.writeFlags(ts.DeclarationFlag.Optional);
@@ -14621,7 +14770,8 @@ var ts;
                 getReturnTypeOfSignature: getReturnTypeOfSignature,
                 getPropertiesOfType: getPropertiesOfType,
                 getSignaturesOfType: getSignaturesOfType,
-                createDeclarationWriter: createDeclarationWriter
+                createDeclarationWriter: createDeclarationWriter,
+                getSignaturesOfSymbol: getSignaturesOfSymbol
             };
             checkProgram();
             return ts.emitFiles(resolver);
@@ -14666,10 +14816,20 @@ var ts;
 })(ts || (ts = {}));
 var ts;
 (function (ts) {
-    var messages = {
-        Disable_type_checks: { code: 10000, category: 2 /* Message */, key: "Disable type checks." }
+    ts.CustomDiagnostics = {
+        Disable_type_checks: { code: 10000, category: 2 /* Message */, key: "Disable type checks." },
+        Emit_accessors: { code: 10001, category: 2 /* Message */, key: "Emit property accessor declarations." },
+        Missing_annotation_name: { code: 10002, category: 1 /* Error */, key: "Missing annotation name." },
+        Invalid_annotation_name: { code: 10003, category: 1 /* Error */, key: "Invalid annotation name." },
+        Annotation_value_must_be_valid_JSON: { code: 10004, category: 1 /* Error */, key: "Annotation value must be a valid JSON document, not JavaScript." },
+        Do_not_emit_private_class_member_declaration: { code: 10005, category: 1 /* Error */, key: "Do not emit private class member declarations." },
+        Emit_type_information_for_private_class_members: { code: 10006, category: 1 /* Error */, key: "Emit type information, if accessible, for private class members." },
+        Do_not_emit_JsDoc_descriptions_in_output: { code: 10007, category: 1 /* Error */, key: "Do not emit JsDoc descriptions in output." },
+        Emit_custom_annotations: { code: 10008, category: 1 /* Error */, key: "Include custom annotations in output." }
     };
-
+})(ts || (ts = {}));
+var ts;
+(function (ts) {
     ts.optionDeclarations = [
         {
             name: "help",
@@ -14684,7 +14844,27 @@ var ts;
         {
             name: "noCheck",
             type: "boolean",
-            description: messages.Disable_type_checks
+            description: ts.CustomDiagnostics.Disable_type_checks
+        },
+        {
+            name: "accessors",
+            type: "boolean",
+            description: ts.CustomDiagnostics.Emit_accessors
+        },
+        {
+            name: "removePrivates",
+            type: "boolean",
+            description: ts.CustomDiagnostics.Do_not_emit_private_class_member_declaration
+        },
+        {
+            name: "typePrivates",
+            type: "boolean",
+            description: ts.CustomDiagnostics.Emit_type_information_for_private_class_members
+        },
+        {
+            name: "annotations",
+            type: "boolean",
+            description: ts.CustomDiagnostics.Emit_custom_annotations
         },
         {
             name: "out",
@@ -14699,9 +14879,14 @@ var ts;
             paramType: ts.Diagnostics.DIRECTORY
         },
         {
-            name: "removeComments",
+            name: "removeComment",
             type: "boolean",
-            description: ts.Diagnostics.Do_not_emit_comments_to_output
+            description: ts.CustomDiagnostics.Do_not_emit_JsDoc_descriptions_in_output
+        },
+        {
+            name: "noImplicitAny",
+            type: "boolean",
+            description: ts.Diagnostics.Warn_on_expressions_and_declarations_with_an_implied_any_type
         },
         {
             name: "version",
@@ -14828,6 +15013,7 @@ var ts;
 
     function executeCommandLine(args) {
         var commandLine = ts.parseCommandLine(args);
+
         if (commandLine.errors.length > 0) {
             reportDiagnostics(commandLine.errors);
             sys.exit(1);
@@ -14984,7 +15170,7 @@ var ts;
         return {
             getSourceFile: getSourceFile,
             getDefaultLibFilename: function () {
-                return ts.combinePaths(ts.normalizePath(__dirname), "lib.d.ts");
+                return ts.combinePaths(ts.normalizePath(__dirname), options.libPath || "lib.d.ts");
             },
             writeFile: writeFile,
             getCurrentDirectory: function () {

@@ -44,6 +44,8 @@ var doctrine = require("doctrine");
 
 module ts {
 
+
+
     export function emitFiles(resolver: EmitResolver): EmitResult {
 
         var program = resolver.getProgram();
@@ -135,7 +137,8 @@ module ts {
             var enclosingDeclaration: Node;
             var reportedDeclarationError = false;
 
-            var emitJsDocComments = compilerOptions.removeComments ? function (declaration: Declaration) { } : writeJsDocComments;
+            var emitJsDocComments = compilerOptions.removeComments && !compilerOptions.annotations ?
+                function (declaration: Declaration) { } : writeJsDocComments;
 
             var aliasDeclarationsToRemove: {
                 declaration: ImportDeclaration;
@@ -213,13 +216,27 @@ module ts {
 
                 var comment = getJsDocComment(declaration);
                 if (comment) {
-                    var description = getJsDocDescription(comment);
-                    if(description) {
-                        writer.writeDescription(description);
+
+                    if(!compilerOptions.removeComments) {
+
+                        var description = getJsDocDescription(comment);
+                        if (description) {
+                            writer.writeDescription(description);
+                        }
+
+                        // cache the parameter descriptions for use later by visitParameter
+                        paramDescriptions = getJsDocParamDescriptions(comment);
                     }
 
-                    // cache the parameter descriptions for use later by visitParameter
-                    paramDescriptions = getJsDocParamDescriptions(comment);
+                    if(compilerOptions.annotations) {
+                        var annotations = getJsDocAnnotations(comment);
+                        if (annotations) {
+                            for (var i = 0, l = annotations.length; i < l; i++) {
+                                var annotation = annotations[i];
+                                writer.writeAnnotation(annotation.name, annotation.value);
+                            }
+                        }
+                    }
                 } else {
                     // clear the cache
                     paramDescriptions = {};
@@ -238,7 +255,7 @@ module ts {
                 return false;
             }
 
-            function getJsDocComment(declaration: Declaration): IDoctrineParseResults {
+            function getJsDocComment(declaration: Declaration): JsDocComment {
 
                 if (declaration) {
                     var jsDocComments = getJsDocComments(declaration, currentSourceFile);
@@ -246,41 +263,93 @@ module ts {
                         // use the last comment before the declaration
                         var commentText = getCommentText(jsDocComments[jsDocComments.length - 1]);
 
-                        return doctrine.parse(commentText, { unwrap: true });
+                        return {
+                            node: declaration,
+                            parseResults: doctrine.parse(commentText, { unwrap: true })
+                        }
                     }
                 }
 
                 return null;
             }
 
-            function getJsDocDescription(jsDocComment: IDoctrineParseResults): string {
+            function getJsDocDescription(jsDocComment: JsDocComment): string {
 
                 // give priority to the @description tag
-                for(var i = 0, l = jsDocComment.tags.length; i < l; i++) {
+                for(var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
 
-                    var tag = jsDocComment.tags[i];
+                    var tag = jsDocComment.parseResults.tags[i];
 
                     if(tag.title == "description") {
                         return tag.description;
                     }
                 }
 
-                if(jsDocComment.description) {
-                    return jsDocComment.description;
+                if(jsDocComment.parseResults.description) {
+                    return jsDocComment.parseResults.description;
                 }
 
                 return null;
             }
 
-            function getJsDocParamDescriptions(jsDocComment: IDoctrineParseResults): Map<string> {
+            var annotationExp = /^([$A-Z_][0-9A-Z_$]*)( (.*))?$/i;
+
+            function getJsDocAnnotations(jsDocComment: JsDocComment): any[] {
+
+                var ret: any[] = [];
+
+                for(var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
+
+                    var tag = jsDocComment.parseResults.tags[i];
+
+                    if(tag.title == "annotation") {
+
+                        if(!tag.description) {
+                            diagnostics.push(createDiagnosticForNode(jsDocComment.node,
+                                CustomDiagnostics.Missing_annotation_name));
+                        }
+                        else {
+                            var matches = annotationExp.exec(tag.description);
+
+                            var name = matches && matches[1];
+                            if (!name) {
+                                diagnostics.push(createDiagnosticForNode(jsDocComment.node,
+                                    CustomDiagnostics.Invalid_annotation_name));
+                            }
+                            else {
+
+                                var value:any = matches[3];
+                                if (value === undefined) {
+                                    value = true;
+                                }
+                                else {
+                                    try {
+                                        value = JSON.parse(value);
+                                    }
+                                    catch (e) {
+                                        diagnostics.push(createDiagnosticForNode(jsDocComment.node,
+                                            CustomDiagnostics.Annotation_value_must_be_valid_JSON));
+                                    }
+                                }
+
+                                ret.push({ name: name, value: value });
+                            }
+                        }
+                    }
+                }
+
+                return ret;
+            }
+
+            function getJsDocParamDescriptions(jsDocComment: JsDocComment): Map<string> {
 
                 var map: Map<string> = {};
 
                 // give priority to the @description tag
 
-                for(var i = 0, l = jsDocComment.tags.length; i < l; i++) {
+                for(var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
 
-                    var tag = jsDocComment.tags[i];
+                    var tag = jsDocComment.parseResults.tags[i];
                     if(tag.title == "param") {
 
                         map[tag.name] = tag.description;
@@ -550,14 +619,17 @@ module ts {
                     emitJsDocComments(node);
 
                     // If there is constraint present and this is not a type parameter of the private method emit the constraint
-                    if (node.constraint && (node.parent.kind !== SyntaxKind.Method || !(node.parent.flags & NodeFlags.Private))) {
+                    if (node.constraint) {
 
-                        writer.writeBeginConstraint();
-
-                        getSymbolVisibilityDiagnosticMessage = getTypeParameterConstraintVisibilityError;
-                        writeTypeAtLocation(node.constraint, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
-
-                        writer.writeEnd();
+                        if(node.parent.kind !== SyntaxKind.Method || !(node.parent.flags & NodeFlags.Private)) {
+                            getSymbolVisibilityDiagnosticMessage = getTypeParameterConstraintVisibilityError;
+                            writeTypeAtLocation(node.constraint, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                        }
+                        else {
+                            if(compilerOptions.typePrivates) {
+                                writeTypeAtLocationIfAccessible(node.constraint, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                            }
+                        }
                     }
 
                     writer.writeEnd();
@@ -699,6 +771,10 @@ module ts {
 
                 if(node.parent.kind == SyntaxKind.ClassDeclaration || node.parent.kind == SyntaxKind.Constructor) {
 
+                    if((node.flags & NodeFlags.Private) && compilerOptions.removePrivates) {
+                        return;
+                    }
+
                     writer.writeBeginClassMember(DeclarationKind.Field);
                 }
                 else {
@@ -724,6 +800,7 @@ module ts {
                 // If we are emitting property it isn't moduleElement and hence we already know it needs to be emitted
                 // so there is no check needed to see if declaration is visible
                 if (node.kind !== SyntaxKind.VariableDeclaration || resolver.isDeclarationVisible(node)) {
+
                     emitName(node);
                     // If optional property emit ?
                     if (node.kind === SyntaxKind.Property && (node.flags & NodeFlags.QuestionMark)) {
@@ -732,6 +809,11 @@ module ts {
                     if (!(node.flags & NodeFlags.Private)) {
                         getSymbolVisibilityDiagnosticMessage = getVariableDeclarationTypeVisibilityError;
                         writeTypeAtLocation(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                    }
+                    else {
+                        if(compilerOptions.typePrivates) {
+                            writeTypeAtLocationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                        }
                     }
                 }
 
@@ -800,21 +882,40 @@ module ts {
             }
 
             function emitAccessorDeclaration(node: AccessorDeclaration) {
-                var accessors = getAllAccessorDeclarations(<ClassDeclaration>node.parent, node);
-                if (node === accessors.firstAccessor) {
-                    // TODO: emit individual accessor information instead of emitting as field
-                    // TODO: if we are going to emit accessors as fields then perhaps there is no reason to differentiate between properties and fields
 
-                    writer.writeBeginClassMember(DeclarationKind.Field);
+                if((node.flags & NodeFlags.Private) && compilerOptions.removePrivates) {
+                    return;
+                }
+
+                if(compilerOptions.accessors) {
+
+                    writer.writeBeginClassMember(node.kind === SyntaxKind.GetAccessor ?
+                        DeclarationKind.GetAccessor : DeclarationKind.SetAccessor);
                     emitName(node);
                     emitDeclarationFlags(node);
-                    emitJsDocComments(accessors.getAccessor);
-                    emitJsDocComments(accessors.setAccessor);
-                    if (!(node.flags & NodeFlags.Private)) {
-                        getSymbolVisibilityDiagnosticMessage = getAccessorDeclarationTypeVisibilityError;
-                        writeTypeAtLocation(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
-                    }
+                    emitJsDocComments(node);
+                    emitSignatureDeclaration(node);
                     writer.writeEnd();
+                }
+                else {
+                    var accessors = getAllAccessorDeclarations(<ClassDeclaration>node.parent, node);
+                    if (node === accessors.firstAccessor) {
+
+                        writer.writeBeginClassMember(DeclarationKind.Field);
+                        emitName(node);
+                        emitDeclarationFlags(node);
+                        emitJsDocComments(accessors.firstAccessor);
+                        if (!(node.flags & NodeFlags.Private)) {
+                            getSymbolVisibilityDiagnosticMessage = getAccessorDeclarationTypeVisibilityError;
+                            writeTypeAtLocation(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                        }
+                        else {
+                            if(compilerOptions.typePrivates) {
+                                writeTypeAtLocationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                            }
+                        }
+                        writer.writeEnd();
+                    }
                 }
 
                 function getAccessorDeclarationTypeVisibilityError(symbolAccesibilityResult: SymbolAccessiblityResult) {
@@ -866,6 +967,22 @@ module ts {
                 // so no need to verify if the declaration is visible
                 if ((node.kind !== SyntaxKind.FunctionDeclaration || resolver.isDeclarationVisible(node)) &&
                     !resolver.isImplementationOfOverload(node)) {
+
+                    // only emit declaration for first private member
+                    if(node.flags & NodeFlags.Private) {
+
+                        if(compilerOptions.removePrivates) {
+                            return;
+                        }
+
+                        if(!compilerOptions.typePrivates) {
+                            var signatures = resolver.getSignaturesOfSymbol(resolver.getSymbolOfNode(node));
+                            if (signatures[0].declaration !== node) {
+                                return;
+                            }
+                        }
+                    }
+
                     if (node.kind === SyntaxKind.FunctionDeclaration) {
                         writer.writeBeginModuleElement(DeclarationKind.Function);
                         emitName(node);
@@ -914,7 +1031,14 @@ module ts {
 
             function emitIndexSignatureDeclaration(node: SignatureDeclaration) {
 
-                writer.writeBeginSignature(DeclarationKind.IndexSignature);
+                if(node.parent.kind == SyntaxKind.ClassDeclaration) {
+
+                    writer.writeBeginClassMember(DeclarationKind.Index);
+                }
+                else {
+                    writer.writeBeginSignature(DeclarationKind.IndexSignature);
+                }
+
                 emitJsDocComments(node);
                 emitSignatureDeclaration(node);
                 writer.writeEnd();
@@ -926,7 +1050,7 @@ module ts {
                 // Parameters
 
                 var hasParamList = false;
-                if(node.kind != SyntaxKind.IndexSignature && node.parameters.length > 0) {
+                if(node.kind != SyntaxKind.IndexSignature && node.kind != SyntaxKind.SetAccessor && node.parameters.length > 0) {
                     writer.writeBeginParameterList();
                     hasParamList = true;
                 }
@@ -938,9 +1062,17 @@ module ts {
                 }
 
                 // If this is not a constructor and is not private, emit the return type
-                if (node.kind !== SyntaxKind.Constructor && !(node.flags & NodeFlags.Private)) {
-                    getSymbolVisibilityDiagnosticMessage = getReturnTypeVisibilityError;
-                    writeReturnTypeOfSignatureDeclaration(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                if (node.kind !== SyntaxKind.Constructor && node.kind !== SyntaxKind.SetAccessor) {
+
+                    if (!(node.flags & NodeFlags.Private)) {
+                        getSymbolVisibilityDiagnosticMessage = getReturnTypeVisibilityError;
+                        writeReturnTypeOfSignatureDeclaration(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                    }
+                    else {
+                        if(compilerOptions.typePrivates) {
+                            writeReturnTypeOfSignatureDeclarationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                        }
+                    }
                 }
 
                 function getReturnTypeVisibilityError(symbolAccesibilityResult: SymbolAccessiblityResult) {
@@ -1036,6 +1168,11 @@ module ts {
                     getSymbolVisibilityDiagnosticMessage = getParameterDeclarationTypeVisibilityError;
                     writeTypeAtLocation(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                 }
+                else {
+                    if(compilerOptions.typePrivates) {
+                        writeTypeAtLocationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
+                    }
+                }
 
                 writer.writeEnd(); // Parameter
 
@@ -1107,12 +1244,51 @@ module ts {
                 }
             }
 
+            function writeTypeAtLocationIfAccessible(location: Node, enclosingDeclaration: Node, flags: TypeFormatFlags, writer: IDeclarationWriter) {
+
+                var type = getTypeAtLocation(location);
+                if(!isTypeAccessible(type, enclosingDeclaration)) {
+                    return;
+                }
+
+                writeTypeToTextWriter(type, enclosingDeclaration, flags, writer);
+            }
+
+            function getTypeAtLocation(location: Node): Type {
+
+                var symbol = resolver.getSymbolOfNode(location);
+                return symbol && !(symbol.flags & SymbolFlags.TypeLiteral) ? resolver.getTypeOfSymbol(symbol) : resolver.getTypeFromTypeNode(location);
+            }
+
+            function isTypeAccessible(type: Type, enclosingDeclaration: Node): boolean {
+
+                if(type && !(type.flags & TypeFlags.Anonymous)) {
+                    var symbolAccesibilityResult = resolver.isSymbolAccessible(type.symbol, enclosingDeclaration, SymbolFlags.Type);
+                    if (symbolAccesibilityResult.accessibility !== SymbolAccessibility.Accessible) {
+                        return false;
+                    }
+                }
+
+                return true;
+            }
+
             function writeTypeAtLocation(location: Node, enclosingDeclaration: Node, flags: TypeFormatFlags, writer: IDeclarationWriter) {
                 // Get type of the symbol if this is the valid symbol otherwise get type at location
                 var symbol = resolver.getSymbolOfNode(location);
                 var type = symbol && !(symbol.flags & SymbolFlags.TypeLiteral) ? resolver.getTypeOfSymbol(symbol) : resolver.getTypeFromTypeNode(location);
 
                 writeTypeToTextWriter(type, enclosingDeclaration, flags, writer);
+            }
+
+            function writeReturnTypeOfSignatureDeclarationIfAccessible(signatureDeclaration: SignatureDeclaration, enclosingDeclaration: Node, flags: TypeFormatFlags, writer: IDeclarationWriter) {
+                var signature = resolver.getSignatureFromDeclaration(signatureDeclaration);
+                var returnType = resolver.getReturnTypeOfSignature(signature);
+
+                if(!isTypeAccessible(returnType, enclosingDeclaration)) {
+                    return;
+                }
+
+                writeTypeToTextWriter(returnType, enclosingDeclaration, flags , writer);
             }
 
             function writeReturnTypeOfSignatureDeclaration(signatureDeclaration: SignatureDeclaration, enclosingDeclaration: Node, flags: TypeFormatFlags, writer: IDeclarationWriter) {
@@ -1153,7 +1329,7 @@ module ts {
                         writeType(type.typeArguments[0], /*allowFunctionOrConstructorTypeLiteral*/ false);
                     }
                     else {
-                        writer.writeBeginType(DeclarationKind.GenericType);
+                        writer.writeBeginType(DeclarationKind.TypeReference);
                         writeSymbol(type.target.symbol, enclosingDeclaration, SymbolFlags.Type);
                         writer.writeBeginTypeArgumentList();
                         for (var i = 0; i < type.typeArguments.length; i++) {
@@ -1476,5 +1652,10 @@ module ts {
             errors: diagnostics,
             sourceMaps: []
         };
+    }
+
+    interface JsDocComment {
+        node: Node;
+        parseResults: IDoctrineParseResults;
     }
 }

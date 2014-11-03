@@ -1,0 +1,59 @@
+{
+	"declares": [
+		{
+			"kind": "module",
+			"name": "A",
+			"declares": [
+				{
+					"kind": "class",
+					"name": "C",
+					"members": [
+						{
+							"kind": "field",
+							"name": "a",
+							"private": true
+						},
+						{
+							"kind": "method",
+							"name": "b",
+							"private": true,
+							"parameters": [
+								{
+									"name": "a"
+								}
+							],
+							"returns": "void"
+						},
+						{
+							"kind": "method",
+							"name": "c",
+							"private": true
+						},
+						{
+							"kind": "field",
+							"name": "d",
+							"private": true
+						},
+						{
+							"kind": "method",
+							"name": "e",
+							"private": true,
+							"typeParameters": [
+								{
+									"name": "T"
+								}
+							],
+							"parameters": [
+								{
+									"name": "a",
+									"type": "T"
+								}
+							],
+							"returns": "T"
+						}
+					]
+				}
+			]
+		}
+	]
+}

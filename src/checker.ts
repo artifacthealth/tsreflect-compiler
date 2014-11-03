@@ -7321,7 +7321,8 @@ module ts {
                 getReturnTypeOfSignature: getReturnTypeOfSignature,
                 getPropertiesOfType: getPropertiesOfType,
                 getSignaturesOfType: getSignaturesOfType,
-                createDeclarationWriter: createDeclarationWriter
+                createDeclarationWriter: createDeclarationWriter,
+                getSignaturesOfSymbol: getSignaturesOfSymbol
             };
             checkProgram();
             return emitFiles(resolver);

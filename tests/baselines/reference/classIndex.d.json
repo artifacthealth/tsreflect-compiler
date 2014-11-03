@@ -1,0 +1,32 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "a",
+						"type": "string"
+					},
+					"returns": "number"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"members": [
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "a",
+						"type": "number"
+					},
+					"returns": "string"
+				}
+			]
+		}
+	]
+}

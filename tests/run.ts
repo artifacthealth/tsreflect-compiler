@@ -12,18 +12,26 @@ import expect = chai.expect;
 import compiler = require("./tsreflect-compiler");
 
 var testCasesDir = "tests/cases/";
+var optionsDir = "tests/options/";
 var referenceBaselineDir = "tests/baselines/reference/";
 var localBaselineDir = "tests/baselines/local/";
 
 function setupCases(): void {
 
-    var files = fs.readdirSync(testCasesDir);
+    processDir(testCasesDir, "ts", setupCase);
+}
+
+function processDir(path: string, ext: string, cb: (filename: string) => void): void {
+
+    var files = fs.readdirSync(path);
+    var filter = new RegExp("\." + ext + "$");
+
     for (var i = 0, l = files.length; i < l; i++) {
 
         var filename = files[i];
         // filter out anything but *.ts
-        if(/\.ts$/.test(filename)) {
-            setupCase(files[i]);
+        if(filter.test(filename)) {
+            cb(files[i]);
         }
     }
 }
@@ -43,9 +51,10 @@ function setupCase(filename: string): void {
             deleteFile(localBaselineDir + errorsFilename);
             deleteFile(localBaselineDir + declarationFilename);
 
-            var compilerOptions: compiler.CompilerOptions = {
-                outDir: localBaselineDir
-            }
+            var compilerOptions: compiler.CompilerOptions = loadOptions(baseName);
+
+            compilerOptions.outDir = localBaselineDir;
+            compilerOptions.libPath = "lib.core.d.ts";
 
             diagnostics = compiler.compile([testCasesDir + filename], compilerOptions);
 
@@ -70,6 +79,18 @@ function setupCase(filename: string): void {
             declarationFilename = undefined;
         });
     });
+}
+
+function loadOptions(baseName: string): compiler.CompilerOptions {
+
+    var path = testCasesDir + baseName + ".options.json";
+
+    if(!fs.existsSync(path)) {
+
+        return {};
+    }
+
+    return JSON.parse(fs.readFileSync(path, "utf8"));
 }
 
 function diagnosticsToString(diagnostics: compiler.Diagnostic[]): string {

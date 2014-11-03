@@ -1,0 +1,29 @@
+{
+	"declares": [
+		{
+			"kind": "function",
+			"name": "test",
+			"parameters": [
+				{
+					"name": "a",
+					"type": "string"
+				},
+				{
+					"name": "b",
+					"annotations": [
+						{
+							"name": "someName",
+							"value": true
+						},
+						{
+							"name": "someValue",
+							"value": 42
+						}
+					],
+					"type": "number"
+				}
+			],
+			"returns": "void"
+		}
+	]
+}

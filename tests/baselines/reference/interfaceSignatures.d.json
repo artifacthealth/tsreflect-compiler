@@ -28,7 +28,7 @@
 						"name": "key",
 						"type": "number"
 					},
-					"type": "string"
+					"returns": "string"
 				},
 				{
 					"kind": "call",

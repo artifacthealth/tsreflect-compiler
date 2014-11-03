@@ -17,7 +17,7 @@
 					"kind": "field",
 					"name": "b",
 					"type": {
-						"kind": "generic",
+						"kind": "reference",
 						"type": "A",
 						"arguments": [
 							"string"

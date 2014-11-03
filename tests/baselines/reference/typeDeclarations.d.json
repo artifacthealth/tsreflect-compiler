@@ -62,7 +62,7 @@
 					}
 				],
 				"returns": {
-					"kind": "generic",
+					"kind": "reference",
 					"type": "A",
 					"arguments": [
 						"string"
@@ -75,7 +75,7 @@
 			"description": "Generic type",
 			"name": "e",
 			"type": {
-				"kind": "generic",
+				"kind": "reference",
 				"type": "A",
 				"arguments": [
 					"string"

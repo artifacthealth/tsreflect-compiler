@@ -1,0 +1,44 @@
+{
+	"declares": [
+		{
+			"kind": "module",
+			"name": "A",
+			"declares": [
+				{
+					"kind": "class",
+					"name": "C",
+					"members": [
+						{
+							"kind": "get",
+							"name": "a",
+							"private": true,
+							"returns": "string"
+						},
+						{
+							"kind": "set",
+							"name": "a",
+							"private": true,
+							"parameter": {
+								"name": "value",
+								"type": "string"
+							}
+						},
+						{
+							"kind": "get",
+							"name": "d",
+							"private": true
+						},
+						{
+							"kind": "set",
+							"name": "d",
+							"private": true,
+							"parameter": {
+								"name": "value"
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}

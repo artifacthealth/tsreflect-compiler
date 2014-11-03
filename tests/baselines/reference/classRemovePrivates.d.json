@@ -1,0 +1,31 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"members": [
+				{
+					"kind": "field",
+					"name": "a1",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "b1",
+					"parameters": [
+						{
+							"name": "a",
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "field",
+					"name": "c1",
+					"type": "number"
+				}
+			]
+		}
+	]
+}
