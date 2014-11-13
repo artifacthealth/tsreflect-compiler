@@ -690,7 +690,7 @@ module ts {
                     }
 
                     forEach(constructorDeclaration.parameters, param => {
-                        if (param.flags & (NodeFlags.Public | NodeFlags.Private)) {
+                        if (param.flags & NodeFlags.AccessibilityModifier) {
 
                             emitPropertyDeclaration(param, paramDescriptions ? paramDescriptions[getSourceTextOfLocalNode(currentSourceFile, param.name)] : null);
                         }

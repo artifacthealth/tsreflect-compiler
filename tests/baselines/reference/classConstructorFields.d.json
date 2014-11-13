@@ -15,6 +15,12 @@
 					"private": true
 				},
 				{
+					"kind": "field",
+					"name": "c",
+					"type": "boolean",
+					"protected": true
+				},
+				{
 					"kind": "constructor",
 					"parameters": [
 						{
@@ -28,6 +34,10 @@
 						{
 							"name": "c",
 							"type": "boolean"
+						},
+						{
+							"name": "d",
+							"type": "any"
 						}
 					]
 				}
