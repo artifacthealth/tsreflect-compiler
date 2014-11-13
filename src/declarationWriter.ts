@@ -65,7 +65,8 @@ module ts {
         Static = 1 << 4,
         Optional = 1 << 5,
         RestParameter = 1 << 6,
-        ExternalModule = 1 << 7
+        ExternalModule = 1 << 7,
+        HasNoDefaultLib = 1 << 8
     }
 
     export enum DeclarationKind {
@@ -102,6 +103,7 @@ module ts {
         ConstructorType,
         ObjectType,
         TypeReference,
+        StringLiteralType,
 
         Extends,
         Implements,
@@ -321,6 +323,9 @@ module ts {
             if((flags & DeclarationFlag.ExternalModule) !== 0) {
                 this._setProperty("external", true);
             }
+            if((flags & DeclarationFlag.HasNoDefaultLib) !== 0) {
+                this._setProperty("noDefaultLib", true);
+            }
         }
 
         writeValue(identifier: string): void {
@@ -340,7 +345,7 @@ module ts {
 
         writeExportAssignment(identifier: string): void {
 
-            this._setProperty("export", identifier);
+            this._setProperty("exportName", identifier);
         }
 
         close(): Diagnostic[] {
@@ -378,6 +383,9 @@ module ts {
                         // classes can only extend a single base class
                         this._setProperty("extends", type);
                     }
+                    break;
+                case DeclarationKind.TypeReference:
+                    this._setProperty("type", type);
                     break;
                 default:
                     if(this._isReturnType()) {

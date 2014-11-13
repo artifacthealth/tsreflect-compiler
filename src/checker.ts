@@ -448,7 +448,7 @@ module ts {
             }
         }
 
-        function getFullyQualifiedName(symbol: Symbol) {
+        function getFullyQualifiedName(symbol: Symbol): string {
             return symbol.parent ? getFullyQualifiedName(symbol.parent) + "." + symbolToString(symbol) : symbolToString(symbol);
         }
 
@@ -1583,7 +1583,7 @@ module ts {
 
         function hasBaseType(type: InterfaceType, checkBase: InterfaceType) {
             return check(type);
-            function check(type: InterfaceType) {
+            function check(type: InterfaceType): boolean {
                 var target = <InterfaceType>getTargetType(type);
                 return target === checkBase || forEach(target.baseTypes, check);
             }
@@ -6468,7 +6468,7 @@ module ts {
             checkTypeOfExportAssignmentSymbol(getSymbolOfNode(container));
         }
 
-        function checkSourceElement(node: Node): void {
+        function  checkSourceElement(node: Node): void {
             if (!node) return;
             switch (node.kind) {
                 case SyntaxKind.TypeParameter:
@@ -6683,7 +6683,7 @@ module ts {
 
         function getNodeAtPosition(sourceFile: SourceFile, position: number): Node {
             function findChildAtPosition(parent: Node) {
-                var child = forEachChild(parent, node => {
+                var child: Node = forEachChild(parent, node => {
                     if (position >= node.pos && position <= node.end && position >= getTokenPosOfNode(node)) {
                         return findChildAtPosition(node);
                     }

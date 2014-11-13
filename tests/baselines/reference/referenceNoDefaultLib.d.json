@@ -1,0 +1,42 @@
+{
+	"noDefaultLib": true,
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "Array",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Boolean"
+		},
+		{
+			"kind": "interface",
+			"name": "Function"
+		},
+		{
+			"kind": "interface",
+			"name": "IArguments"
+		},
+		{
+			"kind": "interface",
+			"name": "Number"
+		},
+		{
+			"kind": "interface",
+			"name": "Object"
+		},
+		{
+			"kind": "interface",
+			"name": "RegExp"
+		},
+		{
+			"kind": "interface",
+			"name": "String"
+		}
+	]
+}

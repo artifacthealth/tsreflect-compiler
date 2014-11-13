@@ -1,11 +1,4 @@
-module A {
-    class B {
+/// <reference no-default-lib="true"/>
 
-    }
-    export class A {
-
-        private e<T extends B>(a:T):T {
-            return a;
-        }
-    }
-}
+declare var A: number;
+declare var B: number;

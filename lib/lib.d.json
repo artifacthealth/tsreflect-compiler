@@ -1,4 +1,5 @@
 {
+	"noDefaultLib": true,
 	"declares": [
 		{
 			"kind": "variable",
@@ -30602,7 +30603,7 @@
 					"parameters": [
 						{
 							"name": "name",
-							"type": "\"article\""
+							"type": "\"articlex\""
 						}
 					],
 					"returns": {

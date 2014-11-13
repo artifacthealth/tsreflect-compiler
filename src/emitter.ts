@@ -1555,6 +1555,10 @@ module ts {
             }
 
             if (root) {
+                if(root.hasNoDefaultLib) {
+                    writer.writeFlags(DeclarationFlag.HasNoDefaultLib);
+                }
+
                 // Emitting just a single file, so emit references in this file only
                 if (!compilerOptions.noResolve) {
                     var addedGlobalFileReference = false;
@@ -1585,6 +1589,9 @@ module ts {
             }
             else {
                 // --out option specified
+                if(forEach(program.getSourceFiles(), sourceFile => sourceFile.hasNoDefaultLib && !isExternalModuleOrDeclarationFile(sourceFile))) {
+                    writer.writeFlags(DeclarationFlag.HasNoDefaultLib);
+                }
 
                 // Emit references corresponding to this file
                 var emittedReferencedFiles: SourceFile[] = [];

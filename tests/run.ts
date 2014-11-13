@@ -53,10 +53,12 @@ function setupCase(filename: string): void {
 
             var compilerOptions: compiler.CompilerOptions = loadOptions(baseName);
 
+            var files: string[] = (<any>compilerOptions).files || [testCasesDir + filename];
+
             compilerOptions.outDir = localBaselineDir;
             compilerOptions.libPath = "lib.core.d.ts";
 
-            diagnostics = compiler.compile([testCasesDir + filename], compilerOptions);
+            diagnostics = compiler.compile(files, compilerOptions);
 
             if(diagnostics.length > 0) {
                 fs.writeFileSync(localBaselineDir + errorsFilename , diagnosticsToString(diagnostics) , "utf8");
