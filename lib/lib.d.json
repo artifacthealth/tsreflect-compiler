@@ -30603,7 +30603,7 @@
 					"parameters": [
 						{
 							"name": "name",
-							"type": "\"articlex\""
+							"type": "\"article\""
 						}
 					],
 					"returns": {

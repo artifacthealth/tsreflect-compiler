@@ -1,0 +1,42 @@
+{
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "a",
+			"type": {
+				"kind": "tuple",
+				"types": [
+					"string",
+					"number"
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "A",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "a",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "b",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "b",
+			"type": {
+				"kind": "tuple",
+				"types": [
+					"A",
+					"string"
+				]
+			}
+		}
+	]
+}

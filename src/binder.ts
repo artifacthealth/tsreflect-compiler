@@ -99,8 +99,13 @@ module ts {
                     if (node.name) {
                         node.name.parent = node;
                     }
-                    file.semanticErrors.push(createDiagnosticForNode(node.name ? node.name : node,
-                        Diagnostics.Duplicate_identifier_0, getDisplayName(node)));
+                    // Report errors every position with duplicate declaration
+                    // Report errors on previous encountered declarations
+                    forEach(symbol.declarations, (declaration) => {
+                        file.semanticErrors.push(createDiagnosticForNode(declaration.name, Diagnostics.Duplicate_identifier_0, getDisplayName(declaration)));
+                    });
+                    file.semanticErrors.push(createDiagnosticForNode(node.name, Diagnostics.Duplicate_identifier_0, getDisplayName(node)));
+
                     symbol = createSymbol(0, name);
                 }
             }
@@ -112,7 +117,7 @@ module ts {
 
             if (node.kind === SyntaxKind.ClassDeclaration && symbol.exports) {
                 // TypeScript 1.0 spec (April 2014): 8.4
-                // Every class automatically contains a static property member named 'prototype', 
+                // Every class automatically contains a static property member named 'prototype',
                 // the type of which is an instantiation of the class type with type Any supplied as a type argument for each type parameter.
                 // It is an error to explicitly declare a static property member with the name 'prototype'.
                 var prototypeSymbol = createSymbol(SymbolFlags.Property | SymbolFlags.Prototype, "prototype");
@@ -143,7 +148,7 @@ module ts {
             // ExportType, or ExportContainer flag, and an associated export symbol with all the correct flags set
             // on it. There are 2 main reasons:
             //
-            //   1. We treat locals and exports of the same name as mutually exclusive within a container. 
+            //   1. We treat locals and exports of the same name as mutually exclusive within a container.
             //      That means the binder will issue a Duplicate Identifier error if you mix locals and exports
             //      with the same name in the same container.
             //      TODO: Make this a more specific error and decouple it from the exclusion logic.
@@ -241,7 +246,7 @@ module ts {
         function bindConstructorDeclaration(node: ConstructorDeclaration) {
             bindDeclaration(node, SymbolFlags.Constructor, 0);
             forEach(node.parameters, p => {
-                if (p.flags & (NodeFlags.Public | NodeFlags.Private)) {
+                if (p.flags & (NodeFlags.Public | NodeFlags.Private | NodeFlags.Protected)) {
                     bindDeclaration(p, SymbolFlags.Property, SymbolFlags.PropertyExcludes);
                 }
             });
@@ -347,7 +352,7 @@ module ts {
                     break;
                 case SyntaxKind.SourceFile:
                     if (isExternalModule(<SourceFile>node)) {
-                        bindAnonymousDeclaration(node, SymbolFlags.ValueModule, '"' + getModuleNameFromFilename((<SourceFile>node).filename) + '"');
+                        bindAnonymousDeclaration(node, SymbolFlags.ValueModule, '"' + removeFileExtension((<SourceFile>node).filename) + '"');
                         break;
                     }
                 default:

@@ -128,6 +128,7 @@ module ts {
         var program = ts.createProgram(filenames, options, compilerHost);
 
         var errors = program.getDiagnostics();
+
         if (errors.length == 0) {
             var checker = program.getTypeChecker(!options.noCheck);
 

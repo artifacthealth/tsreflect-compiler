@@ -52,20 +52,9 @@ module ts {
         return node;
     }
 
-    var moduleExtensions = [".d.ts", ".ts", ".js"];
-
     interface ReferenceComments {
         referencedFiles: FileReference[];
         amdDependencies: string[];
-    }
-
-    export function getModuleNameFromFilename(filename: string) {
-        for (var i = 0; i < moduleExtensions.length; i++) {
-            var ext = moduleExtensions[i];
-            var len = filename.length - ext.length;
-            if (len > 0 && filename.substr(len) === ext) return filename.substr(0, len);
-        }
-        return filename;
     }
 
     export function getSourceFileOfNode(node: Node): SourceFile {
@@ -85,15 +74,15 @@ module ts {
         return node.pos;
     }
 
-    export function getTokenPosOfNode(node: Node): number {
-        return skipTrivia(getSourceFileOfNode(node).text, node.pos);
+    export function getTokenPosOfNode(node: Node, sourceFile?: SourceFile): number {
+        return skipTrivia((sourceFile || getSourceFileOfNode(node)).text, node.pos);
     }
 
-    export function getSourceTextOfNodeFromSourceText(sourceText: string, node: Node): string {
+    export function getTextOfNodeFromSourceText(sourceText: string, node: Node): string {
         return sourceText.substring(skipTrivia(sourceText, node.pos), node.end);
     }
 
-    export function getSourceTextOfNode(node: Node): string {
+    export function getTextOfNode(node: Node): string {
         var text = getSourceFileOfNode(node).text;
         return text.substring(skipTrivia(text, node.pos), node.end);
     }
@@ -110,7 +99,7 @@ module ts {
 
     // Return display name of an identifier
     export function identifierToString(identifier: Identifier) {
-        return identifier.kind === SyntaxKind.Missing ? "(Missing)" : getSourceTextOfNode(identifier);
+        return identifier.kind === SyntaxKind.Missing ? "(Missing)" : getTextOfNode(identifier);
     }
 
     export function createDiagnosticForNode(node: Node, message: DiagnosticMessage, arg0?: any, arg1?: any, arg2?: any): Diagnostic {
@@ -157,6 +146,10 @@ module ts {
         return file.externalModuleIndicator !== undefined;
     }
 
+    export function isDeclarationFile(file: SourceFile): boolean {
+        return (file.flags & NodeFlags.DeclarationFile) !== 0;
+    }
+
     export function isPrologueDirective(node: Node): boolean {
         return node.kind === SyntaxKind.ExpressionStatement && (<ExpressionStatement>node).expression.kind === SyntaxKind.StringLiteral;
     }
@@ -173,25 +166,27 @@ module ts {
         return (<Identifier>(<ExpressionStatement>node).expression).text === "use strict";
     }
 
-    export function getLeadingCommentsOfNode(node: Node, sourceFileOfNode: SourceFile) {
+    export function getLeadingCommentRangesOfNode(node: Node, sourceFileOfNode?: SourceFile) {
+        sourceFileOfNode = sourceFileOfNode || getSourceFileOfNode(node);
+
         // If parameter/type parameter, the prev token trailing comments are part of this node too
         if (node.kind === SyntaxKind.Parameter || node.kind === SyntaxKind.TypeParameter) {
             // e.g.   (/** blah */ a, /** blah */ b);
-            return concatenate(getTrailingComments(sourceFileOfNode.text, node.pos),
+            return concatenate(getTrailingCommentRanges(sourceFileOfNode.text, node.pos),
                 // e.g.:     (
                 //            /** blah */ a,
                 //            /** blah */ b);
-                getLeadingComments(sourceFileOfNode.text, node.pos));
+                getLeadingCommentRanges(sourceFileOfNode.text, node.pos));
         }
         else {
-            return getLeadingComments(sourceFileOfNode.text, node.pos);
+            return getLeadingCommentRanges(sourceFileOfNode.text, node.pos);
         }
     }
 
     export function getJsDocComments(node: Declaration, sourceFileOfNode: SourceFile) {
-        return filter(getLeadingCommentsOfNode(node, sourceFileOfNode), comment => isJsDocComment(comment));
+        return filter(getLeadingCommentRangesOfNode(node, sourceFileOfNode), comment => isJsDocComment(comment));
 
-        function isJsDocComment(comment: Comment) {
+        function isJsDocComment(comment: CommentRange) {
             // True if the comment starts with '/**' but not if it is '/**/'
             return sourceFileOfNode.text.charCodeAt(comment.pos + 1) === CharacterCodes.asterisk &&
                 sourceFileOfNode.text.charCodeAt(comment.pos + 2) === CharacterCodes.asterisk &&
@@ -263,6 +258,8 @@ module ts {
                 return children((<TypeLiteralNode>node).members);
             case SyntaxKind.ArrayType:
                 return child((<ArrayTypeNode>node).elementType);
+            case SyntaxKind.TupleType:
+                return children((<TupleTypeNode>node).elementTypes);
             case SyntaxKind.ArrayLiteral:
                 return children((<ArrayLiteral>node).elements);
             case SyntaxKind.ObjectLiteral:
@@ -340,9 +337,9 @@ module ts {
             case SyntaxKind.DefaultClause:
                 return child((<CaseOrDefaultClause>node).expression) ||
                     children((<CaseOrDefaultClause>node).statements);
-            case SyntaxKind.LabelledStatement:
-                return child((<LabelledStatement>node).label) ||
-                    child((<LabelledStatement>node).statement);
+            case SyntaxKind.LabeledStatement:
+                return child((<LabeledStatement>node).label) ||
+                    child((<LabeledStatement>node).statement);
             case SyntaxKind.ThrowStatement:
                 return child((<ThrowStatement>node).expression);
             case SyntaxKind.TryStatement:
@@ -385,6 +382,107 @@ module ts {
         }
     }
 
+    // Warning: This has the same semantics as the forEach family of functions,
+    //          in that traversal terminates in the event that 'visitor' supplies a truthy value.
+    export function forEachReturnStatement<T>(body: Block, visitor: (stmt: ReturnStatement) => T): T {
+
+        return traverse(body);
+
+        function traverse(node: Node): T {
+            switch (node.kind) {
+                case SyntaxKind.ReturnStatement:
+                    return visitor(node);
+                case SyntaxKind.Block:
+                case SyntaxKind.FunctionBlock:
+                case SyntaxKind.IfStatement:
+                case SyntaxKind.DoStatement:
+                case SyntaxKind.WhileStatement:
+                case SyntaxKind.ForStatement:
+                case SyntaxKind.ForInStatement:
+                case SyntaxKind.WithStatement:
+                case SyntaxKind.SwitchStatement:
+                case SyntaxKind.CaseClause:
+                case SyntaxKind.DefaultClause:
+                case SyntaxKind.LabeledStatement:
+                case SyntaxKind.TryStatement:
+                case SyntaxKind.TryBlock:
+                case SyntaxKind.CatchBlock:
+                case SyntaxKind.FinallyBlock:
+                    return forEachChild(node, traverse);
+            }
+        }
+    }
+
+    export function isAnyFunction(node: Node): boolean {
+        if (node) {
+            switch (node.kind) {
+                case SyntaxKind.FunctionExpression:
+                case SyntaxKind.FunctionDeclaration:
+                case SyntaxKind.ArrowFunction:
+                case SyntaxKind.Method:
+                case SyntaxKind.GetAccessor:
+                case SyntaxKind.SetAccessor:
+                case SyntaxKind.Constructor:
+                    return true;
+            }
+        }
+
+        return false;
+    }
+
+    export function getContainingFunction(node: Node): SignatureDeclaration {
+        while (true) {
+            node = node.parent;
+            if (!node || isAnyFunction(node)) {
+                return <SignatureDeclaration>node;
+            }
+        }
+    }
+
+    export function getThisContainer(node: Node, includeArrowFunctions: boolean): Node {
+        while (true) {
+            node = node.parent;
+            if (!node) {
+                return undefined;
+            }
+            switch (node.kind) {
+                case SyntaxKind.ArrowFunction:
+                    if (!includeArrowFunctions) {
+                        continue;
+                    }
+                // Fall through
+                case SyntaxKind.FunctionDeclaration:
+                case SyntaxKind.FunctionExpression:
+                case SyntaxKind.ModuleDeclaration:
+                case SyntaxKind.Property:
+                case SyntaxKind.Method:
+                case SyntaxKind.Constructor:
+                case SyntaxKind.GetAccessor:
+                case SyntaxKind.SetAccessor:
+                case SyntaxKind.EnumDeclaration:
+                case SyntaxKind.SourceFile:
+                    return node;
+            }
+        }
+    }
+
+    export function getSuperContainer(node: Node): Node {
+        while (true) {
+            node = node.parent;
+            if (!node) {
+                return undefined;
+            }
+            switch (node.kind) {
+                case SyntaxKind.Property:
+                case SyntaxKind.Method:
+                case SyntaxKind.Constructor:
+                case SyntaxKind.GetAccessor:
+                case SyntaxKind.SetAccessor:
+                    return node;
+            }
+        }
+    }
+
     export function hasRestParameters(s: SignatureDeclaration): boolean {
         return s.parameters.length > 0 && (s.parameters[s.parameters.length - 1].flags & NodeFlags.Rest) !== 0;
     }
@@ -419,6 +517,32 @@ module ts {
         return false;
     }
 
+    export function isStatement(n: Node): boolean {
+        switch(n.kind) {
+            case SyntaxKind.BreakStatement:
+            case SyntaxKind.ContinueStatement:
+            case SyntaxKind.DebuggerStatement:
+            case SyntaxKind.DoStatement:
+            case SyntaxKind.ExpressionStatement:
+            case SyntaxKind.EmptyStatement:
+            case SyntaxKind.ForInStatement:
+            case SyntaxKind.ForStatement:
+            case SyntaxKind.IfStatement:
+            case SyntaxKind.LabeledStatement:
+            case SyntaxKind.ReturnStatement:
+            case SyntaxKind.SwitchStatement:
+            case SyntaxKind.ThrowKeyword:
+            case SyntaxKind.TryStatement:
+            case SyntaxKind.VariableStatement:
+            case SyntaxKind.WhileStatement:
+            case SyntaxKind.WithStatement:
+            case SyntaxKind.ExportAssignment:
+                return true;
+            default:
+                return false;
+        }
+    }
+
     // True if the given identifier, string literal, or number literal is the name of a declaration node
     export function isDeclarationOrFunctionExpressionOrCatchVariableName(name: Node): boolean {
         if (name.kind !== SyntaxKind.Identifier && name.kind !== SyntaxKind.StringLiteral && name.kind !== SyntaxKind.NumericLiteral) {
@@ -435,6 +559,39 @@ module ts {
         }
 
         return false;
+    }
+
+    export function getAncestor(node: Node, kind: SyntaxKind): Node {
+        switch (kind) {
+            // special-cases that can be come first
+            case SyntaxKind.ClassDeclaration:
+                while (node) {
+                    switch (node.kind) {
+                        case SyntaxKind.ClassDeclaration:
+                            return <ClassDeclaration>node;
+                        case SyntaxKind.EnumDeclaration:
+                        case SyntaxKind.InterfaceDeclaration:
+                        case SyntaxKind.ModuleDeclaration:
+                        case SyntaxKind.ImportDeclaration:
+                            // early exit cases - declarations cannot be nested in classes
+                            return undefined;
+                        default:
+                            node = node.parent;
+                            continue;
+                    }
+                }
+                break;
+            default:
+                while (node) {
+                    if (node.kind === kind) {
+                        return node;
+                    }
+                    node = node.parent;
+                }
+                break;
+        }
+
+        return undefined;
     }
 
     enum ParsingContext {
@@ -454,6 +611,7 @@ module ts {
         Parameters,              // Parameters in parameter list
         TypeParameters,          // Type parameters in type parameter list
         TypeArguments,           // Type arguments in type argument list
+        TupleElementTypes,       // Element types in tuple element type list
         Count                    // Number of parsing contexts
     }
 
@@ -481,6 +639,7 @@ module ts {
             case ParsingContext.Parameters:             return Diagnostics.Parameter_declaration_expected;
             case ParsingContext.TypeParameters:         return Diagnostics.Type_parameter_declaration_expected;
             case ParsingContext.TypeArguments:          return Diagnostics.Type_argument_expected;
+            case ParsingContext.TupleElementTypes:      return Diagnostics.Type_expected;
         }
     };
 
@@ -495,12 +654,6 @@ module ts {
         ModuleElements,          // Elements in module declaration
         ClassMembers,            // Members in class declaration
         Parameters,              // Parameters in parameter list
-    }
-
-    enum TrailingCommaBehavior {
-        Disallow,
-        Allow,
-        Preserve
     }
 
     // Tracks whether we nested (directly or indirectly) in a certain control block.
@@ -523,10 +676,15 @@ module ts {
         return SyntaxKind.FirstKeyword <= token && token <= SyntaxKind.LastKeyword;
     }
 
+    export function isTrivia(token: SyntaxKind) {
+        return SyntaxKind.FirstTriviaToken <= token && token <= SyntaxKind.LastTriviaToken;
+    }
+
     export function isModifier(token: SyntaxKind): boolean {
         switch (token) {
             case SyntaxKind.PublicKeyword:
             case SyntaxKind.PrivateKeyword:
+            case SyntaxKind.ProtectedKeyword:
             case SyntaxKind.StaticKeyword:
             case SyntaxKind.ExportKeyword:
             case SyntaxKind.DeclareKeyword:
@@ -883,7 +1041,10 @@ module ts {
                 return finishNode(node);
             }
             error(Diagnostics.Identifier_expected);
-            return <Identifier>createMissingNode();
+
+            var node = <Identifier>createMissingNode();
+            node.text = "";
+            return node;
         }
 
         function parseIdentifier(): Identifier {
@@ -943,12 +1104,13 @@ module ts {
                 case ParsingContext.TypeParameters:
                     return isIdentifier();
                 case ParsingContext.ArgumentExpressions:
-                    return isExpression();
+                    return token === SyntaxKind.CommaToken || isExpression();
                 case ParsingContext.ArrayLiteralMembers:
                     return token === SyntaxKind.CommaToken || isExpression();
                 case ParsingContext.Parameters:
                     return isParameter();
                 case ParsingContext.TypeArguments:
+                case ParsingContext.TupleElementTypes:
                     return isType();
             }
 
@@ -984,6 +1146,7 @@ module ts {
                     // Tokens other than ')' are here for better error recovery
                     return token === SyntaxKind.CloseParenToken || token === SyntaxKind.SemicolonToken;
                 case ParsingContext.ArrayLiteralMembers:
+                case ParsingContext.TupleElementTypes:
                     return token === SyntaxKind.CloseBracketToken;
                 case ParsingContext.Parameters:
                     // Tokens other than ')' and ']' (the latter for index signatures) are here for better error recovery
@@ -1071,7 +1234,7 @@ module ts {
         }
 
         // Parses a comma-delimited list of elements
-        function parseDelimitedList<T extends Node>(kind: ParsingContext, parseElement: () => T, trailingCommaBehavior: TrailingCommaBehavior): NodeArray<T> {
+        function parseDelimitedList<T extends Node>(kind: ParsingContext, parseElement: () => T, allowTrailingComma: boolean): NodeArray<T> {
             var saveParsingContext = parsingContext;
             parsingContext |= 1 << kind;
             var result = <NodeArray<T>>[];
@@ -1094,19 +1257,6 @@ module ts {
                     error(Diagnostics._0_expected, ",");
                 }
                 else if (isListTerminator(kind)) {
-                    // Check if the last token was a comma.
-                    if (commaStart >= 0) {
-                        if (trailingCommaBehavior === TrailingCommaBehavior.Disallow) {
-                            if (file.syntacticErrors.length === errorCountBeforeParsingList) {
-                                // Report a grammar error so we don't affect lookahead
-                                grammarErrorAtPos(commaStart, scanner.getStartPos() - commaStart, Diagnostics.Trailing_comma_not_allowed);
-                            }
-                        }
-                        else if (trailingCommaBehavior === TrailingCommaBehavior.Preserve) {
-                            result.push(<T>createNode(SyntaxKind.OmittedExpression));
-                        }
-                    }
-
                     break;
                 }
                 else {
@@ -1117,6 +1267,23 @@ module ts {
                     nextToken();
                 }
             }
+
+            // Recording the trailing comma is deliberately done after the previous
+            // loop, and not just if we see a list terminator. This is because the list
+            // may have ended incorrectly, but it is still important to know if there
+            // was a trailing comma.
+            // Check if the last token was a comma.
+            if (commaStart >= 0) {
+                if (!allowTrailingComma) {
+                    if (file.syntacticErrors.length === errorCountBeforeParsingList) {
+                        // Report a grammar error so we don't affect lookahead
+                        grammarErrorAtPos(commaStart, scanner.getStartPos() - commaStart, Diagnostics.Trailing_comma_not_allowed);
+                    }
+                }
+                // Always preserve a trailing comma by marking it on the NodeArray
+                result.hasTrailingComma = true;
+            }
+
             result.end = getNodeEnd();
             parsingContext = saveParsingContext;
             return result;
@@ -1139,7 +1306,7 @@ module ts {
 
         function parseBracketedList<T extends Node>(kind: ParsingContext, parseElement: () => T, startToken: SyntaxKind, endToken: SyntaxKind): NodeArray<T> {
             if (parseExpected(startToken)) {
-                var result = parseDelimitedList(kind, parseElement, TrailingCommaBehavior.Disallow);
+                var result = parseDelimitedList(kind, parseElement, /*allowTrailingComma*/ false);
                 parseExpected(endToken);
                 return result;
             }
@@ -1515,6 +1682,17 @@ module ts {
             return finishNode(node);
         }
 
+        function parseTupleType(): TupleTypeNode {
+            var node = <TupleTypeNode>createNode(SyntaxKind.TupleType);
+            var startTokenPos = scanner.getTokenPos();
+            var startErrorCount = file.syntacticErrors.length;
+            node.elementTypes = parseBracketedList(ParsingContext.TupleElementTypes, parseType, SyntaxKind.OpenBracketToken, SyntaxKind.CloseBracketToken);
+            if (!node.elementTypes.length && file.syntacticErrors.length === startErrorCount) {
+                grammarErrorAtPos(startTokenPos, scanner.getStartPos() - startTokenPos, Diagnostics.A_tuple_type_element_list_cannot_be_empty);
+            }
+            return finishNode(node);
+        }
+
         function parseFunctionType(signatureKind: SyntaxKind): TypeLiteralNode {
             var node = <TypeLiteralNode>createNode(SyntaxKind.TypeLiteral);
             var member = <SignatureDeclaration>createNode(signatureKind);
@@ -1545,6 +1723,8 @@ module ts {
                     return parseTypeQuery();
                 case SyntaxKind.OpenBraceToken:
                     return parseTypeLiteral();
+                case SyntaxKind.OpenBracketToken:
+                    return parseTupleType();
                 case SyntaxKind.OpenParenToken:
                 case SyntaxKind.LessThanToken:
                     return parseFunctionType(SyntaxKind.CallSignature);
@@ -1568,6 +1748,7 @@ module ts {
                 case SyntaxKind.VoidKeyword:
                 case SyntaxKind.TypeOfKeyword:
                 case SyntaxKind.OpenBraceToken:
+                case SyntaxKind.OpenBracketToken:
                 case SyntaxKind.LessThanToken:
                 case SyntaxKind.NewKeyword:
                     return true;
@@ -2026,10 +2207,10 @@ module ts {
                         // The identifier eval or arguments may not appear as the LeftHandSideExpression of an 
                         // Assignment operator(11.13) or of a PostfixExpression(11.3) or as the UnaryExpression 
                         // operated upon by a Prefix Increment(11.4.4) or a Prefix Decrement(11.4.5) operator
-                        if ((token === SyntaxKind.PlusPlusToken || token === SyntaxKind.MinusMinusToken) && isEvalOrArgumentsIdentifier(operand)) {
+                        if ((operator === SyntaxKind.PlusPlusToken || operator === SyntaxKind.MinusMinusToken) && isEvalOrArgumentsIdentifier(operand)) {
                             reportInvalidUseInStrictMode(<Identifier>operand);
                         }
-                        else if (token === SyntaxKind.DeleteKeyword && operand.kind === SyntaxKind.Identifier) {
+                        else if (operator === SyntaxKind.DeleteKeyword && operand.kind === SyntaxKind.Identifier) {
                             // When a delete operator occurs within strict mode code, a SyntaxError is thrown if its 
                             // UnaryExpression is a direct reference to a variable, function argument, or function name
                             grammarErrorOnNode(operand, Diagnostics.delete_cannot_be_called_on_an_identifier_in_strict_mode);
@@ -2088,10 +2269,38 @@ module ts {
 
         function parseCallAndAccess(expr: Expression, inNewExpression: boolean): Expression {
             while (true) {
+                var dotStart = scanner.getTokenPos();
                 if (parseOptional(SyntaxKind.DotToken)) {
                     var propertyAccess = <PropertyAccess>createNode(SyntaxKind.PropertyAccess, expr.pos);
+                    // Technically a keyword is valid here as all keywords are identifier names.
+                    // However, often we'll encounter this in error situations when the keyword
+                    // is actually starting another valid construct.
+                    //
+                    // So, we check for the following specific case:
+                    //
+                    //      name.
+                    //      keyword identifierNameOrKeyword
+                    //
+                    // Note: the newlines are important here.  For example, if that above code 
+                    // were rewritten into:
+                    //
+                    //      name.keyword
+                    //      identifierNameOrKeyword
+                    //
+                    // Then we would consider it valid.  That's because ASI would take effect and
+                    // the code would be implicitly: "name.keyword; identifierNameOrKeyword".  
+                    // In the first case though, ASI will not take effect because there is not a
+                    // line terminator after the keyword.
+                    if (scanner.hasPrecedingLineBreak() && scanner.isReservedWord() && lookAhead(() => scanner.isReservedWord())) {
+                        grammarErrorAtPos(dotStart, scanner.getStartPos() - dotStart, Diagnostics.Identifier_expected);
+                        var id = <Identifier>createMissingNode();
+                    }
+                    else {
+                        var id = parseIdentifierName();
+                    }
+
                     propertyAccess.left = expr;
-                    propertyAccess.right = parseIdentifierName();
+                    propertyAccess.right = id;
                     expr = finishNode(propertyAccess);
                     continue;
                 }
@@ -2133,7 +2342,8 @@ module ts {
                     else {
                         parseExpected(SyntaxKind.OpenParenToken);
                     }
-                    callExpr.arguments = parseDelimitedList(ParsingContext.ArgumentExpressions, parseAssignmentExpression, TrailingCommaBehavior.Disallow);
+                    callExpr.arguments = parseDelimitedList(ParsingContext.ArgumentExpressions,
+                        parseArgumentExpression, /*allowTrailingComma*/ false);
                     parseExpected(SyntaxKind.CloseParenToken);
                     expr = finishNode(callExpr);
                     continue;
@@ -2202,15 +2412,33 @@ module ts {
             return finishNode(node);
         }
 
+        function parseAssignmentExpressionOrOmittedExpression(omittedExpressionDiagnostic: DiagnosticMessage): Expression {
+            if (token === SyntaxKind.CommaToken) {
+                if (omittedExpressionDiagnostic) {
+                    var errorStart = scanner.getTokenPos();
+                    var errorLength = scanner.getTextPos() - errorStart;
+                    grammarErrorAtPos(errorStart, errorLength, omittedExpressionDiagnostic);
+                }
+                return createNode(SyntaxKind.OmittedExpression);
+            }
+            
+            return parseAssignmentExpression();
+        }
+
         function parseArrayLiteralElement(): Expression {
-            return token === SyntaxKind.CommaToken ? createNode(SyntaxKind.OmittedExpression) : parseAssignmentExpression();
+            return parseAssignmentExpressionOrOmittedExpression(/*omittedExpressionDiagnostic*/ undefined);
+        }
+
+        function parseArgumentExpression(): Expression {
+            return parseAssignmentExpressionOrOmittedExpression(Diagnostics.Argument_expression_expected);
         }
 
         function parseArrayLiteral(): ArrayLiteral {
             var node = <ArrayLiteral>createNode(SyntaxKind.ArrayLiteral);
             parseExpected(SyntaxKind.OpenBracketToken);
             if (scanner.hasPrecedingLineBreak()) node.flags |= NodeFlags.MultiLine;
-            node.elements = parseDelimitedList(ParsingContext.ArrayLiteralMembers, parseArrayLiteralElement, TrailingCommaBehavior.Preserve);
+            node.elements = parseDelimitedList(ParsingContext.ArrayLiteralMembers, 
+                parseArrayLiteralElement, /*allowTrailingComma*/ true);
             parseExpected(SyntaxKind.CloseBracketToken);
             return finishNode(node);
         }
@@ -2252,10 +2480,7 @@ module ts {
                 node.flags |= NodeFlags.MultiLine;
             }
 
-            // ES3 itself does not accept a trailing comma in an object literal, however, we'd like to preserve it in ES5.
-            var trailingCommaBehavior = languageVersion === ScriptTarget.ES3 ? TrailingCommaBehavior.Allow : TrailingCommaBehavior.Preserve;
-
-            node.properties = parseDelimitedList(ParsingContext.ObjectLiteralMembers, parseObjectLiteralMember, trailingCommaBehavior);
+            node.properties = parseDelimitedList(ParsingContext.ObjectLiteralMembers, parseObjectLiteralMember, /*allowTrailingComma*/ true);
             parseExpected(SyntaxKind.CloseBraceToken);
 
             var seen: Map<SymbolFlags> = {};
@@ -2344,7 +2569,8 @@ module ts {
             parseExpected(SyntaxKind.NewKeyword);
             node.func = parseCallAndAccess(parsePrimaryExpression(), /* inNewExpression */ true);
             if (parseOptional(SyntaxKind.OpenParenToken) || token === SyntaxKind.LessThanToken && (node.typeArguments = tryParse(parseTypeArgumentsAndOpenParen))) {
-                node.arguments = parseDelimitedList(ParsingContext.ArgumentExpressions, parseAssignmentExpression, TrailingCommaBehavior.Disallow);
+                node.arguments = parseDelimitedList(ParsingContext.ArgumentExpressions,
+                    parseArgumentExpression, /*allowTrailingComma*/ false);
                 parseExpected(SyntaxKind.CloseParenToken);
             }
             return finishNode(node);
@@ -2744,13 +2970,13 @@ module ts {
             return isIdentifier() && lookAhead(() => nextToken() === SyntaxKind.ColonToken);
         }
 
-        function parseLabelledStatement(): LabelledStatement {
-            var node = <LabelledStatement>createNode(SyntaxKind.LabelledStatement);
+        function parseLabelledStatement(): LabeledStatement {
+            var node = <LabeledStatement>createNode(SyntaxKind.LabeledStatement);
             node.label = parseIdentifier();
             parseExpected(SyntaxKind.ColonToken);
 
             if (labelledStatementInfo.nodeIsNestedInLabel(node.label, /*requireIterationStatement*/ false, /*stopAtFunctionBoundary*/ true)) {
-                grammarErrorOnNode(node.label, Diagnostics.Duplicate_label_0, getSourceTextOfNodeFromSourceText(sourceText, node.label));
+                grammarErrorOnNode(node.label, Diagnostics.Duplicate_label_0, getTextOfNodeFromSourceText(sourceText, node.label));
             }
             labelledStatementInfo.addLabel(node.label);
 
@@ -2808,6 +3034,7 @@ module ts {
                     }
                 case SyntaxKind.PublicKeyword:
                 case SyntaxKind.PrivateKeyword:
+                case SyntaxKind.ProtectedKeyword:
                 case SyntaxKind.StaticKeyword:
                     // When followed by an identifier or keyword, these do not start a statement but
                     // might instead be following type members
@@ -2912,7 +3139,8 @@ module ts {
         }
 
         function parseVariableDeclarationList(flags: NodeFlags, noIn?: boolean): NodeArray<VariableDeclaration> {
-            return parseDelimitedList(ParsingContext.VariableDeclarations, () => parseVariableDeclaration(flags, noIn), TrailingCommaBehavior.Disallow);
+            return parseDelimitedList(ParsingContext.VariableDeclarations,
+                () => parseVariableDeclaration(flags, noIn), /*allowTrailingComma*/ false);
         }
 
         function parseVariableStatement(pos?: number, flags?: NodeFlags): VariableStatement {
@@ -3126,6 +3354,8 @@ module ts {
             var lastDeclareModifierLength: number;
             var lastPrivateModifierStart: number;
             var lastPrivateModifierLength: number;
+            var lastProtectedModifierStart: number;
+            var lastProtectedModifierLength: number;
 
             while (true) {
                 var modifierStart = scanner.getTokenPos();
@@ -3138,7 +3368,7 @@ module ts {
 
                 switch (modifierToken) {
                     case SyntaxKind.PublicKeyword:
-                        if (flags & NodeFlags.Private || flags & NodeFlags.Public) {
+                        if (flags & NodeFlags.AccessibilityModifier) {
                             grammarErrorAtPos(modifierStart, modifierLength, Diagnostics.Accessibility_modifier_already_seen);
                         }
                         else if (flags & NodeFlags.Static) {
@@ -3151,7 +3381,7 @@ module ts {
                         break;
 
                     case SyntaxKind.PrivateKeyword:
-                        if (flags & NodeFlags.Private || flags & NodeFlags.Public) {
+                        if (flags & NodeFlags.AccessibilityModifier) {
                             grammarErrorAtPos(modifierStart, modifierLength, Diagnostics.Accessibility_modifier_already_seen);
                         }
                         else if (flags & NodeFlags.Static) {
@@ -3163,6 +3393,21 @@ module ts {
                         lastPrivateModifierStart = modifierStart;
                         lastPrivateModifierLength = modifierLength;
                         flags |= NodeFlags.Private;
+                        break;
+
+                    case SyntaxKind.ProtectedKeyword:
+                        if (flags & NodeFlags.Public || flags & NodeFlags.Private || flags & NodeFlags.Protected) {
+                            grammarErrorAtPos(modifierStart, modifierLength, Diagnostics.Accessibility_modifier_already_seen);
+                        }
+                        else if (flags & NodeFlags.Static) {
+                            grammarErrorAtPos(modifierStart, modifierLength, Diagnostics._0_modifier_must_precede_1_modifier, "protected", "static");
+                        }
+                        else if (context === ModifierContext.ModuleElements || context === ModifierContext.SourceElements) {
+                            grammarErrorAtPos(modifierStart, modifierLength, Diagnostics._0_modifier_cannot_appear_on_a_module_element, "protected");
+                        }
+                        lastProtectedModifierStart = modifierStart;
+                        lastProtectedModifierLength = modifierLength;
+                        flags |= NodeFlags.Protected;
                         break;
 
                     case SyntaxKind.StaticKeyword:
@@ -3221,6 +3466,9 @@ module ts {
             }
             else if (token === SyntaxKind.ConstructorKeyword && flags & NodeFlags.Private) {
                 grammarErrorAtPos(lastPrivateModifierStart, lastPrivateModifierLength, Diagnostics._0_modifier_cannot_appear_on_a_constructor_declaration, "private");
+            }
+            else if (token === SyntaxKind.ConstructorKeyword && flags & NodeFlags.Protected) {
+                grammarErrorAtPos(lastProtectedModifierStart, lastProtectedModifierLength, Diagnostics._0_modifier_cannot_appear_on_a_constructor_declaration, "protected");
             }
             else if (token === SyntaxKind.ImportKeyword) {
                 if (flags & NodeFlags.Ambient) {
@@ -3291,7 +3539,8 @@ module ts {
             var implementsKeywordLength: number;
             if (parseOptional(SyntaxKind.ImplementsKeyword)) {
                 implementsKeywordLength = scanner.getStartPos() - implementsKeywordStart;
-                node.implementedTypes = parseDelimitedList(ParsingContext.BaseTypeReferences, parseTypeReference, TrailingCommaBehavior.Disallow);
+                node.implementedTypes = parseDelimitedList(ParsingContext.BaseTypeReferences,
+                    parseTypeReference, /*allowTrailingComma*/ false);
             }
             var errorCountBeforeClassBody = file.syntacticErrors.length;
             if (parseExpected(SyntaxKind.OpenBraceToken)) {
@@ -3319,7 +3568,8 @@ module ts {
             var extendsKeywordLength: number;
             if (parseOptional(SyntaxKind.ExtendsKeyword)) {
                 extendsKeywordLength = scanner.getStartPos() - extendsKeywordStart;
-                node.baseTypes = parseDelimitedList(ParsingContext.BaseTypeReferences, parseTypeReference, TrailingCommaBehavior.Disallow);
+                node.baseTypes = parseDelimitedList(ParsingContext.BaseTypeReferences,
+                    parseTypeReference, /*allowTrailingComma*/ false);
             }
             var errorCountBeforeInterfaceBody = file.syntacticErrors.length;
             node.members = parseTypeLiteral().members;
@@ -3328,7 +3578,7 @@ module ts {
             }
             return finishNode(node);
         }
-
+        
         function parseAndCheckEnumDeclaration(pos: number, flags: NodeFlags): EnumDeclaration {
             function isIntegerLiteral(expression: Expression): boolean {
                 function isInteger(literalExpression: LiteralExpression): boolean {
@@ -3383,7 +3633,8 @@ module ts {
             parseExpected(SyntaxKind.EnumKeyword);
             node.name = parseIdentifier();
             if (parseExpected(SyntaxKind.OpenBraceToken)) {
-                node.members = parseDelimitedList(ParsingContext.EnumMembers, parseAndCheckEnumMember, TrailingCommaBehavior.Allow);
+                node.members = parseDelimitedList(ParsingContext.EnumMembers,
+                    parseAndCheckEnumMember, /*allowTrailingComma*/ true);
                 parseExpected(SyntaxKind.CloseBraceToken);
             }
             else {
@@ -3498,6 +3749,7 @@ module ts {
                 case SyntaxKind.DeclareKeyword:
                 case SyntaxKind.PublicKeyword:
                 case SyntaxKind.PrivateKeyword:
+                case SyntaxKind.ProtectedKeyword:
                 case SyntaxKind.StaticKeyword:
                     // Check for modifier on source element
                     return lookAhead(() => { nextToken(); return isDeclaration(); });
@@ -3604,15 +3856,17 @@ module ts {
                     }
                     else {
                         var matchResult = fullTripleSlashReferencePathRegEx.exec(comment);
+                        var start = range.pos;
+                        var end = range.end;
+                        var length = end - start;
+                       
                         if (!matchResult) {
-                            var start = range.pos;
-                            var length = range.end - start;
                             errorAtPos(start, length, Diagnostics.Invalid_reference_directive_syntax);
                         }
                         else {
                             referencedFiles.push({
-                                pos: range.pos,
-                                end: range.end,
+                                pos: start,
+                                end: end,
                                 filename: matchResult[3]
                             });
                         }
@@ -3642,7 +3896,7 @@ module ts {
                 : undefined);
         }
 
-        scanner = createScanner(languageVersion, sourceText, scanError, onComment);
+        scanner = createScanner(languageVersion, /*skipTrivia*/ true, sourceText, scanError, onComment);
         var rootNodeFlags: NodeFlags = 0;
         if (fileExtensionIs(filename, ".d.ts")) {
             rootNodeFlags = NodeFlags.DeclarationFile;
@@ -3676,7 +3930,6 @@ module ts {
         var errors: Diagnostic[] = [];
         var seenNoDefaultLib = options.noLib;
         var commonSourceDirectory: string;
-        var checker: TypeChecker;
 
         forEach(rootNames, name => processRootFile(name, false));
         if (!seenNoDefaultLib) {
@@ -3692,7 +3945,7 @@ module ts {
             getDiagnostics: getDiagnostics,
             getGlobalDiagnostics: getGlobalDiagnostics,
             getTypeChecker: fullTypeCheckMode => createTypeChecker(program, fullTypeCheckMode),
-            getCommonSourceDirectory: () => commonSourceDirectory
+            getCommonSourceDirectory: () => commonSourceDirectory,
         };
         return program;
 
@@ -3806,7 +4059,8 @@ module ts {
 
         function processReferencedFiles(file: SourceFile, basePath: string) {
             forEach(file.referencedFiles, ref => {
-                processSourceFile(normalizePath(combinePaths(basePath, ref.filename)), /* isDefaultLib */ false, file, ref.pos, ref.end);
+                var referencedFilename = isRootedDiskPath(ref.filename) ? ref.filename : combinePaths(basePath, ref.filename);
+                processSourceFile(normalizePath(referencedFilename), /* isDefaultLib */ false, file, ref.pos, ref.end);
             });
         }
 
@@ -3831,7 +4085,7 @@ module ts {
                         }
                     }
                 }
-                else if (node.kind === SyntaxKind.ModuleDeclaration && (<ModuleDeclaration>node).name.kind === SyntaxKind.StringLiteral && (node.flags & NodeFlags.Ambient || file.flags & NodeFlags.DeclarationFile)) {
+                else if (node.kind === SyntaxKind.ModuleDeclaration && (<ModuleDeclaration>node).name.kind === SyntaxKind.StringLiteral && (node.flags & NodeFlags.Ambient || isDeclarationFile(file))) {
                     // TypeScript 1.0 spec (April 2014): 12.1.6
                     // An AmbientExternalModuleDeclaration declares an external module. 
                     // This type of declaration is permitted only in the global module.
@@ -3894,11 +4148,11 @@ module ts {
                     // Each file contributes into common source file path
                     if (!(sourceFile.flags & NodeFlags.DeclarationFile)
                         && !fileExtensionIs(sourceFile.filename, ".js")) {
-                        var sourcePathCompoments = getNormalizedPathComponents(sourceFile.filename, host.getCurrentDirectory());
-                        sourcePathCompoments.pop(); // FileName is not part of directory
+                        var sourcePathComponents = getNormalizedPathComponents(sourceFile.filename, host.getCurrentDirectory());
+                        sourcePathComponents.pop(); // FileName is not part of directory
                         if (commonPathComponents) {
-                            for (var i = 0; i < Math.min(commonPathComponents.length, sourcePathCompoments.length); i++) {
-                                if (commonPathComponents[i] !== sourcePathCompoments[i]) {
+                            for (var i = 0; i < Math.min(commonPathComponents.length, sourcePathComponents.length); i++) {
+                                if (commonPathComponents[i] !== sourcePathComponents[i]) {
                                     if (i === 0) {
                                         errors.push(createCompilerDiagnostic(Diagnostics.Cannot_find_the_common_subdirectory_path_for_the_input_files));
                                         return;
@@ -3911,18 +4165,18 @@ module ts {
                             }
 
                             // If the fileComponent path completely matched and less than already found update the length
-                            if (sourcePathCompoments.length < commonPathComponents.length) {
-                                commonPathComponents.length = sourcePathCompoments.length;
+                            if (sourcePathComponents.length < commonPathComponents.length) {
+                                commonPathComponents.length = sourcePathComponents.length;
                             }
                         }
                         else {
                             // first file
-                            commonPathComponents = sourcePathCompoments;
+                            commonPathComponents = sourcePathComponents;
                         }
                     }
                 });
 
-                commonSourceDirectory = getNormalizedPathFromPathCompoments(commonPathComponents);
+                commonSourceDirectory = getNormalizedPathFromPathComponents(commonPathComponents);
                 if (commonSourceDirectory) {
                     // Make sure directory path ends with directory separator so this string can directly 
                     // used to replace with "" to get the relative path of the source file and the relative path doesn't

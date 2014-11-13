@@ -26,7 +26,9 @@ module ts {
         var result: U;
         if (array) {
             for (var i = 0, len = array.length; i < len; i++) {
-                if (result = callback(array[i])) break;
+                if (result = callback(array[i])) {
+                    break;
+                }
             }
         }
         return result;
@@ -34,8 +36,7 @@ module ts {
 
     export function contains<T>(array: T[], value: T): boolean {
         if (array) {
-            var len = array.length;
-            for (var i = 0; i < len; i++) {
+            for (var i = 0, len = array.length; i < len; i++) {
                 if (array[i] === value) {
                     return true;
                 }
@@ -46,8 +47,7 @@ module ts {
 
     export function indexOf<T>(array: T[], value: T): number {
         if (array) {
-            var len = array.length;
-            for (var i = 0; i < len; i++) {
+            for (var i = 0, len = array.length; i < len; i++) {
                 if (array[i] === value) {
                     return i;
                 }
@@ -56,10 +56,21 @@ module ts {
         return -1;
     }
 
-    export function filter<T>(array: T[], f: (x: T) => boolean): T[] {
-        var result: T[];
+    export function countWhere<T>(array: T[], predicate: (x: T) => boolean): number {
+        var count = 0;
         if (array) {
-            result = [];
+            for (var i = 0, len = array.length; i < len; i++) {
+                if (predicate(array[i])) {
+                    count++;
+                }
+            }
+        }
+        return count;
+    }
+
+    export function filter<T>(array: T[], f: (x: T) => boolean): T[] {
+        if (array) {
+            var result: T[] = [];
             for (var i = 0, len = array.length; i < len; i++) {
                 var item = array[i];
                 if (f(item)) {
@@ -71,11 +82,9 @@ module ts {
     }
 
     export function map<T, U>(array: T[], f: (x: T) => U): U[] {
-        var result: U[];
         if (array) {
-            result = [];
-            var len = array.length;
-            for (var i = 0; i < len; i++) {
+            var result: U[] = [];
+            for (var i = 0, len = array.length; i < len; i++) {
                 result.push(f(array[i]));
             }
         }
@@ -86,6 +95,17 @@ module ts {
         if (!array2 || !array2.length) return array1;
         if (!array1 || !array1.length) return array2;
         return array1.concat(array2);
+    }
+
+    export function uniqueElements<T>(array: T[]): T[] {
+        if (array) {
+            var result: T[] = [];
+            for (var i = 0, len = array.length; i < len; i++) {
+                var item = array[i];
+                if (!contains(result, item)) result.push(item);
+            }
+        }
+        return result;
     }
 
     export function sum(array: any[], prop: string): number {
@@ -204,11 +224,9 @@ module ts {
     export var localizedDiagnosticMessages: Map<string> = undefined;
 
     export function getLocaleSpecificMessage(message: string) {
-        if (ts.localizedDiagnosticMessages) {
-            message = localizedDiagnosticMessages[message];
-        }
-
-        return message;
+        return localizedDiagnosticMessages && localizedDiagnosticMessages[message]
+            ? localizedDiagnosticMessages[message]
+            : message;
     }
 
     export function createFileDiagnostic(file: SourceFile, start: number, length: number, message: DiagnosticMessage, ...args: any[]): Diagnostic;
@@ -217,7 +235,7 @@ module ts {
         Debug.assert(length >= 0, "length must be non-negative, is " + length);
 
         var text = getLocaleSpecificMessage(message.key);
-        
+
         if (arguments.length > 4) {
             text = formatStringFromArgs(text, arguments, 4);
         }
@@ -281,7 +299,7 @@ module ts {
         while (diagnosticChain) {
             if (indent) {
                 messageText += newLine;
-                
+
                 for (var i = 0; i < indent; i++) {
                     messageText += "  ";
                 }
@@ -416,7 +434,7 @@ module ts {
         return normalizedPathComponents(path, rootLength);
     }
 
-    export function getNormalizedPathFromPathCompoments(pathComponents: string[]) {
+    export function getNormalizedPathFromPathComponents(pathComponents: string[]) {
         if (pathComponents && pathComponents.length) {
             return pathComponents[0] + pathComponents.slice(1).join(directorySeparator);
         }
@@ -424,20 +442,20 @@ module ts {
 
     function getNormalizedPathComponentsOfUrl(url: string) {
         // Get root length of http://www.website.com/folder1/foler2/
-        // In this example the root is:  http://www.website.com/ 
+        // In this example the root is:  http://www.website.com/
         // normalized path components should be ["http://www.website.com/", "folder1", "folder2"]
 
         var urlLength = url.length;
         // Initial root length is http:// part
         var rootLength = url.indexOf("://") + "://".length;
         while (rootLength < urlLength) {
-            // Consume all immediate slashes in the protocol 
+            // Consume all immediate slashes in the protocol
             // eg.initial rootlength is just file:// but it needs to consume another "/" in file:///
             if (url.charCodeAt(rootLength) === CharacterCodes.slash) {
                 rootLength++;
             }
             else {
-                // non slash character means we continue proceeding to next component of root search 
+                // non slash character means we continue proceeding to next component of root search
                 break;
             }
         }
@@ -450,15 +468,15 @@ module ts {
         // Find the index of "/" after website.com so the root can be http://www.website.com/ (from existing http://)
         var indexOfNextSlash = url.indexOf(directorySeparator, rootLength);
         if (indexOfNextSlash !== -1) {
-            // Found the "/" after the website.com so the root is length of http://www.website.com/ 
+            // Found the "/" after the website.com so the root is length of http://www.website.com/
             // and get components afetr the root normally like any other folder components
             rootLength = indexOfNextSlash + 1;
             return normalizedPathComponents(url, rootLength);
         }
         else {
-            // Can't find the host assume the rest of the string as component 
+            // Can't find the host assume the rest of the string as component
             // but make sure we append "/"  to it as root is not joined using "/"
-            // eg. if url passed in was http://website.com we want to use root as [http://website.com/] 
+            // eg. if url passed in was http://website.com we want to use root as [http://website.com/]
             // so that other path manipulations will be correct and it can be merged with relative paths correctly
             return [url + directorySeparator];
         }
@@ -473,18 +491,18 @@ module ts {
         }
     }
 
-    export function getRelativePathToDirectoryOrUrl(directoryPathOrUrl: string, relativeOrAbsolutePath: string, currentDirectory: string, isAbsolutePathAnUrl: boolean) {
+    export function getRelativePathToDirectoryOrUrl(directoryPathOrUrl: string, relativeOrAbsolutePath: string, currentDirectory: string, getCanonicalFileName: (fileName: string) => string, isAbsolutePathAnUrl: boolean) {
         var pathComponents = getNormalizedPathOrUrlComponents(relativeOrAbsolutePath, currentDirectory);
         var directoryComponents = getNormalizedPathOrUrlComponents(directoryPathOrUrl, currentDirectory);
         if (directoryComponents.length > 1 && directoryComponents[directoryComponents.length - 1] === "") {
-            // If the directory path given was of type test/cases/ then we really need components of directry to be only till its name 
+            // If the directory path given was of type test/cases/ then we really need components of directory to be only till its name
             // that is  ["test", "cases", ""] needs to be actually ["test", "cases"]
             directoryComponents.length--;
         }
 
         // Find the component that differs
         for (var joinStartIndex = 0; joinStartIndex < pathComponents.length && joinStartIndex < directoryComponents.length; joinStartIndex++) {
-            if (directoryComponents[joinStartIndex] !== pathComponents[joinStartIndex]) {
+            if (getCanonicalFileName(directoryComponents[joinStartIndex]) !== getCanonicalFileName(pathComponents[joinStartIndex])) {
                 break;
             }
         }
@@ -503,7 +521,7 @@ module ts {
         }
 
         // Cant find the relative path, get the absolute path
-        var absolutePath = getNormalizedPathFromPathCompoments(pathComponents);
+        var absolutePath = getNormalizedPathFromPathComponents(pathComponents);
         if (isAbsolutePathAnUrl && isRootedDiskPath(absolutePath)) {
             absolutePath = "file:///" + absolutePath;
         }
@@ -528,6 +546,43 @@ module ts {
         var pathLen = path.length;
         var extLen = extension.length;
         return pathLen > extLen && path.substr(pathLen - extLen, extLen) === extension;
+    }
+
+    var supportedExtensions = [".d.ts", ".ts", ".js"];
+
+    export function removeFileExtension(path: string): string {
+        for (var i = 0; i < supportedExtensions.length; i++) {
+            var ext = supportedExtensions[i];
+
+            if (fileExtensionIs(path, ext)) {
+                return path.substr(0, path.length - ext.length);
+            }
+        }
+
+        return path;
+    }
+
+    var escapedCharsRegExp = /[\t\v\f\b\0\r\n\"\\\u2028\u2029\u0085]/g;
+    var escapedCharsMap: Map<string> = {
+        "\t": "\\t",
+        "\v": "\\v",
+        "\f": "\\f",
+        "\b": "\\b",
+        "\0": "\\0",
+        "\r": "\\r",
+        "\n": "\\n",
+        "\"": "\\\"",
+        "\u2028": "\\u2028", // lineSeparator
+        "\u2029": "\\u2029", // paragraphSeparator
+        "\u0085": "\\u0085"  // nextLine
+    };
+
+    /** NOTE: This *does not* support the full escape characters, it only supports the subset that can be used in file names
+     * or string literals. If the information encoded in the map changes, this needs to be revisited. */
+    export function escapeString(s: string): string {
+        return escapedCharsRegExp.test(s) ? s.replace(escapedCharsRegExp, c => {
+            return escapedCharsMap[c] || c;
+        }) : s;
     }
 
     export interface ObjectAllocator {

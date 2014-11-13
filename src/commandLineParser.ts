@@ -90,7 +90,7 @@ module ts {
             paramType: Diagnostics.DIRECTORY
         },
         {
-            name: "removeComment",
+            name: "removeComments",
             type: "boolean",
             description: CustomDiagnostics.Do_not_emit_JsDoc_descriptions_in_output
         },

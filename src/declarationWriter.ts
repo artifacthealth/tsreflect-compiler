@@ -57,16 +57,19 @@ module ts {
 
     export enum DeclarationFlag {
 
-        None = 0,
-        Exported = 1,
-        Private = 1 << 1,
-        Public = 1 << 2,
-        Ambient = 1 << 3,
-        Static = 1 << 4,
-        Optional = 1 << 5,
-        RestParameter = 1 << 6,
-        ExternalModule = 1 << 7,
-        HasNoDefaultLib = 1 << 8
+        None             = 0,
+        Exported         = 0x00000001,
+        Private          = 0x00000002,
+        Public           = 0x00000004,
+        Protected        = 0x00000008,
+        Ambient          = 0x00000010,
+        Static           = 0x00000020,
+        Optional         = 0x00000040,
+        RestParameter    = 0x00000080,
+        ExternalModule   = 0x00000100,
+        HasNoDefaultLib  = 0x00000200,
+        DeclarationFile  = 0x00000400,
+        RootFile         = 0x00000800
     }
 
     export enum DeclarationKind {
@@ -104,6 +107,7 @@ module ts {
         ObjectType,
         TypeReference,
         StringLiteralType,
+        TupleType,
 
         Extends,
         Implements,
@@ -311,6 +315,9 @@ module ts {
             if((flags & DeclarationFlag.Private) !== 0) {
                 this._setProperty("private", true);
             }
+            if((flags & DeclarationFlag.Protected) !== 0) {
+                this._setProperty("protected", true);
+            }
             if((flags & DeclarationFlag.Static) !== 0) {
                 this._setProperty("static", true);
             }
@@ -366,6 +373,9 @@ module ts {
 
             switch(this._currentState.kind) {
 
+                case DeclarationKind.TupleType:
+                    this._addToArray("types", type);
+                    break;
                 case DeclarationKind.TypeParameter:
                     this._setProperty("constraint", type);
                     break;
@@ -503,6 +513,7 @@ module ts {
     kindMap[DeclarationKind.FunctionType] = "function";
     kindMap[DeclarationKind.ArrayType] = "array";
     kindMap[DeclarationKind.ConstructorType] = "constructor";
+    kindMap[DeclarationKind.TupleType] = "tuple";
     kindMap[DeclarationKind.TypeReference] = "reference";
     kindMap[DeclarationKind.ObjectType] = "object";
 }
