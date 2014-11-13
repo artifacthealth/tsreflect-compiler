@@ -1,0 +1,85 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "C",
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string",
+					"protected": true
+				},
+				{
+					"kind": "method",
+					"name": "b",
+					"protected": true,
+					"parameters": [
+						{
+							"name": "a",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "b",
+					"protected": true,
+					"parameters": [
+						{
+							"name": "a",
+							"type": "string"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "field",
+					"name": "c",
+					"protected": true,
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "d",
+					"protected": true,
+					"typeParameters": [
+						{
+							"name": "T",
+							"constraint": {
+								"kind": "object",
+								"signatures": [
+									{
+										"kind": "property",
+										"name": "a",
+										"type": "string"
+									}
+								]
+							}
+						}
+					],
+					"parameters": [
+						{
+							"name": "a",
+							"type": "T"
+						}
+					],
+					"returns": "T"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"extends": "C",
+			"members": [
+				{
+					"kind": "method",
+					"name": "someFunc",
+					"returns": "void"
+				}
+			]
+		}
+	]
+}
