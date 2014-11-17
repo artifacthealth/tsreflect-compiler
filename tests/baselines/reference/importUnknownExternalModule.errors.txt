@@ -1,0 +1,1 @@
+tests/cases/importUnknownExternalModule.ts(1,23): error TS2307: Cannot find external module './UnknownExternalModule'.

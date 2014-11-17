@@ -84,6 +84,22 @@ module.exports = function(grunt) {
                     }
                 },
                 command: 'node tsreflect-compiler.js lib.d.ts'
+            },
+            libCore: {
+                options: {
+                    execOptions: {
+                        cwd: 'lib/'
+                    }
+                },
+                command: 'node tsreflect-compiler.js lib.core.d.ts lib.scriptHost.d.ts lib.webworker.d.ts'
+            },
+            libDom: {
+                options: {
+                    execOptions: {
+                        cwd: 'lib/'
+                    }
+                },
+                command: 'node tsreflect-compiler.js lib.dom.d.ts'
             }
         },
 
@@ -110,6 +126,6 @@ module.exports = function(grunt) {
     // Default task(s).
     grunt.registerTask("default", [ "build", "lib", "tests" ]);
     grunt.registerTask("build", [ "clean:build", "typescript:build", "copy:build" ]);
-    grunt.registerTask("lib", [ "clean:lib", "concat:lib", "shell:lib" ]);
+    grunt.registerTask("lib", [ "clean:lib", "concat:lib", "shell:lib", "shell:libCore", "shell:libDom" ]);
     grunt.registerTask("tests", [ "typescript:tests", "mochaTest:tests" ]);
 };

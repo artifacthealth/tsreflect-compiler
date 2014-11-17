@@ -119,7 +119,6 @@ module ts {
         TypeParameterList,
         TypeParameter,
 
-        TypeAnnotation,
         TypeArgumentList
     }
 

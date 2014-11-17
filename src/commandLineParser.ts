@@ -41,6 +41,7 @@
 
 module ts {
 
+    // TODO: Add libCore option
     export var optionDeclarations: CommandLineOption[] = [
         {
             name: "help",

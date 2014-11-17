@@ -1,0 +1,9516 @@
+{
+	"references": [
+		"lib.core.d.json"
+	],
+	"declares": [
+		{
+			"kind": "interface",
+			"name": "ArrayBuffer",
+			"description": "Represents a raw buffer of binary data, which is used to store data for the \r\ndifferent typed arrays. ArrayBuffers cannot be read from or written to directly, \r\nbut can be passed to a typed array or DataView Object to interpret the raw \r\nbuffer as needed.",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "byteLength",
+					"type": "number",
+					"description": "Read-only. The length of the ArrayBuffer (in bytes)."
+				},
+				{
+					"kind": "method",
+					"name": "slice",
+					"description": "Returns a section of an ArrayBuffer.",
+					"parameters": [
+						{
+							"name": "begin",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "ArrayBuffer"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "ArrayBuffer",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "byteLength",
+								"type": "number"
+							}
+						],
+						"returns": "ArrayBuffer"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ArrayBuffer"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ArrayBufferView",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "buffer",
+					"type": "ArrayBuffer"
+				},
+				{
+					"kind": "property",
+					"name": "byteOffset",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "byteLength",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Int8Array",
+			"description": "A typed array of 8-bit integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Int8Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Int8Array view of the ArrayBuffer store for this array, referencing the elements at begin, inclusive, up to end, exclusive.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Int8Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Int8Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Int8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Int8Array"
+							}
+						],
+						"returns": "Int8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Int8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Int8Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int8Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Uint8Array",
+			"description": "A typed array of 8-bit unsigned integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Uint8Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Uint8Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Uint8Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Uint8Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Uint8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Uint8Array"
+							}
+						],
+						"returns": "Uint8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Uint8Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Uint8Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint8Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Int16Array",
+			"description": "A typed array of 16-bit integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Int16Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Int16Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Int16Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Int16Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Int16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Int16Array"
+							}
+						],
+						"returns": "Int16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Int16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Int16Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int16Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Uint16Array",
+			"description": "A typed array of 16-bit unsigned integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Uint16Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Uint16Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Uint16Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Uint16Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Uint16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Uint16Array"
+							}
+						],
+						"returns": "Uint16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Uint16Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Uint16Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint16Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Int32Array",
+			"description": "A typed array of 32-bit integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Int32Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Int32Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Int32Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Int32Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Int32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Int32Array"
+							}
+						],
+						"returns": "Int32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Int32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Int32Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int32Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Uint32Array",
+			"description": "A typed array of 32-bit unsigned integer values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Uint32Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Int8Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Uint32Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Uint32Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Uint32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Uint32Array"
+							}
+						],
+						"returns": "Uint32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Uint32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Uint32Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint32Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Float32Array",
+			"description": "A typed array of 32-bit float values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Float32Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Float32Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Float32Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Float32Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Float32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Float32Array"
+							}
+						],
+						"returns": "Float32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Float32Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Float32Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float32Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Float64Array",
+			"description": "A typed array of 64-bit float values. The contents are initialized to 0. If the requested number of bytes could not be allocated an exception is raised.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "BYTES_PER_ELEMENT",
+					"type": "number",
+					"description": "The size in bytes of each element in the array."
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "The length of the array."
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"description": "Gets the element at the specified index.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index at which to get the element of the array.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The index of the location to set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": "Float64Array"
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"description": "Sets a value or an array of values.",
+					"parameters": [
+						{
+							"name": "array",
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						},
+						{
+							"name": "offset",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "subarray",
+					"description": "Gets a new Float64Array view of the ArrayBuffer Object store for this array, specifying the first and last members of the subarray.",
+					"parameters": [
+						{
+							"name": "begin",
+							"description": "The index of the beginning of the array.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index of the end of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "Float64Array"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Float64Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "length",
+								"type": "number"
+							}
+						],
+						"returns": "Float64Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": "Float64Array"
+							}
+						],
+						"returns": "Float64Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "array",
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "Float64Array"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Float64Array"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float64Array"
+					},
+					{
+						"kind": "property",
+						"name": "BYTES_PER_ELEMENT",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "DataView",
+			"description": "You can use a DataView object to read and write the different kinds of binary data to any location in the ArrayBuffer.",
+			"extends": [
+				"ArrayBufferView"
+			],
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "getInt8",
+					"description": "Gets the Int8 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUint8",
+					"description": "Gets the Uint8 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getInt16",
+					"description": "Gets the Int16 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUint16",
+					"description": "Gets the Uint16 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getInt32",
+					"description": "Gets the Int32 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUint32",
+					"description": "Gets the Uint32 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getFloat32",
+					"description": "Gets the Float32 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getFloat64",
+					"description": "Gets the Float64 value at the specified byte offset from the start of the view. There is no alignment constraint; multi-byte values may be fetched from any offset.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be retrieved.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setInt8",
+					"description": "Stores an Int8 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setUint8",
+					"description": "Stores an Uint8 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setInt16",
+					"description": "Stores an Int16 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setUint16",
+					"description": "Stores an Uint16 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setInt32",
+					"description": "Stores an Int32 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setUint32",
+					"description": "Stores an Uint32 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setFloat32",
+					"description": "Stores an Float32 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setFloat64",
+					"description": "Stores an Float64 value at the specified byte offset from the start of the view.",
+					"parameters": [
+						{
+							"name": "byteOffset",
+							"description": "The place in the buffer at which the value should be set.",
+							"type": "number"
+						},
+						{
+							"name": "value",
+							"description": "The value to set.",
+							"type": "number"
+						},
+						{
+							"name": "littleEndian",
+							"description": "If false or undefined, a big-endian value should be written, otherwise a little-endian value should be written.",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "DataView",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "buffer",
+								"type": "ArrayBuffer"
+							},
+							{
+								"name": "byteOffset",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "length",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "DataView"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DataView"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Map",
+			"typeParameters": [
+				{
+					"name": "K"
+				},
+				{
+					"name": "V"
+				}
+			],
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "clear",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "delete",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "forEach",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "V"
+									},
+									{
+										"name": "index",
+										"type": "K"
+									},
+									{
+										"name": "map",
+										"type": {
+											"kind": "reference",
+											"type": "Map",
+											"arguments": [
+												"K",
+												"V"
+											]
+										}
+									}
+								],
+								"returns": "void"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "V"
+				},
+				{
+					"kind": "method",
+					"name": "has",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						},
+						{
+							"name": "value",
+							"type": "V"
+						}
+					],
+					"returns": {
+						"kind": "reference",
+						"type": "Map",
+						"arguments": [
+							"K",
+							"V"
+						]
+					}
+				},
+				{
+					"kind": "property",
+					"name": "size",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Map",
+			"type": {
+				"kind": "constructor",
+				"typeParameters": [
+					{
+						"name": "K"
+					},
+					{
+						"name": "V"
+					}
+				],
+				"returns": {
+					"kind": "reference",
+					"type": "Map",
+					"arguments": [
+						"K",
+						"V"
+					]
+				}
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WeakMap",
+			"typeParameters": [
+				{
+					"name": "K"
+				},
+				{
+					"name": "V"
+				}
+			],
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "clear",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "delete",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "V"
+				},
+				{
+					"kind": "method",
+					"name": "has",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "K"
+						},
+						{
+							"name": "value",
+							"type": "V"
+						}
+					],
+					"returns": {
+						"kind": "reference",
+						"type": "WeakMap",
+						"arguments": [
+							"K",
+							"V"
+						]
+					}
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WeakMap",
+			"type": {
+				"kind": "constructor",
+				"typeParameters": [
+					{
+						"name": "K"
+					},
+					{
+						"name": "V"
+					}
+				],
+				"returns": {
+					"kind": "reference",
+					"type": "WeakMap",
+					"arguments": [
+						"K",
+						"V"
+					]
+				}
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Set",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			],
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "add",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "T"
+						}
+					],
+					"returns": {
+						"kind": "reference",
+						"type": "Set",
+						"arguments": [
+							"T"
+						]
+					}
+				},
+				{
+					"kind": "method",
+					"name": "clear",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "delete",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "T"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "forEach",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "T"
+									},
+									{
+										"name": "set",
+										"type": {
+											"kind": "reference",
+											"type": "Set",
+											"arguments": [
+												"T"
+											]
+										}
+									}
+								],
+								"returns": "void"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "has",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "T"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "size",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Set",
+			"type": {
+				"kind": "constructor",
+				"typeParameters": [
+					{
+						"name": "T"
+					}
+				],
+				"returns": {
+					"kind": "reference",
+					"type": "Set",
+					"arguments": [
+						"T"
+					]
+				}
+			}
+		},
+		{
+			"kind": "module",
+			"name": "Intl",
+			"declares": [
+				{
+					"kind": "interface",
+					"name": "CollatorOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "usage",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "localeMatcher",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "numeric",
+							"optional": true,
+							"type": "boolean"
+						},
+						{
+							"kind": "property",
+							"name": "caseFirst",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "sensitivity",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "ignorePunctuation",
+							"optional": true,
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "ResolvedCollatorOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "locale",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "usage",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "sensitivity",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "ignorePunctuation",
+							"type": "boolean"
+						},
+						{
+							"kind": "property",
+							"name": "collation",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "caseFirst",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "numeric",
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "Collator",
+					"signatures": [
+						{
+							"kind": "method",
+							"name": "compare",
+							"parameters": [
+								{
+									"name": "x",
+									"type": "string"
+								},
+								{
+									"name": "y",
+									"type": "string"
+								}
+							],
+							"returns": "number"
+						},
+						{
+							"kind": "method",
+							"name": "resolvedOptions",
+							"returns": "ResolvedCollatorOptions"
+						}
+					]
+				},
+				{
+					"kind": "variable",
+					"name": "Collator",
+					"type": {
+						"kind": "object",
+						"signatures": [
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locales",
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locale",
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "CollatorOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "interface",
+					"name": "NumberFormatOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "localeMatcher",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "style",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "currency",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "currencyDisplay",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "useGrouping",
+							"optional": true,
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "ResolvedNumberFormatOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "locale",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "numberingSystem",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "style",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "currency",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "currencyDisplay",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "minimumintegerDigits",
+							"type": "number"
+						},
+						{
+							"kind": "property",
+							"name": "minimumFractionDigits",
+							"type": "number"
+						},
+						{
+							"kind": "property",
+							"name": "maximumFractionDigits",
+							"type": "number"
+						},
+						{
+							"kind": "property",
+							"name": "minimumSignificantDigits",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"kind": "property",
+							"name": "maximumSignificantDigits",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"kind": "property",
+							"name": "useGrouping",
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "NumberFormat",
+					"signatures": [
+						{
+							"kind": "method",
+							"name": "format",
+							"parameters": [
+								{
+									"name": "value",
+									"type": "number"
+								}
+							],
+							"returns": "string"
+						},
+						{
+							"kind": "method",
+							"name": "resolvedOptions",
+							"returns": "ResolvedNumberFormatOptions"
+						}
+					]
+				},
+				{
+					"kind": "variable",
+					"name": "NumberFormat",
+					"type": {
+						"kind": "object",
+						"signatures": [
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locales",
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locale",
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "NumberFormatOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						]
+					}
+				},
+				{
+					"kind": "interface",
+					"name": "DateTimeFormatOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "localeMatcher",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "weekday",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "era",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "year",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "month",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "day",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "hour",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "minute",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "second",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "timeZoneName",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "formatMatcher",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "hour12",
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "ResolvedDateTimeFormatOptions",
+					"signatures": [
+						{
+							"kind": "property",
+							"name": "locale",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "calendar",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "numberingSystem",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "timeZone",
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "hour12",
+							"optional": true,
+							"type": "boolean"
+						},
+						{
+							"kind": "property",
+							"name": "weekday",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "era",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "year",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "month",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "day",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "hour",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "minute",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "second",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"kind": "property",
+							"name": "timeZoneName",
+							"optional": true,
+							"type": "string"
+						}
+					]
+				},
+				{
+					"kind": "interface",
+					"name": "DateTimeFormat",
+					"signatures": [
+						{
+							"kind": "method",
+							"name": "format",
+							"parameters": [
+								{
+									"name": "date",
+									"type": "number"
+								}
+							],
+							"returns": "string"
+						},
+						{
+							"kind": "method",
+							"name": "resolvedOptions",
+							"returns": "ResolvedDateTimeFormatOptions"
+						}
+					]
+				},
+				{
+					"kind": "variable",
+					"name": "DateTimeFormat",
+					"type": {
+						"kind": "object",
+						"signatures": [
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "call",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locales",
+										"optional": true,
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "constructor",
+								"parameters": [
+									{
+										"name": "locale",
+										"optional": true,
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": "Collator"
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locales",
+										"type": {
+											"kind": "array",
+											"type": "string"
+										}
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							},
+							{
+								"kind": "method",
+								"name": "supportedLocalesOf",
+								"parameters": [
+									{
+										"name": "locale",
+										"type": "string"
+									},
+									{
+										"name": "options",
+										"optional": true,
+										"type": "DateTimeFormatOptions"
+									}
+								],
+								"returns": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						]
+					}
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "String",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "localeCompare",
+					"description": "Determines whether two strings are equivalent in the current locale.",
+					"parameters": [
+						{
+							"name": "that",
+							"description": "String to compare to target string",
+							"type": "string"
+						},
+						{
+							"name": "locales",
+							"description": "An array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used. This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.",
+							"type": {
+								"kind": "array",
+								"type": "string"
+							}
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options. see the Intl.Collator object for details.",
+							"optional": true,
+							"type": "Intl.CollatorOptions"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "localeCompare",
+					"description": "Determines whether two strings are equivalent in the current locale.",
+					"parameters": [
+						{
+							"name": "that",
+							"description": "String to compare to target string",
+							"type": "string"
+						},
+						{
+							"name": "locale",
+							"description": "Locale tag. If you omit this parameter, the default locale of the JavaScript runtime is used. This parameter must conform to BCP 47 standards; see the Intl.Collator object for details.",
+							"type": "string"
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options. see the Intl.Collator object for details.",
+							"optional": true,
+							"type": "Intl.CollatorOptions"
+						}
+					],
+					"returns": "number"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Number",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Converts a number to a string by using the current or specified locale.",
+					"parameters": [
+						{
+							"name": "locales",
+							"description": "An array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.",
+							"optional": true,
+							"type": {
+								"kind": "array",
+								"type": "string"
+							}
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options.",
+							"optional": true,
+							"type": "Intl.NumberFormatOptions"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Converts a number to a string by using the current or specified locale.",
+					"parameters": [
+						{
+							"name": "locale",
+							"description": "Locale tag. If you omit this parameter, the default locale of the JavaScript runtime is used.",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options.",
+							"optional": true,
+							"type": "Intl.NumberFormatOptions"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Date",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Converts a date to a string by using the current or specified locale.",
+					"parameters": [
+						{
+							"name": "locales",
+							"description": "An array of locale strings that contain one or more language or locale tags. If you include more than one locale string, list them in descending order of priority so that the first entry is the preferred locale. If you omit this parameter, the default locale of the JavaScript runtime is used.",
+							"optional": true,
+							"type": {
+								"kind": "array",
+								"type": "string"
+							}
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options.",
+							"optional": true,
+							"type": "Intl.DateTimeFormatOptions"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Converts a date to a string by using the current or specified locale.",
+					"parameters": [
+						{
+							"name": "locale",
+							"description": "Locale tag. If you omit this parameter, the default locale of the JavaScript runtime is used.",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "options",
+							"description": "An object that contains one or more properties that specify comparison options.",
+							"optional": true,
+							"type": "Intl.DateTimeFormatOptions"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Console",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "info",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "warn",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "error",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "log",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "profile",
+					"parameters": [
+						{
+							"name": "reportName",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "assert",
+					"parameters": [
+						{
+							"name": "test",
+							"optional": true,
+							"type": "boolean"
+						},
+						{
+							"name": "message",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "msIsIndependentlyComposed",
+					"parameters": [
+						{
+							"name": "element",
+							"type": "any"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "clear",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "dir",
+					"parameters": [
+						{
+							"name": "value",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "profileEnd",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "count",
+					"parameters": [
+						{
+							"name": "countTitle",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "groupEnd",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "time",
+					"parameters": [
+						{
+							"name": "timerName",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "timeEnd",
+					"parameters": [
+						{
+							"name": "timerName",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "trace",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "group",
+					"parameters": [
+						{
+							"name": "groupTitle",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "dirxml",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "debug",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "optionalParams",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "groupCollapsed",
+					"parameters": [
+						{
+							"name": "groupTitle",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "select",
+					"parameters": [
+						{
+							"name": "element",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Console",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "Console"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Console"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "NavigatorID",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "appVersion",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "appName",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "userAgent",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "platform",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "product",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "vendor",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "EventTarget",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "removeEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "dispatchEvent",
+					"parameters": [
+						{
+							"name": "evt",
+							"type": "Event"
+						}
+					],
+					"returns": "boolean"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "MessageEvent",
+			"extends": [
+				"Event"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "source",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "origin",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "data",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "ports",
+					"type": "any"
+				},
+				{
+					"kind": "method",
+					"name": "initMessageEvent",
+					"parameters": [
+						{
+							"name": "typeArg",
+							"type": "string"
+						},
+						{
+							"name": "canBubbleArg",
+							"type": "boolean"
+						},
+						{
+							"name": "cancelableArg",
+							"type": "boolean"
+						},
+						{
+							"name": "dataArg",
+							"type": "any"
+						},
+						{
+							"name": "originArg",
+							"type": "string"
+						},
+						{
+							"name": "lastEventIdArg",
+							"type": "string"
+						},
+						{
+							"name": "sourceArg",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MessageEvent",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MessageEvent"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MessageEvent"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "XMLHttpRequest",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "responseBody",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "status",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "readyState",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "responseText",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "responseXML",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "ontimeout",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "statusText",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "onreadystatechange",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "timeout",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "onload",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "response",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "withCredentials",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "onprogress",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onabort",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "responseType",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "onloadend",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "upload",
+					"type": "XMLHttpRequestEventTarget"
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onloadstart",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "msCaching",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "open",
+					"parameters": [
+						{
+							"name": "method",
+							"type": "string"
+						},
+						{
+							"name": "url",
+							"type": "string"
+						},
+						{
+							"name": "async",
+							"optional": true,
+							"type": "boolean"
+						},
+						{
+							"name": "user",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "password",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "send",
+					"parameters": [
+						{
+							"name": "data",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "abort",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "getAllResponseHeaders",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "setRequestHeader",
+					"parameters": [
+						{
+							"name": "header",
+							"type": "string"
+						},
+						{
+							"name": "value",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "getResponseHeader",
+					"parameters": [
+						{
+							"name": "header",
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "msCachingEnabled",
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "overrideMimeType",
+					"parameters": [
+						{
+							"name": "mime",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "property",
+					"name": "LOADING",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "DONE",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "UNSENT",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "OPENED",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "HEADERS_RECEIVED",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"timeout\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"readystatechange\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"load\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"progress\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"abort\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadend\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadstart\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "XMLHttpRequest",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequest"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "XMLHttpRequest"
+					},
+					{
+						"kind": "property",
+						"name": "LOADING",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "DONE",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "UNSENT",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "OPENED",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "HEADERS_RECEIVED",
+						"type": "number"
+					},
+					{
+						"kind": "method",
+						"name": "create",
+						"returns": "XMLHttpRequest"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "EventListener",
+			"signatures": [
+				{
+					"kind": "call",
+					"parameters": [
+						{
+							"name": "evt",
+							"type": "Event"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "EventException",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "code",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "message",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"returns": "string"
+				},
+				{
+					"kind": "property",
+					"name": "DISPATCH_REQUEST_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "UNSPECIFIED_EVENT_TYPE_ERR",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "EventException",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "EventException"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "EventException"
+					},
+					{
+						"kind": "property",
+						"name": "DISPATCH_REQUEST_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "UNSPECIFIED_EVENT_TYPE_ERR",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "NavigatorOnLine",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onLine",
+					"type": "boolean"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Event",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "timeStamp",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "defaultPrevented",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "isTrusted",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "currentTarget",
+					"type": "EventTarget"
+				},
+				{
+					"kind": "property",
+					"name": "cancelBubble",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "target",
+					"type": "EventTarget"
+				},
+				{
+					"kind": "property",
+					"name": "eventPhase",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "cancelable",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "srcElement",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "bubbles",
+					"type": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "initEvent",
+					"parameters": [
+						{
+							"name": "eventTypeArg",
+							"type": "string"
+						},
+						{
+							"name": "canBubbleArg",
+							"type": "boolean"
+						},
+						{
+							"name": "cancelableArg",
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "stopPropagation",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "stopImmediatePropagation",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "preventDefault",
+					"returns": "void"
+				},
+				{
+					"kind": "property",
+					"name": "CAPTURING_PHASE",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "AT_TARGET",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "BUBBLING_PHASE",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Event",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "Event"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Event"
+					},
+					{
+						"kind": "property",
+						"name": "CAPTURING_PHASE",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "AT_TARGET",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "BUBBLING_PHASE",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ImageData",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "width",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "data",
+					"type": {
+						"kind": "array",
+						"type": "number"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "height",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "ImageData",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "ImageData"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ImageData"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "DOMException",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "code",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "message",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"returns": "string"
+				},
+				{
+					"kind": "property",
+					"name": "HIERARCHY_REQUEST_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NO_MODIFICATION_ALLOWED_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INVALID_MODIFICATION_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NAMESPACE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INVALID_CHARACTER_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "TYPE_MISMATCH_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "ABORT_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INVALID_STATE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "SECURITY_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NETWORK_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "WRONG_DOCUMENT_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "QUOTA_EXCEEDED_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INDEX_SIZE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "DOMSTRING_SIZE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "SYNTAX_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "SERIALIZE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "VALIDATION_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NOT_FOUND_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "URL_MISMATCH_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "PARSE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NO_DATA_ALLOWED_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "NOT_SUPPORTED_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INVALID_ACCESS_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INUSE_ATTRIBUTE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "INVALID_NODE_TYPE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "DATA_CLONE_ERR",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "TIMEOUT_ERR",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "DOMException",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "DOMException"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DOMException"
+					},
+					{
+						"kind": "property",
+						"name": "HIERARCHY_REQUEST_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NO_MODIFICATION_ALLOWED_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INVALID_MODIFICATION_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NAMESPACE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INVALID_CHARACTER_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "TYPE_MISMATCH_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "ABORT_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INVALID_STATE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "SECURITY_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NETWORK_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "WRONG_DOCUMENT_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "QUOTA_EXCEEDED_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INDEX_SIZE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "DOMSTRING_SIZE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "SYNTAX_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "SERIALIZE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "VALIDATION_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NOT_FOUND_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "URL_MISMATCH_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "PARSE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NO_DATA_ALLOWED_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NOT_SUPPORTED_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INVALID_ACCESS_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INUSE_ATTRIBUTE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "INVALID_NODE_TYPE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "DATA_CLONE_ERR",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "TIMEOUT_ERR",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ErrorEvent",
+			"extends": [
+				"Event"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "colno",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "filename",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "error",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "lineno",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "message",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "initErrorEvent",
+					"parameters": [
+						{
+							"name": "typeArg",
+							"type": "string"
+						},
+						{
+							"name": "canBubbleArg",
+							"type": "boolean"
+						},
+						{
+							"name": "cancelableArg",
+							"type": "boolean"
+						},
+						{
+							"name": "messageArg",
+							"type": "string"
+						},
+						{
+							"name": "filenameArg",
+							"type": "string"
+						},
+						{
+							"name": "linenoArg",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "ErrorEvent",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "ErrorEvent"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ErrorEvent"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSStreamReader",
+			"extends": [
+				"MSBaseReader"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "error",
+					"type": "DOMError"
+				},
+				{
+					"kind": "method",
+					"name": "readAsArrayBuffer",
+					"parameters": [
+						{
+							"name": "stream",
+							"type": "MSStream"
+						},
+						{
+							"name": "size",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "readAsBlob",
+					"parameters": [
+						{
+							"name": "stream",
+							"type": "MSStream"
+						},
+						{
+							"name": "size",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "readAsDataURL",
+					"parameters": [
+						{
+							"name": "stream",
+							"type": "MSStream"
+						},
+						{
+							"name": "size",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "readAsText",
+					"parameters": [
+						{
+							"name": "stream",
+							"type": "MSStream"
+						},
+						{
+							"name": "encoding",
+							"optional": true,
+							"type": "string"
+						},
+						{
+							"name": "size",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MSStreamReader",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MSStreamReader"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSStreamReader"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MessageChannel",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "port2",
+					"type": "MessagePort"
+				},
+				{
+					"kind": "property",
+					"name": "port1",
+					"type": "MessagePort"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MessageChannel",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MessageChannel"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MessageChannel"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "DOMError",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "DOMError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "DOMError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DOMError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "CloseEvent",
+			"extends": [
+				"Event"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "wasClean",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "reason",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "code",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "initCloseEvent",
+					"parameters": [
+						{
+							"name": "typeArg",
+							"type": "string"
+						},
+						{
+							"name": "canBubbleArg",
+							"type": "boolean"
+						},
+						{
+							"name": "cancelableArg",
+							"type": "boolean"
+						},
+						{
+							"name": "wasCleanArg",
+							"type": "boolean"
+						},
+						{
+							"name": "codeArg",
+							"type": "number"
+						},
+						{
+							"name": "reasonArg",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "CloseEvent",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "CloseEvent"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "CloseEvent"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WebSocket",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "protocol",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "readyState",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "bufferedAmount",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "onopen",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "extensions",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "onmessage",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "MessageEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onclose",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "CloseEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "binaryType",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "url",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "close",
+					"parameters": [
+						{
+							"name": "code",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "reason",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "send",
+					"parameters": [
+						{
+							"name": "data",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "property",
+					"name": "OPEN",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "CLOSING",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "CONNECTING",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "CLOSED",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"open\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"message\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "MessageEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"close\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "CloseEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WebSocket",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "url",
+								"type": "string"
+							},
+							{
+								"name": "protocols",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "WebSocket"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "url",
+								"type": "string"
+							},
+							{
+								"name": "protocols",
+								"optional": true,
+								"type": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						],
+						"returns": "WebSocket"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WebSocket"
+					},
+					{
+						"kind": "property",
+						"name": "OPEN",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "CLOSING",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "CONNECTING",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "CLOSED",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ProgressEvent",
+			"extends": [
+				"Event"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "loaded",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "lengthComputable",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "total",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "initProgressEvent",
+					"parameters": [
+						{
+							"name": "typeArg",
+							"type": "string"
+						},
+						{
+							"name": "canBubbleArg",
+							"type": "boolean"
+						},
+						{
+							"name": "cancelableArg",
+							"type": "boolean"
+						},
+						{
+							"name": "lengthComputableArg",
+							"type": "boolean"
+						},
+						{
+							"name": "loadedArg",
+							"type": "number"
+						},
+						{
+							"name": "totalArg",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "ProgressEvent",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "ProgressEvent"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ProgressEvent"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBObjectStore",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "indexNames",
+					"type": "DOMStringList"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "transaction",
+					"type": "IDBTransaction"
+				},
+				{
+					"kind": "property",
+					"name": "keyPath",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "count",
+					"parameters": [
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "add",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "any"
+						},
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "clear",
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "createIndex",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"name": "keyPath",
+							"type": "string"
+						},
+						{
+							"name": "optionalParameters",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBIndex"
+				},
+				{
+					"kind": "method",
+					"name": "put",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "any"
+						},
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "openCursor",
+					"parameters": [
+						{
+							"name": "range",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "direction",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "deleteIndex",
+					"parameters": [
+						{
+							"name": "indexName",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "index",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						}
+					],
+					"returns": "IDBIndex"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "delete",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBObjectStore",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBObjectStore"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBObjectStore"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBVersionChangeEvent",
+			"extends": [
+				"Event"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "newVersion",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "oldVersion",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBVersionChangeEvent",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBVersionChangeEvent"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBVersionChangeEvent"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBIndex",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "unique",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "keyPath",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "objectStore",
+					"type": "IDBObjectStore"
+				},
+				{
+					"kind": "method",
+					"name": "count",
+					"parameters": [
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "getKey",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "openKeyCursor",
+					"parameters": [
+						{
+							"name": "range",
+							"optional": true,
+							"type": "IDBKeyRange"
+						},
+						{
+							"name": "direction",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"parameters": [
+						{
+							"name": "key",
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "openCursor",
+					"parameters": [
+						{
+							"name": "range",
+							"optional": true,
+							"type": "IDBKeyRange"
+						},
+						{
+							"name": "direction",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "IDBRequest"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBIndex",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBIndex"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBIndex"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "FileList",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "item",
+					"parameters": [
+						{
+							"name": "index",
+							"type": "number"
+						}
+					],
+					"returns": "File"
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "File"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "FileList",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "FileList"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "FileList"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBCursor",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "source",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "direction",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "key",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "primaryKey",
+					"type": "any"
+				},
+				{
+					"kind": "method",
+					"name": "advance",
+					"parameters": [
+						{
+							"name": "count",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "delete",
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "continue",
+					"parameters": [
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "update",
+					"parameters": [
+						{
+							"name": "value",
+							"type": "any"
+						}
+					],
+					"returns": "IDBRequest"
+				},
+				{
+					"kind": "property",
+					"name": "PREV",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "PREV_NO_DUPLICATE",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "NEXT",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "NEXT_NO_DUPLICATE",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBCursor",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBCursor"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBCursor"
+					},
+					{
+						"kind": "property",
+						"name": "PREV",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "PREV_NO_DUPLICATE",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "NEXT",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "NEXT_NO_DUPLICATE",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "File",
+			"extends": [
+				"Blob"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "lastModifiedDate",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "File",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "File"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "File"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBCursorWithValue",
+			"extends": [
+				"IDBCursor"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "value",
+					"type": "any"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBCursorWithValue",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBCursorWithValue"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBCursorWithValue"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "XMLHttpRequestEventTarget",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onprogress",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onload",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "ontimeout",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onabort",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onloadstart",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onloadend",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"progress\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"load\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"timeout\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"abort\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadstart\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadend\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "XMLHttpRequestEventTarget",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequestEventTarget"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "XMLHttpRequestEventTarget"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSBaseReader",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onprogress",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "readyState",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "onabort",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onloadend",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ProgressEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onload",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onloadstart",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "result",
+					"type": "any"
+				},
+				{
+					"kind": "method",
+					"name": "abort",
+					"returns": "void"
+				},
+				{
+					"kind": "property",
+					"name": "LOADING",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "EMPTY",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "DONE",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"progress\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"abort\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadend\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ProgressEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"load\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"loadstart\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "IDBKeyRange",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "upper",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "upperOpen",
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "lower",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "lowerOpen",
+					"type": "boolean"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBKeyRange",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBKeyRange"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBKeyRange"
+					},
+					{
+						"kind": "method",
+						"name": "bound",
+						"parameters": [
+							{
+								"name": "lower",
+								"type": "any"
+							},
+							{
+								"name": "upper",
+								"type": "any"
+							},
+							{
+								"name": "lowerOpen",
+								"optional": true,
+								"type": "boolean"
+							},
+							{
+								"name": "upperOpen",
+								"optional": true,
+								"type": "boolean"
+							}
+						],
+						"returns": "IDBKeyRange"
+					},
+					{
+						"kind": "method",
+						"name": "only",
+						"parameters": [
+							{
+								"name": "value",
+								"type": "any"
+							}
+						],
+						"returns": "IDBKeyRange"
+					},
+					{
+						"kind": "method",
+						"name": "lowerBound",
+						"parameters": [
+							{
+								"name": "bound",
+								"type": "any"
+							},
+							{
+								"name": "open",
+								"optional": true,
+								"type": "boolean"
+							}
+						],
+						"returns": "IDBKeyRange"
+					},
+					{
+						"kind": "method",
+						"name": "upperBound",
+						"parameters": [
+							{
+								"name": "bound",
+								"type": "any"
+							},
+							{
+								"name": "open",
+								"optional": true,
+								"type": "boolean"
+							}
+						],
+						"returns": "IDBKeyRange"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WindowConsole",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "console",
+					"type": "Console"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "IDBTransaction",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "oncomplete",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "db",
+					"type": "IDBDatabase"
+				},
+				{
+					"kind": "property",
+					"name": "mode",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "error",
+					"type": "DOMError"
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onabort",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "abort",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "objectStore",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						}
+					],
+					"returns": "IDBObjectStore"
+				},
+				{
+					"kind": "property",
+					"name": "READ_ONLY",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "VERSION_CHANGE",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "READ_WRITE",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"complete\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"abort\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBTransaction",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBTransaction"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBTransaction"
+					},
+					{
+						"kind": "property",
+						"name": "READ_ONLY",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "VERSION_CHANGE",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "READ_WRITE",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WindowBase64",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "btoa",
+					"parameters": [
+						{
+							"name": "rawString",
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "atob",
+					"parameters": [
+						{
+							"name": "encodedString",
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "IDBDatabase",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "version",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "objectStoreNames",
+					"type": "DOMStringList"
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onabort",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "createObjectStore",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"name": "optionalParameters",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "IDBObjectStore"
+				},
+				{
+					"kind": "method",
+					"name": "close",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "transaction",
+					"parameters": [
+						{
+							"name": "storeNames",
+							"type": "any"
+						},
+						{
+							"name": "mode",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "IDBTransaction"
+				},
+				{
+					"kind": "method",
+					"name": "deleteObjectStore",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"abort\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBDatabase",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBDatabase"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBDatabase"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "DOMStringList",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "contains",
+					"parameters": [
+						{
+							"name": "str",
+							"type": "string"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "item",
+					"parameters": [
+						{
+							"name": "index",
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "DOMStringList",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "DOMStringList"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DOMStringList"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBOpenDBRequest",
+			"extends": [
+				"IDBRequest"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onupgradeneeded",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "IDBVersionChangeEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "onblocked",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"success\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"upgradeneeded\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "IDBVersionChangeEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"blocked\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBOpenDBRequest",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBOpenDBRequest"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBOpenDBRequest"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSUnsafeFunctionCallback",
+			"signatures": [
+				{
+					"kind": "call",
+					"returns": "any"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "IDBRequest",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "source",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "onsuccess",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "Event"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "error",
+					"type": "DOMError"
+				},
+				{
+					"kind": "property",
+					"name": "transaction",
+					"type": "IDBTransaction"
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "property",
+					"name": "readyState",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "result",
+					"type": "any"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"success\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "Event"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBRequest",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBRequest"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBRequest"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MessagePort",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onmessage",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "MessageEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "close",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "postMessage",
+					"parameters": [
+						{
+							"name": "message",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "ports",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "start",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"message\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "MessageEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MessagePort",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MessagePort"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MessagePort"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "FileReader",
+			"extends": [
+				"MSBaseReader"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "error",
+					"type": "DOMError"
+				},
+				{
+					"kind": "method",
+					"name": "readAsArrayBuffer",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "readAsDataURL",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "readAsText",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						},
+						{
+							"name": "encoding",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "FileReader",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "FileReader"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "FileReader"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "BlobPropertyBag",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "type",
+					"optional": true,
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "endings",
+					"optional": true,
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Blob",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "size",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "msDetachStream",
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "slice",
+					"parameters": [
+						{
+							"name": "start",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "contentType",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "Blob"
+				},
+				{
+					"kind": "method",
+					"name": "msClose",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Blob",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "blobParts",
+								"optional": true,
+								"type": {
+									"kind": "array",
+									"type": "any"
+								}
+							},
+							{
+								"name": "options",
+								"optional": true,
+								"type": "BlobPropertyBag"
+							}
+						],
+						"returns": "Blob"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Blob"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSStream",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "msDetachStream",
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "msClose",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MSStream",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MSStream"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSStream"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSBlobBuilder",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "append",
+					"parameters": [
+						{
+							"name": "data",
+							"type": "any"
+						},
+						{
+							"name": "endings",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "getBlob",
+					"parameters": [
+						{
+							"name": "contentType",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "Blob"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MSBlobBuilder",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MSBlobBuilder"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSBlobBuilder"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IDBFactory",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "open",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						},
+						{
+							"name": "version",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "IDBOpenDBRequest"
+				},
+				{
+					"kind": "method",
+					"name": "cmp",
+					"parameters": [
+						{
+							"name": "first",
+							"type": "any"
+						},
+						{
+							"name": "second",
+							"type": "any"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "deleteDatabase",
+					"parameters": [
+						{
+							"name": "name",
+							"type": "string"
+						}
+					],
+					"returns": "IDBOpenDBRequest"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "IDBFactory",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "IDBFactory"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "IDBFactory"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "AbstractWorker",
+			"extends": [
+				"EventTarget"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "MSApp",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "createFileFromStorageFile",
+					"parameters": [
+						{
+							"name": "storageFile",
+							"type": "any"
+						}
+					],
+					"returns": "File"
+				},
+				{
+					"kind": "method",
+					"name": "createBlobFromRandomAccessStream",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "seeker",
+							"type": "any"
+						}
+					],
+					"returns": "Blob"
+				},
+				{
+					"kind": "method",
+					"name": "createStreamFromInputStream",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "inputStream",
+							"type": "any"
+						}
+					],
+					"returns": "MSStream"
+				},
+				{
+					"kind": "method",
+					"name": "terminateApp",
+					"parameters": [
+						{
+							"name": "exceptionObject",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "createDataPackage",
+					"parameters": [
+						{
+							"name": "object",
+							"type": "any"
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "execUnsafeLocalFunction",
+					"parameters": [
+						{
+							"name": "unsafeFunction",
+							"type": "MSUnsafeFunctionCallback"
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "getHtmlPrintDocumentSource",
+					"parameters": [
+						{
+							"name": "htmlDoc",
+							"type": "any"
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "addPublicLocalApplicationUri",
+					"parameters": [
+						{
+							"name": "uri",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "createDataPackageFromSelection",
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "getViewOpener",
+					"returns": "MSAppView"
+				},
+				{
+					"kind": "method",
+					"name": "suppressSubdownloadCredentialPrompts",
+					"parameters": [
+						{
+							"name": "suppress",
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "execAsyncAtPriority",
+					"parameters": [
+						{
+							"name": "asynchronousCallback",
+							"type": "MSExecAtPriorityFunctionCallback"
+						},
+						{
+							"name": "priority",
+							"type": "string"
+						},
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "isTaskScheduledAtPriorityOrHigher",
+					"parameters": [
+						{
+							"name": "priority",
+							"type": "string"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "execAtPriority",
+					"parameters": [
+						{
+							"name": "synchronousCallback",
+							"type": "MSExecAtPriorityFunctionCallback"
+						},
+						{
+							"name": "priority",
+							"type": "string"
+						},
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "createNewView",
+					"parameters": [
+						{
+							"name": "uri",
+							"type": "string"
+						}
+					],
+					"returns": "MSAppView"
+				},
+				{
+					"kind": "method",
+					"name": "getCurrentPriority",
+					"returns": "string"
+				},
+				{
+					"kind": "property",
+					"name": "NORMAL",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "HIGH",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "IDLE",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "CURRENT",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MSApp",
+			"type": "MSApp"
+		},
+		{
+			"kind": "interface",
+			"name": "Worker",
+			"extends": [
+				"AbstractWorker"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onmessage",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "MessageEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "postMessage",
+					"parameters": [
+						{
+							"name": "message",
+							"type": "any"
+						},
+						{
+							"name": "ports",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "terminate",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"error\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "ErrorEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "\"message\""
+						},
+						{
+							"name": "listener",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "ev",
+										"type": "MessageEvent"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "addEventListener",
+					"parameters": [
+						{
+							"name": "type",
+							"type": "string"
+						},
+						{
+							"name": "listener",
+							"type": "EventListener"
+						},
+						{
+							"name": "useCapture",
+							"optional": true,
+							"type": "boolean"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Worker",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "stringUrl",
+								"type": "string"
+							}
+						],
+						"returns": "Worker"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Worker"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "MSExecAtPriorityFunctionCallback",
+			"signatures": [
+				{
+					"kind": "call",
+					"parameters": [
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "any"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "MSAppView",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "viewId",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "close",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "postMessage",
+					"parameters": [
+						{
+							"name": "message",
+							"type": "any"
+						},
+						{
+							"name": "targetOrigin",
+							"type": "string"
+						},
+						{
+							"name": "ports",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "MSAppView",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "MSAppView"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSAppView"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WorkerLocation",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "hash",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "protocol",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "search",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "href",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "hostname",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "port",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "pathname",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "host",
+					"type": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WorkerLocation",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "WorkerLocation"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WorkerLocation"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "FileReaderSync",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "readAsArrayBuffer",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "readAsDataURL",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "readAsText",
+					"parameters": [
+						{
+							"name": "blob",
+							"type": "Blob"
+						},
+						{
+							"name": "encoding",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "FileReaderSync",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "FileReaderSync"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "FileReaderSync"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WorkerGlobalScope",
+			"extends": [
+				"EventTarget",
+				"DedicatedWorkerGlobalScope",
+				"WindowConsole",
+				"WorkerUtils"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "location",
+					"type": "WorkerLocation"
+				},
+				{
+					"kind": "property",
+					"name": "self",
+					"type": "WorkerGlobalScope"
+				},
+				{
+					"kind": "property",
+					"name": "onerror",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "ErrorEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "msWriteProfilerMark",
+					"parameters": [
+						{
+							"name": "profilerMarkName",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "close",
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WorkerGlobalScope",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "WorkerGlobalScope"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WorkerGlobalScope"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "DedicatedWorkerGlobalScope",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "onmessage",
+					"type": {
+						"kind": "function",
+						"parameters": [
+							{
+								"name": "ev",
+								"type": "MessageEvent"
+							}
+						],
+						"returns": "any"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "postMessage",
+					"parameters": [
+						{
+							"name": "data",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "WorkerNavigator",
+			"extends": [
+				"NavigatorID",
+				"NavigatorOnLine"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WorkerNavigator",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "constructor",
+						"returns": "WorkerNavigator"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WorkerNavigator"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "WorkerUtils",
+			"extends": [
+				"WindowBase64"
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "navigator",
+					"type": "WorkerNavigator"
+				},
+				{
+					"kind": "property",
+					"name": "msIndexedDB",
+					"type": "IDBFactory"
+				},
+				{
+					"kind": "property",
+					"name": "indexedDB",
+					"type": "IDBFactory"
+				},
+				{
+					"kind": "method",
+					"name": "clearImmediate",
+					"parameters": [
+						{
+							"name": "handle",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "importScripts",
+					"parameters": [
+						{
+							"name": "urls",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "string"
+							}
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "clearTimeout",
+					"parameters": [
+						{
+							"name": "handle",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setImmediate",
+					"parameters": [
+						{
+							"name": "handler",
+							"type": "any"
+						},
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setTimeout",
+					"parameters": [
+						{
+							"name": "handler",
+							"type": "any"
+						},
+						{
+							"name": "timeout",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "clearInterval",
+					"parameters": [
+						{
+							"name": "handle",
+							"type": "number"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "setInterval",
+					"parameters": [
+						{
+							"name": "handler",
+							"type": "any"
+						},
+						{
+							"name": "timeout",
+							"optional": true,
+							"type": "any"
+						},
+						{
+							"name": "args",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "location",
+			"type": "WorkerLocation"
+		},
+		{
+			"kind": "variable",
+			"name": "self",
+			"type": "WorkerGlobalScope"
+		},
+		{
+			"kind": "variable",
+			"name": "onerror",
+			"type": {
+				"kind": "function",
+				"parameters": [
+					{
+						"name": "ev",
+						"type": "ErrorEvent"
+					}
+				],
+				"returns": "any"
+			}
+		},
+		{
+			"kind": "function",
+			"name": "msWriteProfilerMark",
+			"parameters": [
+				{
+					"name": "profilerMarkName",
+					"type": "string"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "close",
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "toString",
+			"returns": "string"
+		},
+		{
+			"kind": "function",
+			"name": "removeEventListener",
+			"parameters": [
+				{
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"name": "listener",
+					"type": "EventListener"
+				},
+				{
+					"name": "useCapture",
+					"optional": true,
+					"type": "boolean"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "addEventListener",
+			"parameters": [
+				{
+					"name": "type",
+					"type": "string"
+				},
+				{
+					"name": "listener",
+					"type": "EventListener"
+				},
+				{
+					"name": "useCapture",
+					"optional": true,
+					"type": "boolean"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "dispatchEvent",
+			"parameters": [
+				{
+					"name": "evt",
+					"type": "Event"
+				}
+			],
+			"returns": "boolean"
+		},
+		{
+			"kind": "variable",
+			"name": "onmessage",
+			"type": {
+				"kind": "function",
+				"parameters": [
+					{
+						"name": "ev",
+						"type": "MessageEvent"
+					}
+				],
+				"returns": "any"
+			}
+		},
+		{
+			"kind": "function",
+			"name": "postMessage",
+			"parameters": [
+				{
+					"name": "data",
+					"type": "any"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "variable",
+			"name": "console",
+			"type": "Console"
+		},
+		{
+			"kind": "variable",
+			"name": "navigator",
+			"type": "WorkerNavigator"
+		},
+		{
+			"kind": "variable",
+			"name": "msIndexedDB",
+			"type": "IDBFactory"
+		},
+		{
+			"kind": "variable",
+			"name": "indexedDB",
+			"type": "IDBFactory"
+		},
+		{
+			"kind": "function",
+			"name": "clearImmediate",
+			"parameters": [
+				{
+					"name": "handle",
+					"type": "number"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "importScripts",
+			"parameters": [
+				{
+					"name": "urls",
+					"rest": true,
+					"type": {
+						"kind": "array",
+						"type": "string"
+					}
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "clearTimeout",
+			"parameters": [
+				{
+					"name": "handle",
+					"type": "number"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "setImmediate",
+			"parameters": [
+				{
+					"name": "handler",
+					"type": "any"
+				},
+				{
+					"name": "args",
+					"rest": true,
+					"type": {
+						"kind": "array",
+						"type": "any"
+					}
+				}
+			],
+			"returns": "number"
+		},
+		{
+			"kind": "function",
+			"name": "setTimeout",
+			"parameters": [
+				{
+					"name": "handler",
+					"type": "any"
+				},
+				{
+					"name": "timeout",
+					"optional": true,
+					"type": "any"
+				},
+				{
+					"name": "args",
+					"rest": true,
+					"type": {
+						"kind": "array",
+						"type": "any"
+					}
+				}
+			],
+			"returns": "number"
+		},
+		{
+			"kind": "function",
+			"name": "clearInterval",
+			"parameters": [
+				{
+					"name": "handle",
+					"type": "number"
+				}
+			],
+			"returns": "void"
+		},
+		{
+			"kind": "function",
+			"name": "setInterval",
+			"parameters": [
+				{
+					"name": "handler",
+					"type": "any"
+				},
+				{
+					"name": "timeout",
+					"optional": true,
+					"type": "any"
+				},
+				{
+					"name": "args",
+					"rest": true,
+					"type": {
+						"kind": "array",
+						"type": "any"
+					}
+				}
+			],
+			"returns": "number"
+		},
+		{
+			"kind": "function",
+			"name": "btoa",
+			"parameters": [
+				{
+					"name": "rawString",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		},
+		{
+			"kind": "function",
+			"name": "atob",
+			"parameters": [
+				{
+					"name": "encodedString",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		}
+	]
+}

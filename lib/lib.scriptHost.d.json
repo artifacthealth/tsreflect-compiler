@@ -1,0 +1,126 @@
+{
+	"references": [
+		"lib.core.d.json"
+	],
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "ActiveXObject",
+			"type": {
+				"kind": "constructor",
+				"parameters": [
+					{
+						"name": "s",
+						"type": "string"
+					}
+				],
+				"returns": "any"
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ITextWriter",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "Write",
+					"parameters": [
+						{
+							"name": "s",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "WriteLine",
+					"parameters": [
+						{
+							"name": "s",
+							"type": "string"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "Close",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "WScript",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "method",
+						"name": "Echo",
+						"parameters": [
+							{
+								"name": "s",
+								"type": "any"
+							}
+						],
+						"returns": "void"
+					},
+					{
+						"kind": "property",
+						"name": "StdErr",
+						"type": "ITextWriter"
+					},
+					{
+						"kind": "property",
+						"name": "StdOut",
+						"type": "ITextWriter"
+					},
+					{
+						"kind": "property",
+						"name": "Arguments",
+						"type": {
+							"kind": "object",
+							"signatures": [
+								{
+									"kind": "property",
+									"name": "length",
+									"type": "number"
+								},
+								{
+									"kind": "method",
+									"name": "Item",
+									"parameters": [
+										{
+											"name": "n",
+											"type": "number"
+										}
+									],
+									"returns": "string"
+								}
+							]
+						}
+					},
+					{
+						"kind": "property",
+						"name": "ScriptFullName",
+						"type": "string"
+					},
+					{
+						"kind": "method",
+						"name": "Quit",
+						"parameters": [
+							{
+								"name": "exitCode",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "number"
+					}
+				]
+			}
+		}
+	]
+}

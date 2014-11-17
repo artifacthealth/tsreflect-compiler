@@ -162,7 +162,7 @@ module ts {
     }
 
     function getDiagnosticText(message:DiagnosticMessage, ...args:any[]):string {
-        var diagnostic:Diagnostic = createCompilerDiagnostic.apply(undefined, arguments);
+        var diagnostic: Diagnostic = createCompilerDiagnostic.apply(undefined, arguments);
         return diagnostic.messageText;
     }
 

@@ -1,0 +1,3677 @@
+{
+	"noDefaultLib": true,
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "NaN",
+			"type": "number"
+		},
+		{
+			"kind": "variable",
+			"name": "Infinity",
+			"type": "number"
+		},
+		{
+			"kind": "function",
+			"name": "eval",
+			"description": "Evaluates JavaScript code and executes it.",
+			"parameters": [
+				{
+					"name": "x",
+					"description": "A String value that contains valid JavaScript code.",
+					"type": "string"
+				}
+			],
+			"returns": "any"
+		},
+		{
+			"kind": "function",
+			"name": "parseInt",
+			"description": "Converts A string to an integer.",
+			"parameters": [
+				{
+					"name": "s",
+					"description": "A string to convert into a number.",
+					"type": "string"
+				},
+				{
+					"name": "radix",
+					"description": "A value between 2 and 36 that specifies the base of the number in numString. \r\nIf this argument is not supplied, strings with a prefix of '0x' are considered hexadecimal.\r\nAll other strings are considered decimal.",
+					"optional": true,
+					"type": "number"
+				}
+			],
+			"returns": "number"
+		},
+		{
+			"kind": "function",
+			"name": "parseFloat",
+			"description": "Converts a string to a floating-point number.",
+			"parameters": [
+				{
+					"name": "string",
+					"description": "A string that contains a floating-point number.",
+					"type": "string"
+				}
+			],
+			"returns": "number"
+		},
+		{
+			"kind": "function",
+			"name": "isNaN",
+			"description": "Returns a Boolean value that indicates whether a value is the reserved value NaN (not a number).",
+			"parameters": [
+				{
+					"name": "number",
+					"description": "A numeric value.",
+					"type": "number"
+				}
+			],
+			"returns": "boolean"
+		},
+		{
+			"kind": "function",
+			"name": "isFinite",
+			"description": "Determines whether a supplied number is finite.",
+			"parameters": [
+				{
+					"name": "number",
+					"description": "Any numeric value.",
+					"type": "number"
+				}
+			],
+			"returns": "boolean"
+		},
+		{
+			"kind": "function",
+			"name": "decodeURI",
+			"description": "Gets the unencoded version of an encoded Uniform Resource Identifier (URI).",
+			"parameters": [
+				{
+					"name": "encodedURI",
+					"description": "A value representing an encoded URI.",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		},
+		{
+			"kind": "function",
+			"name": "decodeURIComponent",
+			"description": "Gets the unencoded version of an encoded component of a Uniform Resource Identifier (URI).",
+			"parameters": [
+				{
+					"name": "encodedURIComponent",
+					"description": "A value representing an encoded URI component.",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		},
+		{
+			"kind": "function",
+			"name": "encodeURI",
+			"description": "Encodes a text string as a valid Uniform Resource Identifier (URI)",
+			"parameters": [
+				{
+					"name": "uri",
+					"description": "A value representing an encoded URI.",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		},
+		{
+			"kind": "function",
+			"name": "encodeURIComponent",
+			"description": "Encodes a text string as a valid component of a Uniform Resource Identifier (URI).",
+			"parameters": [
+				{
+					"name": "uriComponent",
+					"description": "A value representing an encoded URI component.",
+					"type": "string"
+				}
+			],
+			"returns": "string"
+		},
+		{
+			"kind": "interface",
+			"name": "PropertyDescriptor",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "configurable",
+					"optional": true,
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "enumerable",
+					"optional": true,
+					"type": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "value",
+					"optional": true,
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "writable",
+					"optional": true,
+					"type": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "get",
+					"optional": true,
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "set",
+					"optional": true,
+					"parameters": [
+						{
+							"name": "v",
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "PropertyDescriptorMap",
+			"signatures": [
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "s",
+						"type": "string"
+					},
+					"returns": "PropertyDescriptor"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "Object",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "constructor",
+					"type": "Function",
+					"description": "The initial value of Object.prototype.constructor is the standard built-in Object constructor."
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"description": "Returns a string representation of an object.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Returns a date converted to a string using the current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "valueOf",
+					"description": "Returns the primitive value of the specified object.",
+					"returns": "Object"
+				},
+				{
+					"kind": "method",
+					"name": "hasOwnProperty",
+					"description": "Determines whether an object has a property with the specified name.",
+					"parameters": [
+						{
+							"name": "v",
+							"description": "A property name.",
+							"type": "string"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "isPrototypeOf",
+					"description": "Determines whether an object exists in another object's prototype chain.",
+					"parameters": [
+						{
+							"name": "v",
+							"description": "Another object whose prototype chain is to be checked.",
+							"type": "Object"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "propertyIsEnumerable",
+					"description": "Determines whether a specified property is enumerable.",
+					"parameters": [
+						{
+							"name": "v",
+							"description": "A property name.",
+							"type": "string"
+						}
+					],
+					"returns": "boolean"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "Provides functionality common to all JavaScript objects.",
+			"name": "Object",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"returns": "any"
+					},
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "Object"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Object"
+					},
+					{
+						"kind": "method",
+						"name": "getPrototypeOf",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "getOwnPropertyDescriptor",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							},
+							{
+								"name": "p",
+								"type": "string"
+							}
+						],
+						"returns": "PropertyDescriptor"
+					},
+					{
+						"kind": "method",
+						"name": "getOwnPropertyNames",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "string"
+						}
+					},
+					{
+						"kind": "method",
+						"name": "create",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							},
+							{
+								"name": "properties",
+								"optional": true,
+								"type": "PropertyDescriptorMap"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "defineProperty",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							},
+							{
+								"name": "p",
+								"type": "string"
+							},
+							{
+								"name": "attributes",
+								"type": "PropertyDescriptor"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "defineProperties",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							},
+							{
+								"name": "properties",
+								"type": "PropertyDescriptorMap"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "seal",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "freeze",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "preventExtensions",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
+						"kind": "method",
+						"name": "isSealed",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
+					},
+					{
+						"kind": "method",
+						"name": "isFrozen",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
+					},
+					{
+						"kind": "method",
+						"name": "isExtensible",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
+					},
+					{
+						"kind": "method",
+						"name": "keys",
+						"parameters": [
+							{
+								"name": "o",
+								"type": "any"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "string"
+						}
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Function",
+			"description": "Creates a new function.",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "apply",
+					"description": "Calls the function, substituting the specified object for the this value of the function, and the specified array for the arguments of the function.",
+					"parameters": [
+						{
+							"name": "thisArg",
+							"description": "The object to be used as the this object.",
+							"type": "any"
+						},
+						{
+							"name": "argArray",
+							"description": "A set of arguments to be passed to the function.",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "call",
+					"description": "Calls a method of an object, substituting another object for the current object.",
+					"parameters": [
+						{
+							"name": "thisArg",
+							"description": "The object to be used as the current object.",
+							"type": "any"
+						},
+						{
+							"name": "argArray",
+							"description": "A list of arguments to be passed to the method.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "bind",
+					"description": "For a given function, creates a bound function that has the same body as the original function. \r\nThe this object of the bound function is associated with the specified object, and has the specified initial parameters.",
+					"parameters": [
+						{
+							"name": "thisArg",
+							"description": "An object to which the this keyword can refer inside the new function.",
+							"type": "any"
+						},
+						{
+							"name": "argArray",
+							"description": "A list of arguments to be passed to the new function.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "property",
+					"name": "prototype",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "arguments",
+					"type": "any"
+				},
+				{
+					"kind": "property",
+					"name": "caller",
+					"type": "Function"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Function",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "args",
+								"rest": true,
+								"type": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						],
+						"returns": "Function"
+					},
+					{
+						"kind": "constructor",
+						"description": "Creates a new function.",
+						"parameters": [
+							{
+								"name": "args",
+								"description": "A list of arguments the function accepts.",
+								"rest": true,
+								"type": {
+									"kind": "array",
+									"type": "string"
+								}
+							}
+						],
+						"returns": "Function"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Function"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "IArguments",
+			"signatures": [
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "any"
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "callee",
+					"type": "Function"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "String",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "toString",
+					"description": "Returns a string representation of a string.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "charAt",
+					"description": "Returns the character at the specified index.",
+					"parameters": [
+						{
+							"name": "pos",
+							"description": "The zero-based index of the desired character.",
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "charCodeAt",
+					"description": "Returns the Unicode value of the character at the specified location.",
+					"parameters": [
+						{
+							"name": "index",
+							"description": "The zero-based index of the desired character. If there is no character at the specified index, NaN is returned.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "concat",
+					"description": "Returns a string that contains the concatenation of two or more strings.",
+					"parameters": [
+						{
+							"name": "strings",
+							"description": "The strings to append to the end of the string.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "string"
+							}
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "indexOf",
+					"description": "Returns the position of the first occurrence of a substring.",
+					"parameters": [
+						{
+							"name": "searchString",
+							"description": "The substring to search for in the string",
+							"type": "string"
+						},
+						{
+							"name": "position",
+							"description": "The index at which to begin searching the String object. If omitted, search starts at the beginning of the string.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "lastIndexOf",
+					"description": "Returns the last occurrence of a substring in the string.",
+					"parameters": [
+						{
+							"name": "searchString",
+							"description": "The substring to search for.",
+							"type": "string"
+						},
+						{
+							"name": "position",
+							"description": "The index at which to begin searching. If omitted, the search begins at the end of the string.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "localeCompare",
+					"description": "Determines whether two strings are equivalent in the current locale.",
+					"parameters": [
+						{
+							"name": "that",
+							"description": "String to compare to target string",
+							"type": "string"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "match",
+					"description": "Matches a string with a regular expression, and returns an array containing the results of that search.",
+					"parameters": [
+						{
+							"name": "regexp",
+							"description": "A variable name or string literal containing the regular expression pattern and flags.",
+							"type": "string"
+						}
+					],
+					"returns": "RegExpMatchArray"
+				},
+				{
+					"kind": "method",
+					"name": "match",
+					"description": "Matches a string with a regular expression, and returns an array containing the results of that search.",
+					"parameters": [
+						{
+							"name": "regexp",
+							"description": "A regular expression object that contains the regular expression pattern and applicable flags.",
+							"type": "RegExp"
+						}
+					],
+					"returns": "RegExpMatchArray"
+				},
+				{
+					"kind": "method",
+					"name": "replace",
+					"description": "Replaces text in a string, using a regular expression or search string.",
+					"parameters": [
+						{
+							"name": "searchValue",
+							"description": "A String object or string literal that represents the regular expression",
+							"type": "string"
+						},
+						{
+							"name": "replaceValue",
+							"description": "A String object or string literal containing the text to replace for every successful match of rgExp in stringObj.",
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "replace",
+					"description": "Replaces text in a string, using a regular expression or search string.",
+					"parameters": [
+						{
+							"name": "searchValue",
+							"description": "A String object or string literal that represents the regular expression",
+							"type": "string"
+						},
+						{
+							"name": "replaceValue",
+							"description": "A function that returns the replacement text.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "substring",
+										"type": "string"
+									},
+									{
+										"name": "args",
+										"rest": true,
+										"type": {
+											"kind": "array",
+											"type": "any"
+										}
+									}
+								],
+								"returns": "string"
+							}
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "replace",
+					"description": "Replaces text in a string, using a regular expression or search string.",
+					"parameters": [
+						{
+							"name": "searchValue",
+							"description": "A Regular Expression object containing the regular expression pattern and applicable flags",
+							"type": "RegExp"
+						},
+						{
+							"name": "replaceValue",
+							"description": "A String object or string literal containing the text to replace for every successful match of rgExp in stringObj.",
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "replace",
+					"description": "Replaces text in a string, using a regular expression or search string.",
+					"parameters": [
+						{
+							"name": "searchValue",
+							"description": "A Regular Expression object containing the regular expression pattern and applicable flags",
+							"type": "RegExp"
+						},
+						{
+							"name": "replaceValue",
+							"description": "A function that returns the replacement text.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "substring",
+										"type": "string"
+									},
+									{
+										"name": "args",
+										"rest": true,
+										"type": {
+											"kind": "array",
+											"type": "any"
+										}
+									}
+								],
+								"returns": "string"
+							}
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "search",
+					"description": "Finds the first substring match in a regular expression search.",
+					"parameters": [
+						{
+							"name": "regexp",
+							"description": "The regular expression pattern and applicable flags.",
+							"type": "string"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "search",
+					"description": "Finds the first substring match in a regular expression search.",
+					"parameters": [
+						{
+							"name": "regexp",
+							"description": "The regular expression pattern and applicable flags.",
+							"type": "RegExp"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "slice",
+					"description": "Returns a section of a string.",
+					"parameters": [
+						{
+							"name": "start",
+							"description": "The index to the beginning of the specified portion of stringObj.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The index to the end of the specified portion of stringObj. The substring includes the characters up to, but not including, the character indicated by end. \r\nIf this value is not specified, the substring continues to the end of stringObj.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "split",
+					"description": "Split a string into substrings using the specified separator and return them as an array.",
+					"parameters": [
+						{
+							"name": "separator",
+							"description": "A string that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.",
+							"type": "string"
+						},
+						{
+							"name": "limit",
+							"description": "A value used to limit the number of elements returned in the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "string"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "split",
+					"description": "Split a string into substrings using the specified separator and return them as an array.",
+					"parameters": [
+						{
+							"name": "separator",
+							"description": "A Regular Express that identifies character or characters to use in separating the string. If omitted, a single-element array containing the entire string is returned.",
+							"type": "RegExp"
+						},
+						{
+							"name": "limit",
+							"description": "A value used to limit the number of elements returned in the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "string"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "substring",
+					"description": "Returns the substring at the specified location within a String object.",
+					"parameters": [
+						{
+							"name": "start",
+							"description": "The zero-based index number indicating the beginning of the substring.",
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "Zero-based index number indicating the end of the substring. The substring includes the characters up to, but not including, the character indicated by end.\r\nIf end is omitted, the characters from start through the end of the original string are returned.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLowerCase",
+					"description": "Converts all the alphabetic characters in a string to lowercase.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleLowerCase",
+					"description": "Converts all alphabetic characters to lowercase, taking into account the host environment's current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toUpperCase",
+					"description": "Converts all the alphabetic characters in a string to uppercase.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleUpperCase",
+					"description": "Returns a string where all alphabetic characters have been converted to uppercase, taking into account the host environment's current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "trim",
+					"description": "Removes the leading and trailing white space and line terminator characters from a string.",
+					"returns": "string"
+				},
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "Returns the length of a String object."
+				},
+				{
+					"kind": "method",
+					"name": "substr",
+					"description": "Gets a substring beginning at the specified location and having the specified length.",
+					"parameters": [
+						{
+							"name": "from",
+							"description": "The starting position of the desired substring. The index of the first character in the string is zero.",
+							"type": "number"
+						},
+						{
+							"name": "length",
+							"description": "The number of characters to include in the returned substring.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "index",
+						"type": "number"
+					},
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "Allows manipulation and formatting of text strings and determination and location of substrings within strings.",
+			"name": "String",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "string"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "String"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "String"
+					},
+					{
+						"kind": "method",
+						"name": "fromCharCode",
+						"parameters": [
+							{
+								"name": "codes",
+								"rest": true,
+								"type": {
+									"kind": "array",
+									"type": "number"
+								}
+							}
+						],
+						"returns": "string"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Boolean"
+		},
+		{
+			"kind": "variable",
+			"name": "Boolean",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "Boolean"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Boolean"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Number",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "toString",
+					"description": "Returns a string representation of an object.",
+					"parameters": [
+						{
+							"name": "radix",
+							"description": "Specifies a radix for converting numeric values to strings. This value is only used for numbers.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toFixed",
+					"description": "Returns a string representing a number in fixed-point notation.",
+					"parameters": [
+						{
+							"name": "fractionDigits",
+							"description": "Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toExponential",
+					"description": "Returns a string containing a number represented in exponential notation.",
+					"parameters": [
+						{
+							"name": "fractionDigits",
+							"description": "Number of digits after the decimal point. Must be in the range 0 - 20, inclusive.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toPrecision",
+					"description": "Returns a string containing a number represented either in exponential or fixed-point notation with a specified number of digits.",
+					"parameters": [
+						{
+							"name": "precision",
+							"description": "Number of significant digits. Must be in the range 1 - 21, inclusive.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "An object that represents a number of any kind. All JavaScript numbers are 64-bit floating-point numbers.",
+			"name": "Number",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "Number"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Number"
+					},
+					{
+						"kind": "property",
+						"name": "MAX_VALUE",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "MIN_VALUE",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NaN",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "NEGATIVE_INFINITY",
+						"type": "number"
+					},
+					{
+						"kind": "property",
+						"name": "POSITIVE_INFINITY",
+						"type": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Math",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "E",
+					"type": "number",
+					"description": "The mathematical constant e. This is Euler's number, the base of natural logarithms."
+				},
+				{
+					"kind": "property",
+					"name": "LN10",
+					"type": "number",
+					"description": "The natural logarithm of 10."
+				},
+				{
+					"kind": "property",
+					"name": "LN2",
+					"type": "number",
+					"description": "The natural logarithm of 2."
+				},
+				{
+					"kind": "property",
+					"name": "LOG2E",
+					"type": "number",
+					"description": "The base-2 logarithm of e."
+				},
+				{
+					"kind": "property",
+					"name": "LOG10E",
+					"type": "number",
+					"description": "The base-10 logarithm of e."
+				},
+				{
+					"kind": "property",
+					"name": "PI",
+					"type": "number",
+					"description": "Pi. This is the ratio of the circumference of a circle to its diameter."
+				},
+				{
+					"kind": "property",
+					"name": "SQRT1_2",
+					"type": "number",
+					"description": "The square root of 0.5, or, equivalently, one divided by the square root of 2."
+				},
+				{
+					"kind": "property",
+					"name": "SQRT2",
+					"type": "number",
+					"description": "The square root of 2."
+				},
+				{
+					"kind": "method",
+					"name": "abs",
+					"description": "Returns the absolute value of a number (the value without regard to whether it is positive or negative). \r\nFor example, the absolute value of -5 is the same as the absolute value of 5.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression for which the absolute value is needed.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "acos",
+					"description": "Returns the arc cosine (or inverse cosine) of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "asin",
+					"description": "Returns the arcsine of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "atan",
+					"description": "Returns the arctangent of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression for which the arctangent is needed.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "atan2",
+					"description": "Returns the angle (in radians) from the X axis to a point (y,x).",
+					"parameters": [
+						{
+							"name": "y",
+							"description": "A numeric expression representing the cartesian y-coordinate.",
+							"type": "number"
+						},
+						{
+							"name": "x",
+							"description": "A numeric expression representing the cartesian x-coordinate.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "ceil",
+					"description": "Returns the smallest number greater than or equal to its numeric argument.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "cos",
+					"description": "Returns the cosine of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression that contains an angle measured in radians.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "exp",
+					"description": "Returns e (the base of natural logarithms) raised to a power.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression representing the power of e.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "floor",
+					"description": "Returns the greatest number less than or equal to its numeric argument.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "log",
+					"description": "Returns the natural logarithm (base e) of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "max",
+					"description": "Returns the larger of a set of supplied numeric expressions.",
+					"parameters": [
+						{
+							"name": "values",
+							"description": "Numeric expressions to be evaluated.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "min",
+					"description": "Returns the smaller of a set of supplied numeric expressions.",
+					"parameters": [
+						{
+							"name": "values",
+							"description": "Numeric expressions to be evaluated.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "number"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "pow",
+					"description": "Returns the value of a base expression taken to a specified power.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "The base value of the expression.",
+							"type": "number"
+						},
+						{
+							"name": "y",
+							"description": "The exponent value of the expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "random",
+					"description": "Returns a pseudorandom number between 0 and 1.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "round",
+					"description": "Returns a supplied numeric expression rounded to the nearest number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "The value to be rounded to the nearest number.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "sin",
+					"description": "Returns the sine of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression that contains an angle measured in radians.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "sqrt",
+					"description": "Returns the square root of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "tan",
+					"description": "Returns the tangent of a number.",
+					"parameters": [
+						{
+							"name": "x",
+							"description": "A numeric expression that contains an angle measured in radians.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "An intrinsic object that provides basic mathematics functionality and constants.",
+			"name": "Math",
+			"type": "Math"
+		},
+		{
+			"kind": "interface",
+			"name": "Date",
+			"description": "Enables basic storage and retrieval of dates and times.",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "toString",
+					"description": "Returns a string representation of a date. The format of the string depends on the locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toDateString",
+					"description": "Returns a date as a string value.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toTimeString",
+					"description": "Returns a time as a string value.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"description": "Returns a value as a string value appropriate to the host environment's current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleDateString",
+					"description": "Returns a date as a string value appropriate to the host environment's current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleTimeString",
+					"description": "Returns a time as a string value appropriate to the host environment's current locale.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "valueOf",
+					"description": "Returns the stored time value in milliseconds since midnight, January 1, 1970 UTC.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getTime",
+					"description": "Gets the time value in milliseconds.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getFullYear",
+					"description": "Gets the year, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCFullYear",
+					"description": "Gets the year using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getMonth",
+					"description": "Gets the month, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCMonth",
+					"description": "Gets the month of a Date object using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getDate",
+					"description": "Gets the day-of-the-month, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCDate",
+					"description": "Gets the day-of-the-month, using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getDay",
+					"description": "Gets the day of the week, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCDay",
+					"description": "Gets the day of the week using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getHours",
+					"description": "Gets the hours in a date, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCHours",
+					"description": "Gets the hours value in a Date object using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getMinutes",
+					"description": "Gets the minutes of a Date object, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCMinutes",
+					"description": "Gets the minutes of a Date object using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getSeconds",
+					"description": "Gets the seconds of a Date object, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCSeconds",
+					"description": "Gets the seconds of a Date object using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getMilliseconds",
+					"description": "Gets the milliseconds of a Date, using local time.",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getUTCMilliseconds",
+					"description": "Gets the milliseconds of a Date object using Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "getTimezoneOffset",
+					"description": "Gets the difference in minutes between the time on the local computer and Universal Coordinated Time (UTC).",
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setTime",
+					"description": "Sets the date and time value in the Date object.",
+					"parameters": [
+						{
+							"name": "time",
+							"description": "A numeric value representing the number of elapsed milliseconds since midnight, January 1, 1970 GMT.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setMilliseconds",
+					"description": "Sets the milliseconds value in the Date object using local time.",
+					"parameters": [
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the millisecond value.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCMilliseconds",
+					"description": "Sets the milliseconds value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the millisecond value.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setSeconds",
+					"description": "Sets the seconds value in the Date object using local time.",
+					"parameters": [
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCSeconds",
+					"description": "Sets the seconds value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setMinutes",
+					"description": "Sets the minutes value in the Date object using local time.",
+					"parameters": [
+						{
+							"name": "min",
+							"description": "A numeric value equal to the minutes value.",
+							"type": "number"
+						},
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCMinutes",
+					"description": "Sets the minutes value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "min",
+							"description": "A numeric value equal to the minutes value.",
+							"type": "number"
+						},
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setHours",
+					"description": "Sets the hour value in the Date object using local time.",
+					"parameters": [
+						{
+							"name": "hours",
+							"description": "A numeric value equal to the hours value.",
+							"type": "number"
+						},
+						{
+							"name": "min",
+							"description": "A numeric value equal to the minutes value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCHours",
+					"description": "Sets the hours value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "hours",
+							"description": "A numeric value equal to the hours value.",
+							"type": "number"
+						},
+						{
+							"name": "min",
+							"description": "A numeric value equal to the minutes value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "sec",
+							"description": "A numeric value equal to the seconds value.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "ms",
+							"description": "A numeric value equal to the milliseconds value.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setDate",
+					"description": "Sets the numeric day-of-the-month value of the Date object using local time.",
+					"parameters": [
+						{
+							"name": "date",
+							"description": "A numeric value equal to the day of the month.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCDate",
+					"description": "Sets the numeric day of the month in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "date",
+							"description": "A numeric value equal to the day of the month.",
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setMonth",
+					"description": "Sets the month value in the Date object using local time.",
+					"parameters": [
+						{
+							"name": "month",
+							"description": "A numeric value equal to the month. The value for January is 0, and other month values follow consecutively.",
+							"type": "number"
+						},
+						{
+							"name": "date",
+							"description": "A numeric value representing the day of the month. If this value is not supplied, the value from a call to the getDate method is used.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCMonth",
+					"description": "Sets the month value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "month",
+							"description": "A numeric value equal to the month. The value for January is 0, and other month values follow consecutively.",
+							"type": "number"
+						},
+						{
+							"name": "date",
+							"description": "A numeric value representing the day of the month. If it is not supplied, the value from a call to the getUTCDate method is used.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setFullYear",
+					"description": "Sets the year of the Date object using local time.",
+					"parameters": [
+						{
+							"name": "year",
+							"description": "A numeric value for the year.",
+							"type": "number"
+						},
+						{
+							"name": "month",
+							"description": "A zero-based numeric value for the month (0 for January, 11 for December). Must be specified if numDate is specified.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "date",
+							"description": "A numeric value equal for the day of the month.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "setUTCFullYear",
+					"description": "Sets the year value in the Date object using Universal Coordinated Time (UTC).",
+					"parameters": [
+						{
+							"name": "year",
+							"description": "A numeric value equal to the year.",
+							"type": "number"
+						},
+						{
+							"name": "month",
+							"description": "A numeric value equal to the month. The value for January is 0, and other month values follow consecutively. Must be supplied if numDate is supplied.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "date",
+							"description": "A numeric value equal to the day of the month.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "toUTCString",
+					"description": "Returns a date converted to a string using Universal Coordinated Time (UTC).",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toISOString",
+					"description": "Returns a date as a string value in ISO format.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toJSON",
+					"description": "Used by the JSON.stringify method to enable the transformation of an object's data for JavaScript Object Notation (JSON) serialization.",
+					"parameters": [
+						{
+							"name": "key",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Date",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"returns": "string"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Date"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"type": "number"
+							}
+						],
+						"returns": "Date"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "value",
+								"type": "string"
+							}
+						],
+						"returns": "Date"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "year",
+								"type": "number"
+							},
+							{
+								"name": "month",
+								"type": "number"
+							},
+							{
+								"name": "date",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "hours",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "minutes",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "seconds",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "ms",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "Date"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Date"
+					},
+					{
+						"kind": "method",
+						"name": "parse",
+						"parameters": [
+							{
+								"name": "s",
+								"type": "string"
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "method",
+						"name": "UTC",
+						"parameters": [
+							{
+								"name": "year",
+								"type": "number"
+							},
+							{
+								"name": "month",
+								"type": "number"
+							},
+							{
+								"name": "date",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "hours",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "minutes",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "seconds",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "ms",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "method",
+						"name": "now",
+						"returns": "number"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "RegExpMatchArray",
+			"extends": [
+				{
+					"kind": "reference",
+					"type": "Array",
+					"arguments": [
+						"string"
+					]
+				}
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "index",
+					"optional": true,
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "input",
+					"optional": true,
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "RegExpExecArray",
+			"extends": [
+				{
+					"kind": "reference",
+					"type": "Array",
+					"arguments": [
+						"string"
+					]
+				}
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "index",
+					"type": "number"
+				},
+				{
+					"kind": "property",
+					"name": "input",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "interface",
+			"name": "RegExp",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "exec",
+					"description": "Executes a search on a string using a regular expression pattern, and returns an array containing the results of that search.",
+					"parameters": [
+						{
+							"name": "string",
+							"description": "The String object or string literal on which to perform the search.",
+							"type": "string"
+						}
+					],
+					"returns": "RegExpExecArray"
+				},
+				{
+					"kind": "method",
+					"name": "test",
+					"description": "Returns a Boolean value that indicates whether or not a pattern exists in a searched string.",
+					"parameters": [
+						{
+							"name": "string",
+							"description": "String on which to perform the search.",
+							"type": "string"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "property",
+					"name": "source",
+					"type": "string",
+					"description": "Returns a copy of the text of the regular expression pattern. Read-only. The rgExp argument is a Regular expression object. It can be a variable name or a literal."
+				},
+				{
+					"kind": "property",
+					"name": "global",
+					"type": "boolean",
+					"description": "Returns a Boolean value indicating the state of the global flag (g) used with a regular expression. Default is false. Read-only."
+				},
+				{
+					"kind": "property",
+					"name": "ignoreCase",
+					"type": "boolean",
+					"description": "Returns a Boolean value indicating the state of the ignoreCase flag (i) used with a regular expression. Default is false. Read-only."
+				},
+				{
+					"kind": "property",
+					"name": "multiline",
+					"type": "boolean",
+					"description": "Returns a Boolean value indicating the state of the multiline flag (m) used with a regular expression. Default is false. Read-only."
+				},
+				{
+					"kind": "property",
+					"name": "lastIndex",
+					"type": "number"
+				},
+				{
+					"kind": "method",
+					"name": "compile",
+					"returns": "RegExp"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "RegExp",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "pattern",
+								"type": "string"
+							},
+							{
+								"name": "flags",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "RegExp"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "pattern",
+								"type": "string"
+							},
+							{
+								"name": "flags",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "RegExp"
+					},
+					{
+						"kind": "property",
+						"name": "$1",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$2",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$3",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$4",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$5",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$6",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$7",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$8",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "$9",
+						"type": "string"
+					},
+					{
+						"kind": "property",
+						"name": "lastMatch",
+						"type": "string"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "Error",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"kind": "property",
+					"name": "message",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Error",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "Error"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "Error"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Error"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "EvalError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "EvalError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "EvalError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "EvalError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "EvalError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "RangeError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "RangeError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "RangeError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "RangeError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "RangeError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "ReferenceError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "ReferenceError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "ReferenceError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "ReferenceError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ReferenceError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "SyntaxError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "SyntaxError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "SyntaxError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "SyntaxError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "SyntaxError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "TypeError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "TypeError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "TypeError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "TypeError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "TypeError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "URIError",
+			"extends": [
+				"Error"
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "URIError",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "URIError"
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "message",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "URIError"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "URIError"
+					}
+				]
+			}
+		},
+		{
+			"kind": "interface",
+			"name": "JSON",
+			"signatures": [
+				{
+					"kind": "method",
+					"name": "parse",
+					"description": "Converts a JavaScript Object Notation (JSON) string into an object.",
+					"parameters": [
+						{
+							"name": "text",
+							"description": "A valid JSON string.",
+							"type": "string"
+						},
+						{
+							"name": "reviver",
+							"description": "A function that transforms the results. This function is called for each member of the object. \r\nIf a member contains nested objects, the nested objects are transformed before the parent object is.",
+							"optional": true,
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "key",
+										"type": "any"
+									},
+									{
+										"name": "value",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						}
+					],
+					"returns": "any"
+				},
+				{
+					"kind": "method",
+					"name": "stringify",
+					"description": "Converts a JavaScript value to a JavaScript Object Notation (JSON) string.",
+					"parameters": [
+						{
+							"name": "value",
+							"description": "A JavaScript value, usually an object or array, to be converted.",
+							"type": "any"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "stringify",
+					"description": "Converts a JavaScript value to a JavaScript Object Notation (JSON) string.",
+					"parameters": [
+						{
+							"name": "value",
+							"description": "A JavaScript value, usually an object or array, to be converted.",
+							"type": "any"
+						},
+						{
+							"name": "replacer",
+							"description": "A function that transforms the results.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "key",
+										"type": "string"
+									},
+									{
+										"name": "value",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "stringify",
+					"description": "Converts a JavaScript value to a JavaScript Object Notation (JSON) string.",
+					"parameters": [
+						{
+							"name": "value",
+							"description": "A JavaScript value, usually an object or array, to be converted.",
+							"type": "any"
+						},
+						{
+							"name": "replacer",
+							"description": "Array that transforms the results.",
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "stringify",
+					"description": "Converts a JavaScript value to a JavaScript Object Notation (JSON) string.",
+					"parameters": [
+						{
+							"name": "value",
+							"description": "A JavaScript value, usually an object or array, to be converted.",
+							"type": "any"
+						},
+						{
+							"name": "replacer",
+							"description": "A function that transforms the results.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "key",
+										"type": "string"
+									},
+									{
+										"name": "value",
+										"type": "any"
+									}
+								],
+								"returns": "any"
+							}
+						},
+						{
+							"name": "space",
+							"type": "any"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "stringify",
+					"description": "Converts a JavaScript value to a JavaScript Object Notation (JSON) string.",
+					"parameters": [
+						{
+							"name": "value",
+							"description": "A JavaScript value, usually an object or array, to be converted.",
+							"type": "any"
+						},
+						{
+							"name": "replacer",
+							"description": "Array that transforms the results.",
+							"type": {
+								"kind": "array",
+								"type": "any"
+							}
+						},
+						{
+							"name": "space",
+							"description": "Adds indentation, white space, and line break characters to the return-value JSON text to make it easier to read.",
+							"type": "any"
+						}
+					],
+					"returns": "string"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"description": "An intrinsic object that provides functions to convert JavaScript values to and from the JavaScript Object Notation (JSON) format.",
+			"name": "JSON",
+			"type": "JSON"
+		},
+		{
+			"kind": "interface",
+			"name": "Array",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			],
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "length",
+					"type": "number",
+					"description": "Gets or sets the length of the array. This is a number one higher than the highest element defined in an array."
+				},
+				{
+					"kind": "method",
+					"name": "toString",
+					"description": "Returns a string representation of an array.",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "toLocaleString",
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "push",
+					"description": "Appends new elements to an array, and returns the new length of the array.",
+					"parameters": [
+						{
+							"name": "items",
+							"description": "New elements of the Array.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "T"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "pop",
+					"description": "Removes the last element from an array and returns it.",
+					"returns": "T"
+				},
+				{
+					"kind": "method",
+					"name": "concat",
+					"description": "Combines two or more arrays.",
+					"typeParameters": [
+						{
+							"name": "U",
+							"constraint": {
+								"kind": "array",
+								"type": "T"
+							}
+						}
+					],
+					"parameters": [
+						{
+							"name": "items",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "U"
+							}
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "concat",
+					"description": "Combines two or more arrays.",
+					"parameters": [
+						{
+							"name": "items",
+							"description": "Additional items to add to the end of array1.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "T"
+							}
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "join",
+					"description": "Adds all the elements of an array separated by the specified separator string.",
+					"parameters": [
+						{
+							"name": "separator",
+							"description": "A string used to separate one element of an array from the next in the resulting String. If omitted, the array elements are separated with a comma.",
+							"optional": true,
+							"type": "string"
+						}
+					],
+					"returns": "string"
+				},
+				{
+					"kind": "method",
+					"name": "reverse",
+					"description": "Reverses the elements in an Array.",
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "shift",
+					"description": "Removes the first element from an array and returns it.",
+					"returns": "T"
+				},
+				{
+					"kind": "method",
+					"name": "slice",
+					"description": "Returns a section of an array.",
+					"parameters": [
+						{
+							"name": "start",
+							"description": "The beginning of the specified portion of the array.",
+							"optional": true,
+							"type": "number"
+						},
+						{
+							"name": "end",
+							"description": "The end of the specified portion of the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "sort",
+					"description": "Sorts an array.",
+					"parameters": [
+						{
+							"name": "compareFn",
+							"description": "The name of the function used to determine the order of the elements. If omitted, the elements are sorted in ascending, ASCII character order.",
+							"optional": true,
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "a",
+										"type": "T"
+									},
+									{
+										"name": "b",
+										"type": "T"
+									}
+								],
+								"returns": "number"
+							}
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "splice",
+					"description": "Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.",
+					"parameters": [
+						{
+							"name": "start",
+							"description": "The zero-based location in the array from which to start removing elements.",
+							"type": "number"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "splice",
+					"description": "Removes elements from an array and, if necessary, inserts new elements in their place, returning the deleted elements.",
+					"parameters": [
+						{
+							"name": "start",
+							"description": "The zero-based location in the array from which to start removing elements.",
+							"type": "number"
+						},
+						{
+							"name": "deleteCount",
+							"description": "The number of elements to remove.",
+							"type": "number"
+						},
+						{
+							"name": "items",
+							"description": "Elements to insert into the array in place of the deleted elements.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "T"
+							}
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "unshift",
+					"description": "Inserts new elements at the start of an array.",
+					"parameters": [
+						{
+							"name": "items",
+							"description": "Elements to insert at the start of the Array.",
+							"rest": true,
+							"type": {
+								"kind": "array",
+								"type": "T"
+							}
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "indexOf",
+					"description": "Returns the index of the first occurrence of a value in an array.",
+					"parameters": [
+						{
+							"name": "searchElement",
+							"description": "The value to locate in the array.",
+							"type": "T"
+						},
+						{
+							"name": "fromIndex",
+							"description": "The array index at which to begin the search. If fromIndex is omitted, the search starts at index 0.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "lastIndexOf",
+					"description": "Returns the index of the last occurrence of a specified value in an array.",
+					"parameters": [
+						{
+							"name": "searchElement",
+							"description": "The value to locate in the array.",
+							"type": "T"
+						},
+						{
+							"name": "fromIndex",
+							"description": "The array index at which to begin the search. If fromIndex is omitted, the search starts at the last index in the array.",
+							"optional": true,
+							"type": "number"
+						}
+					],
+					"returns": "number"
+				},
+				{
+					"kind": "method",
+					"name": "every",
+					"description": "Determines whether all the members of an array satisfy the specified test.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to three arguments. The every method calls the callbackfn function for each element in array1 until the callbackfn returns false, or until the end of the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "boolean"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "some",
+					"description": "Determines whether the specified callback function returns true for any element of an array.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to three arguments. The some method calls the callbackfn function for each element in array1 until the callbackfn returns true, or until the end of the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "boolean"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "boolean"
+				},
+				{
+					"kind": "method",
+					"name": "forEach",
+					"description": "Performs the specified action for each element in an array.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to three arguments. forEach calls the callbackfn function one time for each element in the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "void"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": "void"
+				},
+				{
+					"kind": "method",
+					"name": "map",
+					"description": "Calls a defined callback function on each element of an array, and returns an array that contains the results.",
+					"typeParameters": [
+						{
+							"name": "U"
+						}
+					],
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "U"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "U"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "filter",
+					"description": "Returns the elements of an array that meet the condition specified in a callback function.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to three arguments. The filter method calls the callbackfn function one time for each element in the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "value",
+										"type": "T"
+									},
+									{
+										"name": "index",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "boolean"
+							}
+						},
+						{
+							"name": "thisArg",
+							"optional": true,
+							"type": "any"
+						}
+					],
+					"returns": {
+						"kind": "array",
+						"type": "T"
+					}
+				},
+				{
+					"kind": "method",
+					"name": "reduce",
+					"description": "Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to four arguments. The reduce method calls the callbackfn function one time for each element in the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "previousValue",
+										"type": "T"
+									},
+									{
+										"name": "currentValue",
+										"type": "T"
+									},
+									{
+										"name": "currentIndex",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "T"
+							}
+						},
+						{
+							"name": "initialValue",
+							"optional": true,
+							"type": "T"
+						}
+					],
+					"returns": "T"
+				},
+				{
+					"kind": "method",
+					"name": "reduce",
+					"description": "Calls the specified callback function for all the elements in an array. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.",
+					"typeParameters": [
+						{
+							"name": "U"
+						}
+					],
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "previousValue",
+										"type": "U"
+									},
+									{
+										"name": "currentValue",
+										"type": "T"
+									},
+									{
+										"name": "currentIndex",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "U"
+							}
+						},
+						{
+							"name": "initialValue",
+							"type": "U"
+						}
+					],
+					"returns": "U"
+				},
+				{
+					"kind": "method",
+					"name": "reduceRight",
+					"description": "Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.",
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"description": "A function that accepts up to four arguments. The reduceRight method calls the callbackfn function one time for each element in the array.",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "previousValue",
+										"type": "T"
+									},
+									{
+										"name": "currentValue",
+										"type": "T"
+									},
+									{
+										"name": "currentIndex",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "T"
+							}
+						},
+						{
+							"name": "initialValue",
+							"optional": true,
+							"type": "T"
+						}
+					],
+					"returns": "T"
+				},
+				{
+					"kind": "method",
+					"name": "reduceRight",
+					"description": "Calls the specified callback function for all the elements in an array, in descending order. The return value of the callback function is the accumulated result, and is provided as an argument in the next call to the callback function.",
+					"typeParameters": [
+						{
+							"name": "U"
+						}
+					],
+					"parameters": [
+						{
+							"name": "callbackfn",
+							"type": {
+								"kind": "function",
+								"parameters": [
+									{
+										"name": "previousValue",
+										"type": "U"
+									},
+									{
+										"name": "currentValue",
+										"type": "T"
+									},
+									{
+										"name": "currentIndex",
+										"type": "number"
+									},
+									{
+										"name": "array",
+										"type": {
+											"kind": "array",
+											"type": "T"
+										}
+									}
+								],
+								"returns": "U"
+							}
+						},
+						{
+							"name": "initialValue",
+							"type": "U"
+						}
+					],
+					"returns": "U"
+				},
+				{
+					"kind": "index",
+					"parameter": {
+						"name": "n",
+						"type": "number"
+					},
+					"returns": "T"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "Array",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "arrayLength",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "any"
+						}
+					},
+					{
+						"kind": "call",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"parameters": [
+							{
+								"name": "arrayLength",
+								"type": "number"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "T"
+						}
+					},
+					{
+						"kind": "call",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"parameters": [
+							{
+								"name": "items",
+								"rest": true,
+								"type": {
+									"kind": "array",
+									"type": "T"
+								}
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "T"
+						}
+					},
+					{
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "arrayLength",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "any"
+						}
+					},
+					{
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"parameters": [
+							{
+								"name": "arrayLength",
+								"type": "number"
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "T"
+						}
+					},
+					{
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"parameters": [
+							{
+								"name": "items",
+								"rest": true,
+								"type": {
+									"kind": "array",
+									"type": "T"
+								}
+							}
+						],
+						"returns": {
+							"kind": "array",
+							"type": "T"
+						}
+					},
+					{
+						"kind": "method",
+						"name": "isArray",
+						"parameters": [
+							{
+								"name": "arg",
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
+					},
+					{
+						"kind": "property",
+						"name": "prototype",
+						"type": {
+							"kind": "array",
+							"type": "any"
+						}
+					}
+				]
+			}
+		}
+	]
+}
