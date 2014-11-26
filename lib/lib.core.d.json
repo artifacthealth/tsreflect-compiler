@@ -300,14 +300,17 @@
 					{
 						"kind": "property",
 						"name": "prototype",
+						"description": "A reference to the prototype for a class of objects.",
 						"type": "Object"
 					},
 					{
 						"kind": "method",
 						"name": "getPrototypeOf",
+						"description": "Returns the prototype of an object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "The object that references the prototype.",
 								"type": "any"
 							}
 						],
@@ -316,13 +319,16 @@
 					{
 						"kind": "method",
 						"name": "getOwnPropertyDescriptor",
+						"description": "Gets the own property descriptor of the specified object. \r\nAn own property descriptor is one that is defined directly on the object and is not inherited from the object's prototype.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object that contains the property.",
 								"type": "any"
 							},
 							{
 								"name": "p",
+								"description": "Name of the property.",
 								"type": "string"
 							}
 						],
@@ -331,9 +337,11 @@
 					{
 						"kind": "method",
 						"name": "getOwnPropertyNames",
+						"description": "Returns the names of the own properties of an object. The own properties of an object are those that are defined directly \r\non that object, and are not inherited from the object's prototype. The properties of an object include both fields (objects) and functions.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object that contains the own properties.",
 								"type": "any"
 							}
 						],
@@ -345,13 +353,16 @@
 					{
 						"kind": "method",
 						"name": "create",
+						"description": "Creates an object that has the specified prototype, and that optionally contains specified properties.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object to use as a prototype. May be null",
 								"type": "any"
 							},
 							{
 								"name": "properties",
+								"description": "JavaScript object that contains one or more property descriptors.",
 								"optional": true,
 								"type": "PropertyDescriptorMap"
 							}
@@ -361,17 +372,21 @@
 					{
 						"kind": "method",
 						"name": "defineProperty",
+						"description": "Adds a property to an object, or modifies attributes of an existing property.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object on which to add or modify the property. This can be a native JavaScript object (that is, a user-defined object or a built in object) or a DOM object.",
 								"type": "any"
 							},
 							{
 								"name": "p",
+								"description": "The property name.",
 								"type": "string"
 							},
 							{
 								"name": "attributes",
+								"description": "Descriptor for the property. It can be for a data property or an accessor property.",
 								"type": "PropertyDescriptor"
 							}
 						],
@@ -380,13 +395,16 @@
 					{
 						"kind": "method",
 						"name": "defineProperties",
+						"description": "Adds one or more properties to an object, and/or modifies attributes of existing properties.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object on which to add or modify the properties. This can be a native JavaScript object or a DOM object.",
 								"type": "any"
 							},
 							{
 								"name": "properties",
+								"description": "JavaScript object that contains one or more descriptor objects. Each descriptor object describes a data property or an accessor property.",
 								"type": "PropertyDescriptorMap"
 							}
 						],
@@ -395,9 +413,11 @@
 					{
 						"kind": "method",
 						"name": "seal",
+						"description": "Prevents the modification of attributes of existing properties, and prevents the addition of new properties.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object on which to lock the attributes.",
 								"type": "any"
 							}
 						],
@@ -406,9 +426,11 @@
 					{
 						"kind": "method",
 						"name": "freeze",
+						"description": "Prevents the modification of existing property attributes and values, and prevents the addition of new properties.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object on which to lock the attributes.",
 								"type": "any"
 							}
 						],
@@ -417,9 +439,11 @@
 					{
 						"kind": "method",
 						"name": "preventExtensions",
+						"description": "Prevents the addition of new properties to an object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object to make non-extensible.",
 								"type": "any"
 							}
 						],
@@ -428,9 +452,11 @@
 					{
 						"kind": "method",
 						"name": "isSealed",
+						"description": "Returns true if existing property attributes cannot be modified in an object and new properties cannot be added to the object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object to test.",
 								"type": "any"
 							}
 						],
@@ -439,9 +465,11 @@
 					{
 						"kind": "method",
 						"name": "isFrozen",
+						"description": "Returns true if existing property attributes and values cannot be modified in an object, and new properties cannot be added to the object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object to test.",
 								"type": "any"
 							}
 						],
@@ -450,9 +478,11 @@
 					{
 						"kind": "method",
 						"name": "isExtensible",
+						"description": "Returns a value that indicates whether new properties can be added to an object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object to test.",
 								"type": "any"
 							}
 						],
@@ -461,9 +491,11 @@
 					{
 						"kind": "method",
 						"name": "keys",
+						"description": "Returns the names of the enumerable properties and methods of an object.",
 						"parameters": [
 							{
 								"name": "o",
+								"description": "Object that contains the properties and methods. This can be an object that you created or an existing Document Object Model (DOM) object.",
 								"type": "any"
 							}
 						],
@@ -1234,26 +1266,31 @@
 					{
 						"kind": "property",
 						"name": "MAX_VALUE",
+						"description": "The largest number that can be represented in JavaScript. Equal to approximately 1.79E+308.",
 						"type": "number"
 					},
 					{
 						"kind": "property",
 						"name": "MIN_VALUE",
+						"description": "The closest number to zero that can be represented in JavaScript. Equal to approximately 5.00E-324.",
 						"type": "number"
 					},
 					{
 						"kind": "property",
 						"name": "NaN",
+						"description": "A value that is not a number.\r\nIn equality comparisons, NaN does not equal any value, including itself. To test whether a value is equivalent to NaN, use the isNaN function.",
 						"type": "number"
 					},
 					{
 						"kind": "property",
 						"name": "NEGATIVE_INFINITY",
+						"description": "A value that is less than the largest negative number that can be represented in JavaScript.\r\nJavaScript displays NEGATIVE_INFINITY values as -infinity.",
 						"type": "number"
 					},
 					{
 						"kind": "property",
 						"name": "POSITIVE_INFINITY",
+						"description": "A value greater than the largest number that can be represented in JavaScript. \r\nJavaScript displays POSITIVE_INFINITY values as infinity.",
 						"type": "number"
 					}
 				]
@@ -2130,9 +2167,11 @@
 					{
 						"kind": "method",
 						"name": "parse",
+						"description": "Parses a string containing a date, and returns the number of milliseconds between that date and midnight, January 1, 1970.",
 						"parameters": [
 							{
 								"name": "s",
+								"description": "A date string",
 								"type": "string"
 							}
 						],
@@ -2141,37 +2180,45 @@
 					{
 						"kind": "method",
 						"name": "UTC",
+						"description": "Returns the number of milliseconds between midnight, January 1, 1970 Universal Coordinated Time (UTC) (or GMT) and the specified date.",
 						"parameters": [
 							{
 								"name": "year",
+								"description": "The full year designation is required for cross-century date accuracy. If year is between 0 and 99 is used, then year is assumed to be 1900 + year.",
 								"type": "number"
 							},
 							{
 								"name": "month",
+								"description": "The month as an number between 0 and 11 (January to December).",
 								"type": "number"
 							},
 							{
 								"name": "date",
+								"description": "The date as an number between 1 and 31.",
 								"optional": true,
 								"type": "number"
 							},
 							{
 								"name": "hours",
+								"description": "Must be supplied if minutes is supplied. An number from 0 to 23 (midnight to 11pm) that specifies the hour.",
 								"optional": true,
 								"type": "number"
 							},
 							{
 								"name": "minutes",
+								"description": "Must be supplied if seconds is supplied. An number from 0 to 59 that specifies the minutes.",
 								"optional": true,
 								"type": "number"
 							},
 							{
 								"name": "seconds",
+								"description": "Must be supplied if milliseconds is supplied. An number from 0 to 59 that specifies the seconds.",
 								"optional": true,
 								"type": "number"
 							},
 							{
 								"name": "ms",
+								"description": "An number from 0 to 999 that specifies the milliseconds.",
 								"optional": true,
 								"type": "number"
 							}

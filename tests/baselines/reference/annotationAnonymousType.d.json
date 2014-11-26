@@ -1,0 +1,61 @@
+{
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "A",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"annotations": [
+							{
+								"name": "callSignatureAnnotation",
+								"value": true
+							}
+						],
+						"parameters": [
+							{
+								"name": "a",
+								"type": "number"
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "constructor",
+						"annotations": [
+							{
+								"name": "constructSignatureAnnotation",
+								"value": true
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "property",
+						"name": "a",
+						"annotations": [
+							{
+								"name": "propertyAnnotation",
+								"value": true
+							}
+						],
+						"type": "string"
+					},
+					{
+						"kind": "method",
+						"name": "b",
+						"annotations": [
+							{
+								"name": "methodAnnotation",
+								"value": true
+							}
+						],
+						"returns": "void"
+					}
+				]
+			}
+		}
+	]
+}

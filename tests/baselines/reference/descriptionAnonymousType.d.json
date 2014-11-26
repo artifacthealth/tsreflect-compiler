@@ -1,0 +1,42 @@
+{
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "A",
+			"type": {
+				"kind": "object",
+				"signatures": [
+					{
+						"kind": "call",
+						"description": "call signature description",
+						"parameters": [
+							{
+								"name": "a",
+								"description": "The 'a' param",
+								"type": "number"
+							}
+						],
+						"returns": "number"
+					},
+					{
+						"kind": "constructor",
+						"description": "construct signature description",
+						"returns": "number"
+					},
+					{
+						"kind": "property",
+						"name": "a",
+						"description": "property description",
+						"type": "string"
+					},
+					{
+						"kind": "method",
+						"name": "b",
+						"description": "method description",
+						"returns": "void"
+					}
+				]
+			}
+		}
+	]
+}

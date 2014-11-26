@@ -682,11 +682,10 @@ module ts {
             function emitParameterProperties(constructorDeclaration: ConstructorDeclaration) {
                 if (constructorDeclaration) {
 
-                    var jsDocComment = getJsDocComment(constructorDeclaration),
-                        paramDescriptions: Map<string>;
+                    var jsDocComment = getJsDocComment(constructorDeclaration);
 
                     if(jsDocComment) {
-                        paramDescriptions = getJsDocParamDescriptions(jsDocComment);
+                        var paramDescriptions = getJsDocParamDescriptions(jsDocComment);
                     }
 
                     forEach(constructorDeclaration.parameters, param => {
@@ -1395,6 +1394,7 @@ module ts {
             function writeLiteralType(type: ObjectType, flags: TypeFormatFlags) {
 
                 var resolved = resolver.resolveObjectTypeMembers(type);
+
                 if (!resolved.properties.length && !resolved.stringIndexType && !resolved.numberIndexType) {
                     if (!resolved.callSignatures.length && !resolved.constructSignatures.length) {
 
@@ -1459,6 +1459,7 @@ module ts {
                         for (var j = 0; j < signatures.length; j++) {
                             writer.writeBeginSignature(DeclarationKind.MethodSignature);
                             writer.writeName(p.name);
+                            emitJsDocComments(p.valueDeclaration);
                             if (isOptionalProperty(p)) {
                                 writer.writeFlags(DeclarationFlag.Optional);
                             }
@@ -1469,6 +1470,7 @@ module ts {
                     else {
                         writer.writeBeginSignature(DeclarationKind.PropertySignature);
                         writer.writeName(p.name);
+                        emitJsDocComments(p.valueDeclaration);
                         if (isOptionalProperty(p)) {
                             writer.writeFlags(DeclarationFlag.Optional);
                         }
