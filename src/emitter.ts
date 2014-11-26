@@ -266,7 +266,7 @@ module ts {
             return null;
         }
 
-        var annotationExp = /^([$A-Z_][0-9A-Z_$]*)( (.*))?$/i;
+        var annotationExp = /^([$A-Z_][0-9A-Z_$]*)( ((.|[\r\n])*))?$/im;
 
         function getJsDocAnnotations(jsDocComment: JsDocComment): any[] {
 
