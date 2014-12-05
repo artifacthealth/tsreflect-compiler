@@ -1,0 +1,17 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "Name",
+			"annotations": [
+				{
+					"name": "property",
+					"value": {
+						"name": "field",
+						"options": true
+					}
+				}
+			]
+		}
+	]
+}

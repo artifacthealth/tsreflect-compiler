@@ -4,6 +4,7 @@
 /// <reference path="scanner.ts"/>
 /// <reference path="parser.ts"/>
 /// <reference path="declarationWriter.ts"/>
+/// <reference path="annotationValueParser.ts"/>
 
 var doctrine = require("doctrine");
 
@@ -302,11 +303,11 @@ module ts {
                             }
                             else {
                                 try {
-                                    value = JSON.parse(value);
+                                    value = parseAnnotationValue(value);
                                 }
                                 catch (e) {
                                     diagnostics.push(createDiagnosticForNode(jsDocComment.node,
-                                        CustomDiagnostics.Annotation_value_must_be_valid_JSON));
+                                        CustomDiagnostics.Invalid_annotation_value_0, e.message));
                                 }
                             }
 

@@ -23,7 +23,7 @@ module ts {
         Emit_accessors: { code: 10001, category: DiagnosticCategory.Message, key: "Emit property accessor declarations." },
         Missing_annotation_name: { code: 10002, category: DiagnosticCategory.Error, key: "Missing annotation name." },
         Invalid_annotation_name: { code: 10003, category: DiagnosticCategory.Error, key: "Invalid annotation name." },
-        Annotation_value_must_be_valid_JSON: { code: 10004, category: DiagnosticCategory.Error, key: "Annotation value must be a valid JSON document, not JavaScript." },
+        Invalid_annotation_value_0: { code: 10004, category: DiagnosticCategory.Error, key: "Invalid annotation value: {0}" },
         Do_not_emit_private_class_member_declaration: { code: 10005, category: DiagnosticCategory.Error, key: "Do not emit private class member declarations." },
         Emit_type_information_for_private_class_members: { code: 10006, category: DiagnosticCategory.Error, key: "Emit type information, if accessible, for private class members." },
         Do_not_emit_JsDoc_descriptions_in_output: { code: 10007, category: DiagnosticCategory.Error, key: "Do not emit JsDoc descriptions in output." },

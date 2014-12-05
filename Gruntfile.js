@@ -44,7 +44,7 @@ module.exports = function(grunt) {
                     noImplicitAny: true,
                     basePath: 'tests/'
                 },
-                src: ['tests/run.ts'],
+                src: ['tests/**/*.tests.ts'],
                 dest: 'build/'
             }
         },
@@ -67,7 +67,8 @@ module.exports = function(grunt) {
                         cwd: 'lib/',
                         src: [
                             'lib.d.ts',
-                            'lib.core.d.ts'
+                            'lib.core.d.ts',
+                            'tsreflect-compiler.config.json'
                         ],
                         dest: 'build/'
                     }
@@ -118,7 +119,7 @@ module.exports = function(grunt) {
                 options: {
                     reporter: 'spec'
                 },
-                src: ['build/run.js']
+                src: ['build/**/*.tests.js']
             }
         }
     });

@@ -43,6 +43,7 @@
 
 module ts {
     var version = "0.1";
+    var configFilename = "tsreflect-compiler.config.json";
 
     export interface CompilerDiagnostic {
         filename?: string;
@@ -72,6 +73,16 @@ module ts {
             printVersion();
             printHelp();
             return sys.exit(0);
+        }
+
+        var localOptions = loadConfig(combinePaths(normalizePath(process.cwd()), configFilename));
+        if(localOptions) {
+            mergeOptions(localOptions, commandLine.options);
+        }
+
+        var globalOptions = loadConfig(combinePaths(normalizePath(__dirname), configFilename));
+        if(globalOptions) {
+            mergeOptions(globalOptions, commandLine.options);
         }
 
         var hasErrors = false;
@@ -119,6 +130,38 @@ module ts {
             }
 
             sys.write(output);
+        }
+
+        function mergeOptions(from: CompilerOptions, to: CompilerOptions): void {
+
+            for(var name in from) {
+                if(hasProperty(from, name)) {
+                    if(!hasProperty(to, name)) {
+                        to[name] = from[name];
+                    }
+                }
+            }
+        }
+
+        function loadConfig(filename: string): CompilerOptions {
+
+            if(sys.fileExists(filename)) {
+                try {
+                    var text = sys.readFile(filename, "utf8");
+
+                    try {
+                        return <any>JSON.parse(text);
+                    }
+                    catch(e) {
+                        var diagnostic = createCompilerDiagnostic(CustomDiagnostics.File_0_has_invalid_json_format_1, filename, e.message);
+                    }
+                }
+                catch (e) {
+                    var diagnostic = createCompilerDiagnostic(Diagnostics.Cannot_read_file_0_Colon_1, filename, e.message);
+                }
+                reportDiagnostic(diagnostic);
+                sys.exit(1);
+            }
         }
     }
 
@@ -221,7 +264,7 @@ module ts {
 
         return {
             getSourceFile: getSourceFile,
-            getDefaultLibFilename: () => ts.combinePaths(ts.normalizePath(__dirname), options.libPath || "lib.d.ts"),
+            getDefaultLibFilename: () => combinePaths(ts.normalizePath(__dirname), options.libPath || "lib.d.ts"),
             writeFile: writeFile,
             getCurrentDirectory: () => currentDirectory || (currentDirectory = sys.getCurrentDirectory()),
             useCaseSensitiveFileNames: () => sys.useCaseSensitiveFileNames,

@@ -35,6 +35,7 @@
 
 /// <reference path="core.ts"/>
 /// <reference path="scanner.ts"/>
+/// <reference path="declarationWriter.ts"/>
 
 module ts {
 
@@ -1104,6 +1105,11 @@ module ts {
         annotations?: boolean;
         removePrivates?: boolean;
         typePrivates?: boolean;
+        ignoreAnnotation?: IgnoreAnnotationTable;
+    }
+
+    export interface IgnoreAnnotationTable {
+        [key: string]: boolean;
     }
 
     export enum ModuleKind {
