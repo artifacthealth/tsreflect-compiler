@@ -1,22 +1,22 @@
 var A: {
 
     /**
-     * @annotation propertyAnnotation
+     * @propertyAnnotation
      */
     a: string;
 
     /**
-     * @annotation methodAnnotation
+     * @methodAnnotation
      */
     b(): void;
 
     /**
-     * @annotation callSignatureAnnotation
+     * @callSignatureAnnotation
      */
     (a: number): number;
 
     /**
-     * @annotation constructSignatureAnnotation
+     * @constructSignatureAnnotation
      */
     new (): number;
 

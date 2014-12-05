@@ -271,49 +271,33 @@ module ts {
             return null;
         }
 
-        var annotationExp = /^([$A-Z_][0-9A-Z_$]*)( ([\s\S]*))?$/i;
-
         function getJsDocAnnotations(jsDocComment: JsDocComment): any[] {
 
             var ret: any[] = [];
+            var ignoreAnnotation = compilerOptions.ignoreAnnotation || {};
 
             for(var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
 
-                var tag = jsDocComment.parseResults.tags[i];
+                var tag = jsDocComment.parseResults.tags[i],
+                    name = tag.title;
 
-                if(tag.title == "annotation") {
+                if(!hasProperty(ignoreAnnotation, name)) {
 
-                    if(!tag.description) {
-                        diagnostics.push(createDiagnosticForNode(jsDocComment.node,
-                            CustomDiagnostics.Missing_annotation_name));
+                    var value: any = tag.description;
+                    if (value === null || value === undefined) {
+                        value = true;
                     }
                     else {
-                        var matches = annotationExp.exec(tag.description);
-
-                        var name = matches && matches[1];
-                        if (!name) {
-                            diagnostics.push(createDiagnosticForNode(jsDocComment.node,
-                                CustomDiagnostics.Invalid_annotation_name));
+                        try {
+                            value = parseAnnotationValue(value);
                         }
-                        else {
-
-                            var value:any = matches[3];
-                            if (value === undefined) {
-                                value = true;
-                            }
-                            else {
-                                try {
-                                    value = parseAnnotationValue(value);
-                                }
-                                catch (e) {
-                                    diagnostics.push(createDiagnosticForNode(jsDocComment.node,
-                                        CustomDiagnostics.Invalid_annotation_value_0, e.message));
-                                }
-                            }
-
-                            ret.push({ name: name, value: value });
+                        catch (e) {
+                            diagnostics.push(createDiagnosticForNode(jsDocComment.node,
+                                CustomDiagnostics.Invalid_annotation_value_0, e.message));
                         }
                     }
+
+                    ret.push({ name: name, value: value });
                 }
             }
 

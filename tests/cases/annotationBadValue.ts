@@ -1,7 +1,7 @@
 class A {
 
     /**
-     * @annotation customValue test
+     * @customValue test
      */
     a: string;
 }

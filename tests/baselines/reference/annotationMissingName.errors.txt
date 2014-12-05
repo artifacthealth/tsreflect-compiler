@@ -1,1 +1,0 @@
-tests/cases/annotationMissingName.ts(4,7): error TS10002: Missing annotation name.

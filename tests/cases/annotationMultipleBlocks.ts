@@ -1,6 +1,6 @@
 class A {
 
-    /** @annotation field */
-    /** @annotation test */
+    /** @field */
+    /** @test */
     a: string;
 }

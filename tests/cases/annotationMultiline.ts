@@ -1,6 +1,6 @@
 /**
  * The class description
- * @annotation multilineAnnotation {
+ * @multilineAnnotation {
  *     "a": "test1",
  *     "b": [
  *        1,

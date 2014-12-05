@@ -75,16 +75,6 @@ module ts {
             return sys.exit(0);
         }
 
-        var localOptions = loadConfig(combinePaths(normalizePath(process.cwd()), configFilename));
-        if(localOptions) {
-            mergeOptions(localOptions, commandLine.options);
-        }
-
-        var globalOptions = loadConfig(combinePaths(normalizePath(__dirname), configFilename));
-        if(globalOptions) {
-            mergeOptions(globalOptions, commandLine.options);
-        }
-
         var hasErrors = false;
         var start = process.hrtime();
 
@@ -131,57 +121,42 @@ module ts {
 
             sys.write(output);
         }
-
-        function mergeOptions(from: CompilerOptions, to: CompilerOptions): void {
-
-            for(var name in from) {
-                if(hasProperty(from, name)) {
-                    if(!hasProperty(to, name)) {
-                        to[name] = from[name];
-                    }
-                }
-            }
-        }
-
-        function loadConfig(filename: string): CompilerOptions {
-
-            if(sys.fileExists(filename)) {
-                try {
-                    var text = sys.readFile(filename, "utf8");
-
-                    try {
-                        return <any>JSON.parse(text);
-                    }
-                    catch(e) {
-                        var diagnostic = createCompilerDiagnostic(CustomDiagnostics.File_0_has_invalid_json_format_1, filename, e.message);
-                    }
-                }
-                catch (e) {
-                    var diagnostic = createCompilerDiagnostic(Diagnostics.Cannot_read_file_0_Colon_1, filename, e.message);
-                }
-                reportDiagnostic(diagnostic);
-                sys.exit(1);
-            }
-        }
     }
 
     export function compile(filenames: string[], options: CompilerOptions): CompilerDiagnostic[] {
 
-        var compilerHost = createCompilerHost(options);
-        var program = ts.createProgram(filenames, options, compilerHost);
+        var errors: Diagnostic[] = [];
 
-        var errors = program.getDiagnostics();
+        // look for config file in current working directory
+        var localOptions = loadConfig(combinePaths(normalizePath(process.cwd()), configFilename));
+        if(localOptions) {
+            mergeOptions(localOptions, options);
+        }
 
-        if (errors.length == 0) {
-            var checker = program.getTypeChecker(!options.noCheck);
+        // look for config file in installed directory
+        var globalOptions = loadConfig(combinePaths(normalizePath(__dirname), configFilename));
+        if(globalOptions) {
+            mergeOptions(globalOptions, options);
+        }
 
-            var semanticErrors: Diagnostic[] = [];
-            if(!options.noCheck) {
-                semanticErrors = checker.getDiagnostics();
+        if(errors.length == 0) {
+
+            var compilerHost = createCompilerHost(options);
+            var program = ts.createProgram(filenames, options, compilerHost);
+
+            errors = program.getDiagnostics();
+
+            if (errors.length == 0) {
+                var checker = program.getTypeChecker(!options.noCheck);
+
+                var semanticErrors: Diagnostic[] = [];
+                if (!options.noCheck) {
+                    semanticErrors = checker.getDiagnostics();
+                }
+
+                var emitErrors = checker.emitFiles().errors;
+                errors = ts.concatenate(semanticErrors, emitErrors);
             }
-
-            var emitErrors = checker.emitFiles().errors;
-            errors = ts.concatenate(semanticErrors, emitErrors);
         }
 
         return errors.map(diagnostic => {
@@ -202,6 +177,38 @@ module ts {
 
             return ret;
         });
+
+        function loadConfig(filename: string): CompilerOptions {
+
+            if(sys.fileExists(filename)) {
+                try {
+                    var text = sys.readFile(filename, "utf8");
+
+                    try {
+                        return <any>JSON.parse(text);
+                    }
+                    catch(e) {
+                        var diagnostic = createCompilerDiagnostic(CustomDiagnostics.File_0_has_invalid_json_format_1, filename, e.message);
+                    }
+                }
+                catch (e) {
+                    var diagnostic = createCompilerDiagnostic(Diagnostics.Cannot_read_file_0_Colon_1, filename, e.message);
+                }
+                errors.push(diagnostic);
+                sys.exit(1);
+            }
+        }
+
+        function mergeOptions(from: CompilerOptions, to: CompilerOptions): void {
+
+            for(var name in from) {
+                if(hasProperty(from, name)) {
+                    if(!hasProperty(to, name)) {
+                        to[name] = from[name];
+                    }
+                }
+            }
+        }
     }
 
     function getDiagnosticText(message:DiagnosticMessage, ...args:any[]):string {

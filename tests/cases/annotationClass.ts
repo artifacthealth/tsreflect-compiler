@@ -1,6 +1,6 @@
 /**
  * The class description
- * @annotation customValue 15
+ * @customValue 15
  */
 class A {
 

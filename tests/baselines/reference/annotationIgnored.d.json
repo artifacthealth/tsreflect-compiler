@@ -1,0 +1,22 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"description": "The 'deprecated' annotation is a built-in jsdoc and so it is ignored.",
+			"annotations": [
+				{
+					"name": "customValue",
+					"value": 15
+				}
+			],
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string"
+				}
+			]
+		}
+	]
+}

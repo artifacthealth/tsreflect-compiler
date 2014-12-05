@@ -35,9 +35,6 @@ module ts {
         114: "\r"
     }
 
-    // Generate a unique name for anonymous properties that is extremely unlikely to be used by someone else
-    var anonymousName = "__anonymous" + (new Date().getTime()).toString();
-
     // Internal: Stores the parser state.
     var _index: number,
         _source: string;
@@ -369,7 +366,7 @@ module ts {
             var result = get(lex());
             // If a JSON string contains multiple tokens, it is invalid.
             if (lex() != "$") {
-                abort("Unexpected token.");
+                abort("Unexpected token encountered.");
             }
         }
 
