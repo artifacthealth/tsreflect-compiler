@@ -234,12 +234,16 @@ module ts {
             if (declaration) {
                 var jsDocComments = getJsDocComments(declaration, currentSourceFile);
                 if(jsDocComments && jsDocComments.length > 0) {
-                    // use the last comment before the declaration
-                    var commentText = getCommentText(currentSourceFile, jsDocComments[jsDocComments.length - 1]);
+                    // concat jsdoc comments if there is more than one
+
+                    var comments: string[] = [];
+                    for(var i = 0, l = jsDocComments.length; i < l; i++) {
+                        comments.push(doctrine.unwrapComment(getCommentText(currentSourceFile, jsDocComments[i])).trim());
+                    }
 
                     return {
                         node: declaration,
-                        parseResults: doctrine.parse(commentText, { unwrap: true })
+                        parseResults: doctrine.parse(comments.join("\n"), { unwrap: false })
                     }
                 }
             }

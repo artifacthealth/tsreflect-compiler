@@ -1,0 +1,9 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"description": "First description\nSecond description"
+		}
+	]
+}

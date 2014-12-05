@@ -10,6 +10,7 @@ declare module "doctrine" {
     }
 
     export function parse(comment: string, options: IParseOptions): IDoctrineParseResults;
+    export function unwrapComment(comment: string): string;
 }
 
 interface IDoctrineParseResults {
