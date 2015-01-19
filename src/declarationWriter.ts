@@ -84,7 +84,10 @@ module ts {
         Module,
         Function,
         Variable,
+        Constant,
+        Let,
         Import,
+        TypeAlias,
 
         EnumMember,
 
@@ -108,6 +111,7 @@ module ts {
         TypeReference,
         StringLiteralType,
         TupleType,
+        UnionType,
 
         Extends,
         Implements,
@@ -373,6 +377,7 @@ module ts {
             switch(this._currentState.kind) {
 
                 case DeclarationKind.TupleType:
+                case DeclarationKind.UnionType:
                     this._addToArray("types", type);
                     break;
                 case DeclarationKind.TypeParameter:
@@ -515,4 +520,5 @@ module ts {
     kindMap[DeclarationKind.TupleType] = "tuple";
     kindMap[DeclarationKind.TypeReference] = "reference";
     kindMap[DeclarationKind.ObjectType] = "object";
+    kindMap[DeclarationKind.UnionType] = "union";
 }

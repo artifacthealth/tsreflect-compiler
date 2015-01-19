@@ -1,9 +1,9 @@
 /*! *****************************************************************************
  The source code contained in this file was originally from TypeScript by
- Microsoft. It has been modified by Meir Gottlieb. The original copyright notice
+ Microsoft. It has been modified by Artifact Health, LLC. The original copyright notice
  is provide below for informational purposes only.
 
- Copyright (c) Artifact Health. All rights reserved.
+ Copyright (c) Artifact Health, LLC. All rights reserved.
  Licensed under the Apache License, Version 2.0 (the "License"); you may not use
  this file except in compliance with the License. You may obtain a copy of the
  License at http://www.apache.org/licenses/LICENSE-2.0
@@ -40,8 +40,6 @@
 /// <reference path="customDiagnostics.ts"/>
 
 module ts {
-
-    // TODO: Add libCore option
     export var optionDeclarations: CommandLineOption[] = [
         {
             name: "help",
@@ -105,9 +103,14 @@ module ts {
             shortName: "v",
             type: "boolean",
             description: Diagnostics.Print_the_compiler_s_version
+        },
+        {
+            name: "suppressImplicitAnyIndexErrors",
+            type: "boolean",
+            description: Diagnostics.Suppress_noImplicitAny_errors_for_indexing_objects_lacking_index_signatures,
         }
     ];
-
+    
     var shortOptionNames: Map<string> = {};
     var optionNameMap: Map<CommandLineOption> = {};
 
@@ -125,15 +128,16 @@ module ts {
             // we don't actually emit JS so support all available options
             target: ScriptTarget.ES5,
             module: ModuleKind.CommonJS
+
         };
         var filenames: string[] = [];
         var errors: Diagnostic[] = [];
 
         parseStrings(commandLine);
         return {
-            options: options,
-            filenames: filenames,
-            errors: errors
+            options,
+            filenames,
+            errors
         };
 
         function parseStrings(args: string[]) {
@@ -171,9 +175,10 @@ module ts {
                                 break;
                             // If not a primitive, the possible types are specified in what is effectively a map of options.
                             default:
-                                var value = (args[i++] || "").toLowerCase();
-                                if (hasProperty(opt.type, value)) {
-                                    options[opt.name] = opt.type[value];
+                                var map = <Map<number>>opt.type;
+                                var key = (args[i++] || "").toLowerCase();
+                                if (hasProperty(map, key)) {
+                                    options[opt.name] = map[key];
                                 }
                                 else {
                                     errors.push(createCompilerDiagnostic(opt.error));

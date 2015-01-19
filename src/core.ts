@@ -1,37 +1,38 @@
-/*! *****************************************************************************
- Copyright (c) Microsoft Corporation. All rights reserved.
- Licensed under the Apache License, Version 2.0 (the "License"); you may not use
- this file except in compliance with the License. You may obtain a copy of the
- License at http://www.apache.org/licenses/LICENSE-2.0
-
- THIS CODE IS PROVIDED ON AN *AS IS* BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
- KIND, EITHER EXPRESS OR IMPLIED, INCLUDING WITHOUT LIMITATION ANY IMPLIED
- WARRANTIES OR CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE,
- MERCHANTABLITY OR NON-INFRINGEMENT.
-
- See the Apache Version 2.0 License for specific language governing permissions
- and limitations under the License.
- ***************************************************************************** */
-
 /// <reference path="types.ts"/>
 
 module ts {
-    export interface Map<T> {
-        [index: string]: T;
+
+    // Ternary values are defined such that
+    // x & y is False if either x or y is False.
+    // x & y is Maybe if either x or y is Maybe, but neither x or y is False.
+    // x & y is True if both x and y are True.
+    // x | y is False if both x and y are False.
+    // x | y is Maybe if either x or y is Maybe, but neither x or y is True.
+    // x | y is True if either x or y is True.
+    export const enum Ternary {
+        False = 0,
+        Maybe = 1,
+        True  = -1
+    }
+
+    export const enum Comparison {
+        LessThan    = -1,
+        EqualTo     = 0,
+        GreaterThan = 1
     }
 
     export interface StringSet extends Map<any> { }
 
     export function forEach<T, U>(array: T[], callback: (element: T) => U): U {
-        var result: U;
         if (array) {
             for (var i = 0, len = array.length; i < len; i++) {
-                if (result = callback(array[i])) {
-                    break;
+                var result = callback(array[i]);
+                if (result) {
+                    return result;
                 }
             }
         }
-        return result;
+        return undefined;
     }
 
     export function contains<T>(array: T[], value: T): boolean {
@@ -94,10 +95,11 @@ module ts {
     export function concatenate<T>(array1: T[], array2: T[]): T[] {
         if (!array2 || !array2.length) return array1;
         if (!array1 || !array1.length) return array2;
+
         return array1.concat(array2);
     }
 
-    export function uniqueElements<T>(array: T[]): T[] {
+    export function deduplicate<T>(array: T[]): T[] {
         if (array) {
             var result: T[] = [];
             for (var i = 0, len = array.length; i < len; i++) {
@@ -114,6 +116,17 @@ module ts {
             result += array[i][prop];
         }
         return result;
+    }
+
+    /**
+     * Returns the last element of an array if non-empty, undefined otherwise.
+     */
+    export function lastOrUndefined<T>(array: T[]): T {
+        if (array.length === 0) {
+            return undefined;
+        }
+
+        return array[array.length - 1];
     }
 
     export function binarySearch(array: number[], value: number): number {
@@ -235,19 +248,20 @@ module ts {
         Debug.assert(length >= 0, "length must be non-negative, is " + length);
 
         var text = getLocaleSpecificMessage(message.key);
-
+        
         if (arguments.length > 4) {
             text = formatStringFromArgs(text, arguments, 4);
         }
 
         return {
-            file: file,
-            start: start,
-            length: length,
+            file,
+            start,
+            length,
 
             messageText: text,
             category: message.category,
-            code: message.code
+            code: message.code,
+            isEarly: message.isEarly
         };
     }
 
@@ -266,7 +280,8 @@ module ts {
 
             messageText: text,
             category: message.category,
-            code: message.code
+            code: message.code,
+            isEarly: message.isEarly
         };
     }
 
@@ -287,6 +302,12 @@ module ts {
         };
     }
 
+    export function concatenateDiagnosticMessageChains(headChain: DiagnosticMessageChain, tailChain: DiagnosticMessageChain): DiagnosticMessageChain {
+        Debug.assert(!headChain.next);
+        headChain.next = tailChain;
+        return headChain;
+    }
+
     export function flattenDiagnosticChain(file: SourceFile, start: number, length: number, diagnosticChain: DiagnosticMessageChain, newLine: string): Diagnostic {
         Debug.assert(start >= 0, "start must be non-negative, is " + start);
         Debug.assert(length >= 0, "length must be non-negative, is " + length);
@@ -299,7 +320,7 @@ module ts {
         while (diagnosticChain) {
             if (indent) {
                 messageText += newLine;
-
+                
                 for (var i = 0; i < indent; i++) {
                     messageText += "  ";
                 }
@@ -310,20 +331,20 @@ module ts {
         }
 
         return {
-            file: file,
-            start: start,
-            length: length,
-            code: code,
-            category: category,
-            messageText: messageText
+            file,
+            start,
+            length,
+            code,
+            category,
+            messageText
         };
     }
 
-    export function compareValues<T>(a: T, b: T): number {
-        if (a === b) return 0;
-        if (a === undefined) return -1;
-        if (b === undefined) return 1;
-        return a < b ? -1 : 1;
+    export function compareValues<T>(a: T, b: T): Comparison {
+        if (a === b) return Comparison.EqualTo;
+        if (a === undefined) return Comparison.LessThan;
+        if (b === undefined) return Comparison.GreaterThan;
+        return a < b ? Comparison.LessThan : Comparison.GreaterThan;
     }
 
     function getDiagnosticFilename(diagnostic: Diagnostic): string {
@@ -348,7 +369,7 @@ module ts {
         var previousDiagnostic = diagnostics[0];
         for (var i = 1; i < diagnostics.length; i++) {
             var currentDiagnostic = diagnostics[i];
-            var isDupe = compareDiagnostics(currentDiagnostic, previousDiagnostic) === 0;
+            var isDupe = compareDiagnostics(currentDiagnostic, previousDiagnostic) === Comparison.EqualTo;
             if (!isDupe) {
                 newDiagnostics.push(currentDiagnostic);
                 previousDiagnostic = currentDiagnostic;
@@ -434,6 +455,10 @@ module ts {
         return normalizedPathComponents(path, rootLength);
     }
 
+    export function getNormalizedAbsolutePath(filename: string, currentDirectory: string) {
+        return getNormalizedPathFromPathComponents(getNormalizedPathComponents(filename, currentDirectory));
+    }
+
     export function getNormalizedPathFromPathComponents(pathComponents: string[]) {
         if (pathComponents && pathComponents.length) {
             return pathComponents[0] + pathComponents.slice(1).join(directorySeparator);
@@ -442,20 +467,20 @@ module ts {
 
     function getNormalizedPathComponentsOfUrl(url: string) {
         // Get root length of http://www.website.com/folder1/foler2/
-        // In this example the root is:  http://www.website.com/
+        // In this example the root is:  http://www.website.com/ 
         // normalized path components should be ["http://www.website.com/", "folder1", "folder2"]
 
         var urlLength = url.length;
         // Initial root length is http:// part
         var rootLength = url.indexOf("://") + "://".length;
         while (rootLength < urlLength) {
-            // Consume all immediate slashes in the protocol
+            // Consume all immediate slashes in the protocol 
             // eg.initial rootlength is just file:// but it needs to consume another "/" in file:///
             if (url.charCodeAt(rootLength) === CharacterCodes.slash) {
                 rootLength++;
             }
             else {
-                // non slash character means we continue proceeding to next component of root search
+                // non slash character means we continue proceeding to next component of root search 
                 break;
             }
         }
@@ -468,15 +493,15 @@ module ts {
         // Find the index of "/" after website.com so the root can be http://www.website.com/ (from existing http://)
         var indexOfNextSlash = url.indexOf(directorySeparator, rootLength);
         if (indexOfNextSlash !== -1) {
-            // Found the "/" after the website.com so the root is length of http://www.website.com/
+            // Found the "/" after the website.com so the root is length of http://www.website.com/ 
             // and get components afetr the root normally like any other folder components
             rootLength = indexOfNextSlash + 1;
             return normalizedPathComponents(url, rootLength);
         }
         else {
-            // Can't find the host assume the rest of the string as component
+            // Can't find the host assume the rest of the string as component 
             // but make sure we append "/"  to it as root is not joined using "/"
-            // eg. if url passed in was http://website.com we want to use root as [http://website.com/]
+            // eg. if url passed in was http://website.com we want to use root as [http://website.com/] 
             // so that other path manipulations will be correct and it can be merged with relative paths correctly
             return [url + directorySeparator];
         }
@@ -578,7 +603,7 @@ module ts {
     };
 
     /** NOTE: This *does not* support the full escape characters, it only supports the subset that can be used in file names
-     * or string literals. If the information encoded in the map changes, this needs to be revisited. */
+      * or string literals. If the information encoded in the map changes, this needs to be revisited. */
     export function escapeString(s: string): string {
         return escapedCharsRegExp.test(s) ? s.replace(escapedCharsRegExp, c => {
             return escapedCharsMap[c] || c;
@@ -623,7 +648,7 @@ module ts {
         getSignatureConstructor: () => <any>Signature
     }
 
-    export enum AssertionLevel {
+    export const enum AssertionLevel {
         None = 0,
         Normal = 1,
         Aggressive = 2,
@@ -637,7 +662,7 @@ module ts {
             return currentAssertionLevel >= level;
         }
 
-        export function assert(expression: any, message?: string, verboseDebugInfo?: () => string): void {
+        export function assert(expression: boolean, message?: string, verboseDebugInfo?: () => string): void {
             if (!expression) {
                 var verboseDebugString = "";
                 if (verboseDebugInfo) {

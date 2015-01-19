@@ -7,6 +7,28 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "a",
+						"type": "string",
+						"annotations": [
+							{
+								"name": "propertyAnnotation",
+								"value": true
+							}
+						]
+					},
+					{
+						"kind": "method",
+						"name": "b",
+						"annotations": [
+							{
+								"name": "methodAnnotation",
+								"value": true
+							}
+						],
+						"returns": "void"
+					},
+					{
 						"kind": "call",
 						"annotations": [
 							{
@@ -31,28 +53,6 @@
 							}
 						],
 						"returns": "number"
-					},
-					{
-						"kind": "property",
-						"name": "a",
-						"annotations": [
-							{
-								"name": "propertyAnnotation",
-								"value": true
-							}
-						],
-						"type": "string"
-					},
-					{
-						"kind": "method",
-						"name": "b",
-						"annotations": [
-							{
-								"name": "methodAnnotation",
-								"value": true
-							}
-						],
-						"returns": "void"
 					}
 				]
 			}

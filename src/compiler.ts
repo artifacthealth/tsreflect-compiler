@@ -154,7 +154,7 @@ module ts {
                     semanticErrors = checker.getDiagnostics();
                 }
 
-                var emitErrors = checker.emitFiles().errors;
+                var emitErrors = checker.emitFiles().diagnostics;
                 errors = ts.concatenate(semanticErrors, emitErrors);
             }
         }
@@ -330,12 +330,12 @@ module ts {
             var usageText = " ";
             if (option.shortName) {
                 usageText += "-" + option.shortName;
-                usageText += getParamName(option);
+                usageText += getParamType(option);
                 usageText += ", ";
             }
 
             usageText += "--" + option.name;
-            usageText += getParamName(option);
+            usageText += getParamType(option);
 
             usageColumn.push(usageText);
             descriptionColumn.push(getDiagnosticText(option.description));
@@ -360,14 +360,14 @@ module ts {
         sys.write(output);
         return;
 
-        function getParamName(option:CommandLineOption) {
-            if (option.paramName !== undefined) {
-                return " " + getDiagnosticText(option.paramName);
+        function getParamType(option: CommandLineOption) {
+            if (option.paramType !== undefined) {
+                return " " + getDiagnosticText(option.paramType);
             }
             return "";
         }
 
-        function makePadding(paddingLength:number):string {
+        function makePadding(paddingLength: number): string {
             return Array(paddingLength + 1).join(" ");
         }
     }
@@ -379,5 +379,5 @@ exports.compile = ts.compile;
 
 // If we were run directly then execute the command line
 if(require.main === module) {
-    ts.executeCommandLine(sys.args);
+    ts.executeCommandLine(ts.sys.args);
 }
