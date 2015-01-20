@@ -376,6 +376,11 @@ module ts {
 
             switch(this._currentState.kind) {
 
+                case DeclarationKind.Import:
+                    // TypeScript 1.4 is using the same code to write the name of a type and to write the referenced
+                    // name of an import even though it may not be a type.
+                    this._setProperty("value", type);
+                    break;
                 case DeclarationKind.TupleType:
                 case DeclarationKind.UnionType:
                     this._addToArray("types", type);

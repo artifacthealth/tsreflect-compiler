@@ -1,0 +1,27 @@
+{
+	"declares": [
+		{
+			"kind": "module",
+			"name": "moduleWithImportedVariable",
+			"declares": [
+				{
+					"kind": "module",
+					"name": "Inner",
+					"declares": [
+						{
+							"kind": "variable",
+							"name": "d",
+							"type": "boolean"
+						}
+					]
+				},
+				{
+					"kind": "import",
+					"name": "e",
+					"export": true,
+					"value": "Inner.d"
+				}
+			]
+		}
+	]
+}

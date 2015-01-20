@@ -563,6 +563,7 @@ module ts {
             }
 
             if (isInternalModuleImportDeclaration(node)) {
+                // TODO: FIX!! This should not output a type but the symbol name
                 emitTypeWithNewGetSymbolAccessibilityDiagnostic(<EntityName>node.moduleReference, getImportEntityNameVisibilityError);
             }
             else {

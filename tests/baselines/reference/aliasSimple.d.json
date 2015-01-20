@@ -1,0 +1,9 @@
+{
+	"declares": [
+		{
+			"kind": "alias",
+			"name": "A",
+			"type": "string"
+		}
+	]
+}
