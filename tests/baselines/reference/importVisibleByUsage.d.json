@@ -1,0 +1,15 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "import",
+			"name": "C",
+			"require": "./classAsExternalModule"
+		},
+		{
+			"kind": "variable",
+			"name": "a",
+			"type": "C"
+		}
+	]
+}

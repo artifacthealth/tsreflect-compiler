@@ -1,0 +1,16 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "import",
+			"name": "A",
+			"export": true,
+			"require": "./exportAssignment"
+		},
+		{
+			"kind": "variable",
+			"name": "B",
+			"type": "boolean"
+		}
+	]
+}

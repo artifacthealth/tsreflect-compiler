@@ -40,6 +40,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ArrayBuffer"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -48,11 +53,6 @@
 							}
 						],
 						"returns": "ArrayBuffer"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "ArrayBuffer"
 					}
 				]
 			}
@@ -202,6 +202,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int8Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -253,11 +258,6 @@
 							}
 						],
 						"returns": "Int8Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int8Array"
 					},
 					{
 						"kind": "property",
@@ -391,6 +391,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint8Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -442,11 +447,6 @@
 							}
 						],
 						"returns": "Uint8Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint8Array"
 					},
 					{
 						"kind": "property",
@@ -580,6 +580,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int16Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -631,11 +636,6 @@
 							}
 						],
 						"returns": "Int16Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int16Array"
 					},
 					{
 						"kind": "property",
@@ -769,6 +769,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint16Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -820,11 +825,6 @@
 							}
 						],
 						"returns": "Uint16Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint16Array"
 					},
 					{
 						"kind": "property",
@@ -958,6 +958,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1009,11 +1014,6 @@
 							}
 						],
 						"returns": "Int32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int32Array"
 					},
 					{
 						"kind": "property",
@@ -1147,6 +1147,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1198,11 +1203,6 @@
 							}
 						],
 						"returns": "Uint32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint32Array"
 					},
 					{
 						"kind": "property",
@@ -1336,6 +1336,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1387,11 +1392,6 @@
 							}
 						],
 						"returns": "Float32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Float32Array"
 					},
 					{
 						"kind": "property",
@@ -1525,6 +1525,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float64Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1576,11 +1581,6 @@
 							}
 						],
 						"returns": "Float64Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Float64Array"
 					},
 					{
 						"kind": "property",
@@ -1921,6 +1921,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DataView"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1939,11 +1944,6 @@
 							}
 						],
 						"returns": "DataView"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "DataView"
 					}
 				]
 			}
@@ -2071,23 +2071,28 @@
 			"kind": "variable",
 			"name": "Map",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "K"
-					},
-					{
-						"name": "V"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "K"
+							},
+							{
+								"name": "V"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "Map",
+							"arguments": [
+								"K",
+								"V"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "Map",
-					"arguments": [
-						"K",
-						"V"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2168,23 +2173,28 @@
 			"kind": "variable",
 			"name": "WeakMap",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "K"
-					},
-					{
-						"name": "V"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "K"
+							},
+							{
+								"name": "V"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "WeakMap",
+							"arguments": [
+								"K",
+								"V"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "WeakMap",
-					"arguments": [
-						"K",
-						"V"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2290,19 +2300,24 @@
 			"kind": "variable",
 			"name": "Set",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "T"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "Set",
+							"arguments": [
+								"T"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "Set",
-					"arguments": [
-						"T"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2425,7 +2440,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2444,7 +2459,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2460,7 +2475,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2479,7 +2494,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2668,7 +2683,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2687,7 +2702,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2703,7 +2718,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2722,7 +2737,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2973,7 +2988,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2992,7 +3007,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -3008,7 +3023,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -3027,7 +3042,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -3526,13 +3541,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Console"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Console"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Console"
 					}
 				]
 			}
@@ -3701,13 +3716,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessageEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessageEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessageEvent"
 					}
 				]
 			}
@@ -4271,13 +4286,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLHttpRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLHttpRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequest"
 					},
 					{
 						"kind": "property",
@@ -4371,13 +4386,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "EventException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "EventException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "EventException"
 					},
 					{
 						"kind": "property",
@@ -4520,13 +4535,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Event"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Event"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Event"
 					},
 					{
 						"kind": "property",
@@ -4577,13 +4592,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ImageData"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ImageData"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ImageData"
 					}
 				]
 			}
@@ -4756,13 +4771,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMException"
 					},
 					{
 						"kind": "property",
@@ -4974,13 +4989,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ErrorEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ErrorEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ErrorEvent"
 					}
 				]
 			}
@@ -5075,13 +5090,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSStreamReader"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSStreamReader"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSStreamReader"
 					}
 				]
 			}
@@ -5109,13 +5124,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessageChannel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessageChannel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessageChannel"
 					}
 				]
 			}
@@ -5143,13 +5158,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMError"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMError"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMError"
 					}
 				]
 			}
@@ -5216,13 +5231,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CloseEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CloseEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CloseEvent"
 					}
 				]
 			}
@@ -5513,6 +5528,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WebSocket"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -5544,11 +5564,6 @@
 							}
 						],
 						"returns": "WebSocket"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "WebSocket"
 					},
 					{
 						"kind": "property",
@@ -5635,13 +5650,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ProgressEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ProgressEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ProgressEvent"
 					}
 				]
 			}
@@ -5809,13 +5824,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBObjectStore"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBObjectStore"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBObjectStore"
 					}
 				]
 			}
@@ -5846,13 +5861,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBVersionChangeEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBVersionChangeEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBVersionChangeEvent"
 					}
 				]
 			}
@@ -5958,13 +5973,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBIndex"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBIndex"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBIndex"
 					}
 				]
 			}
@@ -6006,13 +6021,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FileList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FileList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FileList"
 					}
 				]
 			}
@@ -6109,13 +6124,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBCursor"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBCursor"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBCursor"
 					},
 					{
 						"kind": "property",
@@ -6166,13 +6181,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "File"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "File"
+					},
+					{
+						"kind": "constructor",
+						"returns": "File"
 					}
 				]
 			}
@@ -6198,13 +6213,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBCursorWithValue"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBCursorWithValue"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBCursorWithValue"
 					}
 				]
 			}
@@ -6546,13 +6561,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLHttpRequestEventTarget"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLHttpRequestEventTarget"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequestEventTarget"
 					}
 				]
 			}
@@ -6907,13 +6922,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBKeyRange"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBKeyRange"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBKeyRange"
 					},
 					{
 						"kind": "method",
@@ -7208,13 +7223,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBTransaction"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBTransaction"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBTransaction"
 					},
 					{
 						"kind": "property",
@@ -7447,13 +7462,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBDatabase"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBDatabase"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBDatabase"
 					}
 				]
 			}
@@ -7506,13 +7521,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMStringList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMStringList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMStringList"
 					}
 				]
 			}
@@ -7697,13 +7712,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBOpenDBRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBOpenDBRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBOpenDBRequest"
 					}
 				]
 			}
@@ -7865,13 +7880,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBRequest"
 					}
 				]
 			}
@@ -7982,13 +7997,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessagePort"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessagePort"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessagePort"
 					}
 				]
 			}
@@ -8052,13 +8067,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FileReader"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FileReader"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FileReader"
 					}
 				]
 			}
@@ -8136,6 +8151,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Blob"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -8153,11 +8173,6 @@
 							}
 						],
 						"returns": "Blob"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Blob"
 					}
 				]
 			}
@@ -8190,13 +8205,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSStream"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSStream"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSStream"
 					}
 				]
 			}
@@ -8242,13 +8257,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSBlobBuilder"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSBlobBuilder"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSBlobBuilder"
 					}
 				]
 			}
@@ -8308,13 +8323,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBFactory"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBFactory"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBFactory"
 					}
 				]
 			}
@@ -8741,6 +8756,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Worker"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -8749,11 +8769,6 @@
 							}
 						],
 						"returns": "Worker"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Worker"
 					}
 				]
 			}
@@ -8821,13 +8836,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSAppView"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSAppView"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSAppView"
 					}
 				]
 			}
@@ -8890,13 +8905,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WorkerLocation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WorkerLocation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WorkerLocation"
 					}
 				]
 			}
@@ -8952,13 +8967,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FileReaderSync"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FileReaderSync"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FileReaderSync"
 					}
 				]
 			}
@@ -9027,13 +9042,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WorkerGlobalScope"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WorkerGlobalScope"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WorkerGlobalScope"
 					}
 				]
 			}
@@ -9084,13 +9099,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WorkerNavigator"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WorkerNavigator"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WorkerNavigator"
 					}
 				]
 			}

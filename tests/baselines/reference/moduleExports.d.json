@@ -1,0 +1,21 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "variable",
+			"name": "A",
+			"type": "string"
+		},
+		{
+			"kind": "interface",
+			"name": "B",
+			"signatures": [
+				{
+					"kind": "property",
+					"name": "a",
+					"type": "number"
+				}
+			]
+		}
+	]
+}

@@ -1,0 +1,120 @@
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "C",
+			"members": [
+				{
+					"kind": "method",
+					"name": "foo",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "D",
+			"members": [
+				{
+					"kind": "method",
+					"name": "foo2",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "E",
+			"extends": "C",
+			"members": [
+				{
+					"kind": "method",
+					"name": "foo3",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "F",
+			"extends": "C",
+			"members": [
+				{
+					"kind": "method",
+					"name": "foo4",
+					"returns": "void"
+				}
+			]
+		},
+		{
+			"kind": "variable",
+			"name": "c",
+			"type": "C"
+		},
+		{
+			"kind": "variable",
+			"name": "d",
+			"type": "D"
+		},
+		{
+			"kind": "variable",
+			"name": "e",
+			"type": "E"
+		},
+		{
+			"kind": "variable",
+			"name": "f",
+			"type": "F"
+		},
+		{
+			"kind": "variable",
+			"name": "arr6",
+			"type": {
+				"kind": "array",
+				"type": {
+					"kind": "union",
+					"types": [
+						"C",
+						"D"
+					]
+				}
+			}
+		},
+		{
+			"kind": "variable",
+			"name": "arr7",
+			"type": {
+				"kind": "array",
+				"type": {
+					"kind": "union",
+					"types": [
+						"C",
+						"D"
+					]
+				}
+			}
+		},
+		{
+			"kind": "variable",
+			"name": "arr8",
+			"type": {
+				"kind": "array",
+				"type": "C"
+			}
+		},
+		{
+			"kind": "variable",
+			"name": "arr9",
+			"type": {
+				"kind": "array",
+				"type": {
+					"kind": "union",
+					"types": [
+						"E",
+						"F"
+					]
+				}
+			}
+		}
+	]
+}

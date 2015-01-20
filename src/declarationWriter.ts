@@ -521,4 +521,5 @@ module ts {
     kindMap[DeclarationKind.TypeReference] = "reference";
     kindMap[DeclarationKind.ObjectType] = "object";
     kindMap[DeclarationKind.UnionType] = "union";
+    kindMap[DeclarationKind.TypeAlias] = "alias";
 }

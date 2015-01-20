@@ -40,6 +40,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "ArrayBuffer"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -48,11 +53,6 @@
 							}
 						],
 						"returns": "ArrayBuffer"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "ArrayBuffer"
 					}
 				]
 			}
@@ -202,6 +202,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int8Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -253,11 +258,6 @@
 							}
 						],
 						"returns": "Int8Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int8Array"
 					},
 					{
 						"kind": "property",
@@ -391,6 +391,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint8Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -442,11 +447,6 @@
 							}
 						],
 						"returns": "Uint8Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint8Array"
 					},
 					{
 						"kind": "property",
@@ -580,6 +580,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int16Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -631,11 +636,6 @@
 							}
 						],
 						"returns": "Int16Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int16Array"
 					},
 					{
 						"kind": "property",
@@ -769,6 +769,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint16Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -820,11 +825,6 @@
 							}
 						],
 						"returns": "Uint16Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint16Array"
 					},
 					{
 						"kind": "property",
@@ -958,6 +958,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Int32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1009,11 +1014,6 @@
 							}
 						],
 						"returns": "Int32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Int32Array"
 					},
 					{
 						"kind": "property",
@@ -1147,6 +1147,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Uint32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1198,11 +1203,6 @@
 							}
 						],
 						"returns": "Uint32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Uint32Array"
 					},
 					{
 						"kind": "property",
@@ -1336,6 +1336,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float32Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1387,11 +1392,6 @@
 							}
 						],
 						"returns": "Float32Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Float32Array"
 					},
 					{
 						"kind": "property",
@@ -1525,6 +1525,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Float64Array"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1576,11 +1581,6 @@
 							}
 						],
 						"returns": "Float64Array"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Float64Array"
 					},
 					{
 						"kind": "property",
@@ -1921,6 +1921,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "DataView"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1939,11 +1944,6 @@
 							}
 						],
 						"returns": "DataView"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "DataView"
 					}
 				]
 			}
@@ -2071,23 +2071,28 @@
 			"kind": "variable",
 			"name": "Map",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "K"
-					},
-					{
-						"name": "V"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "K"
+							},
+							{
+								"name": "V"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "Map",
+							"arguments": [
+								"K",
+								"V"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "Map",
-					"arguments": [
-						"K",
-						"V"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2168,23 +2173,28 @@
 			"kind": "variable",
 			"name": "WeakMap",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "K"
-					},
-					{
-						"name": "V"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "K"
+							},
+							{
+								"name": "V"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "WeakMap",
+							"arguments": [
+								"K",
+								"V"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "WeakMap",
-					"arguments": [
-						"K",
-						"V"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2290,19 +2300,24 @@
 			"kind": "variable",
 			"name": "Set",
 			"type": {
-				"kind": "constructor",
-				"typeParameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "T"
+						"kind": "constructor",
+						"typeParameters": [
+							{
+								"name": "T"
+							}
+						],
+						"returns": {
+							"kind": "reference",
+							"type": "Set",
+							"arguments": [
+								"T"
+							]
+						}
 					}
-				],
-				"returns": {
-					"kind": "reference",
-					"type": "Set",
-					"arguments": [
-						"T"
-					]
-				}
+				]
 			}
 		},
 		{
@@ -2425,7 +2440,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2444,7 +2459,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2460,7 +2475,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2479,7 +2494,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2668,7 +2683,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2687,7 +2702,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2703,7 +2718,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2722,7 +2737,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -2973,7 +2988,7 @@
 						"kind": "object",
 						"signatures": [
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locales",
@@ -2992,7 +3007,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "call",
+								"kind": "constructor",
 								"parameters": [
 									{
 										"name": "locale",
@@ -3008,7 +3023,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locales",
@@ -3027,7 +3042,7 @@
 								"returns": "Collator"
 							},
 							{
-								"kind": "constructor",
+								"kind": "call",
 								"parameters": [
 									{
 										"name": "locale",
@@ -9074,13 +9089,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLElement"
 					}
 				]
 			}
@@ -18025,13 +18040,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Document"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Document"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Document"
 					}
 				]
 			}
@@ -18319,13 +18334,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Console"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Console"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Console"
 					}
 				]
 			}
@@ -18618,13 +18633,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSEventObj"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSEventObj"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSEventObj"
 					}
 				]
 			}
@@ -18732,13 +18747,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLCanvasElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLCanvasElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLCanvasElement"
 					}
 				]
 			}
@@ -23087,13 +23102,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Window"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Window"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Window"
 					}
 				]
 			}
@@ -23158,13 +23173,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLCollection"
 					}
 				]
 			}
@@ -23242,6 +23257,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Blob"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -23259,11 +23279,6 @@
 							}
 						],
 						"returns": "Blob"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Blob"
 					}
 				]
 			}
@@ -23528,13 +23543,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableElement"
 					}
 				]
 			}
@@ -23612,13 +23627,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TreeWalker"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TreeWalker"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TreeWalker"
 					}
 				]
 			}
@@ -23670,13 +23685,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoQuadraticRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoQuadraticRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoQuadraticRel"
 					}
 				]
 			}
@@ -23842,13 +23857,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Performance"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Performance"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Performance"
 					}
 				]
 			}
@@ -23946,13 +23961,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CompositionEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CompositionEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CompositionEvent"
 					}
 				]
 			}
@@ -24137,13 +24152,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGMarkerElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGMarkerElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGMarkerElement"
 					},
 					{
 						"kind": "property",
@@ -25703,13 +25718,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSStyleDeclaration"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSStyleDeclaration"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSStyleDeclaration"
 					}
 				]
 			}
@@ -25733,13 +25748,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGGElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGGElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGGElement"
 					}
 				]
 			}
@@ -25845,13 +25860,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSStyleCSSProperties"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSStyleCSSProperties"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSStyleCSSProperties"
 					}
 				]
 			}
@@ -25925,13 +25940,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Navigator"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Navigator"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Navigator"
 					}
 				]
 			}
@@ -25972,13 +25987,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoCubicSmoothAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoCubicSmoothAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoCubicSmoothAbs"
 					}
 				]
 			}
@@ -26024,13 +26039,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGZoomEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGZoomEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGZoomEvent"
 					}
 				]
 			}
@@ -26077,13 +26092,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableDataCellElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableDataCellElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableDataCellElement"
 					}
 				]
 			}
@@ -26116,13 +26131,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBaseElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBaseElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBaseElement"
 					}
 				]
 			}
@@ -26170,13 +26185,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ClientRect"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ClientRect"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ClientRect"
 					}
 				]
 			}
@@ -26275,13 +26290,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMImplementation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMImplementation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMImplementation"
 					}
 				]
 			}
@@ -29863,13 +29878,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Element"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Element"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Element"
 					}
 				]
 			}
@@ -29895,13 +29910,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLNextIdElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLNextIdElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLNextIdElement"
 					}
 				]
 			}
@@ -29932,13 +29947,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegMovetoRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegMovetoRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegMovetoRel"
 					}
 				]
 			}
@@ -29984,13 +29999,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGLineElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGLineElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGLineElement"
 					}
 				]
 			}
@@ -30018,13 +30033,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLParagraphElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLParagraphElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLParagraphElement"
 					}
 				]
 			}
@@ -30075,13 +30090,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAreasCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAreasCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAreasCollection"
 					}
 				]
 			}
@@ -30102,13 +30117,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGDescElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGDescElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGDescElement"
 					}
 				]
 			}
@@ -30455,13 +30470,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Node"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Node"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Node"
 					},
 					{
 						"kind": "property",
@@ -30582,13 +30597,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoQuadraticSmoothRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoQuadraticSmoothRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoQuadraticSmoothRel"
 					}
 				]
 			}
@@ -30615,13 +30630,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSScriptHost"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSScriptHost"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSScriptHost"
 					}
 				]
 			}
@@ -30653,13 +30668,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGClipPathElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGClipPathElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGClipPathElement"
 					}
 				]
 			}
@@ -30868,13 +30883,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MouseEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MouseEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MouseEvent"
 					}
 				]
 			}
@@ -30922,13 +30937,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "RangeException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "RangeException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "RangeException"
 					},
 					{
 						"kind": "property",
@@ -30984,13 +30999,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTextPositioningElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTextPositioningElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTextPositioningElement"
 					}
 				]
 			}
@@ -31126,13 +31141,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAppletElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAppletElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAppletElement"
 					}
 				]
 			}
@@ -31155,13 +31170,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextMetrics"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextMetrics"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextMetrics"
 					}
 				]
 			}
@@ -31636,13 +31651,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLOListElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLOListElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLOListElement"
 					}
 				]
 			}
@@ -31668,13 +31683,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoVerticalRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoVerticalRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoVerticalRel"
 					}
 				]
 			}
@@ -31702,13 +31717,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedString"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedString"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedString"
 					}
 				]
 			}
@@ -31727,13 +31742,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CDATASection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CDATASection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CDATASection"
 					}
 				]
 			}
@@ -31767,13 +31782,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "StyleMedia"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "StyleMedia"
+					},
+					{
+						"kind": "constructor",
+						"returns": "StyleMedia"
 					}
 				]
 			}
@@ -31971,13 +31986,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLSelectElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLSelectElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLSelectElement"
 					}
 				]
 			}
@@ -32367,13 +32382,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextRange"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextRange"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextRange"
 					}
 				]
 			}
@@ -32439,13 +32454,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBlockElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBlockElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBlockElement"
 					}
 				]
 			}
@@ -32633,13 +32648,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSStyleSheet"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSStyleSheet"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSStyleSheet"
 					}
 				]
 			}
@@ -32687,13 +32702,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSSelection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSSelection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSSelection"
 					}
 				]
 			}
@@ -32750,13 +32765,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLMetaElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLMetaElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLMetaElement"
 					}
 				]
 			}
@@ -32819,13 +32834,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPatternElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPatternElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPatternElement"
 					}
 				]
 			}
@@ -32853,13 +32868,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedAngle"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedAngle"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedAngle"
 					}
 				]
 			}
@@ -32991,13 +33006,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Selection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Selection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Selection"
 					}
 				]
 			}
@@ -33025,13 +33040,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGScriptElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGScriptElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGScriptElement"
 					}
 				]
 			}
@@ -33058,13 +33073,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDDElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDDElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDDElement"
 					}
 				]
 			}
@@ -33127,13 +33142,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSStyleRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSStyleRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSStyleRule"
 					}
 				]
 			}
@@ -33186,13 +33201,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "NodeIterator"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "NodeIterator"
+					},
+					{
+						"kind": "constructor",
+						"returns": "NodeIterator"
 					}
 				]
 			}
@@ -33221,13 +33236,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGViewElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGViewElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGViewElement"
 					}
 				]
 			}
@@ -33297,13 +33312,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLLinkElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLLinkElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLLinkElement"
 					}
 				]
 			}
@@ -33374,13 +33389,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLFontElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLFontElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLFontElement"
 					}
 				]
 			}
@@ -33401,13 +33416,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTitleElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTitleElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTitleElement"
 					}
 				]
 			}
@@ -33586,13 +33601,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ControlRangeCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ControlRangeCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ControlRangeCollection"
 					}
 				]
 			}
@@ -33702,13 +33717,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSNamespaceInfo"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSNamespaceInfo"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSNamespaceInfo"
 					}
 				]
 			}
@@ -33747,13 +33762,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedTransformList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedTransformList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedTransformList"
 					}
 				]
 			}
@@ -33786,13 +33801,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableCaptionElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableCaptionElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableCaptionElement"
 					}
 				]
 			}
@@ -33856,13 +33871,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLOptionElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLOptionElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLOptionElement"
 					},
 					{
 						"kind": "method",
@@ -33900,13 +33915,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLMapElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLMapElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLMapElement"
 					}
 				]
 			}
@@ -33933,13 +33948,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLMenuElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLMenuElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLMenuElement"
 					}
 				]
 			}
@@ -34024,13 +34039,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MouseWheelEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MouseWheelEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MouseWheelEvent"
 					}
 				]
 			}
@@ -34148,13 +34163,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPointList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPointList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPointList"
 					}
 				]
 			}
@@ -34181,14 +34196,14 @@
 			"type": {
 				"kind": "object",
 				"signatures": [
-					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedLengthList"
-					},
 					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedLengthList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedLengthList"
 					}
 				]
 			}
@@ -34216,13 +34231,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedPreserveAspectRatio"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedPreserveAspectRatio"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedPreserveAspectRatio"
 					}
 				]
 			}
@@ -34253,13 +34268,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSSiteModeEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSSiteModeEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSSiteModeEvent"
 					}
 				]
 			}
@@ -34312,13 +34327,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "StyleSheetPageList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "StyleSheetPageList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "StyleSheetPageList"
 					}
 				]
 			}
@@ -34541,13 +34556,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSCSSProperties"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSCSSProperties"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSCSSProperties"
 					}
 				]
 			}
@@ -34706,13 +34721,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLImageElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLImageElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLImageElement"
 					},
 					{
 						"kind": "method",
@@ -34822,13 +34837,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAreaElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAreaElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAreaElement"
 					}
 				]
 			}
@@ -34974,13 +34989,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAngle"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAngle"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAngle"
 					},
 					{
 						"kind": "property",
@@ -35135,13 +35150,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLButtonElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLButtonElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLButtonElement"
 					}
 				]
 			}
@@ -35185,13 +35200,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLSourceElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLSourceElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLSourceElement"
 					}
 				]
 			}
@@ -35224,13 +35239,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CanvasGradient"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CanvasGradient"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CanvasGradient"
 					}
 				]
 			}
@@ -35395,13 +35410,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "KeyboardEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "KeyboardEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "KeyboardEvent"
 					},
 					{
 						"kind": "property",
@@ -35507,13 +35522,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessageEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessageEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessageEvent"
 					}
 				]
 			}
@@ -36816,13 +36831,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGElement"
 					}
 				]
 			}
@@ -36890,13 +36905,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLScriptElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLScriptElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLScriptElement"
 					}
 				]
 			}
@@ -36995,13 +37010,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableRowElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableRowElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableRowElement"
 					}
 				]
 			}
@@ -37798,13 +37813,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CanvasRenderingContext2D"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CanvasRenderingContext2D"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CanvasRenderingContext2D"
 					}
 				]
 			}
@@ -37847,13 +37862,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSCSSRuleList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSCSSRuleList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSCSSRuleList"
 					}
 				]
 			}
@@ -37879,13 +37894,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoHorizontalAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoHorizontalAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoHorizontalAbs"
 					}
 				]
 			}
@@ -37941,13 +37956,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegArcAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegArcAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegArcAbs"
 					}
 				]
 			}
@@ -38065,13 +38080,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTransformList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTransformList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTransformList"
 					}
 				]
 			}
@@ -38098,13 +38113,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLHtmlElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLHtmlElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLHtmlElement"
 					}
 				]
 			}
@@ -38123,13 +38138,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegClosePath"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegClosePath"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegClosePath"
 					}
 				]
 			}
@@ -41792,13 +41807,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLFrameElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLFrameElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLFrameElement"
 					}
 				]
 			}
@@ -41826,13 +41841,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedLength"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedLength"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedLength"
 					}
 				]
 			}
@@ -41872,13 +41887,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGDefsElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGDefsElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGDefsElement"
 					}
 				]
 			}
@@ -41911,13 +41926,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLQuoteElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLQuoteElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLQuoteElement"
 					}
 				]
 			}
@@ -41976,13 +41991,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSMediaRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSMediaRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSMediaRule"
 					}
 				]
 			}
@@ -42562,13 +42577,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLHttpRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLHttpRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequest"
 					},
 					{
 						"kind": "property",
@@ -42625,13 +42640,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableHeaderCellElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableHeaderCellElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableHeaderCellElement"
 					}
 				]
 			}
@@ -42651,13 +42666,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDListElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDListElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDListElement"
 					}
 				]
 			}
@@ -42704,13 +42719,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoHorizontalRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoHorizontalRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoHorizontalRel"
 					}
 				]
 			}
@@ -42756,13 +42771,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGEllipseElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGEllipseElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGEllipseElement"
 					}
 				]
 			}
@@ -42794,13 +42809,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAElement"
 					}
 				]
 			}
@@ -46965,13 +46980,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLFrameSetElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLFrameSetElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLFrameSetElement"
 					}
 				]
 			}
@@ -47165,13 +47180,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Screen"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Screen"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Screen"
 					}
 				]
 			}
@@ -47224,13 +47239,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Coordinates"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Coordinates"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Coordinates"
 					}
 				]
 			}
@@ -47353,13 +47368,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DataTransfer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DataTransfer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DataTransfer"
 					}
 				]
 			}
@@ -47416,13 +47431,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FocusEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FocusEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FocusEvent"
 					}
 				]
 			}
@@ -47685,13 +47700,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Range"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Range"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Range"
 					},
 					{
 						"kind": "property",
@@ -47750,13 +47765,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPoint"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPoint"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPoint"
 					}
 				]
 			}
@@ -47791,13 +47806,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSPluginsCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSPluginsCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSPluginsCollection"
 					}
 				]
 			}
@@ -47825,13 +47840,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedNumberList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedNumberList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedNumberList"
 					}
 				]
 			}
@@ -49501,13 +49516,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGSVGElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGSVGElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGSVGElement"
 					}
 				]
 			}
@@ -49541,13 +49556,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLLabelElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLLabelElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLLabelElement"
 					}
 				]
 			}
@@ -49622,13 +49637,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLLegendElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLLegendElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLLegendElement"
 					}
 				]
 			}
@@ -49649,13 +49664,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDirectoryElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDirectoryElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDirectoryElement"
 					}
 				]
 			}
@@ -49683,13 +49698,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedInteger"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedInteger"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedInteger"
 					}
 				]
 			}
@@ -49709,13 +49724,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTextElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTextElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTextElement"
 					}
 				]
 			}
@@ -49734,13 +49749,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTSpanElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTSpanElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTSpanElement"
 					}
 				]
 			}
@@ -49768,13 +49783,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLLIElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLLIElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLLIElement"
 					}
 				]
 			}
@@ -49800,13 +49815,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoVerticalAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoVerticalAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoVerticalAbs"
 					}
 				]
 			}
@@ -49854,13 +49869,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGStyleElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGStyleElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGStyleElement"
 					}
 				]
 			}
@@ -49911,13 +49926,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSCurrentStyleCSSProperties"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSCurrentStyleCSSProperties"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSCurrentStyleCSSProperties"
 					}
 				]
 			}
@@ -50040,13 +50055,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Storage"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Storage"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Storage"
 					}
 				]
 			}
@@ -53726,13 +53741,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLIFrameElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLIFrameElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLIFrameElement"
 					}
 				]
 			}
@@ -53774,13 +53789,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextRangeCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextRangeCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextRangeCollection"
 					}
 				]
 			}
@@ -57978,13 +57993,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBodyElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBodyElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBodyElement"
 					}
 				]
 			}
@@ -58035,13 +58050,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DocumentType"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DocumentType"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DocumentType"
 					}
 				]
 			}
@@ -58087,13 +58102,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGRadialGradientElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGRadialGradientElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGRadialGradientElement"
 					}
 				]
 			}
@@ -58193,13 +58208,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MutationEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MutationEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MutationEvent"
 					},
 					{
 						"kind": "property",
@@ -58331,13 +58346,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DragEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DragEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DragEvent"
 					}
 				]
 			}
@@ -58420,13 +58435,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableSectionElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableSectionElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableSectionElement"
 					}
 				]
 			}
@@ -58829,13 +58844,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLInputElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLInputElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLInputElement"
 					}
 				]
 			}
@@ -58995,13 +59010,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAnchorElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAnchorElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAnchorElement"
 					}
 				]
 			}
@@ -59046,13 +59061,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLParamElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLParamElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLParamElement"
 					}
 				]
 			}
@@ -59104,13 +59119,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGImageElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGImageElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGImageElement"
 					}
 				]
 			}
@@ -59138,13 +59153,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedNumber"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedNumber"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedNumber"
 					}
 				]
 			}
@@ -59272,13 +59287,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceTiming"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceTiming"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceTiming"
 					}
 				]
 			}
@@ -59312,13 +59327,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLPreElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLPreElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLPreElement"
 					}
 				]
 			}
@@ -59366,13 +59381,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "EventException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "EventException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "EventException"
 					},
 					{
 						"kind": "property",
@@ -59500,13 +59515,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGMetadataElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGMetadataElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGMetadataElement"
 					}
 				]
 			}
@@ -59562,13 +59577,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegArcRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegArcRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegArcRel"
 					}
 				]
 			}
@@ -59599,13 +59614,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegMovetoAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegMovetoAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegMovetoAbs"
 					}
 				]
 			}
@@ -59707,13 +59722,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGStringList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGStringList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGStringList"
 					}
 				]
 			}
@@ -59970,13 +59985,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XDomainRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XDomainRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XDomainRequest"
 					},
 					{
 						"kind": "method",
@@ -60142,13 +60157,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGLength"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGLength"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGLength"
 					},
 					{
 						"kind": "property",
@@ -60228,13 +60243,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPolygonElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPolygonElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPolygonElement"
 					}
 				]
 			}
@@ -60267,13 +60282,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLPhraseElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLPhraseElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLPhraseElement"
 					}
 				]
 			}
@@ -60328,13 +60343,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoCubicRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoCubicRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoCubicRel"
 					}
 				]
 			}
@@ -60479,13 +60494,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTextContentElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTextContentElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTextContentElement"
 					},
 					{
 						"kind": "property",
@@ -60608,13 +60623,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Location"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Location"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Location"
 					}
 				]
 			}
@@ -60641,13 +60656,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTitleElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTitleElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTitleElement"
 					}
 				]
 			}
@@ -60681,13 +60696,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLStyleElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLStyleElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLStyleElement"
 					}
 				]
 			}
@@ -60725,13 +60740,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceEntry"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceEntry"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceEntry"
 					}
 				]
 			}
@@ -60881,13 +60896,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTransform"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTransform"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTransform"
 					},
 					{
 						"kind": "property",
@@ -60980,13 +60995,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "UIEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "UIEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "UIEvent"
 					}
 				]
 			}
@@ -61125,13 +61140,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSeg"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSeg"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSeg"
 					},
 					{
 						"kind": "property",
@@ -61369,13 +61384,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WheelEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WheelEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WheelEvent"
 					},
 					{
 						"kind": "property",
@@ -61449,13 +61464,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGNumber"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGNumber"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGNumber"
 					}
 				]
 			}
@@ -61872,13 +61887,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathElement"
 					}
 				]
 			}
@@ -61906,13 +61921,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSCompatibleInfo"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSCompatibleInfo"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSCompatibleInfo"
 					}
 				]
 			}
@@ -61961,13 +61976,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Text"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Text"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Text"
 					}
 				]
 			}
@@ -61995,13 +62010,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedRect"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedRect"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedRect"
 					}
 				]
 			}
@@ -62032,13 +62047,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSNamespaceRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSNamespaceRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSNamespaceRule"
 					}
 				]
 			}
@@ -62140,13 +62155,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegList"
 					}
 				]
 			}
@@ -62166,13 +62181,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLUnknownElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLUnknownElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLUnknownElement"
 					}
 				]
 			}
@@ -62191,13 +62206,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAudioElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAudioElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAudioElement"
 					}
 				]
 			}
@@ -62276,13 +62291,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PositionError"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PositionError"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PositionError"
 					},
 					{
 						"kind": "property",
@@ -62405,13 +62420,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableCellElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableCellElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableCellElement"
 					}
 				]
 			}
@@ -62472,13 +62487,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGElementInstance"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGElementInstance"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGElementInstance"
 					}
 				]
 			}
@@ -62534,13 +62549,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSNamespaceInfoCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSNamespaceInfoCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSNamespaceInfoCollection"
 					}
 				]
 			}
@@ -62581,13 +62596,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGCircleElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGCircleElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGCircleElement"
 					}
 				]
 			}
@@ -62630,13 +62645,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "StyleSheetList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "StyleSheetList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "StyleSheetList"
 					}
 				]
 			}
@@ -62672,13 +62687,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSImportRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSImportRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSImportRule"
 					}
 				]
 			}
@@ -62727,13 +62742,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CustomEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CustomEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CustomEvent"
 					}
 				]
 			}
@@ -62767,13 +62782,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBaseFontElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBaseFontElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBaseFontElement"
 					}
 				]
 			}
@@ -62958,13 +62973,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTextAreaElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTextAreaElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTextAreaElement"
 					}
 				]
 			}
@@ -63035,13 +63050,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Geolocation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Geolocation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Geolocation"
 					}
 				]
 			}
@@ -66840,13 +66855,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLMarqueeElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLMarqueeElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLMarqueeElement"
 					}
 				]
 			}
@@ -66884,13 +66899,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGRect"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGRect"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGRect"
 					}
 				]
 			}
@@ -67034,13 +67049,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "History"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "History"
+					},
+					{
+						"kind": "constructor",
+						"returns": "History"
 					}
 				]
 			}
@@ -67091,13 +67106,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoCubicAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoCubicAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoCubicAbs"
 					}
 				]
 			}
@@ -67138,13 +67153,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoQuadraticAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoQuadraticAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoQuadraticAbs"
 					}
 				]
 			}
@@ -67189,13 +67204,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TimeRanges"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TimeRanges"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TimeRanges"
 					}
 				]
 			}
@@ -67288,13 +67303,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSRule"
 					},
 					{
 						"kind": "property",
@@ -67380,13 +67395,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoAbs"
 					}
 				]
 			}
@@ -67419,13 +67434,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLModElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLModElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLModElement"
 					}
 				]
 			}
@@ -67588,13 +67603,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGMatrix"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGMatrix"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGMatrix"
 					}
 				]
 			}
@@ -67655,13 +67670,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSPopupWindow"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSPopupWindow"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSPopupWindow"
 					}
 				]
 			}
@@ -67687,13 +67702,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "BeforeUnloadEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "BeforeUnloadEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "BeforeUnloadEvent"
 					}
 				]
 			}
@@ -67750,13 +67765,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGUseElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGUseElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGUseElement"
 					}
 				]
 			}
@@ -67878,13 +67893,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Event"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Event"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Event"
 					},
 					{
 						"kind": "property",
@@ -67935,13 +67950,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ImageData"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ImageData"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ImageData"
 					}
 				]
 			}
@@ -67981,13 +67996,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTableColElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTableColElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTableColElement"
 					}
 				]
 			}
@@ -68040,13 +68055,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGException"
 					},
 					{
 						"kind": "property",
@@ -68102,13 +68117,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGLinearGradientElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGLinearGradientElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGLinearGradientElement"
 					}
 				]
 			}
@@ -68160,13 +68175,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedEnumeration"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedEnumeration"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedEnumeration"
 					}
 				]
 			}
@@ -68198,13 +68213,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLUListElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLUListElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLUListElement"
 					}
 				]
 			}
@@ -68260,13 +68275,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGRectElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGRectElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGRectElement"
 					}
 				]
 			}
@@ -68328,13 +68343,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDivElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDivElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDivElement"
 					}
 				]
 			}
@@ -68461,13 +68476,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "NamedNodeMap"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "NamedNodeMap"
+					},
+					{
+						"kind": "constructor",
+						"returns": "NamedNodeMap"
 					}
 				]
 			}
@@ -68541,13 +68556,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MediaList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MediaList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MediaList"
 					}
 				]
 			}
@@ -68578,13 +68593,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoQuadraticSmoothAbs"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoQuadraticSmoothAbs"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoQuadraticSmoothAbs"
 					}
 				]
 			}
@@ -68625,13 +68640,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegCurvetoCubicSmoothRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegCurvetoCubicSmoothRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegCurvetoCubicSmoothRel"
 					}
 				]
 			}
@@ -68733,13 +68748,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGLengthList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGLengthList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGLengthList"
 					}
 				]
 			}
@@ -68770,13 +68785,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ProcessingInstruction"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ProcessingInstruction"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ProcessingInstruction"
 					}
 				]
 			}
@@ -69299,13 +69314,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSBehaviorUrnsCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSBehaviorUrnsCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSBehaviorUrnsCollection"
 					}
 				]
 			}
@@ -69331,13 +69346,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSFontFaceRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSFontFaceRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSFontFaceRule"
 					}
 				]
 			}
@@ -69469,13 +69484,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextEvent"
 					},
 					{
 						"kind": "property",
@@ -69547,13 +69562,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DocumentFragment"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DocumentFragment"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DocumentFragment"
 					}
 				]
 			}
@@ -69578,13 +69593,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPolylineElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPolylineElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPolylineElement"
 					}
 				]
 			}
@@ -69623,13 +69638,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Position"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Position"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Position"
 					}
 				]
 			}
@@ -69671,13 +69686,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "BookmarkCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "BookmarkCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "BookmarkCollection"
 					}
 				]
 			}
@@ -69696,13 +69711,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceMark"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceMark"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceMark"
 					}
 				]
 			}
@@ -69743,13 +69758,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSPageRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSPageRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSPageRule"
 					}
 				]
 			}
@@ -69776,13 +69791,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBRElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBRElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBRElement"
 					}
 				]
 			}
@@ -69873,13 +69888,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLSpanElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLSpanElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLSpanElement"
 					}
 				]
 			}
@@ -69905,13 +69920,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLHeadElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLHeadElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLHeadElement"
 					}
 				]
 			}
@@ -69939,13 +69954,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLHeadingElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLHeadingElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLHeadingElement"
 					}
 				]
 			}
@@ -70091,13 +70106,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLFormElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLFormElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLFormElement"
 					}
 				]
 			}
@@ -74069,13 +74084,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLMediaElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLMediaElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLMediaElement"
 					},
 					{
 						"kind": "property",
@@ -74196,13 +74211,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMParser"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMParser"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMParser"
 					}
 				]
 			}
@@ -74225,13 +74240,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSMimeTypesCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSMimeTypesCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSMimeTypesCollection"
 					}
 				]
 			}
@@ -74284,13 +74299,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "StyleSheet"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "StyleSheet"
+					},
+					{
+						"kind": "constructor",
+						"returns": "StyleSheet"
 					}
 				]
 			}
@@ -74357,13 +74372,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGTextPathElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGTextPathElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGTextPathElement"
 					},
 					{
 						"kind": "property",
@@ -74420,13 +74435,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDTElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDTElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDTElement"
 					}
 				]
 			}
@@ -74468,13 +74483,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "NodeList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "NodeList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "NodeList"
 					}
 				]
 			}
@@ -74503,13 +74518,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLSerializer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLSerializer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLSerializer"
 					}
 				]
 			}
@@ -74528,13 +74543,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceMeasure"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceMeasure"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceMeasure"
 					}
 				]
 			}
@@ -74594,13 +74609,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGGradientElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGGradientElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGGradientElement"
 					},
 					{
 						"kind": "property",
@@ -74824,13 +74839,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGNumberList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGNumberList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGNumberList"
 					}
 				]
 			}
@@ -74883,13 +74898,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MediaError"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MediaError"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MediaError"
 					},
 					{
 						"kind": "property",
@@ -74984,13 +74999,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLFieldSetElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLFieldSetElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLFieldSetElement"
 					}
 				]
 			}
@@ -75035,13 +75050,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLBGSoundElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLBGSoundElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLBGSoundElement"
 					}
 				]
 			}
@@ -75067,13 +75082,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Comment"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Comment"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Comment"
 					}
 				]
 			}
@@ -75149,13 +75164,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceResourceTiming"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceResourceTiming"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceResourceTiming"
 					}
 				]
 			}
@@ -75171,13 +75186,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CanvasPattern"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CanvasPattern"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CanvasPattern"
 					}
 				]
 			}
@@ -75218,13 +75233,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLHRElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLHRElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLHRElement"
 					}
 				]
 			}
@@ -75430,13 +75445,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLObjectElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLObjectElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLObjectElement"
 					}
 				]
 			}
@@ -75534,13 +75549,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLEmbedElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLEmbedElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLEmbedElement"
 					}
 				]
 			}
@@ -75625,13 +75640,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "StorageEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "StorageEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "StorageEvent"
 					}
 				]
 			}
@@ -75737,13 +75752,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CharacterData"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CharacterData"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CharacterData"
 					}
 				]
 			}
@@ -75807,13 +75822,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLOptGroupElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLOptGroupElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLOptGroupElement"
 					}
 				]
 			}
@@ -75851,13 +75866,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLIsIndexElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLIsIndexElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLIsIndexElement"
 					}
 				]
 			}
@@ -75888,13 +75903,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPathSegLinetoRel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPathSegLinetoRel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPathSegLinetoRel"
 					}
 				]
 			}
@@ -76067,13 +76082,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMException"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMException"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMException"
 					},
 					{
 						"kind": "property",
@@ -76236,13 +76251,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGAnimatedBoolean"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGAnimatedBoolean"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGAnimatedBoolean"
 					}
 				]
 			}
@@ -76276,13 +76291,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSCompatibleInfoCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSCompatibleInfoCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSCompatibleInfoCollection"
 					}
 				]
 			}
@@ -76306,13 +76321,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGSwitchElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGSwitchElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGSwitchElement"
 					}
 				]
 			}
@@ -76410,13 +76425,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGPreserveAspectRatio"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGPreserveAspectRatio"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGPreserveAspectRatio"
 					},
 					{
 						"kind": "property",
@@ -76532,13 +76547,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Attr"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Attr"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Attr"
 					}
 				]
 			}
@@ -76591,13 +76606,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceNavigation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceNavigation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceNavigation"
 					},
 					{
 						"kind": "property",
@@ -76644,13 +76659,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGStopElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGStopElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGStopElement"
 					}
 				]
 			}
@@ -76689,13 +76704,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGSymbolElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGSymbolElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGSymbolElement"
 					}
 				]
 			}
@@ -76729,13 +76744,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGElementInstanceList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGElementInstanceList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGElementInstanceList"
 					}
 				]
 			}
@@ -76777,13 +76792,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSRuleList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSRuleList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSRuleList"
 					}
 				]
 			}
@@ -80653,13 +80668,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLVideoElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLVideoElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLVideoElement"
 					}
 				]
 			}
@@ -80701,13 +80716,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ClientRectList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ClientRectList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ClientRectList"
 					}
 				]
 			}
@@ -80763,13 +80778,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGMaskElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGMaskElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGMaskElement"
 					}
 				]
 			}
@@ -80785,13 +80800,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "External"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "External"
+					},
+					{
+						"kind": "constructor",
+						"returns": "External"
 					}
 				]
 			}
@@ -81013,13 +81028,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSGestureEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSGestureEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSGestureEvent"
 					},
 					{
 						"kind": "property",
@@ -81121,13 +81136,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ErrorEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ErrorEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ErrorEvent"
 					}
 				]
 			}
@@ -81208,13 +81223,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFilterElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFilterElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFilterElement"
 					}
 				]
 			}
@@ -81240,13 +81255,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TrackEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TrackEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TrackEvent"
 					}
 				]
 			}
@@ -81272,13 +81287,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEMergeNodeElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEMergeNodeElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEMergeNodeElement"
 					}
 				]
 			}
@@ -81298,13 +81313,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEFloodElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEFloodElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEFloodElement"
 					}
 				]
 			}
@@ -81343,13 +81358,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSGesture"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSGesture"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSGesture"
 					}
 				]
 			}
@@ -81511,6 +81526,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "TextTrackCue"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -81527,11 +81547,6 @@
 							}
 						],
 						"returns": "TextTrackCue"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "TextTrackCue"
 					}
 				]
 			}
@@ -81626,13 +81641,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSStreamReader"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSStreamReader"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSStreamReader"
 					}
 				]
 			}
@@ -81723,13 +81738,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMTokenList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMTokenList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMTokenList"
 					}
 				]
 			}
@@ -81748,13 +81763,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEFuncAElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEFuncAElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEFuncAElement"
 					}
 				]
 			}
@@ -81781,13 +81796,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFETileElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFETileElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFETileElement"
 					}
 				]
 			}
@@ -81854,13 +81869,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEBlendElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEBlendElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEBlendElement"
 					},
 					{
 						"kind": "property",
@@ -81918,13 +81933,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessageChannel"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessageChannel"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessageChannel"
 					}
 				]
 			}
@@ -81944,13 +81959,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEMergeElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEMergeElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEMergeElement"
 					}
 				]
 			}
@@ -82008,13 +82023,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TransitionEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TransitionEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TransitionEvent"
 					}
 				]
 			}
@@ -82064,13 +82079,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MediaQueryList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MediaQueryList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MediaQueryList"
 					}
 				]
 			}
@@ -82098,13 +82113,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMError"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMError"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMError"
 					}
 				]
 			}
@@ -82171,13 +82186,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CloseEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CloseEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CloseEvent"
 					}
 				]
 			}
@@ -82468,6 +82483,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "WebSocket"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -82499,11 +82519,6 @@
 							}
 						],
 						"returns": "WebSocket"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "WebSocket"
 					},
 					{
 						"kind": "property",
@@ -82559,13 +82574,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEPointLightElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEPointLightElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEPointLightElement"
 					}
 				]
 			}
@@ -82632,13 +82647,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ProgressEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ProgressEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ProgressEvent"
 					}
 				]
 			}
@@ -82806,13 +82821,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBObjectStore"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBObjectStore"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBObjectStore"
 					}
 				]
 			}
@@ -82864,13 +82879,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEGaussianBlurElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEGaussianBlurElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEGaussianBlurElement"
 					}
 				]
 			}
@@ -82935,13 +82950,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBVersionChangeEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBVersionChangeEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBVersionChangeEvent"
 					}
 				]
 			}
@@ -83047,13 +83062,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBIndex"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBIndex"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBIndex"
 					}
 				]
 			}
@@ -83095,13 +83110,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FileList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FileList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FileList"
 					}
 				]
 			}
@@ -83198,13 +83213,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBCursor"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBCursor"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBCursor"
 					},
 					{
 						"kind": "property",
@@ -83276,13 +83291,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFESpecularLightingElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFESpecularLightingElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFESpecularLightingElement"
 					}
 				]
 			}
@@ -83313,13 +83328,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "File"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "File"
+					},
+					{
+						"kind": "constructor",
+						"returns": "File"
 					}
 				]
 			}
@@ -83383,13 +83398,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBCursorWithValue"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBCursorWithValue"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBCursorWithValue"
 					}
 				]
 			}
@@ -83731,13 +83746,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLHttpRequestEventTarget"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLHttpRequestEventTarget"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLHttpRequestEventTarget"
 					}
 				]
 			}
@@ -83958,13 +83973,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "AudioTrackList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "AudioTrackList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "AudioTrackList"
 					}
 				]
 			}
@@ -84338,13 +84353,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEMorphologyElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEMorphologyElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEMorphologyElement"
 					},
 					{
 						"kind": "property",
@@ -84378,13 +84393,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEFuncRElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEFuncRElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEFuncRElement"
 					}
 				]
 			}
@@ -84522,13 +84537,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEDisplacementMapElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEDisplacementMapElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEDisplacementMapElement"
 					},
 					{
 						"kind": "property",
@@ -84611,13 +84626,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "AnimationEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "AnimationEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "AnimationEvent"
 					}
 				]
 			}
@@ -84703,13 +84718,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGComponentTransferFunctionElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGComponentTransferFunctionElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGComponentTransferFunctionElement"
 					},
 					{
 						"kind": "property",
@@ -84781,13 +84796,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSRangeCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSRangeCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSRangeCollection"
 					}
 				]
 			}
@@ -84818,13 +84833,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEDistantLightElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEDistantLightElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEDistantLightElement"
 					}
 				]
 			}
@@ -84843,13 +84858,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEFuncBElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEFuncBElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEFuncBElement"
 					}
 				]
 			}
@@ -84887,13 +84902,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBKeyRange"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBKeyRange"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBKeyRange"
 					},
 					{
 						"kind": "method",
@@ -85188,13 +85203,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBTransaction"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBTransaction"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBTransaction"
 					},
 					{
 						"kind": "property",
@@ -85257,13 +85272,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "AudioTrack"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "AudioTrack"
+					},
+					{
+						"kind": "constructor",
+						"returns": "AudioTrack"
 					}
 				]
 			}
@@ -85365,13 +85380,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEConvolveMatrixElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEConvolveMatrixElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEConvolveMatrixElement"
 					},
 					{
 						"kind": "property",
@@ -85444,13 +85459,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextTrackCueList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextTrackCueList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextTrackCueList"
 					}
 				]
 			}
@@ -85514,13 +85529,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSKeyframesRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSKeyframesRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSKeyframesRule"
 					}
 				]
 			}
@@ -85602,13 +85617,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFETurbulenceElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFETurbulenceElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFETurbulenceElement"
 					},
 					{
 						"kind": "property",
@@ -85746,13 +85761,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextTrackList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextTrackList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextTrackList"
 					}
 				]
 			}
@@ -85771,13 +85786,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEFuncGElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEFuncGElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEFuncGElement"
 					}
 				]
 			}
@@ -85839,13 +85854,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEColorMatrixElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEColorMatrixElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEColorMatrixElement"
 					},
 					{
 						"kind": "property",
@@ -85931,13 +85946,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFESpotLightElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFESpotLightElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFESpotLightElement"
 					}
 				]
 			}
@@ -86155,13 +86170,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBDatabase"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBDatabase"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBDatabase"
 					}
 				]
 			}
@@ -86214,13 +86229,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMStringList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMStringList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMStringList"
 					}
 				]
 			}
@@ -86405,13 +86420,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBOpenDBRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBOpenDBRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBOpenDBRequest"
 					}
 				]
 			}
@@ -86456,13 +86471,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLProgressElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLProgressElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLProgressElement"
 					}
 				]
 			}
@@ -86509,13 +86524,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEOffsetElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEOffsetElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEOffsetElement"
 					}
 				]
 			}
@@ -86787,13 +86802,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "TextTrack"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "TextTrack"
+					},
+					{
+						"kind": "constructor",
+						"returns": "TextTrack"
 					},
 					{
 						"kind": "property",
@@ -86996,13 +87011,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBRequest"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBRequest"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBRequest"
 					}
 				]
 			}
@@ -87113,13 +87128,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MessagePort"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MessagePort"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MessagePort"
 					}
 				]
 			}
@@ -87183,13 +87198,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FileReader"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FileReader"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FileReader"
 					}
 				]
 			}
@@ -87624,13 +87639,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ApplicationCache"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ApplicationCache"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ApplicationCache"
 					},
 					{
 						"kind": "property",
@@ -87725,13 +87740,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PopStateEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PopStateEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PopStateEvent"
 					}
 				]
 			}
@@ -87762,13 +87777,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CSSKeyframeRule"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CSSKeyframeRule"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CSSKeyframeRule"
 					}
 				]
 			}
@@ -87839,13 +87854,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSStream"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSStream"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSStream"
 					}
 				]
 			}
@@ -87891,13 +87906,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSBlobBuilder"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSBlobBuilder"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSBlobBuilder"
 					}
 				]
 			}
@@ -87923,13 +87938,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMSettableTokenList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMSettableTokenList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMSettableTokenList"
 					}
 				]
 			}
@@ -87989,13 +88004,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "IDBFactory"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "IDBFactory"
+					},
+					{
+						"kind": "constructor",
+						"returns": "IDBFactory"
 					}
 				]
 			}
@@ -88228,13 +88243,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSPointerEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSPointerEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSPointerEvent"
 					},
 					{
 						"kind": "property",
@@ -88355,13 +88370,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSManipulationEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSManipulationEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSManipulationEvent"
 					},
 					{
 						"kind": "property",
@@ -88439,13 +88454,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "FormData"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "FormData"
+					},
+					{
+						"kind": "constructor",
+						"returns": "FormData"
 					}
 				]
 			}
@@ -88471,13 +88486,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDataListElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDataListElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDataListElement"
 					}
 				]
 			}
@@ -88507,13 +88522,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEImageElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEImageElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEImageElement"
 					}
 				]
 			}
@@ -88677,13 +88692,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFECompositeElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFECompositeElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFECompositeElement"
 					},
 					{
 						"kind": "property",
@@ -88781,13 +88796,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ValidityState"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ValidityState"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ValidityState"
 					}
 				]
 			}
@@ -88863,13 +88878,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLTrackElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLTrackElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLTrackElement"
 					},
 					{
 						"kind": "property",
@@ -89137,13 +89152,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEComponentTransferElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEComponentTransferElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEComponentTransferElement"
 					}
 				]
 			}
@@ -89190,13 +89205,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SVGFEDiffuseLightingElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SVGFEDiffuseLightingElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SVGFEDiffuseLightingElement"
 					}
 				]
 			}
@@ -89463,6 +89478,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSCSSMatrix"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -89472,11 +89492,6 @@
 							}
 						],
 						"returns": "MSCSSMatrix"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "MSCSSMatrix"
 					}
 				]
 			}
@@ -89610,6 +89625,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "Worker"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -89618,11 +89638,6 @@
 							}
 						],
 						"returns": "Worker"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "Worker"
 					}
 				]
 			}
@@ -89670,13 +89685,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSGraphicsTrust"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSGraphicsTrust"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSGraphicsTrust"
 					}
 				]
 			}
@@ -89948,13 +89963,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SubtleCrypto"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SubtleCrypto"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SubtleCrypto"
 					}
 				]
 			}
@@ -89980,13 +89995,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Crypto"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Crypto"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Crypto"
 					}
 				]
 			}
@@ -90024,13 +90039,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "VideoPlaybackQuality"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "VideoPlaybackQuality"
+					},
+					{
+						"kind": "constructor",
+						"returns": "VideoPlaybackQuality"
 					}
 				]
 			}
@@ -90441,13 +90456,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Key"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Key"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Key"
 					}
 				]
 			}
@@ -90480,13 +90495,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DeviceAcceleration"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DeviceAcceleration"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DeviceAcceleration"
 					}
 				]
 			}
@@ -90518,13 +90533,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLAllCollection"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLAllCollection"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLAllCollection"
 					}
 				]
 			}
@@ -90552,13 +90567,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "AesGcmEncryptResult"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "AesGcmEncryptResult"
+					},
+					{
+						"kind": "constructor",
+						"returns": "AesGcmEncryptResult"
 					}
 				]
 			}
@@ -90589,13 +90604,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "NavigationCompletedEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "NavigationCompletedEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "NavigationCompletedEvent"
 					}
 				]
 			}
@@ -90658,13 +90673,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MutationRecord"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MutationRecord"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MutationRecord"
 					}
 				]
 			}
@@ -90717,13 +90732,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MimeTypeArray"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MimeTypeArray"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MimeTypeArray"
 					}
 				]
 			}
@@ -90855,13 +90870,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "KeyOperation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "KeyOperation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "KeyOperation"
 					}
 				]
 			}
@@ -90877,13 +90892,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DOMStringMap"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DOMStringMap"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DOMStringMap"
 					}
 				]
 			}
@@ -90959,13 +90974,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DeviceOrientationEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DeviceOrientationEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DeviceOrientationEvent"
 					}
 				]
 			}
@@ -91008,6 +91023,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MSMediaKeys"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -91016,11 +91036,6 @@
 							}
 						],
 						"returns": "MSMediaKeys"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "MSMediaKeys"
 					},
 					{
 						"kind": "method",
@@ -91067,13 +91082,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSMediaKeyMessageEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSMediaKeyMessageEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSMediaKeyMessageEvent"
 					}
 				]
 			}
@@ -91236,13 +91251,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSHTMLWebViewElement"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSHTMLWebViewElement"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSHTMLWebViewElement"
 					}
 				]
 			}
@@ -91268,13 +91283,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "NavigationEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "NavigationEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "NavigationEvent"
 					}
 				]
 			}
@@ -91389,13 +91404,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SourceBuffer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SourceBuffer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SourceBuffer"
 					}
 				]
 			}
@@ -91603,13 +91618,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSInputMethodContext"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSInputMethodContext"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSInputMethodContext"
 					}
 				]
 			}
@@ -91642,13 +91657,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DeviceRotationRate"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DeviceRotationRate"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DeviceRotationRate"
 					}
 				]
 			}
@@ -91713,13 +91728,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PluginArray"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PluginArray"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PluginArray"
 					}
 				]
 			}
@@ -91777,13 +91792,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSMediaKeyError"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSMediaKeyError"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSMediaKeyError"
 					},
 					{
 						"kind": "property",
@@ -91886,13 +91901,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "Plugin"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Plugin"
+					},
+					{
+						"kind": "constructor",
+						"returns": "Plugin"
 					}
 				]
 			}
@@ -91967,13 +91982,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MediaSource"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MediaSource"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MediaSource"
 					},
 					{
 						"kind": "method",
@@ -92029,13 +92044,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "SourceBufferList"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "SourceBufferList"
+					},
+					{
+						"kind": "constructor",
+						"returns": "SourceBufferList"
 					}
 				]
 			}
@@ -92054,13 +92069,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "XMLDocument"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "XMLDocument"
+					},
+					{
+						"kind": "constructor",
+						"returns": "XMLDocument"
 					}
 				]
 			}
@@ -92136,13 +92151,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "DeviceMotionEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "DeviceMotionEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "DeviceMotionEvent"
 					}
 				]
 			}
@@ -92180,13 +92195,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MimeType"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MimeType"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MimeType"
 					}
 				]
 			}
@@ -92404,13 +92419,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PointerEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PointerEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PointerEvent"
 					}
 				]
 			}
@@ -92472,6 +92487,11 @@
 				"kind": "object",
 				"signatures": [
 					{
+						"kind": "property",
+						"name": "prototype",
+						"type": "MutationObserver"
+					},
+					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -92496,11 +92516,6 @@
 							}
 						],
 						"returns": "MutationObserver"
-					},
-					{
-						"kind": "property",
-						"name": "prototype",
-						"type": "MutationObserver"
 					}
 				]
 			}
@@ -92687,13 +92702,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSWebViewAsyncOperation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSWebViewAsyncOperation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSWebViewAsyncOperation"
 					},
 					{
 						"kind": "property",
@@ -92754,13 +92769,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "ScriptNotifyEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "ScriptNotifyEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "ScriptNotifyEvent"
 					}
 				]
 			}
@@ -92891,13 +92906,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerformanceNavigationTiming"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerformanceNavigationTiming"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerformanceNavigationTiming"
 					}
 				]
 			}
@@ -92923,13 +92938,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSMediaKeyNeededEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSMediaKeyNeededEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSMediaKeyNeededEvent"
 					}
 				]
 			}
@@ -92960,13 +92975,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "LongRunningScriptDetectedEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "LongRunningScriptDetectedEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "LongRunningScriptDetectedEvent"
 					}
 				]
 			}
@@ -93014,13 +93029,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSAppView"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSAppView"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSAppView"
 					}
 				]
 			}
@@ -93225,13 +93240,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PerfWidgetExternal"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PerfWidgetExternal"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PerfWidgetExternal"
 					}
 				]
 			}
@@ -93257,13 +93272,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "PageTransitionEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "PageTransitionEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "PageTransitionEvent"
 					}
 				]
 			}
@@ -93305,13 +93320,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "HTMLDocument"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "HTMLDocument"
+					},
+					{
+						"kind": "constructor",
+						"returns": "HTMLDocument"
 					}
 				]
 			}
@@ -93339,13 +93354,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "KeyPair"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "KeyPair"
+					},
+					{
+						"kind": "constructor",
+						"returns": "KeyPair"
 					}
 				]
 			}
@@ -93397,13 +93412,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "MSMediaKeySession"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "MSMediaKeySession"
+					},
+					{
+						"kind": "constructor",
+						"returns": "MSMediaKeySession"
 					}
 				]
 			}
@@ -93429,13 +93444,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "UnviewableContentIdentifiedEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "UnviewableContentIdentifiedEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "UnviewableContentIdentifiedEvent"
 					}
 				]
 			}
@@ -93684,13 +93699,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "CryptoOperation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "CryptoOperation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "CryptoOperation"
 					}
 				]
 			}
@@ -93709,13 +93724,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLTexture"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLTexture"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLTexture"
 					}
 				]
 			}
@@ -93731,13 +93746,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "OES_texture_float"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "OES_texture_float"
+					},
+					{
+						"kind": "constructor",
+						"returns": "OES_texture_float"
 					}
 				]
 			}
@@ -93763,13 +93778,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLContextEvent"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLContextEvent"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLContextEvent"
 					}
 				]
 			}
@@ -93788,13 +93803,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLRenderbuffer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLRenderbuffer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLRenderbuffer"
 					}
 				]
 			}
@@ -93810,13 +93825,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLUniformLocation"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLUniformLocation"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLUniformLocation"
 					}
 				]
 			}
@@ -93849,13 +93864,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLActiveInfo"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLActiveInfo"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLActiveInfo"
 					}
 				]
 			}
@@ -93893,13 +93908,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WEBGL_compressed_texture_s3tc"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WEBGL_compressed_texture_s3tc"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WEBGL_compressed_texture_s3tc"
 					},
 					{
 						"kind": "property",
@@ -98206,13 +98221,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLRenderingContext"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLRenderingContext"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLRenderingContext"
 					},
 					{
 						"kind": "property",
@@ -99706,13 +99721,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLProgram"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLProgram"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLProgram"
 					}
 				]
 			}
@@ -99735,13 +99750,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "OES_standard_derivatives"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "OES_standard_derivatives"
+					},
+					{
+						"kind": "constructor",
+						"returns": "OES_standard_derivatives"
 					},
 					{
 						"kind": "property",
@@ -99765,13 +99780,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLFramebuffer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLFramebuffer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLFramebuffer"
 					}
 				]
 			}
@@ -99790,13 +99805,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLShader"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLShader"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLShader"
 					}
 				]
 			}
@@ -99812,13 +99827,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "OES_texture_float_linear"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "OES_texture_float_linear"
+					},
+					{
+						"kind": "constructor",
+						"returns": "OES_texture_float_linear"
 					}
 				]
 			}
@@ -99834,13 +99849,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLObject"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLObject"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLObject"
 					}
 				]
 			}
@@ -99859,13 +99874,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLBuffer"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLBuffer"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLBuffer"
 					}
 				]
 			}
@@ -99898,13 +99913,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "WebGLShaderPrecisionFormat"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "WebGLShaderPrecisionFormat"
+					},
+					{
+						"kind": "constructor",
+						"returns": "WebGLShaderPrecisionFormat"
 					}
 				]
 			}
@@ -99932,13 +99947,13 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "constructor",
-						"returns": "EXT_texture_filter_anisotropic"
-					},
-					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "EXT_texture_filter_anisotropic"
+					},
+					{
+						"kind": "constructor",
+						"returns": "EXT_texture_filter_anisotropic"
 					},
 					{
 						"kind": "property",
@@ -99957,65 +99972,80 @@
 			"kind": "variable",
 			"name": "Option",
 			"type": {
-				"kind": "constructor",
-				"parameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "text",
-						"optional": true,
-						"type": "string"
-					},
-					{
-						"name": "value",
-						"optional": true,
-						"type": "string"
-					},
-					{
-						"name": "defaultSelected",
-						"optional": true,
-						"type": "boolean"
-					},
-					{
-						"name": "selected",
-						"optional": true,
-						"type": "boolean"
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "text",
+								"optional": true,
+								"type": "string"
+							},
+							{
+								"name": "value",
+								"optional": true,
+								"type": "string"
+							},
+							{
+								"name": "defaultSelected",
+								"optional": true,
+								"type": "boolean"
+							},
+							{
+								"name": "selected",
+								"optional": true,
+								"type": "boolean"
+							}
+						],
+						"returns": "HTMLOptionElement"
 					}
-				],
-				"returns": "HTMLOptionElement"
+				]
 			}
 		},
 		{
 			"kind": "variable",
 			"name": "Image",
 			"type": {
-				"kind": "constructor",
-				"parameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "width",
-						"optional": true,
-						"type": "number"
-					},
-					{
-						"name": "height",
-						"optional": true,
-						"type": "number"
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "width",
+								"optional": true,
+								"type": "number"
+							},
+							{
+								"name": "height",
+								"optional": true,
+								"type": "number"
+							}
+						],
+						"returns": "HTMLImageElement"
 					}
-				],
-				"returns": "HTMLImageElement"
+				]
 			}
 		},
 		{
 			"kind": "variable",
 			"name": "Audio",
 			"type": {
-				"kind": "constructor",
-				"parameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "src",
-						"optional": true,
-						"type": "string"
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "src",
+								"optional": true,
+								"type": "string"
+							}
+						],
+						"returns": "HTMLAudioElement"
 					}
-				],
-				"returns": "HTMLAudioElement"
+				]
 			}
 		},
 		{

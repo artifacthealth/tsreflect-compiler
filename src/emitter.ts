@@ -133,20 +133,20 @@ module ts {
         var emitJsDocComments = compilerOptions.removeComments && !compilerOptions.annotations ?
             function (node: Node) { } : writeJsDocComments;
 
-        var aliasDeclarationsToRemove: {
+        var importDeclarationsToRemove: {
             declaration: ImportDeclaration;
             handle: IRemovableModuleElement;
         }[] = [];
 
-        function makeAliasesVisible(importDeclarations: ImportDeclaration[]) {
+        function makeImportsVisible(importDeclarations: ImportDeclaration[]) {
             forEach(importDeclarations, aliasToWrite => {
 
-                for(var i = 0, l = aliasDeclarationsToRemove.length; i < l; i++) {
+                for(var i = 0, l = importDeclarationsToRemove.length; i < l; i++) {
 
-                    if(aliasDeclarationsToRemove[i].declaration == aliasToWrite) {
+                    if(importDeclarationsToRemove[i].declaration == aliasToWrite) {
 
                         // Alias is now visible so take it off the remove list
-                        aliasDeclarationsToRemove.splice(i, 1);
+                        importDeclarationsToRemove.splice(i, 1);
                         break;
                     }
                 }
@@ -157,7 +157,7 @@ module ts {
             if (symbolAccesibilityResult.accessibility === SymbolAccessibility.Accessible) {
 
                 if (symbolAccesibilityResult && symbolAccesibilityResult.aliasesToMakeVisible) {
-                    makeAliasesVisible(symbolAccesibilityResult.aliasesToMakeVisible);
+                    makeImportsVisible(symbolAccesibilityResult.aliasesToMakeVisible);
                 }
             }
             else {
@@ -546,7 +546,7 @@ module ts {
 
                     // If the declaration is not visible, write it anyways but then queue it up to be removed
                     // later. If it becomes visible during processing, it will be removed from this list.
-                    aliasDeclarationsToRemove.push({
+                    importDeclarationsToRemove.push({
                         declaration: node,
                         handle: handle
                     });
@@ -563,13 +563,14 @@ module ts {
             }
 
             if (isInternalModuleImportDeclaration(node)) {
-                // TODO: fix
                 emitTypeWithNewGetSymbolAccessibilityDiagnostic(<EntityName>node.moduleReference, getImportEntityNameVisibilityError);
             }
             else {
                 // remove quotes at beginning and ending of module name
                 writer.writeRequire(unquoteString(getSourceTextOfNodeFromSourceFile(currentSourceFile, getExternalModuleImportDeclarationExpression(node))));
             }
+
+            writer.writeEnd();
 
             function getImportEntityNameVisibilityError(symbolAccesibilityResult: SymbolAccessiblityResult): SymbolAccessibilityDiagnostic {
                 return {
@@ -1549,9 +1550,9 @@ module ts {
         }
 
         // cleanup any import declarations that need to be removed
-        forEach(aliasDeclarationsToRemove, aliasInfo => {
+        forEach(importDeclarationsToRemove, importInfo => {
 
-            aliasInfo.handle.remove();
+            importInfo.handle.remove();
         });
 
         if (!reportedDeclarationError) {

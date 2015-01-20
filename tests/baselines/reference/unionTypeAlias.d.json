@@ -1,0 +1,16 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "alias",
+			"name": "B",
+			"type": {
+				"kind": "union",
+				"types": [
+					"string",
+					"number"
+				]
+			}
+		}
+	]
+}

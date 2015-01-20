@@ -273,20 +273,6 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
-						"returns": "any"
-					},
-					{
-						"kind": "call",
-						"parameters": [
-							{
-								"name": "value",
-								"type": "any"
-							}
-						],
-						"returns": "any"
-					},
-					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -298,10 +284,24 @@
 						"returns": "Object"
 					},
 					{
+						"kind": "call",
+						"returns": "any"
+					},
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"type": "any"
+							}
+						],
+						"returns": "any"
+					},
+					{
 						"kind": "property",
 						"name": "prototype",
-						"description": "A reference to the prototype for a class of objects.",
-						"type": "Object"
+						"type": "Object",
+						"description": "A reference to the prototype for a class of objects."
 					},
 					{
 						"kind": "method",
@@ -604,10 +604,12 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
+						"description": "Creates a new function.",
 						"parameters": [
 							{
 								"name": "args",
+								"description": "A list of arguments the function accepts.",
 								"rest": true,
 								"type": {
 									"kind": "array",
@@ -618,12 +620,10 @@
 						"returns": "Function"
 					},
 					{
-						"kind": "constructor",
-						"description": "Creates a new function.",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "args",
-								"description": "A list of arguments the function accepts.",
 								"rest": true,
 								"type": {
 									"kind": "array",
@@ -1083,17 +1083,6 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
-						"parameters": [
-							{
-								"name": "value",
-								"optional": true,
-								"type": "any"
-							}
-						],
-						"returns": "string"
-					},
-					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1103,6 +1092,17 @@
 							}
 						],
 						"returns": "String"
+					},
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "string"
 					},
 					{
 						"kind": "property",
@@ -1138,17 +1138,6 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
-						"parameters": [
-							{
-								"name": "value",
-								"optional": true,
-								"type": "any"
-							}
-						],
-						"returns": "boolean"
-					},
-					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1158,6 +1147,17 @@
 							}
 						],
 						"returns": "Boolean"
+					},
+					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "boolean"
 					},
 					{
 						"kind": "property",
@@ -1237,17 +1237,6 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
-						"parameters": [
-							{
-								"name": "value",
-								"optional": true,
-								"type": "any"
-							}
-						],
-						"returns": "number"
-					},
-					{
 						"kind": "constructor",
 						"parameters": [
 							{
@@ -1259,6 +1248,17 @@
 						"returns": "Number"
 					},
 					{
+						"kind": "call",
+						"parameters": [
+							{
+								"name": "value",
+								"optional": true,
+								"type": "any"
+							}
+						],
+						"returns": "number"
+					},
+					{
 						"kind": "property",
 						"name": "prototype",
 						"type": "Number"
@@ -1266,32 +1266,32 @@
 					{
 						"kind": "property",
 						"name": "MAX_VALUE",
-						"description": "The largest number that can be represented in JavaScript. Equal to approximately 1.79E+308.",
-						"type": "number"
+						"type": "number",
+						"description": "The largest number that can be represented in JavaScript. Equal to approximately 1.79E+308."
 					},
 					{
 						"kind": "property",
 						"name": "MIN_VALUE",
-						"description": "The closest number to zero that can be represented in JavaScript. Equal to approximately 5.00E-324.",
-						"type": "number"
+						"type": "number",
+						"description": "The closest number to zero that can be represented in JavaScript. Equal to approximately 5.00E-324."
 					},
 					{
 						"kind": "property",
 						"name": "NaN",
-						"description": "A value that is not a number.\r\nIn equality comparisons, NaN does not equal any value, including itself. To test whether a value is equivalent to NaN, use the isNaN function.",
-						"type": "number"
+						"type": "number",
+						"description": "A value that is not a number.\r\nIn equality comparisons, NaN does not equal any value, including itself. To test whether a value is equivalent to NaN, use the isNaN function."
 					},
 					{
 						"kind": "property",
 						"name": "NEGATIVE_INFINITY",
-						"description": "A value that is less than the largest negative number that can be represented in JavaScript.\r\nJavaScript displays NEGATIVE_INFINITY values as -infinity.",
-						"type": "number"
+						"type": "number",
+						"description": "A value that is less than the largest negative number that can be represented in JavaScript.\r\nJavaScript displays NEGATIVE_INFINITY values as -infinity."
 					},
 					{
 						"kind": "property",
 						"name": "POSITIVE_INFINITY",
-						"description": "A value greater than the largest number that can be represented in JavaScript. \r\nJavaScript displays POSITIVE_INFINITY values as infinity.",
-						"type": "number"
+						"type": "number",
+						"description": "A value greater than the largest number that can be represented in JavaScript. \r\nJavaScript displays POSITIVE_INFINITY values as infinity."
 					}
 				]
 			}
@@ -2093,10 +2093,6 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
-						"returns": "string"
-					},
-					{
 						"kind": "constructor",
 						"returns": "Date"
 					},
@@ -2158,6 +2154,10 @@
 							}
 						],
 						"returns": "Date"
+					},
+					{
+						"kind": "call",
+						"returns": "string"
 					},
 					{
 						"kind": "property",
@@ -2358,7 +2358,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "pattern",
@@ -2373,7 +2373,7 @@
 						"returns": "RegExp"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "pattern",
@@ -2463,7 +2463,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2474,7 +2474,7 @@
 						"returns": "Error"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2506,7 +2506,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2517,7 +2517,7 @@
 						"returns": "EvalError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2549,7 +2549,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2560,7 +2560,7 @@
 						"returns": "RangeError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2592,7 +2592,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2603,7 +2603,7 @@
 						"returns": "ReferenceError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2635,7 +2635,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2646,7 +2646,7 @@
 						"returns": "SyntaxError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2678,7 +2678,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2689,7 +2689,7 @@
 						"returns": "TypeError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -2721,7 +2721,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "message",
@@ -2732,7 +2732,7 @@
 						"returns": "URIError"
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "message",
@@ -3591,7 +3591,7 @@
 				"kind": "object",
 				"signatures": [
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"parameters": [
 							{
 								"name": "arrayLength",
@@ -3605,7 +3605,7 @@
 						}
 					},
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"typeParameters": [
 							{
 								"name": "T"
@@ -3623,7 +3623,7 @@
 						}
 					},
 					{
-						"kind": "call",
+						"kind": "constructor",
 						"typeParameters": [
 							{
 								"name": "T"
@@ -3645,7 +3645,7 @@
 						}
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"parameters": [
 							{
 								"name": "arrayLength",
@@ -3659,7 +3659,7 @@
 						}
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"typeParameters": [
 							{
 								"name": "T"
@@ -3677,7 +3677,7 @@
 						}
 					},
 					{
-						"kind": "constructor",
+						"kind": "call",
 						"typeParameters": [
 							{
 								"name": "T"
@@ -3713,8 +3713,11 @@
 						"kind": "property",
 						"name": "prototype",
 						"type": {
-							"kind": "array",
-							"type": "any"
+							"kind": "reference",
+							"type": "Array",
+							"arguments": [
+								"any"
+							]
 						}
 					}
 				]

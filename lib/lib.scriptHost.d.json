@@ -7,14 +7,19 @@
 			"kind": "variable",
 			"name": "ActiveXObject",
 			"type": {
-				"kind": "constructor",
-				"parameters": [
+				"kind": "object",
+				"signatures": [
 					{
-						"name": "s",
-						"type": "string"
+						"kind": "constructor",
+						"parameters": [
+							{
+								"name": "s",
+								"type": "string"
+							}
+						],
+						"returns": "any"
 					}
-				],
-				"returns": "any"
+				]
 			}
 		},
 		{

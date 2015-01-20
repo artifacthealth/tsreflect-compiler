@@ -1,0 +1,56 @@
+{
+	"declares": [
+		{
+			"kind": "enum",
+			"name": "ConstantEnum",
+			"description": "The const enum will calculate the OR'd value for E. A regular enum will not.",
+			"members": [
+				{
+					"name": "A",
+					"value": "1"
+				},
+				{
+					"name": "B",
+					"value": "2"
+				},
+				{
+					"name": "C",
+					"value": "4"
+				},
+				{
+					"name": "D",
+					"value": "8"
+				},
+				{
+					"name": "E",
+					"value": "3"
+				}
+			]
+		},
+		{
+			"kind": "enum",
+			"name": "RegularEnum",
+			"members": [
+				{
+					"name": "A",
+					"value": "1"
+				},
+				{
+					"name": "B",
+					"value": "2"
+				},
+				{
+					"name": "C",
+					"value": "4"
+				},
+				{
+					"name": "D",
+					"value": "8"
+				},
+				{
+					"name": "E"
+				}
+			]
+		}
+	]
+}
