@@ -197,6 +197,7 @@ module ts {
                 emitType(type);
             }
             else {
+                // Note, this happens when there is not a type specified in the declaration and the type needs to be inferred
                 emitTypeOfDeclaration(declaration, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
             }
         }
@@ -208,6 +209,7 @@ module ts {
                 emitType(signature.type);
             }
             else {
+                // Note, this happens when there is not a return type specified in the declaration and the type needs to be inferred
                 emitReturnTypeOfSignatureDeclaration(signature, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
             }
         }
