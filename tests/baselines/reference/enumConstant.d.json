@@ -7,23 +7,23 @@
 			"members": [
 				{
 					"name": "A",
-					"value": "1"
+					"value": 1
 				},
 				{
 					"name": "B",
-					"value": "2"
+					"value": 2
 				},
 				{
 					"name": "C",
-					"value": "4"
+					"value": 4
 				},
 				{
 					"name": "D",
-					"value": "8"
+					"value": 8
 				},
 				{
 					"name": "E",
-					"value": "3"
+					"value": 3
 				}
 			]
 		},
@@ -33,19 +33,19 @@
 			"members": [
 				{
 					"name": "A",
-					"value": "1"
+					"value": 1
 				},
 				{
 					"name": "B",
-					"value": "2"
+					"value": 2
 				},
 				{
 					"name": "C",
-					"value": "4"
+					"value": 4
 				},
 				{
 					"name": "D",
-					"value": "8"
+					"value": 8
 				},
 				{
 					"name": "E"

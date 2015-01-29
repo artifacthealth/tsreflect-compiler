@@ -686,7 +686,7 @@ module ts {
             var enumMemberValue = resolver.getEnumMemberValue(node);
             if (enumMemberValue !== undefined) {
 
-                writer.writeValue(enumMemberValue.toString());
+                writer.writeEnumValue(enumMemberValue);
             }
 
             writer.writeEnd();

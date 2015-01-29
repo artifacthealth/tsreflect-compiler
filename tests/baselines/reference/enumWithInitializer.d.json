@@ -6,19 +6,19 @@
 			"members": [
 				{
 					"name": "A",
-					"value": "0"
+					"value": 0
 				},
 				{
 					"name": "B",
-					"value": "4"
+					"value": 4
 				},
 				{
 					"name": "C",
-					"value": "5"
+					"value": 5
 				},
 				{
 					"name": "D",
-					"value": "6"
+					"value": 6
 				}
 			]
 		}

@@ -43,7 +43,7 @@ module ts {
         writeAnnotation(name: string, value: any): void;
         writeFlags(flags: DeclarationFlag): void;
         writeRequire(path: string): void;
-        writeValue(identifier: string): void;
+        writeEnumValue(value: number): void;
         writeTypeReference(identifier: string): void;
         writeExportAssignment(identifier: string): void;
 
@@ -338,9 +338,9 @@ module ts {
             }
         }
 
-        writeValue(identifier: string): void {
+        writeEnumValue(value: number): void {
 
-            this._setProperty("value", identifier);
+            this._setProperty("value", value);
         }
 
         writeRequire(path: string): void {
