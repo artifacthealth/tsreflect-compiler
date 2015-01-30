@@ -21,6 +21,8 @@ declare module "tsreflect-compiler" {
         out?: string;
         outDir?: string;
 
+        suppressImplicitAnyIndexErrors?: boolean;
+
         /**
          * Warn on expressions and declarations with an implied any type
          */
@@ -37,14 +39,14 @@ declare module "tsreflect-compiler" {
         libPath?: string;
 
         /**
-         * Emit property accessor declarations.
+         * Do not emit property accessor declarations.
          */
-        accessors?: boolean;
+        removeAccessors?: boolean;
 
         /**
-         * Include custom annotations in output.
+         * Do not emit custom annotations in output.
          */
-        annotations?: boolean;
+        removeAnnotations?: boolean;
 
         /**
          * Do not emit private class member declarations.
@@ -52,9 +54,9 @@ declare module "tsreflect-compiler" {
         removePrivates?: boolean;
 
         /**
-         * Emit type information, if accessible, for private class members.
+         * Do not emit type information for private class members.
          */
-        typePrivates?: boolean;
+        removeTypesOnPrivates?: boolean;
     }
 
     export function compile(filenames: string[], options: CompilerOptions): Diagnostic[];
