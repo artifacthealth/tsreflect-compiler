@@ -1,12 +1,13 @@
 {
     "noLib": false,
-    "noCheck": false,
-    "accessors": false,
-    "removePrivates": false,
-    "typePrivates": false,
-    "annotations": false,
-    "removeComments": false,
     "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": false,
+    "noCheck": false,
+    "removeAccessors": false,
+    "removeTypesOnPrivates": false,
+    "removeAnnotations": false,
+    "removeComments": false,
+    "removePrivates": false,
 
     "ignoreAnnotation": {
         "abstract": true,

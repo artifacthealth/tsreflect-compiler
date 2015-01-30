@@ -1442,10 +1442,10 @@ module ts {
 
         // Added options
         libPath?: string;
-        accessors?: boolean;
-        annotations?: boolean;
+        removeAccessors?: boolean;
+        removeAnnotations?: boolean;
         removePrivates?: boolean;
-        typePrivates?: boolean;
+        removeTypesOnPrivates?: boolean;
         ignoreAnnotation?: IgnoreAnnotationTable;
     }
 

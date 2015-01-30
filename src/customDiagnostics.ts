@@ -20,14 +20,14 @@ module ts {
     export var CustomDiagnostics = {
 
         Disable_type_checks: { code: 10000, category: DiagnosticCategory.Message, key: "Disable type checks." },
-        Emit_accessors: { code: 10001, category: DiagnosticCategory.Message, key: "Emit property accessor declarations." },
+        Do_not_emit_accessors: { code: 10001, category: DiagnosticCategory.Message, key: "Do not emit property accessor declarations; instead, emit as fields." },
         Missing_annotation_name: { code: 10002, category: DiagnosticCategory.Error, key: "Missing annotation name." },
         Invalid_annotation_name: { code: 10003, category: DiagnosticCategory.Error, key: "Invalid annotation name." },
         Invalid_annotation_value_0: { code: 10004, category: DiagnosticCategory.Error, key: "Invalid annotation value: {0}" },
         Do_not_emit_private_class_member_declaration: { code: 10005, category: DiagnosticCategory.Error, key: "Do not emit private class member declarations." },
-        Emit_type_information_for_private_class_members: { code: 10006, category: DiagnosticCategory.Error, key: "Emit type information, if accessible, for private class members." },
-        Do_not_emit_JsDoc_descriptions_in_output: { code: 10007, category: DiagnosticCategory.Error, key: "Do not emit JsDoc descriptions in output." },
-        Emit_custom_annotations: { code: 10008, category: DiagnosticCategory.Error, key: "Include custom annotations in output." },
+        Do_not_emit_type_information_for_private_class_members: { code: 10006, category: DiagnosticCategory.Error, key: "Do not emit type information for private class members." },
+        Do_not_emit_JsDoc_descriptions_in_output: { code: 10007, category: DiagnosticCategory.Error, key: "Do not emit JsDoc descriptions." },
+        Do_not_emit_custom_annotations: { code: 10008, category: DiagnosticCategory.Error, key: "Do not emit custom annotations." },
         File_0_must_have_extension_d_json: { code: 10009, category: DiagnosticCategory.Error, key: "File '{0}' must have extension '.d.json'." },
         File_0_has_invalid_json_format_1: { code: 10010, category: DiagnosticCategory.Error, key: "File '{0}' has invalid JSON format: {1}" }
     }

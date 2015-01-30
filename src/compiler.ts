@@ -43,7 +43,7 @@
 
 module ts {
     var version = "0.1";
-    var configFilename = "tsreflect-compiler.config.json";
+    var configFilename = "tsreflect.config.json";
 
     export interface CompilerDiagnostic {
         filename?: string;

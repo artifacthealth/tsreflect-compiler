@@ -68,7 +68,7 @@ module.exports = function(grunt) {
                         src: [
                             'lib.d.ts',
                             'lib.core.d.ts',
-                            'tsreflect-compiler.config.json'
+                            'tsreflect.config.json'
                         ],
                         dest: 'build/'
                     }

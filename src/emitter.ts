@@ -130,7 +130,7 @@ module ts {
         var currentSourceFile: SourceFile;
         var reportedDeclarationError = false;
 
-        var emitJsDocComments = compilerOptions.removeComments && !compilerOptions.annotations ?
+        var emitJsDocComments = compilerOptions.removeComments && compilerOptions.removeAnnotations ?
             function (node: Node) { } : writeJsDocComments;
 
         var importDeclarationsToRemove: {
@@ -248,7 +248,7 @@ module ts {
                     paramDescriptions = getJsDocParamDescriptions(comment);
                 }
 
-                if(compilerOptions.annotations) {
+                if(!compilerOptions.removeAnnotations) {
                     var annotations = getJsDocAnnotations(comment);
                     if (annotations) {
                         for (var i = 0, l = annotations.length; i < l; i++) {
@@ -721,7 +721,7 @@ module ts {
                     else {
                         // TODO: understand why there is the check above for emitType vs emitTypeWithNewGetSymbolAccessibilityDiagnostic and understand
                         // how that affects typePrivates below
-                        if(compilerOptions.typePrivates) {
+                        if(!compilerOptions.removeTypesOnPrivates) {
                             emitTypeOfDeclarationIfAccessible(node.constraint, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                         }
                     }
@@ -938,7 +938,7 @@ module ts {
                     writeTypeOfDeclaration(node, node.type, getVariableDeclarationTypeVisibilityError);
                 }
                 else {
-                    if(compilerOptions.typePrivates) {
+                    if(!compilerOptions.removeTypesOnPrivates) {
                         emitTypeOfDeclarationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                     }
                 }
@@ -1032,7 +1032,7 @@ module ts {
                 return;
             }
 
-            if(compilerOptions.accessors) {
+            if(!compilerOptions.removeAccessors) {
                 // TODO: verify this is correct
                 writer.writeBeginClassMember(node.kind === SyntaxKind.GetAccessor ?
                     DeclarationKind.GetAccessor : DeclarationKind.SetAccessor);
@@ -1064,7 +1064,7 @@ module ts {
                         writeTypeOfDeclaration(node, type, getAccessorDeclarationTypeVisibilityError);
                     }
                     else {
-                        if(compilerOptions.typePrivates) {
+                        if(!compilerOptions.removeTypesOnPrivates) {
                             emitTypeOfDeclarationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                         }
                     }
@@ -1138,7 +1138,7 @@ module ts {
                         return;
                     }
 
-                    if(!compilerOptions.typePrivates) {
+                    if(compilerOptions.removeTypesOnPrivates) {
                         var signatures = resolver.getSignaturesOfSymbol(resolver.getSymbolOfNode(node));
                         if (signatures[0].declaration !== node) {
                             return;
@@ -1245,7 +1245,7 @@ module ts {
                     writeReturnTypeAtSignature(node, getReturnTypeVisibilityError);
                 }
                 else {
-                    if(compilerOptions.typePrivates) {
+                    if(!compilerOptions.removeTypesOnPrivates) {
                         emitReturnTypeOfSignatureDeclarationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                     }
                 }
@@ -1351,7 +1351,7 @@ module ts {
                 writeTypeOfDeclaration(node, node.type, getParameterDeclarationTypeVisibilityError);
             }
             else {
-                if(compilerOptions.typePrivates) {
+                if(!compilerOptions.removeTypesOnPrivates) {
                     emitTypeOfDeclarationIfAccessible(node, enclosingDeclaration, TypeFormatFlags.UseTypeOfFunction, writer);
                 }
             }

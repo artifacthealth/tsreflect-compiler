@@ -57,9 +57,9 @@ module ts {
             description: CustomDiagnostics.Disable_type_checks
         },
         {
-            name: "accessors",
+            name: "removeAccessors",
             type: "boolean",
-            description: CustomDiagnostics.Emit_accessors
+            description: CustomDiagnostics.Do_not_emit_accessors
         },
         {
             name: "removePrivates",
@@ -67,14 +67,14 @@ module ts {
             description: CustomDiagnostics.Do_not_emit_private_class_member_declaration
         },
         {
-            name: "typePrivates",
+            name: "removeTypesOnPrivates",
             type: "boolean",
-            description: CustomDiagnostics.Emit_type_information_for_private_class_members
+            description: CustomDiagnostics.Do_not_emit_type_information_for_private_class_members
         },
         {
-            name: "annotations",
+            name: "removeAnnotations",
             type: "boolean",
-            description: CustomDiagnostics.Emit_custom_annotations
+            description: CustomDiagnostics.Do_not_emit_custom_annotations
         },
         {
             name: "out",
@@ -128,7 +128,6 @@ module ts {
             // we don't actually emit JS so support all available options
             target: ScriptTarget.ES5,
             module: ModuleKind.CommonJS
-
         };
         var filenames: string[] = [];
         var errors: Diagnostic[] = [];
