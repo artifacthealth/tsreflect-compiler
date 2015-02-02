@@ -13,8 +13,7 @@
   },
   "licenses": [
     {
-      "type": "Apache-2.0",
-      "url": "https://github.com/palantir/grunt-tslint/blob/master/LICENSE.txt"
+      "type": "Apache-2.0"
     }
   ],
   "main": "lib/tsreflect-compiler.js",
