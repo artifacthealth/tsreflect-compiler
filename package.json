@@ -6,10 +6,9 @@
     "name": "Artifact Health, LLC",
     "url": "http://www.artifacthealth.com"
   },
-  "private": true,
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@bitbucket.org/mgottlieb/tsreflect-compiler.git"
+    "url": "https://github.com/artifacthealth/tsreflect-compiler.git"
   },
   "licenses": [
     {
@@ -35,5 +34,15 @@
     "grunt-shell": "^1.0.1",
     "mocha": "^2.0.1",
     "typescript": "1.4.1"
-  }
+  },
+  "keywords": [
+    "gruntplugin",
+    "tsreflect",
+    "reflection",
+    "typescript",
+    "json",
+    "declaration",
+    "type",
+    "introspection"
+  ]
 }

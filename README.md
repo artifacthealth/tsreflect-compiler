@@ -1,7 +1,7 @@
 # TsReflect Compiler
 
 The TsReflect compiler is a modified version of the [TypeScript](http://www.typescriptlang.org/) 1.4 compiler that emits JSON
-declaration files, containing type information for your TypeScript source files. The JSON declaration files are similar
+declaration files containing type information for your TypeScript source files. The JSON declaration files are similar
 to the .d.ts declaration files that TypeScript generates. However, the JSON format allows for easier loading of type information
 at runtime. Additionally, the compiler leverages JsDoc comments to add custom annotations to TypeScript. See the Custom Annotations
 section below for more information.
