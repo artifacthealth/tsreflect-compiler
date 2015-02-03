@@ -6,33 +6,15 @@ to the .d.ts declaration files that TypeScript generates. However, the JSON form
 at runtime. Additionally, the compiler leverages JsDoc comments to add custom annotations to TypeScript. See the Custom Annotations
 section below for more information.
 
+On the [Node](http://nodejs.org/) platform, JSON declaration files may be consumed using the [tsreflect](https://github.com/artifacthealth/tsreflect) module.
 
-## Building
 
-In order to build the TsReflect compiler, ensure that you have [Git](http://git-scm.com/downloads) and [Node.js](http://nodejs.org/) installed.
+## Installation
 
-Clone a copy of the repo:
-
-```
-git clone https://github.com/artifacthealth/tsreflect-compiler.git
-```
-
-Change to the tsreflect-compiler directory:
+The TsReflect Compiler can be installed using the Node Package Manager (npm):
 
 ```
-cd tsreflect-compiler
-```
-
-Install dev dependencies:
-
-```
-npm install
-```
-
-Run the following to build and test:
-
-```
-grunt
+npm install tsreflect-compiler
 ```
 
 
@@ -105,7 +87,7 @@ class Customer {
 
     /**
      * The name of the customer.
-     * @column name: "customerName", length: 255
+     * @column name: "customer_name", length: 255
      */
     name: string;
 }
@@ -150,7 +132,7 @@ The above TypeScript generates the following JSON declaration output:
 						{
 							"name": "column",
 							"value": {
-								"name": "customerName",
+								"name": "customer_name",
 								"length": 255
 							}
 						}
