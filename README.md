@@ -79,4 +79,79 @@ For more example output, take a look at the JSON declaration file generated for 
 
 ## Custom Annotations
 
+The TsReflect Compiler leverages JsDoc comments to add custom annotations to TypeScript. Similar to [java annotations](http://en.wikipedia.org/wiki/Java_annotation) or
+[C# attributes](https://msdn.microsoft.com/en-us/library/aa288454%28v=vs.71%29.aspx) custom annotations allow for metadata to be added to TypeScript source code
+and then included in the JSON declaration files that the TsReflect Compiler generates.
+
+For example, custom annotations could be used to add [JPA](http://en.wikipedia.org/wiki/Java_Persistence_API)-style annotations to classes for an ORM:
+
+```
+/**
+ * An entity for a Customer.
+ * @entity
+ * @table "customers"
+ */
+class Customer {
+
+    /** @id */
+    id: number;
+
+    /**
+     * The name of the customer.
+     * @column name: "customerName", length: 255
+     */
+    name: string;
+}
+```
+
+The above TypeScript generates the following JSON declaration output:
+```
+{
+	"declares": [
+		{
+			"kind": "class",
+			"name": "Customer",
+			"description": "An entity for a Customer.",
+			"annotations": [
+				{
+					"name": "entity",
+					"value": true
+				},
+				{
+					"name": "table",
+					"value": "customers"
+				}
+			],
+			"members": [
+				{
+					"kind": "field",
+					"name": "id",
+					"type": "number",
+					"annotations": [
+						{
+							"name": "id",
+							"value": true
+						}
+					]
+				},
+				{
+					"kind": "field",
+					"name": "name",
+					"type": "string",
+					"description": "The name of the customer.",
+					"annotations": [
+						{
+							"name": "column",
+							"value": {
+								"name": "customerName",
+								"length": 255
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
+```
 
