@@ -87,7 +87,7 @@ Compiler generates.
 
 Custom annotation work alongside standard JsDoc annotations. The TsReflect compiler will ignore all standard JsDoc
 annotations. The [tsreflect.config.json](https://github.com/artifacthealth/tsreflect-compiler/blob/master/lib/tsreflect.config.json)
-file in the ```lib/``` directory contains a list of ignored annotations. This list can be modified to suite your notes.
+file in the ```lib/``` directory contains a list of ignored annotations. This list can be modified to suite your needs.
 
 For example, custom annotations can be used to add [JPA](http://en.wikipedia.org/wiki/Java_Persistence_API)-style
 annotations to classes for an ORM:
@@ -171,7 +171,6 @@ the compiler from a TypeScript program.
 
 ```
 /// <reference path="./lib/tsreflect-compiler.d.ts" />
-
 import compiler = require("tsreflect-compiler");
 
 var diagnostics = compiler.compile("./hello.ts");
