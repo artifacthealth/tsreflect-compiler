@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/artifacthealth/tsreflect-compiler.svg?branch=master)](https://travis-ci.org/artifacthealth/tsreflect-compiler)
+
 # TsReflect Compiler
 
 The TsReflect compiler is a modified version of the [TypeScript](http://www.typescriptlang.org/) 1.4 compiler that emits JSON
