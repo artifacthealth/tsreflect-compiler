@@ -163,10 +163,13 @@ the compiler from a TypeScript program.
 /// <reference path="./lib/tsreflect-compiler.d.ts" />
 import compiler = require("tsreflect-compiler");
 
-var diagnostics = compiler.compile("./hello.ts");
+var options = {
+    outDir: 'build/'
+}
+var diagnostics = compiler.compile("./hello.ts", options);
 ```
 
-Executing the code above will generate a file called ```hello.d.json```. Any errors will be returned as an array and
+Executing the code above will generate a file called `hello.d.json` in the build directory. Any errors will be returned as an array and
 assigned to the ```diagnostics``` variable.
 
 
