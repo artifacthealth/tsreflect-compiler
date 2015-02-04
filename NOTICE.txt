@@ -16,6 +16,10 @@ CONDITIONS OF TITLE, FITNESS FOR A PARTICULAR PURPOSE, MERCHANTABLITY OR NON-INF
 See the Apache Version 2.0 License for specific language governing permissions and
 limitations under the License.
 
+JSON3 Copyright Notice:
+
+JSON v3.3.2 | https://bestiejs.github.io/json3 | Copyright 2012-2014, Kit Cambridge | http://kit.mit-license.org
+
 
 TypeScript Copyright Notice:
 
