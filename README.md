@@ -5,7 +5,7 @@
 The TsReflect compiler is a modified version of the [TypeScript](http://www.typescriptlang.org/) 1.4 compiler that emits JSON
 declaration files containing type information for your TypeScript source files. The JSON declaration files are similar
 to the .d.ts declaration files that TypeScript generates. However, the JSON format allows for easier loading of type information
-at runtime. Additionally, the compiler leverages JsDoc comments to add custom annotations to TypeScript. See the Custom Annotations
+at runtime. Additionally, the compiler leverages [JsDoc](http://usejsdoc.org/) comments to add custom annotations to TypeScript. See the Custom Annotations
 section below for more information.
 
 On the [Node](http://nodejs.org/) platform, JSON declaration files may be consumed using the [tsreflect](https://github.com/artifacthealth/tsreflect) module.
@@ -63,7 +63,7 @@ For more example output, take a look at the JSON declaration file generated for 
 
 ## Custom Annotations
 
-The TsReflect Compiler leverages JsDoc comments to add custom annotations to TypeScript. Similar to
+The TsReflect Compiler leverages [JsDoc](http://usejsdoc.org/) comments to add custom annotations to TypeScript. Similar to
 [java annotations](http://en.wikipedia.org/wiki/Java_annotation) or
 [C# attributes](https://msdn.microsoft.com/en-us/library/aa288454%28v=vs.71%29.aspx) custom annotations allow for
 metadata to be added to TypeScript source code and then included in the JSON declaration files that the TsReflect
@@ -147,7 +147,13 @@ The above TypeScript generates the following JSON declaration output:
 ```
 
 
-## CommonJS Library
+## Grunt Plug-in
+
+There is a Grunt plug-in available for the TsReflect compiler to allow for generating JSON declaration files
+as part of a Grunt build process. See the [grunt-tsreflect](https://github.com/artifacthealth/grunt-tsreflect) project.
+
+
+## CommonJS Module
 
 The TsReflect compiler can be included as a CommonJS module in a NodeJS application. A typescript declaration file
  ```tsreflect-compiler.d.ts``` is included in the ```lib``` directory. Below is an example of executing
@@ -164,7 +170,197 @@ Executing the code above will generate a file called ```hello.d.json```. Any err
 assigned to the ```diagnostics``` variable.
 
 
-## Grunt Plug-in
+### Documentation
 
-There is a Grunt plug-in available for the TsReflect compiler to allow for generating JSON declaration files
-as part of a Grunt build process. See the [grunt-tsreflect](https://github.com/artifacthealth/grunt-tsreflect) project.
+* [`compile`](#compile)
+* [`CompilerOptions`](#CompilerOptions)
+* [`Diagnostic`](#Diagnostic)
+* [`DiagnosticCategory`](#DiagnosticCategory)
+
+<a name="compile" />
+#### compile(filenames, options)
+Compile specified TypeScript files to generate JSON declaration files. Returns an array of diagnostic
+information if any errors occur.
+
+__Parameters__
+* filenames `string[]`  - The files to compile.
+* options `CompilerOptions`  - The compiler options to use.
+
+__Returns:__ `Diagnostic[]`
+
+
+<a name="CompilerOptions" />
+#### CompilerOptions Interface
+--------------------
+Compiler options.
+* [`noLib`](#noLib)
+* [`noCheck`](#noCheck)
+* [`out`](#out)
+* [`outDir`](#outDir)
+* [`suppressImplicitAnyIndexErrors`](#suppressImplicitAnyIndexErrors)
+* [`noImplicitAny`](#noImplicitAny)
+* [`removeComments`](#removeComments)
+* [`libPath`](#libPath)
+* [`removeAccessors`](#removeAccessors)
+* [`removeAnnotations`](#removeAnnotations)
+* [`removePrivates`](#removePrivates)
+* [`removeTypesOnPrivates`](#removeTypesOnPrivates)
+* [`ignoreAnnotation`](#ignoreAnnotation)
+
+<a name="noLib" />
+##### noLib
+If true, the default library is not automatically added to the compile list.
+
+__Type:__ `boolean`
+
+
+<a name="noCheck" />
+##### noCheck
+If true, type checks are not run. This marginally improves compile time. Only use this option if your
+TypeScript already compiles correctly.
+
+__Type:__ `boolean`
+
+
+<a name="out" />
+##### out
+Specifies a single file to compile all TypeScript to. This is ignored for external modules.
+
+__Type:__ `string`
+
+
+<a name="outDir" />
+##### outDir
+Specifies the output directory.
+
+__Type:__ `string`
+
+
+<a name="suppressImplicitAnyIndexErrors" />
+##### suppressImplicitAnyIndexErrors
+Suppress errors that are raised when the index operator is used on an object that does not have an
+index defined on it's type.
+
+__Type:__ `boolean`
+
+
+<a name="noImplicitAny" />
+##### noImplicitAny
+Warn on expressions and declarations with an implied any type
+
+__Type:__ `boolean`
+
+
+<a name="removeComments" />
+##### removeComments
+If true, JsDoc description is not included in output. Default is false.
+
+__Type:__ `boolean`
+
+
+<a name="libPath" />
+##### libPath
+Path to the lib.d.json file relative to compiler javascript source.
+
+__Type:__ `string`
+
+
+<a name="removeAccessors" />
+##### removeAccessors
+Do not emit property accessor declarations.
+
+__Type:__ `boolean`
+
+
+<a name="removeAnnotations" />
+##### removeAnnotations
+Do not emit custom annotations in output.
+
+__Type:__ `boolean`
+
+
+<a name="removePrivates" />
+##### removePrivates
+Do not emit private class member declarations.
+
+__Type:__ `boolean`
+
+
+<a name="removeTypesOnPrivates" />
+##### removeTypesOnPrivates
+Do not emit type information for private class members.
+
+__Type:__ `boolean`
+
+
+<a name="ignoreAnnotation" />
+##### ignoreAnnotation
+Controls whether or not annotations with a given name are ignored.
+
+__Type:__ `{ [annotation: string]: boolean }`
+
+
+
+
+<a name="Diagnostic" />
+#### Diagnostic Interface
+--------------------
+Diagnostic information.
+* [`filename`](#filename)
+* [`line`](#line)
+* [`character`](#character)
+* [`messageText`](#messageText)
+* [`category`](#category)
+* [`code`](#code)
+
+<a name="filename" />
+##### filename
+The name of that file that contains the error.
+
+__Type:__ `string`
+
+
+<a name="line" />
+##### line
+The line number of the error.
+
+__Type:__ `number`
+
+
+<a name="character" />
+##### character
+The character offset of the error.
+
+__Type:__ `number`
+
+
+<a name="messageText" />
+##### messageText
+The error message text.
+
+__Type:__ `string`
+
+
+<a name="category" />
+##### category
+The category of the error.
+
+__Type:__ `DiagnosticCategory`
+
+
+<a name="code" />
+##### code
+The error code.
+
+__Type:__ `number`
+
+
+
+
+<a name="DiagnosticCategory" />
+#### DiagnosticCategory Enumeration
+--------------------
+Enumeration describing type of Diagnostic.
+* Warning
+* Error
+* Message
