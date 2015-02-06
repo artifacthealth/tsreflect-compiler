@@ -19,9 +19,6 @@
   "scripts": {
     "test": "grunt"
   },
-  "dependencies": {
-    "doctrine": "^0.5.2"
-  },
   "devDependencies": {
     "chai": "^1.9.2",
     "grunt": "^0.4.5",

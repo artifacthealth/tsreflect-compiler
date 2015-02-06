@@ -1,16 +1,15 @@
 /**
  * The class description
- * @multilineAnnotation {
- *     "a": "test1",
- *     "b": [
+ * @multilineAnnotation
+ *     a: "test1",
+ *     b: [
  *        1,
  *        2,
  *        {
- *          "c": 1,
- *          "d": true
+ *          c: 1,
+ *          d: true
  *        }
  *     ]
- * }
  */
 class A {
 

@@ -1,0 +1,22 @@
+{
+	"declares": [
+		{
+			"kind": "function",
+			"name": "test",
+			"description": "The description for the function",
+			"parameters": [
+				{
+					"name": "a",
+					"description": "The description for param a",
+					"type": "string"
+				},
+				{
+					"name": "b",
+					"description": "The description for param b",
+					"type": "number"
+				}
+			],
+			"returns": "void"
+		}
+	]
+}

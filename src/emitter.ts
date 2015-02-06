@@ -33,7 +33,6 @@
  and limitations under the License.
  ***************************************************************************** */
 
-/// <reference path="../typings/doctrine.d.ts"/>
 /// <reference path="declarationWriter.ts"/>
 /// <reference path="annotationValueParser.ts"/>
 
@@ -42,14 +41,13 @@
 /// <reference path="scanner.ts"/>
 /// <reference path="parser.ts"/>
 /// <reference path="binder.ts"/>
-
-var doctrine = require("doctrine");
+/// <reference path="commentParser.ts"/>
 
 module ts {
 
     interface JsDocComment {
         node: Node;
-        parseResults: IDoctrineParseResults;
+        parseResults: JsDocParseResults;
     }
 
     interface SymbolAccessibilityDiagnostic {
@@ -319,16 +317,17 @@ module ts {
 
                     var comments: string[] = [];
                     for(var i = 0, l = jsDocComments.length; i < l; i++) {
-                        comments.push(doctrine.unwrapComment(getCommentText(currentSourceFile, jsDocComments[i])).trim());
+                        comments.push(unwrapComment(getCommentText(currentSourceFile, jsDocComments[i])).trim());
                     }
 
                     var text = comments.join("\n");
-                    try {
-                        var parseResults = doctrine.parse(text, {unwrap: false});
-                    }
-                    catch(e) {
-                        diagnostics.push(createDiagnosticForNode(node,
-                            CustomDiagnostics.Error_parsing_JsDoc_comment_0_1, e.message, text));
+                    var parseResults = parseComment(text);
+                    if(parseResults.errors) {
+
+                        forEach(parseResults.errors, e => {
+                            diagnostics.push(createDiagnosticForNode(node,
+                                CustomDiagnostics.Error_parsing_JsDoc_comment_on_line_0_of_comment_1, e.lineNumber, e.message));
+                        });
                         return;
                     }
 

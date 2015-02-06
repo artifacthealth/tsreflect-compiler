@@ -1,3 +1,1 @@
-tests/cases/descriptionBadParamFormat.ts(7,5): error TS10011: Error parsing JsDoc comment: Cannot read property 'name' of null
-Constructor
-@param (optional) a collection of initial values, must have a forEach()
+tests/cases/descriptionBadParamFormat.ts(7,5): error TS10011: Error parsing JsDoc comment on line 1 of comment: Missing or invalid param name.
