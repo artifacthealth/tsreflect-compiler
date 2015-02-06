@@ -906,7 +906,7 @@ module ts {
         getSourceFile(filename: string): SourceFile;
         getSourceFiles(): SourceFile[];
         getCompilerOptions(): CompilerOptions;
-        getCompilerHost(): CompilerHost;
+        getCompilerHost(): InternalCompilerHost;
         getDiagnostics(sourceFile?: SourceFile): Diagnostic[];
         getGlobalDiagnostics(): Diagnostic[];
         getTypeChecker(fullTypeCheckMode: boolean): TypeChecker;
@@ -1630,6 +1630,13 @@ module ts {
     }
 
     export interface CompilerHost {
+
+        readFile(filename: string, onError?: (message: string) => void): string;
+        writeFile(filename: string, data: string, writeByteOrderMark: boolean, onError?: (message: string) => void): void;
+    }
+
+    export interface InternalCompilerHost {
+
         getSourceFile(filename: string, languageVersion: ScriptTarget, onError?: (message: string) => void): SourceFile;
         getDefaultLibFilename(options: CompilerOptions): string;
         getCancellationToken? (): CancellationToken;

@@ -23,7 +23,7 @@ module ts {
 
     export class TextFileWriter implements ITextFileWriter {
 
-        private _compilerHost: CompilerHost;
+        private _compilerHost: InternalCompilerHost;
         private _compilerOptions: CompilerOptions;
 
         constructor(program: Program, public filePath: string) {

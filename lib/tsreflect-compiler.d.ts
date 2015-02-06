@@ -5,8 +5,9 @@ declare module "tsreflect-compiler" {
      * information if any errors occur.
      * @param filenames The files to compile.
      * @param options The compiler options to use.
+     * @param host Optional. The compiler host to use.
      */
-    export function compile(filenames: string[], options: CompilerOptions): Diagnostic[];
+    export function compile(filenames: string[], options: CompilerOptions, host?: CompilerHost): Diagnostic[];
 
     /**
      * Compiler options.
@@ -78,14 +79,31 @@ declare module "tsreflect-compiler" {
         /**
          * Controls whether or not annotations with a given name are ignored.
          */
-        ignoreAnnotation?: IgnoreAnnotationTable;
+        ignoreAnnotation?: { [annotationName: string]: boolean };
     }
 
     /**
-     * Table that describes which JsDoc annotations are ignored.
+     * The compiler host. Allows for control over the interaction of compiler with the file system.
      */
-    export interface IgnoreAnnotationTable {
-        [key: string]: boolean;
+    export interface CompilerHost {
+
+        /**
+         * Reads a file synchronously.
+         * @param filename The full path to the file.
+         * @param onError  Callback called synchronously to indicate if an error occurred when reading the file. Passed
+         * a single argument containing the error message as a string.
+         */
+        readFile(filename: string, onError?: (message: string) => void): string;
+
+        /**
+         * Writes a file synchronously.
+         * @param filename The full path to the file.
+         * @param data The data to write.
+         * @param writeByteOrderMark Indicates if the byte order mark should be written.
+         * @param onError Callback called synchronously to indicate if an error occurred when writing the file. Passed
+         * a single argument containing the error message as a string.
+         */
+        writeFile(filename: string, data: string, writeByteOrderMark: boolean, onError?: (message: string) => void): void;
     }
 
     /**

@@ -1,0 +1,27 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "class",
+			"name": "Bag",
+			"typeParameters": [
+				{
+					"name": "T"
+				}
+			],
+			"members": [
+				{
+					"kind": "constructor",
+					"parameters": [
+						{
+							"name": "elements",
+							"optional": true,
+							"type": "any"
+						}
+					]
+				}
+			]
+		}
+	],
+	"exportName": "Bag"
+}

@@ -148,7 +148,7 @@ module ts {
         return emitOutputFilePathWithoutExtension + extension;
     }
 
-    function writeFile(compilerHost: CompilerHost, diagnostics: Diagnostic[], filename: string, data: string, writeByteOrderMark: boolean) {
+    function writeFile(compilerHost: InternalCompilerHost, diagnostics: Diagnostic[], filename: string, data: string, writeByteOrderMark: boolean) {
         compilerHost.writeFile(filename, data, writeByteOrderMark, hostErrorMessage => {
             diagnostics.push(createCompilerDiagnostic(Diagnostics.Could_not_write_file_0_Colon_1, filename, hostErrorMessage));
         });
@@ -322,9 +322,19 @@ module ts {
                         comments.push(doctrine.unwrapComment(getCommentText(currentSourceFile, jsDocComments[i])).trim());
                     }
 
+                    var text = comments.join("\n");
+                    try {
+                        var parseResults = doctrine.parse(text, {unwrap: false});
+                    }
+                    catch(e) {
+                        diagnostics.push(createDiagnosticForNode(node,
+                            CustomDiagnostics.Error_parsing_JsDoc_comment_0_1, e.message, text));
+                        return;
+                    }
+
                     return {
-                        node: node,
-                        parseResults: doctrine.parse(comments.join("\n"), { unwrap: false })
+                        node,
+                        parseResults
                     }
                 }
             }
@@ -390,10 +400,10 @@ module ts {
 
             // give priority to the @description tag
 
-            for(var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
+            for (var i = 0, l = jsDocComment.parseResults.tags.length; i < l; i++) {
 
                 var tag = jsDocComment.parseResults.tags[i];
-                if(tag.title == "param") {
+                if (tag.title == "param") {
 
                     map[tag.name] = tag.description;
                 }

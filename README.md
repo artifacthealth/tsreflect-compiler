@@ -177,17 +177,19 @@ assigned to the ```diagnostics``` variable.
 
 * [`compile`](#compile)
 * [`CompilerOptions`](#CompilerOptions)
+* [`CompilerHost`](#CompilerHost)
 * [`Diagnostic`](#Diagnostic)
 * [`DiagnosticCategory`](#DiagnosticCategory)
 
 <a name="compile" />
-#### compile(filenames, options)
+#### compile(filenames, options, host?)
 Compile specified TypeScript files to generate JSON declaration files. Returns an array of diagnostic
 information if any errors occur.
 
 __Parameters__
 * filenames `string[]`  - The files to compile.
 * options `CompilerOptions`  - The compiler options to use.
+* host `CompilerHost`  - Optional. The compiler host to use.
 
 __Returns:__ `Diagnostic[]`
 
@@ -301,6 +303,40 @@ __Type:__ `boolean`
 Controls whether or not annotations with a given name are ignored.
 
 __Type:__ `{ [annotation: string]: boolean }`
+
+
+
+<a name="CompilerHost" />
+#### CompilerHost Interface
+--------------------
+The compiler host. Allows for control over the interaction of compiler with the file system.
+* [`readFile`](#readFile)
+* [`writeFile`](#writeFile)
+
+<a name="readFile" />
+##### readFile(filename, onError?)
+Reads a file synchronously.
+
+__Parameters__
+* filename `string`  - The full path to the file.
+* onError - Optional. Callback called synchronously to indicate if an error occurred when reading the file. Passed
+a single argument containing the error message as a string.
+
+__Returns:__ `string`
+
+
+<a name="writeFile" />
+##### writeFile(filename, data, writeByteOrderMark, onError?)
+Writes a file synchronously.
+
+__Parameters__
+* filename `string`  - The full path to the file.
+* data `string`  - The data to write.
+* writeByteOrderMark `boolean`  - Indicates if the byte order mark should be written.
+* onError - Optional. Callback called synchronously to indicate if an error occurred when writing the file. Passed
+a single argument containing the error message as a string.
+
+__Returns:__ `void`
 
 
 

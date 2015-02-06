@@ -123,7 +123,7 @@ module ts {
         }
     }
 
-    export function compile(filenames: string[], options: CompilerOptions): CompilerDiagnostic[] {
+    export function compile(filenames: string[], options: CompilerOptions, host?: CompilerHost): CompilerDiagnostic[] {
 
         var errors: Diagnostic[] = [];
 
@@ -141,8 +141,11 @@ module ts {
 
         if(errors.length == 0) {
 
-            var compilerHost = createCompilerHost(options);
-            var program = ts.createProgram(filenames, options, compilerHost);
+            if(!host) {
+                host = createCompilerHost(options);
+            }
+
+            var program = ts.createProgram(filenames, options, createInternalCompilerHost(options, host));
 
             errors = program.getDiagnostics();
 
@@ -216,17 +219,11 @@ module ts {
         return diagnostic.messageText;
     }
 
-    function createCompilerHost(options:ts.CompilerOptions):ts.CompilerHost {
-        var currentDirectory:string;
+    function createCompilerHost(options: CompilerOptions): CompilerHost {
+
         var existingDirectories:ts.Map<boolean> = {};
 
-        function getCanonicalFileName(fileName:string):string {
-            // if underlying system can distinguish between two files whose names differs only in cases then file name already in canonical form.
-            // otherwise use toLowerCase as a canonical form.
-            return sys.useCaseSensitiveFileNames ? fileName : fileName.toLowerCase();
-        }
-
-        function getSourceFile(filename:string, languageVersion:ts.ScriptTarget, onError?:(message:string) => void):ts.SourceFile {
+        function readFile(filename:string, onError?:(message:string) => void): string {
             try {
                 var text = sys.readFile(filename, options.charset);
             }
@@ -236,10 +233,10 @@ module ts {
                 }
                 text = "";
             }
-            return text !== undefined ? ts.createSourceFile(filename, text, languageVersion, /*version:*/ "0") : undefined;
+            return text;
         }
 
-        function writeFile(fileName:string, data:string, writeByteOrderMark:boolean, onError?:(message:string) => void) {
+        function writeFile(fileName: string, data: string, writeByteOrderMark: boolean, onError?:(message:string) => void) {
 
             function directoryExists(directoryPath:string):boolean {
                 if (ts.hasProperty(existingDirectories, directoryPath)) {
@@ -270,9 +267,36 @@ module ts {
         }
 
         return {
+            readFile,
+            writeFile
+        }
+    }
+
+    function createInternalCompilerHost(options: ts.CompilerOptions, host: CompilerHost): InternalCompilerHost {
+
+        var currentDirectory:string;
+
+        function getCanonicalFileName(fileName:string):string {
+            // if underlying system can distinguish between two files whose names differs only in cases then file name already in canonical form.
+            // otherwise use toLowerCase as a canonical form.
+            return sys.useCaseSensitiveFileNames ? fileName : fileName.toLowerCase();
+        }
+
+        function getSourceFile(filename:string, languageVersion:ts.ScriptTarget, onError?:(message:string) => void):ts.SourceFile {
+
+            var text = host.readFile(filename, (message) => {
+                if (onError) {
+                    onError(message);
+                }
+                text = "";
+            });
+            return text !== undefined ? ts.createSourceFile(filename, text, languageVersion, /*version:*/ "0") : undefined;
+        }
+
+        return {
             getSourceFile: getSourceFile,
             getDefaultLibFilename: () => combinePaths(ts.normalizePath(__dirname), options.libPath || "lib.d.ts"),
-            writeFile: writeFile,
+            writeFile: host.writeFile,
             getCurrentDirectory: () => currentDirectory || (currentDirectory = sys.getCurrentDirectory()),
             useCaseSensitiveFileNames: () => sys.useCaseSensitiveFileNames,
             getCanonicalFileName: getCanonicalFileName,

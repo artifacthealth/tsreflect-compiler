@@ -6,157 +6,59 @@
 import fs = require("fs");
 import path = require("path");
 import chai = require("chai");
+import assert = chai.assert;
 
 import expect = chai.expect;
 
 import compiler = require("./tsreflect-compiler");
 
-var testCasesDir = "tests/cases/";
-var optionsDir = "tests/options/";
-var referenceBaselineDir = "tests/baselines/reference/";
-var localBaselineDir = "tests/baselines/local/";
+describe("compiler", () => {
 
-function setupCases(): void {
+    it('should use CompilerHost, if provided, to read and write files', () => {
 
-    processDir(testCasesDir, "ts", setupCase);
-}
+        var readCalled = 0, writeCalled = 0;
 
-function processDir(path: string, ext: string, cb: (filename: string) => void): void {
+        function readFile(filename: string, onError?:(message:string) => void): string {
 
-    var files = fs.readdirSync(path);
-    var filter = new RegExp("\." + ext + "$");
+            readCalled++;
+            assert.isNotNull(filename);
 
-    for (var i = 0, l = files.length; i < l; i++) {
-
-        var filename = files[i];
-        // filter out anything but *.ts
-        if(filter.test(filename)) {
-            cb(files[i]);
-        }
-    }
-}
-
-function setupCase(filename: string): void {
-
-    var baseName = path.basename(filename, ".ts");
-
-    describe('Case ' + filename, () => {
-
-        var diagnostics: compiler.Diagnostic[];
-        var errorsFilename = baseName + ".errors.txt";
-        var declarationFilename = baseName + ".d.json";
-
-        before(() => {
-
-            deleteFile(localBaselineDir + errorsFilename);
-            deleteFile(localBaselineDir + declarationFilename);
-
-            var compilerOptions: compiler.CompilerOptions = loadOptions(baseName);
-
-            var files: string[] = (<any>compilerOptions).files || [testCasesDir + filename];
-
-            compilerOptions.outDir = localBaselineDir;
-            compilerOptions.libPath = "lib.core.d.ts";
-
-            diagnostics = compiler.compile(files, compilerOptions);
-
-            if(diagnostics.length > 0) {
-                fs.writeFileSync(localBaselineDir + errorsFilename , diagnosticsToString(diagnostics) , "utf8");
+            if(readCalled == 1) {
+                assert.equal(filename, "test.ts");
+                return "var Test: string";
             }
-        });
+            else {
+                assert.isTrue(filename.indexOf("lib.d.ts") !== -1, "Expected lib.d.ts");
+                return "";
+            }
+        }
 
-        it('should have correct errors in ' + errorsFilename, () => {
+        function writeFile(filename: string, data: string, writeByteOrderMark: boolean, onError?:(message:string) => void) {
 
-            compareToBaseline(errorsFilename);
-        });
+            writeCalled++;
+            assert.equal(filename, "test.d.json");
 
-        it('should have correct compiled json declaration in ' + declarationFilename, () => {
+            var baseline = {
+                "declares": [
+                    {
+                        "kind": "variable",
+                        "name": "Test",
+                        "type": "string"
+                    }
+                ]
+            }
 
-            compareToBaseline(declarationFilename);
-        });
+            assert.deepEqual(JSON.parse(data), baseline, "Write data changed from baseline");
+        }
 
-        after(() => {
-            diagnostics = undefined;
-            errorsFilename = undefined;
-            declarationFilename = undefined;
-        });
+        var host: compiler.CompilerHost = {
+            readFile,
+            writeFile
+        }
+
+        compiler.compile(["test.ts"], {}, host);
+
+        assert.equal(readCalled, 2);
+        assert.equal(writeCalled, 1);
     });
-}
-
-function loadOptions(baseName: string): compiler.CompilerOptions {
-
-    var path = testCasesDir + baseName + ".options.json";
-
-    if(!fs.existsSync(path)) {
-
-        return {};
-    }
-
-    return JSON.parse(fs.readFileSync(path, "utf8"));
-}
-
-function diagnosticsToString(diagnostics: compiler.Diagnostic[]): string {
-
-    var ret = "";
-
-    for (var i = 0; i < diagnostics.length; i++) {
-        ret += diagnosticToString(diagnostics[i]);
-    }
-
-    return ret;
-}
-
-function diagnosticToString(diagnostic: compiler.Diagnostic): string {
-    
-    var ret = "";
-
-    if(diagnostic.filename) {
-        ret += diagnostic.filename + "(" + diagnostic.line + "," + diagnostic.character + "): ";
-    }
-
-    var category = compiler.DiagnosticCategory[diagnostic.category].toLowerCase();
-    ret += category + " TS" + diagnostic.code + ": " + diagnostic.messageText + "\n";
-
-    return ret;
-}
-
-function deleteFile(filePath: string): void {
-
-    if(fs.existsSync(filePath)) {
-        fs.unlinkSync(filePath);
-    }
-}
-
-function compareToBaseline(filename: string): void {
-
-    var localFilename = localBaselineDir + filename;
-    var referenceFilename = referenceBaselineDir + filename;
-
-    var localExists = fs.existsSync(localFilename);
-    var referenceExists = fs.existsSync(referenceFilename);
-
-    if(localExists && !referenceExists) {
-        throw new Error("Unexpected file " + filename);
-    }
-
-    if(referenceExists && !localExists) {
-        throw new Error("Missing file " + filename);
-    }
-
-    expect(readFile(localBaselineDir + filename), "Baseline changed for " + filename)
-        .to.deep.equal(readFile(referenceBaselineDir + filename));
-}
-
-function readFile(filePath: string): any {
-
-    var isJsonFile = path.extname(filePath) == ".json";
-
-    if(!fs.existsSync(filePath)) {
-        return isJsonFile ? {} : "";
-    }
-
-    var text = fs.readFileSync(filePath, "utf8");
-    return isJsonFile ? JSON.parse(text) : text;
-}
-
-setupCases();
+});

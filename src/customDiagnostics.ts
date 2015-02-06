@@ -29,6 +29,7 @@ module ts {
         Do_not_emit_JsDoc_descriptions_in_output: { code: 10007, category: DiagnosticCategory.Error, key: "Do not emit JsDoc descriptions." },
         Do_not_emit_custom_annotations: { code: 10008, category: DiagnosticCategory.Error, key: "Do not emit custom annotations." },
         File_0_must_have_extension_d_json: { code: 10009, category: DiagnosticCategory.Error, key: "File '{0}' must have extension '.d.json'." },
-        File_0_has_invalid_json_format_1: { code: 10010, category: DiagnosticCategory.Error, key: "File '{0}' has invalid JSON format: {1}" }
+        File_0_has_invalid_json_format_1: { code: 10010, category: DiagnosticCategory.Error, key: "File '{0}' has invalid JSON format: {1}" },
+        Error_parsing_JsDoc_comment_0_1: { code: 10011, category: DiagnosticCategory.Error, key: "Error parsing JsDoc comment: {0}\n{1}" }
     }
 }
