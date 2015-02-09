@@ -153,6 +153,14 @@ There is a Grunt plug-in available for the TsReflect compiler to allow for gener
 as part of a Grunt build process. See the [grunt-tsreflect](https://github.com/artifacthealth/grunt-tsreflect) project.
 
 
+
+## Gulp Plug-in
+
+There is a Gulp plug-in available for the TsReflect compiler to allow for generating JSON declaration files
+as part of a Gulp build process. See the [gulp-tsreflect](https://github.com/rogierschouten/gulp-tsreflect) project.
+
+
+
 ## CommonJS Module
 
 The TsReflect compiler can be included as a CommonJS module in a NodeJS application. A typescript declaration file
