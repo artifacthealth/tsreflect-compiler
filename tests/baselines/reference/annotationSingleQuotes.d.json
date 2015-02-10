@@ -1,0 +1,71 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"annotations": [
+				{
+					"name": "a1",
+					"value": "simple single quotes"
+				},
+				{
+					"name": "a2",
+					"value": "simple double quotes"
+				},
+				{
+					"name": "a3",
+					"value": "double quotes \" in single quotes"
+				},
+				{
+					"name": "a4",
+					"value": "single quotes ' in double quotes"
+				},
+				{
+					"name": "a5",
+					"value": "escaped \" double quotes"
+				},
+				{
+					"name": "a6",
+					"value": "escaped ' single quotes"
+				},
+				{
+					"name": "a7",
+					"value": {
+						"simple single quotes": 1
+					}
+				},
+				{
+					"name": "a8",
+					"value": {
+						"simple double quotes": 1
+					}
+				},
+				{
+					"name": "a9",
+					"value": {
+						"double quotes \" in single quotes": 1
+					}
+				},
+				{
+					"name": "a10",
+					"value": {
+						"single quotes ' in double quotes": 1
+					}
+				},
+				{
+					"name": "a11",
+					"value": {
+						"escaped \" double quotes": 1
+					}
+				},
+				{
+					"name": "a12",
+					"value": {
+						"escaped ' single quotes": 1
+					}
+				}
+			]
+		}
+	]
+}

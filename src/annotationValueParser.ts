@@ -27,6 +27,7 @@ module ts {
 
         92: "\\",
         34: '"',
+        39: "'",
         47: "/",
         98: "\b",
         116: "\t",
@@ -84,7 +85,9 @@ module ts {
                     value = source[_index];
                     _index++;
                     return value;
+                case 39:
                 case 34:
+                    var stringChar = charCode;
                     // `"` delimits a JSON string; advance to the next character and
                     // begin parsing the string. String tokens are prefixed with the
                     // sentinel `@` character to distinguish them from punctuators and
@@ -103,6 +106,7 @@ module ts {
                             switch (charCode) {
                                 case 92:
                                 case 34:
+                                case 39:
                                 case 47:
                                 case 98:
                                 case 116:
@@ -135,23 +139,22 @@ module ts {
                                     abort("Invalid escape sequence.");
                             }
                         } else {
-                            if (charCode == 34) {
-                                // An unescaped double-quote character marks the end of the
-                                // string.
+                            if (charCode == stringChar) {
+                                // If we see the string character then it marks the end of the string
                                 break;
                             }
 
                             charCode = source.charCodeAt(_index);
                             begin = _index;
                             // Optimize for the common case where a string is valid.
-                            while (charCode >= 32 && charCode != 92 && charCode != 34) {
+                            while (charCode >= 32 && charCode != 92 && charCode != stringChar) {
                                 charCode = source.charCodeAt(++_index);
                             }
                             // Append the string as-is.
                             value += source.slice(begin, _index);
                         }
                     }
-                    if (source.charCodeAt(_index) == 34) {
+                    if (source.charCodeAt(_index) == stringChar) {
                         // Advance to the next character and return the revived string.
                         _index++;
                         return value;

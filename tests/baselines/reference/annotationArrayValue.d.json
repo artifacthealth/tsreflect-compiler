@@ -1,0 +1,123 @@
+{
+	"external": true,
+	"declares": [
+		{
+			"kind": "class",
+			"name": "A",
+			"annotations": [
+				{
+					"name": "collection",
+					"value": true
+				},
+				{
+					"name": "index",
+					"value": {
+						"keys": [
+							"a",
+							1
+						]
+					}
+				},
+				{
+					"name": "index",
+					"value": {
+						"keys": [
+							[
+								"a",
+								1
+							],
+							[
+								"b",
+								-1
+							]
+						]
+					}
+				}
+			],
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string"
+				},
+				{
+					"kind": "field",
+					"name": "b",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "B",
+			"annotations": [
+				{
+					"name": "index",
+					"value": {
+						"keys": [
+							"c",
+							1
+						]
+					}
+				}
+			],
+			"extends": "A",
+			"members": [
+				{
+					"kind": "field",
+					"name": "c",
+					"type": "string"
+				}
+			]
+		},
+		{
+			"kind": "class",
+			"name": "D",
+			"annotations": [
+				{
+					"name": "collection",
+					"value": true
+				}
+			],
+			"members": [
+				{
+					"kind": "field",
+					"name": "a",
+					"type": "string",
+					"annotations": [
+						{
+							"name": "index",
+							"value": true
+						}
+					]
+				},
+				{
+					"kind": "field",
+					"name": "g",
+					"type": "number",
+					"annotations": [
+						{
+							"name": "index",
+							"value": {
+								"order": -1
+							}
+						}
+					]
+				},
+				{
+					"kind": "field",
+					"name": "c",
+					"type": "number",
+					"annotations": [
+						{
+							"name": "index",
+							"value": {
+								"dropDups": true
+							}
+						}
+					]
+				}
+			]
+		}
+	]
+}
