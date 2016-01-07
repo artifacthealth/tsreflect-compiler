@@ -10,6 +10,7 @@ section below for more information.
 
 On the [Node](http://nodejs.org/) platform, JSON declaration files may be consumed using the [tsreflect](https://github.com/artifacthealth/tsreflect) module.
 
+# NOTE! Currently, there are not any plans to support any version of TypeScript beyond 1.4. If in the future the TypeScript compiler supports an extensible emitter, this project will be picked up again.
 
 ## Installation
 
