@@ -34,29 +34,29 @@ For more example output, take a look at the JSON declaration file generated for 
 
 ```
 {
-	"declares": [
-		{
-			"kind": "class",
-			"name": "Calculator",
-			"members": [
-				{
-					"kind": "method",
-					"name": "add",
-					"parameters": [
-						{
-							"name": "x",
-							"type": "number"
-						},
-						{
-							"name": "y",
-							"type": "number"
-						}
-					],
-					"returns": "number"
-				}
-			]
-		}
-	]
+    "declares": [
+        {
+            "kind": "class",
+            "name": "Calculator",
+            "members": [
+                {
+                    "kind": "method",
+                    "name": "add",
+                    "parameters": [
+                        {
+                            "name": "x",
+                            "type": "number"
+                        },
+                        {
+                            "name": "y",
+                            "type": "number"
+                        }
+                    ],
+                    "returns": "number"
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -98,51 +98,51 @@ class Customer {
 The above TypeScript generates the following JSON declaration output:
 ```
 {
-	"declares": [
-		{
-			"kind": "class",
-			"name": "Customer",
-			"description": "An entity for a Customer.",
-			"annotations": [
-				{
-					"name": "entity",
-					"value": true
-				},
-				{
-					"name": "table",
-					"value": "customers"
-				}
-			],
-			"members": [
-				{
-					"kind": "field",
-					"name": "id",
-					"type": "number",
-					"annotations": [
-						{
-							"name": "id",
-							"value": true
-						}
-					]
-				},
-				{
-					"kind": "field",
-					"name": "name",
-					"type": "string",
-					"description": "The name of the customer.",
-					"annotations": [
-						{
-							"name": "column",
-							"value": {
-								"name": "customer_name",
-								"length": 255
-							}
-						}
-					]
-				}
-			]
-		}
-	]
+    "declares": [
+	    {
+            "kind": "class",
+            "name": "Customer",
+            "description": "An entity for a Customer.",
+            "annotations": [
+                {
+                    "name": "entity",
+                    "value": true
+                },
+                {
+                    "name": "table",
+                    "value": "customers"
+                }
+            ],
+            "members": [
+                {
+                    "kind": "field",
+                    "name": "id",
+                    "type": "number",
+                    "annotations": [
+                        {
+                            "name": "id",
+                            "value": true
+                        }
+                    ]
+                },
+                {
+                    "kind": "field",
+                    "name": "name",
+                    "type": "string",
+                    "description": "The name of the customer.",
+                    "annotations": [
+                        {
+                            "name": "column",
+                            "value": {
+                                "name": "customer_name",
+                                "length": 255
+                            }
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
 }
 ```
 
@@ -189,8 +189,8 @@ assigned to the ```diagnostics``` variable.
 * [`Diagnostic`](#Diagnostic)
 * [`DiagnosticCategory`](#DiagnosticCategory)
 
-<a name="compile" />
-#### compile(filenames, options, host?)
+<a name="compile"></a>
+#### compile(filenames, options, host)
 Compile specified TypeScript files to generate JSON declaration files. Returns an array of diagnostic
 information if any errors occur.
 
@@ -202,7 +202,7 @@ __Parameters__
 __Returns:__ `Diagnostic[]`
 
 
-<a name="CompilerOptions" />
+<a name="CompilerOptions"></a>
 #### CompilerOptions Interface
 --------------------
 Compiler options.
@@ -220,14 +220,14 @@ Compiler options.
 * [`removeTypesOnPrivates`](#removeTypesOnPrivates)
 * [`ignoreAnnotation`](#ignoreAnnotation)
 
-<a name="noLib" />
+<a name="noLib"></a>
 ##### noLib
 If true, the default library is not automatically added to the compile list.
 
 __Type:__ `boolean`
 
 
-<a name="noCheck" />
+<a name="noCheck"></a>
 ##### noCheck
 If true, type checks are not run. This marginally improves compile time. Only use this option if your
 TypeScript already compiles correctly.
@@ -235,21 +235,21 @@ TypeScript already compiles correctly.
 __Type:__ `boolean`
 
 
-<a name="out" />
+<a name="out"></a>
 ##### out
 Specifies a single file to compile all TypeScript to. This is ignored for external modules.
 
 __Type:__ `string`
 
 
-<a name="outDir" />
+<a name="outDir"></a>
 ##### outDir
 Specifies the output directory.
 
 __Type:__ `string`
 
 
-<a name="suppressImplicitAnyIndexErrors" />
+<a name="suppressImplicitAnyIndexErrors"></a>
 ##### suppressImplicitAnyIndexErrors
 Suppress errors that are raised when the index operator is used on an object that does not have an
 index defined on it's type.
@@ -257,91 +257,90 @@ index defined on it's type.
 __Type:__ `boolean`
 
 
-<a name="noImplicitAny" />
+<a name="noImplicitAny"></a>
 ##### noImplicitAny
 Warn on expressions and declarations with an implied any type
 
 __Type:__ `boolean`
 
 
-<a name="removeComments" />
+<a name="removeComments"></a>
 ##### removeComments
 If true, JsDoc description is not included in output. Default is false.
 
 __Type:__ `boolean`
 
 
-<a name="libPath" />
+<a name="libPath"></a>
 ##### libPath
 Path to the lib.d.json file relative to compiler javascript source.
 
 __Type:__ `string`
 
 
-<a name="removeAccessors" />
+<a name="removeAccessors"></a>
 ##### removeAccessors
 Do not emit property accessor declarations.
 
 __Type:__ `boolean`
 
 
-<a name="removeAnnotations" />
+<a name="removeAnnotations"></a>
 ##### removeAnnotations
 Do not emit custom annotations in output.
 
 __Type:__ `boolean`
 
 
-<a name="removePrivates" />
+<a name="removePrivates"></a>
 ##### removePrivates
 Do not emit private class member declarations.
 
 __Type:__ `boolean`
 
 
-<a name="removeTypesOnPrivates" />
+<a name="removeTypesOnPrivates"></a>
 ##### removeTypesOnPrivates
 Do not emit type information for private class members.
 
 __Type:__ `boolean`
 
 
-<a name="ignoreAnnotation" />
+<a name="ignoreAnnotation"></a>
 ##### ignoreAnnotation
 Controls whether or not annotations with a given name are ignored.
 
-__Type:__ `{ [annotation: string]: boolean }`
 
 
 
-<a name="CompilerHost" />
+<a name="CompilerHost"></a>
 #### CompilerHost Interface
 --------------------
 The compiler host. Allows for control over the interaction of compiler with the file system.
 * [`readFile`](#readFile)
 * [`writeFile`](#writeFile)
 
-<a name="readFile" />
-##### readFile(filename, onError?)
+<a name="readFile"></a>
+##### readFile(filename, onError)
 Reads a file synchronously.
 
 __Parameters__
 * filename `string`  - The full path to the file.
-* onError - Optional. Callback called synchronously to indicate if an error occurred when reading the file. Passed
+* onError - Callback called synchronously to indicate if an error occurred when reading the file. Passed
 a single argument containing the error message as a string.
 
 __Returns:__ `string`
 
 
-<a name="writeFile" />
-##### writeFile(filename, data, writeByteOrderMark, onError?)
+<a name="writeFile"></a>
+##### writeFile(filename, data, writeByteOrderMark, onError)
 Writes a file synchronously.
 
 __Parameters__
 * filename `string`  - The full path to the file.
 * data `string`  - The data to write.
 * writeByteOrderMark `boolean`  - Indicates if the byte order mark should be written.
-* onError - Optional. Callback called synchronously to indicate if an error occurred when writing the file. Passed
+* onError - Callback called synchronously to indicate if an error occurred when writing the file. Passed
 a single argument containing the error message as a string.
 
 __Returns:__ `void`
@@ -349,7 +348,7 @@ __Returns:__ `void`
 
 
 
-<a name="Diagnostic" />
+<a name="Diagnostic"></a>
 #### Diagnostic Interface
 --------------------
 Diagnostic information.
@@ -360,42 +359,42 @@ Diagnostic information.
 * [`category`](#category)
 * [`code`](#code)
 
-<a name="filename" />
+<a name="filename"></a>
 ##### filename
 The name of that file that contains the error.
 
 __Type:__ `string`
 
 
-<a name="line" />
+<a name="line"></a>
 ##### line
 The line number of the error.
 
 __Type:__ `number`
 
 
-<a name="character" />
+<a name="character"></a>
 ##### character
 The character offset of the error.
 
 __Type:__ `number`
 
 
-<a name="messageText" />
+<a name="messageText"></a>
 ##### messageText
 The error message text.
 
 __Type:__ `string`
 
 
-<a name="category" />
+<a name="category"></a>
 ##### category
 The category of the error.
 
 __Type:__ `DiagnosticCategory`
 
 
-<a name="code" />
+<a name="code"></a>
 ##### code
 The error code.
 
@@ -404,10 +403,15 @@ __Type:__ `number`
 
 
 
-<a name="DiagnosticCategory" />
+<a name="DiagnosticCategory"></a>
 #### DiagnosticCategory Enumeration
 --------------------
 Enumeration describing type of Diagnostic.
 * Warning
 * Error
 * Message
+
+
+
+
+
